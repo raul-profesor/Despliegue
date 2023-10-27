@@ -1,0 +1,59 @@
+nav:
+    - Tema 1:
+      - Teoría:
+        - debian_teoria.md
+      - Prácticas:
+        - ... | debian.md
+    - Tema 2:
+      - Teoría:
+        - ArqWeb.md
+      - Prácticas:
+        - ... | P1.*.md
+    - Tema 3:
+      - Teoría:
+        - ServAplic.md
+      - Prácticas:
+        - ... | P3.*.md
+    - Tema 4:
+      - Teoría: 
+        - dns.md
+      - Prácticas:
+        - ... | P4.*.md
+    - Tema 5:
+      - Teoría: 
+        - index_git.md
+        - cvs.md
+        - introduccion.md
+        - git.md
+        - usobasico.md
+        - usoavanzado.md
+        - ramas.md
+        - github.md
+        - github-zenodo.md
+        - github-flow.md
+        - github-avanzado.md
+        - commands.md
+        - gitflow.md
+        - referencias.md
+      - Prácticas:
+        - ... | P5.*.md      
+    - Tema 6:
+      - Teoría: 
+        - index_docker.md
+        - introduction.md
+        - installation.md
+        - images.md
+        - containers.md
+        - data.md
+        - wordpress.md
+        - docker-compose.md
+        - dockerfile.md
+        - tips.md
+      - Prácticas:
+        - ... | P6.*.md 
+    - Tema 7:
+      - Teoría: 
+        - cicd.md
+      - Prácticas:
+        - ... | P7.*.md    
+

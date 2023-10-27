@@ -17,7 +17,7 @@
         <link rel="next" href="../P3.2-NodeJS-Express/">
       
       <link rel="icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.1.8">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.1.6">
     
     
       
@@ -129,31 +129,25 @@
       </div>
     </div>
     
-      
-        <form class="md-header__option" data-md-component="palette">
+      <form class="md-header__option" data-md-component="palette">
+        
           
-            
-            
-            
-            <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="green" data-md-color-accent="blue"  aria-label="Cambiar a modo oscuro"  type="radio" name="__palette" id="__palette_1">
-            
-              <label class="md-header__button md-icon" title="Cambiar a modo oscuro" for="__palette_2" hidden>
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6zm0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4zM7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
-              </label>
-            
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="green" data-md-color-accent="blue"  aria-label="Cambiar a modo oscuro"  type="radio" name="__palette" id="__palette_1">
           
-            
-            
-            
-            <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="deep-orange"  aria-label="Cambiar a modo claro"  type="radio" name="__palette" id="__palette_2">
-            
-              <label class="md-header__button md-icon" title="Cambiar a modo claro" for="__palette_1" hidden>
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6zm0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4zM7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
-              </label>
-            
+            <label class="md-header__button md-icon" title="Cambiar a modo oscuro" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6zm0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4zM7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+            </label>
           
-        </form>
-      
+        
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="deep-orange"  aria-label="Cambiar a modo claro"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Cambiar a modo claro" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6zm0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4zM7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+            </label>
+          
+        
+      </form>
     
     
     
@@ -1732,16 +1726,42 @@
 <p>No obstante, para Java 8 su soporte para uso comercial (pagando) acabó <a href="https://en.wikipedia.org/wiki/Java_version_history">en Marzo de 2022</a>, pero para uso no comercial sigue hasta 2030.</p>
 <p>En conclusión, no es raro encontrarse en el mundo real un proyecto a desplegar realizado en Java 8. Podría realizarse una migración y los conceptos de despliegue que veremos seguirían aplicando. Así las cosas, por facilidad en la realización de las prácticas utilizaremos Tomcat 9 y el plugin oficial de Maven para Tomcat 7 para el despliegue (luego veremos el motivo).</p>
 <h3 id="instalacion-de-tomcat">Instalación de Tomcat</h3>
-<p>Esta práctica es muy sencilla y va a consistir en realizar la instalación del servidor de aplicaciones Tomcat 9, en una máquina virtual corriendo Debian 11 Bullseye.</p>
-<p><img alt="" src="../img/tomcat-logo.png" /></p>
-<p>Se puede hacer tanto con el administrador de paquetes <code>apt</code> como de forma manual. La <u>forma más recomendable</u> por su sencillez es la primera.</p>
-<p>Para ello, y como sugerencia, podéis apoyaros en <a href="https://linuxhint.com/install-apache-tomcat-debian-11/">este tutorial online</a>, aunque sóis libres de consultar tantas fuentes como deseéis.</p>
-<p>Obviamente, debéis utilizar vuestro propios usuarios y contraseña.</p>
+<p>Para Debian 12 Bookworm, los paquetes de Tomcat desaparecen de los repositorios y toca instalarlo a mano, decargándose los binarios y llevando a cabo todas las acciones de configuración necesarias.</p>
+<p>Para este cometido podéis seguir <a href="https://techviewleo.com/install-apache-tomcat-on-debian-bookworm/">el siguiente tutorial</a> hasta el paso 7 inclusive (sin configurar nada de proxy inverso).</p>
+<p>No obstante hay algún punto del tutorial que debemos variar para que todo funcione correctamente:</p>
+<ul>
+<li>A la hora de configurar Tomcat como un servicio más del sistema para poder controlarlo con <em>systemd</em>, el archivo debe quedar así</li>
+</ul>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>Service]
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>#Type=forking
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>Type=oneshot
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>PIDFile=&quot;/run/tomcat.pid&quot;
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>Environment=JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>Environment=CATALINA_PID=/opt/tomcat/temp/tomcat.pid
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>Environment=CATALINA_HOME=/opt/tomcat
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>Environment=CATALINA_BASE=/opt/tomcat
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>Environment=&#39;CATALINA_OPTS=-Xms512M -Xmx1024M -server -XX:+UseParallelGC&#39;
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>Environment=&#39;JAVA_OPTS=-Djava.awt.headless=true -Djava.security.egd=file:/dev/./urandom&#39;
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>ExecStart=/opt/tomcat/bin/startup.sh
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>ExecStop=/opt/tomcat/bin/shutdown.sh
+<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>
+<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>User=tomcat
+<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a>Group=tomcat
+<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a>UMask=0007
+<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a>RestartSec=10
+<a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a>#Restart=always
+<a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a>RemainAfterExit=yes
+<a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a>
+<a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a>[Install]
+<a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a>WantedBy=multi-user.target
+</code></pre></div>
 <h3 id="despliegue-manual-mediante-la-gui-de-administracion">Despliegue manual mediante la GUI de administración</h3>
 <p>Realizaremos el despliegue manual de una aplicación ya previamente empaquetada en formato WAR. Para ello:</p>
 <ol>
 <li>
-<p>Nos logueamos con el usuario previamente creado.</p>
+<p>Nos logueamos con el usuario previamente creado y configurado en <em>tomcat-users.xml</em></p>
 </li>
 <li>
 <p>Buscamos la sección que nos permite desplegar un WAR manualmente, seleccionamos nuestro archivo y lo desplegamos. </p>
@@ -1767,13 +1787,13 @@
 <p>La primera, <u>recomendada</u>,  es mucho más sencilla y automatizada (establece todos los paths y variables de entorno), aunque con la segunda se podría conseguir un paquete más actualizado.</p>
 <p>Ambos métodos vienen explicados <a href="https://www.how2shout.com/linux/how-to-install-apache-maven-on-debian-11-bullseye/">aquí</a></p>
 <p>Si decidimos seguir el primer método, el más sencillo, vemos que es tan simple como actualizar los repositorios:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>sudo<span class="w"> </span>apt<span class="w"> </span>update
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>sudo<span class="w"> </span>apt<span class="w"> </span>update
 </code></pre></div>
 <p>E instalar Maven</p>
-<p><div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>maven
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>maven
 </code></pre></div>
 Para comprobar que todo ha ido correctamente, podemos ver la versión instalada de Maven:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>mvn<span class="w"> </span>--v
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>mvn<span class="w"> </span>--v
 </code></pre></div>
 <h4 id="configuracion-de-maven">Configuración de Maven</h4>
 <p>Para poder realizar despliegues en nuestro Tomcat previamente instalado, necesitamos realizar la configuración adecuada para Maven. Ya sabemos que esto en Linux significa editar los archivos de configuración adecuados. Vamos a ello.</p>
@@ -1795,7 +1815,7 @@ Para comprobar que todo ha ido correctamente, podemos ver la versión instalada 
 <p><img alt="" src="../img/maven-settings.png" /></p>
 </li>
 <li>
-<p>Ahora debemos modificar el <code>POM</code> del proyecto para que haga referencia a que el despliegue se realice con el plugin de Maven para Tomcat. </p>
+<p>Maven despliega proyectos ubicados en carpetas con todos los elementos necesarios para ello y uno de esos archivos es <code>pom.xml</code>. Debemos modificar el <code>POM</code> del proyecto para que haga referencia a que el despliegue se realice con el plugin de Maven para Tomcat. </p>
 <div class="admonition info">
 <p class="admonition-title">Info</p>
 <p>No existen plugins <strong>oficiales</strong> para Tomcat más allá de la versión 7 del servidor. No obstante, el plugin para Tomcat 7 sigue funcionando correctamente con Tomcat 9. </p>
@@ -1803,21 +1823,21 @@ Para comprobar que todo ha ido correctamente, podemos ver la versión instalada 
 </div>
 <p><img alt="" src="../img/POM.png" /></p>
 <p>Donde lo que añadimos es el bloque </p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="l l-Scalar l-Scalar-Plain">&lt;build&gt;</span>
-<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">&lt;finalName&gt;war-deploy&lt;/finalName&gt;</span><span class="w"> </span><span class="c1">#(1)</span>
-<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">&lt;plugins&gt;</span><span class="w"> </span>
-<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">&lt;plugin&gt;</span>
-<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">&lt;groupId&gt;org.apache.tomcat.maven&lt;/groupId&gt;</span>
-<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">&lt;artifactId&gt;tomcat7-maven-plugin&lt;/artifactId&gt;</span>
-<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">&lt;version&gt;2.2&lt;/version&gt;</span>
-<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">&lt;configuration&gt;</span>
-<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="w">            </span><span class="l l-Scalar l-Scalar-Plain">&lt;url&gt;http://localhost:8080/manager/text&lt;/url&gt;</span><span class="w"> </span><span class="c1">#(2)</span>
-<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="w">            </span><span class="l l-Scalar l-Scalar-Plain">&lt;server&gt;Tomcat.P.3.1&lt;/server&gt;</span><span class="w"> </span><span class="c1">#(3)</span>
-<a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="w">            </span><span class="l l-Scalar l-Scalar-Plain">&lt;path&gt;/myapp&lt;/path&gt;</span><span class="w"> </span><span class="c1">#(4)</span>
-<a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a><span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">&lt;/configuration&gt;</span>
-<a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a><span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">&lt;/plugin&gt;</span>
-<a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a><span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">&lt;/plugins&gt;</span>
-<a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a><span class="l l-Scalar l-Scalar-Plain">&lt;/build&gt;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="l l-Scalar l-Scalar-Plain">&lt;build&gt;</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">&lt;finalName&gt;war-deploy&lt;/finalName&gt;</span><span class="w"> </span><span class="c1">#(1)</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">&lt;plugins&gt;</span><span class="w"> </span>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">&lt;plugin&gt;</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">&lt;groupId&gt;org.apache.tomcat.maven&lt;/groupId&gt;</span>
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">&lt;artifactId&gt;tomcat7-maven-plugin&lt;/artifactId&gt;</span>
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">&lt;version&gt;2.2&lt;/version&gt;</span>
+<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">&lt;configuration&gt;</span>
+<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="w">            </span><span class="l l-Scalar l-Scalar-Plain">&lt;url&gt;http://localhost:8080/manager/text&lt;/url&gt;</span><span class="w"> </span><span class="c1">#(2)</span>
+<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="w">            </span><span class="l l-Scalar l-Scalar-Plain">&lt;server&gt;Tomcat.P.3.1&lt;/server&gt;</span><span class="w"> </span><span class="c1">#(3)</span>
+<a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a><span class="w">            </span><span class="l l-Scalar l-Scalar-Plain">&lt;path&gt;/myapp&lt;/path&gt;</span><span class="w"> </span><span class="c1">#(4)</span>
+<a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a><span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">&lt;/configuration&gt;</span>
+<a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a><span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">&lt;/plugin&gt;</span>
+<a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a><span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">&lt;/plugins&gt;</span>
+<a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a><span class="l l-Scalar l-Scalar-Plain">&lt;/build&gt;</span>
 </code></pre></div>
 <ol>
 <li>
@@ -1837,10 +1857,11 @@ Para comprobar que todo ha ido correctamente, podemos ver la versión instalada 
 </li>
 </ol>
 <h4 id="despliegue">Despliegue</h4>
-<p>Teniendo ya todo listo para realizar despliegues, ahora crearemos una aplicación Java <u>de prueba</u> para ver si podemos desplegarla sobre la arquitectura que hemos montado. Para ello utilizamos el comando:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="w">    </span>mvn<span class="w"> </span>archetype:generate<span class="w"> </span>-DgroupId<span class="o">=</span>raul<span class="w"> </span>-DartifactId<span class="o">=</span>war-deploy<span class="w"> </span>-DarchetypeArtifactId<span class="o">=</span>maven-archetype-webapp<span class="w"> </span>-DinteractiveMode<span class="o">=</span><span class="nb">false</span>
+<p>Teniendo ya todo listo para realizar despliegues y sabiendo lo que deberemos modificar, crearemos una aplicación Java <u>de prueba</u> para ver si podemos desplegarla sobre la arquitectura que hemos montado. Para ello utilizamos el comando:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="w">    </span>mvn<span class="w"> </span>archetype:generate<span class="w"> </span>-DgroupId<span class="o">=</span>raul<span class="w"> </span>-DartifactId<span class="o">=</span>war-deploy<span class="w"> </span>-DarchetypeArtifactId<span class="o">=</span>maven-archetype-webapp<span class="w"> </span>-DinteractiveMode<span class="o">=</span><span class="nb">false</span>
 </code></pre></div>
 <p>Podéis sustituir los valores de <code>groupID</code> y <code>artifactId</code> (este será el nombre de la aplicación) por lo que queráis.</p>
+<p>Y con esto se creará la carpeta del proyecto con los archivos necesarios, incluido el <code>pom.xml</code>.</p>
 <p>Tras generar esta aplicación, los comandos finales que se utilizan en Maven para desplegar, volver a desplegar o desplegar una aplicación, son:</p>
 <ul>
 <li><code>mvn tomcat7:deploy</code></li>
