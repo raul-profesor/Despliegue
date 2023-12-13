@@ -764,22 +764,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#tareas-de-ampliacion" class="md-nav__link">
-    Tareas de ampliación
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#referencias" class="md-nav__link">
     Referencias
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#evaluacion" class="md-nav__link">
-    Evaluación
   </a>
   
 </li>
@@ -1965,8 +1951,8 @@ Donde:</p>
 <p><code>git clone https://github.com/raul-profesor/Practica-3.5</code></p>
 <p>Y, <strong><em>tras activar el entorno virtual dentro del directorio del repositorio clonado</em></strong>, para instalar las dependencias del proyecto de la aplicación deberás hacer:</p>
 <p><code>pipenv install -r requirements.txt</code></p>
-<p>Y un último detalle, si miráis el código del proyecto, quee es muy sencillo, veréis que <em>Gunicorn</em> debe iniciarse ahora así:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>gunicorn --workers 4 --bind 0.0.0.0:5000 wsgi:app
+<p>Y un último detalle, si miráis el código del proyecto, quee es muy sencillo, veréis que <em>Gunicorn</em> debe iniciarse ahora así (se busca la variabl <code>app</code> dentro del archivo <code>app.py</code>):</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>gunicorn --workers 4 --bind 0.0.0.0:5000 app:app
 </code></pre></div>
 <p>Y el resto sería proceder tal y como hemos hecho en esta práctica.</p>
 </div>
@@ -1979,46 +1965,10 @@ Donde:</p>
 <p class="admonition-title">Cuestion 1</p>
 <p>Busca, lee, entiende y explica qué es y para que sirve un servidor <em>WSGI</em></p>
 </div>
-<h2 id="tareas-de-ampliacion">Tareas de ampliación</h2>
-<div class="admonition task">
-<p class="admonition-title">Ampliación</p>
-<p>Despliega cualquiera de las dos aplicaciones Flask presentadas aquí en Heroku.</p>
-</div>
 <h2 id="referencias">Referencias</h2>
 <p><a href="https://openwebinars.net/blog/que-es-flask/">¿Qué es Flask?</a></p>
 <p><a href="https://dev.to/brandonwallace/deploy-flask-the-easy-way-with-gunicorn-and-nginx-jgc">Deploy Flask The Easy Way With Gunicorn and Nginx!</a></p>
 <p><a href="https://faun.pub/deploy-flask-app-with-nginx-using-gunicorn-7fda4f50066a">Deploy flask app with Nginx using Gunicorn</a></p>
-<h2 id="evaluacion">Evaluación</h2>
-<table>
-<thead>
-<tr>
-<th>Criterio</th>
-<th>Puntuación</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Despliegue correcto, completo y bien documentado del primer ejemplo</td>
-<td><strong>2 puntos</strong></td>
-</tr>
-<tr>
-<td>Despliegue correcto, completo y bien documentado del segundo ejemplo</td>
-<td><strong>5 puntos</strong></td>
-</tr>
-<tr>
-<td>Respuestas correctas a las cuestiones</td>
-<td><strong>1 puntos</strong></td>
-</tr>
-<tr>
-<td>Tarea de ampliación</td>
-<td><strong>1 punto</strong></td>
-</tr>
-<tr>
-<td>Se ha prestado especial atención al formato del documento, utilizando la plantilla actualizada y haciendo un correcto uso del lenguaje técnico</td>
-<td><strong>2 puntos</strong></td>
-</tr>
-</tbody>
-</table>
 
 
   
