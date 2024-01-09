@@ -8,20 +8,20 @@
       
       
       
-        <link rel="canonical" href="https://raul-profesor.github.io/Despliegue/P3.1-Tomcat/">
+        <link rel="canonical" href="https://raul-profesor.github.io/Despliegue/P3.3-Cluster2/">
       
       
-        <link rel="prev" href="../ServAplic/">
+        <link rel="prev" href="../P3.3-Cluster/">
       
       
-        <link rel="next" href="../P3.2-NodeJS-Express/">
+        <link rel="next" href="../P3.4-Heroku/">
       
       <link rel="icon" href="../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.1.8">
     
     
       
-        <title>Práctica 3.1: Instalación de Tomcat y Maven para despliegue de aplicación Java - Despliegue de aplicaciones web</title>
+        <title>(ACTUALIZADA) Práctica 3.3 - Despliegue de una aplicación "clusterizada" con Node Express - Despliegue de aplicaciones web</title>
       
     
     
@@ -87,7 +87,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#practica-31-instalacion-de-tomcat" class="md-skip">
+        <a href="#practica-33-despliegue-de-una-aplicacion-clusterizada-con-node-express" class="md-skip">
           Saltar a contenido
         </a>
       
@@ -122,7 +122,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Práctica 3.1: Instalación de Tomcat y Maven para despliegue de aplicación Java
+              (ACTUALIZADA) Práctica 3.3 - Despliegue de una aplicación "clusterizada" con Node Express
             
           </span>
         </div>
@@ -602,147 +602,11 @@
               
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          Práctica 3.1: Instalación de Tomcat y Maven para despliegue de aplicación Java
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../P3.1-Tomcat/" class="md-nav__link">
         Práctica 3.1: Instalación de Tomcat y Maven para despliegue de aplicación Java
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Tabla de contenidos
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#introduccion" class="md-nav__link">
-    Introducción
-  </a>
-  
-    <nav class="md-nav" aria-label="Introducción">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#por-que" class="md-nav__link">
-    ¿Por qué?
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#instalacion-de-tomcat" class="md-nav__link">
-    Instalación de Tomcat
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#despliegue-manual-mediante-la-gui-de-administracion" class="md-nav__link">
-    Despliegue manual mediante la GUI de administración
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#despliegue-con-maven" class="md-nav__link">
-    Despliegue con Maven
-  </a>
-  
-    <nav class="md-nav" aria-label="Despliegue con Maven">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#instalacion-de-maven" class="md-nav__link">
-    Instalación de Maven
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#configuracion-de-maven" class="md-nav__link">
-    Configuración de Maven
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#despliegue" class="md-nav__link">
-    Despliegue
-  </a>
-  
-    <nav class="md-nav" aria-label="Despliegue">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#tarea" class="md-nav__link">
-    Tarea
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#cuestiones" class="md-nav__link">
-    Cuestiones
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#referencias" class="md-nav__link">
-    Referencias
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#evaluacion" class="md-nav__link">
-    Evaluación
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -780,11 +644,127 @@
               
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../P3.3-Cluster2/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          (ACTUALIZADA) Práctica 3.3 - Despliegue de una aplicación "clusterizada" con Node Express
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         (ACTUALIZADA) Práctica 3.3 - Despliegue de una aplicación "clusterizada" con Node Express
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduccion" class="md-nav__link">
+    Introducción
+  </a>
+  
+    <nav class="md-nav" aria-label="Introducción">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#un-vistazo-rapido-a-los-clusters" class="md-nav__link">
+    Un vistazo rápido a los clusters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#usando-los-clusters" class="md-nav__link">
+    Usando los clusters
+  </a>
+  
+    <nav class="md-nav" aria-label="Usando los clusters">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#primero-sin-cluster" class="md-nav__link">
+    Primero sin clúster
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ahora-con-mas-cluster" class="md-nav__link">
+    ¡Ahora con más clúster!
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#metricas-de-rendimiento" class="md-nav__link">
+    Métricas de rendimiento
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#uso-de-pm2-para-administrar-un-cluster-de-nodejs" class="md-nav__link">
+    Uso de PM2 para administrar un clúster de Node.js
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cuestiones" class="md-nav__link">
+    Cuestiones
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#referencias" class="md-nav__link">
+    Referencias
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#evaluacion" class="md-nav__link">
+    Evaluación
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1734,244 +1714,264 @@
                   
 
 
-<h1 id="practica-31-instalacion-de-tomcat">Práctica 3.1: Instalación de Tomcat</h1>
+<h1 id="practica-33-despliegue-de-una-aplicacion-clusterizada-con-node-express">Práctica 3.3: Despliegue de una aplicación "clusterizada" con Node Express</h1>
 <h2 id="introduccion">Introducción</h2>
-<p>Si consultamos el apartado de <a href="https://tomcat.apache.org/whichversion.html">versiones de Tomcat</a> en su página oficial, nos daremos cuenta de que no vamos a usar la última versión, la 10, para esta práctica, sino la anterior, la 9. La pregunta es casi inevitable:</p>
-<h3 id="por-que">¿Por qué?</h3>
-<p>En el enlace anterior vemos como desde su versión 9, Tomcat da soporta a Java 8 y superiores. Sin embargo, a partir de la versión 10.1.x, da soporte a Java 11 y superiores.</p>
-<p><strong>¿Qué significa esto?</strong></p>
-<p>En Java 9 se introdujeron novedades como un nuevo sistema de módulos (Jigsaw), <a href="https://blog.codmind.com/java-9-analisis-de-las-novedades/">entre otras</a>.</p>
-<p>En Java 11 se dio un paso más al haber renombrado completamente las rutas de paquetes javax.<em> a jakarta.</em>. Oracle, a pesar de haber hecho público el desarrollo de Java, no hizo lo mismo con su nombre. </p>
-<p>Así las cosas, resulta que Java 8 puede que a día de hoy aún sea la más usada en proyectos reales. Dicho esto, podría realizarse un proceso de migración de un proyecto de Java 8 a Java 11 y utilizarlo en Tomcat 10.</p>
-<p>No obstante, para Java 8 su soporte para uso comercial (pagando) acabó <a href="https://en.wikipedia.org/wiki/Java_version_history">en Marzo de 2022</a>, pero para uso no comercial sigue hasta 2030.</p>
-<p>En conclusión, no es raro encontrarse en el mundo real un proyecto a desplegar realizado en Java 8. Podría realizarse una migración y los conceptos de despliegue que veremos seguirían aplicando. Así las cosas, por facilidad en la realización de las prácticas utilizaremos Tomcat 9 y el plugin oficial de Maven para Tomcat 7 para el despliegue (luego veremos el motivo).</p>
-<h3 id="instalacion-de-tomcat">Instalación de Tomcat</h3>
-<p>Para Debian 12 Bookworm, los paquetes de Tomcat desaparecen de los repositorios y toca instalarlo a mano, decargándose los binarios y llevando a cabo todas las acciones de configuración necesarias.</p>
-<p>Para este cometido podéis seguir <a href="https://techviewleo.com/install-apache-tomcat-on-debian-bookworm/">el siguiente tutorial</a> hasta el paso 7 inclusive (sin configurar nada de proxy inverso), hasta el paso 7 inclusive pero únicamente el "Method 1".</p>
-<p>No obstante hay algún punto del tutorial que debemos variar para que todo funcione correctamente:</p>
+<p>Cuando se construye una aplicación de producción, normalmente se busca la forma de optimizar su rendimiento llegando a una solución de compromiso. En esta práctica echaremos un vistazo a un enfoque que puede ofrecer una victoria rápida cuando se trata de mejorar la manera en que las aplicaciones Node.js manejan la carga de trabajo.</p>
+<p>Una instancia de Node.js se ejecuta en un solo hilo, lo que significa que en un sistema multinúcleo (como la mayoría de los ordenadores de hoy en día), no todos los núcleos serán utilizados por la aplicación. Para aprovechar los otros núcleos disponibles, podemos lanzar un cluster de procesos Node.js y distribuir la carga entre ellos.</p>
+<p><img alt="" src="../img/imagen_cluster.png" /></p>
+<p>Tener varios hilos para manejar las peticiones mejora el rendimiento (peticiones/segundo) del servidor, ya que varios clientes pueden ser atendidos simultáneamente. Veremos cómo crear procesos hijos con el módulo de cluster de Node.js para, más tarde, ver cómo gestionar el cluster con el gestor de procesos PM2.</p>
+<h3 id="un-vistazo-rapido-a-los-clusters">Un vistazo rápido a los clusters</h3>
+<p><a href="https://nodejs.org/api/cluster.html">El módulo de clúster de Node.js</a> permite la creación de procesos secundarios (<em>workers</em>) que se ejecutan simultáneamente y comparten el mismo puerto de servidor. Cada hijo generado tiene su propio ciclo de eventos y memoria. Los procesos secundarios utilizan IPC (comunicación entre procesos) para comunicarse con el proceso principal de Node.js.</p>
+<p>Tener múltiples procesos para manejar las solicitudes entrantes significa que se pueden procesar varias solicitudes simultáneamente y si hay una operación de bloqueo/ejecución prolongada en un <em>worker</em>, los otros <em>workers</em> pueden continuar administrando otras solicitudes entrantes; la aplicación no se detendrá hasta que finalice la operación de bloqueo.</p>
+<p>La ejecución de varios <em>workers</em> también permite actualizar la aplicación en producción con poco o ningún tiempo de inactividad. Se pueden realizar cambios en la aplicación y reiniciar los <em>workers</em> uno por uno, esperando que un proceso secundario se genere por completo antes de reiniciar otro. De esta manera, siempre habrá <em>workers</em> ejecutándose mientras se produce la actualización.</p>
+<p>Las conexiones entrantes se distribuyen entre los procesos secundarios de dos maneras:</p>
 <ul>
-<li>A la hora de configurar Tomcat como un servicio más del sistema para poder controlarlo con <em>systemd</em>, el archivo debe quedar así</li>
+<li>
+<p>El proceso maestro escucha las conexiones en un puerto y las distribuye entre los <em>workers</em> de forma rotatoria. Este es el enfoque por defecto en todas las plataformas, excepto Windows.</p>
+</li>
+<li>
+<p>El proceso maestro crea un socket de escucha y lo envía a los <em>workers</em> interesados ​​que luego podrán aceptar conexiones entrantes directamente.</p>
+</li>
 </ul>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>[Service]
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>#Type=forking
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>Type=oneshot
-<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>
-<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>PIDFile=&quot;/run/tomcat.pid&quot;
-<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>Environment=JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64
-<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>Environment=CATALINA_PID=/opt/tomcat/temp/tomcat.pid
-<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>Environment=CATALINA_HOME=/opt/tomcat
-<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>Environment=CATALINA_BASE=/opt/tomcat
-<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>Environment=&#39;CATALINA_OPTS=-Xms512M -Xmx1024M -server -XX:+UseParallelGC&#39;
-<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>Environment=&#39;JAVA_OPTS=-Djava.awt.headless=true -Djava.security.egd=file:/dev/./urandom&#39;
-<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>
-<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>ExecStart=/opt/tomcat/bin/startup.sh
-<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>ExecStop=/opt/tomcat/bin/shutdown.sh
-<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>
-<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>User=tomcat
-<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a>Group=tomcat
-<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a>UMask=0007
-<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a>RestartSec=10
-<a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a>#Restart=always
-<a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a>RemainAfterExit=yes
-<a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a>
-<a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a>[Install]
-<a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a>WantedBy=multi-user.target
+<h3 id="usando-los-clusters">Usando los clusters</h3>
+<h4 id="primero-sin-cluster">Primero sin clúster</h4>
+<p>Para ver las ventajas que ofrece la agrupación en clústeres, comenzaremos con una aplicación de prueba en Node.js que no usa clústeres y la compararemos con una que sí los usa, se trata de la siguiente.</p>
+<p>Primero nos crearemos un directorio para los archivos que utilizaremos: <code>mkdir ....</code> y con <code>cd</code> nos ubicaremos dentro de dicho directorio.</p>
+<p>Trase ello, inicializamos el proyecto, lo que creará un <strong>package.json</strong> automáticamente:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="go">npm init -y</span>
 </code></pre></div>
-<h3 id="despliegue-manual-mediante-la-gui-de-administracion">Despliegue manual mediante la GUI de administración</h3>
-<p>Realizaremos el despliegue manual de una aplicación ya previamente empaquetada en formato WAR. Para ello:</p>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>Cuando lo acompañamos con <code>-y</code>, le estamos diciendo a NPM que acepte todas las opciones por defecto.</p>
+</div>
+<p>Al <strong>package.json</strong> generado hemos de añadirle las siguiente línea:</p>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="w">  </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;module&quot;</span>
+</code></pre></div>
+Tal y como podéis ver en la imagen (cuidado con la <em>coma</em>):</p>
+<p><img alt="" src="../img/%20cluster-nuevo1.png" /></p>
+<p>Y tras esto, instalaremos las herramientas que nos harán falta en el resto de la práctica, si es que no las teníamos ya:</p>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>npm<span class="w"> </span>install<span class="w"> </span>express
+</code></pre></div>
+Y de forma global:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>npm<span class="w"> </span>install<span class="w"> </span>-g<span class="w"> </span>loadtest<span class="w"> </span>pm2
+</code></pre></div>
+<p>Y ahora creemos una aplicación sencilla que ejecutará una tarea intensiva de CPU cada vez que la ejecute el usuario. Este pequeño programa aún no utilizará el módulo <code>cluster</code> para que de esta manera sólo se ejecute una sola instancia en la CPU cada vez que se lance. Más tarde la compararemos con otra utilizando dicho módulo.</p>
+<p>Cread en el directorio el siguiente archivo:</p>
+<div class="highlight"><span class="filename">index.js</span><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="c1">//Se importa el paquete &quot;express&quot;, se establece el p uerto a 3000 y se crea la variable app como una instancia de express</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="k">import</span><span class="w"> </span><span class="nx">express</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;express&quot;</span><span class="p">;</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="kd">const</span><span class="w"> </span><span class="nx">port</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">3000</span><span class="p">;</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="kd">const</span><span class="w"> </span><span class="nx">app</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">express</span><span class="p">();</span>
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`worker pid=</span><span class="si">${</span><span class="nx">process</span><span class="p">.</span><span class="nx">pid</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>
+<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="c1">//se crea el bucle que ejecutará la carga intensiva puesto que incrementa la variable &quot;total&quot;, 5 millones de veces</span>
+<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a>
+<a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a><span class="nx">app</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">&quot;/carga&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">req</span><span class="p">,</span><span class="w"> </span><span class="nx">res</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a><span class="w">          </span><span class="kd">let</span><span class="w"> </span><span class="nx">total</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span>
+<a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a><span class="w">          </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kd">let</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mf">5</span><span class="nx">_000_000</span><span class="p">;</span><span class="w"> </span><span class="nx">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a><span class="w">                      </span><span class="nx">total</span><span class="o">++</span><span class="p">;</span>
+<a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a><span class="w">                    </span><span class="p">}</span>
+<a id="__codelineno-4-16" name="__codelineno-4-16" href="#__codelineno-4-16"></a><span class="w">          </span><span class="nx">res</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="sb">`El resultado de la tarea instensiva de la CPU es </span><span class="si">${</span><span class="nx">total</span><span class="si">}</span><span class="sb">\n`</span><span class="p">);</span>
+<a id="__codelineno-4-17" name="__codelineno-4-17" href="#__codelineno-4-17"></a><span class="p">});</span>
+<a id="__codelineno-4-18" name="__codelineno-4-18" href="#__codelineno-4-18"></a>
+<a id="__codelineno-4-19" name="__codelineno-4-19" href="#__codelineno-4-19"></a><span class="c1">//Ponemos a escuchar nuestra aplicación en el puerto anteriormente definido</span>
+<a id="__codelineno-4-20" name="__codelineno-4-20" href="#__codelineno-4-20"></a><span class="nx">app</span><span class="p">.</span><span class="nx">listen</span><span class="p">(</span><span class="nx">port</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-4-21" name="__codelineno-4-21" href="#__codelineno-4-21"></a><span class="w">          </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Aplicación escuchando en puerto </span><span class="si">${</span><span class="nx">port</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+<a id="__codelineno-4-22" name="__codelineno-4-22" href="#__codelineno-4-22"></a><span class="p">});</span>
+</code></pre></div>
+<p>Se trata de una aplicación un tanto <em>prefabricada</em> en el sentido de que es algo que jamás encontraríamos en el mundo real. No obstante, nos servirá para ilustrar nuestro propósito.</p>
+<div class="admonition task">
+<p class="admonition-title">Resumen</p>
+<ol>
+<li>Debéis conectaros al servidor Debian mediante SSH</li>
+<li>Debéis crear un directorio para el proyecto de esta aplicación</li>
+<li>DENTRO del directorio debéis iniciar el proyecto y modificar el <em>package.json</em></li>
+<li>Tras esto, DENTRO del directorio, ya podéis iniciar la aplicación con: <code>node index.js</code></li>
+</ol>
+</div>
+<p>Se debe mostrar el <strong>id</strong> del proceso corriendo y un mensaje confirmando que el servidor está escuchando en el puerto 3000.</p>
+<p>Para comprobarlo, podéis acceder a <code>http://IP-maq-virtual:3000</code>, done <code>IP-maq-virtual</code> es la IP de vuestra Debian. Podéis hacerlo de dos formas:</p>
 <ol>
 <li>
-<p>Nos logueamos con el usuario previamente creado y configurado en <em>tomcat-users.xml</em></p>
+<p>Utilizando <code>curl</code> desde cualquier terminal de otra máquina:</p>
+<p><code>curl http://IP-maq-virtual:3000/carga</code></p>
 </li>
 <li>
-<p>Buscamos la sección que nos permite desplegar un WAR manualmente, seleccionamos nuestro archivo y lo desplegamos. </p>
-<p><img alt="" src="../img/manual-deploy.png" /></p>
+<p>Desde un navegador web desde cualquier otra máquina.</p>
 </li>
 </ol>
-<p>Tras estos pasos, se nos listará la aplicación ya desplegada como un directorio más y podremos acceder a ella. </p>
+<p>La salida debe ofrecernos el resultado del cálculo intensivo.</p>
+<p>Cuando ejecutamos el archivo `index.js`` con el comando node, el sistema operativo crea un proceso. Un proceso es una abstracción que el sistema operativo hace para un programa en ejecución. El SO asigna memoria para el programa y crea una entrada en una lista que contiene todos los procesos del SO. Esa entrada es un ID de proceso.</p>
+<p>El binario del programa se localiza y se carga en la memoria asignada al proceso. A partir de ahí, comienza a ejecutarse. Mientras se ejecuta, no tiene conocimiento de otros procesos en el sistema, y cualquier cosa que ocurra en el proceso no afecta a otros procesos.</p>
+<h4 id="ahora-con-mas-cluster">¡Ahora con más clúster!</h4>
+<p>Ahora usaremos el módulo de clúster en la aplicación para generar algunos procesos secundarios y ver cómo eso mejora las cosas.</p>
+<p>Crearemos un nuevo archivo llamado <code>primary.js</code>que será la aplicación anterior utilizando el módulo cluster. A continuación se muestra el archivo que contiene la lógica de los cluster:</p>
+<div class="highlight"><span class="filename">primary.js</span><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="c1">//importamos módulos cluster y os y además todo lo necesario para conocer la ubicación del &quot;index.js&quot;</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="k">import</span><span class="w"> </span><span class="nx">cluster</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;cluster&quot;</span><span class="p">;</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="k">import</span><span class="w"> </span><span class="nx">os</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;os&quot;</span><span class="p">;</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">dirname</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;path&quot;</span><span class="p">;</span>
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">fileURLToPath</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;url&quot;</span><span class="p">;</span>
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>
+<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="kd">const</span><span class="w"> </span><span class="nx">__dirname</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">dirname</span><span class="p">(</span><span class="nx">fileURLToPath</span><span class="p">(</span><span class="k">import</span><span class="p">.</span><span class="nx">meta</span><span class="p">.</span><span class="nx">url</span><span class="p">));</span>
+<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a>
+<a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a><span class="c1">//Parte de código que hace referencia a &quot;index.js&quot;</span>
+<a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a><span class="c1">//Se determina el número de CPUs de la máquina y se loguean el PID del proceso principal, que es el que recibirá </span>
+<a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a><span class="c1">//todas las peticiones y las distribuirá a los workers</span>
+<a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a><span class="kd">const</span><span class="w"> </span><span class="nx">cpuCount</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">os</span><span class="p">.</span><span class="nx">cpus</span><span class="p">().</span><span class="nx">length</span><span class="p">;</span>
+<a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a>
+<a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`El número total de CPUs es </span><span class="si">${</span><span class="nx">cpuCount</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+<a id="__codelineno-5-15" name="__codelineno-5-15" href="#__codelineno-5-15"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Primario pid=</span><span class="si">${</span><span class="nx">process</span><span class="p">.</span><span class="nx">pid</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+<a id="__codelineno-5-16" name="__codelineno-5-16" href="#__codelineno-5-16"></a><span class="nx">cluster</span><span class="p">.</span><span class="nx">setupPrimary</span><span class="p">({</span>
+<a id="__codelineno-5-17" name="__codelineno-5-17" href="#__codelineno-5-17"></a><span class="w">          </span><span class="nx">exec</span><span class="o">:</span><span class="w"> </span><span class="nx">__dirname</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s2">&quot;/index.js&quot;</span><span class="p">,</span>
+<a id="__codelineno-5-18" name="__codelineno-5-18" href="#__codelineno-5-18"></a><span class="p">});</span>
+<a id="__codelineno-5-19" name="__codelineno-5-19" href="#__codelineno-5-19"></a>
+<a id="__codelineno-5-20" name="__codelineno-5-20" href="#__codelineno-5-20"></a><span class="c1">//Este bucle itera tantas veces como núcleos hay en la máquina, llamando al método fork para crear el worker</span>
+<a id="__codelineno-5-21" name="__codelineno-5-21" href="#__codelineno-5-21"></a><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kd">let</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="nx">cpuCount</span><span class="p">;</span><span class="w"> </span><span class="nx">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-5-22" name="__codelineno-5-22" href="#__codelineno-5-22"></a><span class="w">          </span><span class="nx">cluster</span><span class="p">.</span><span class="nx">fork</span><span class="p">();</span>
+<a id="__codelineno-5-23" name="__codelineno-5-23" href="#__codelineno-5-23"></a><span class="p">}</span>
+<a id="__codelineno-5-24" name="__codelineno-5-24" href="#__codelineno-5-24"></a><span class="nx">cluster</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s2">&quot;exit&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">worker</span><span class="p">,</span><span class="w"> </span><span class="nx">code</span><span class="p">,</span><span class="w"> </span><span class="nx">signal</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-5-25" name="__codelineno-5-25" href="#__codelineno-5-25"></a><span class="w">          </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`El worker </span><span class="si">${</span><span class="nx">worker</span><span class="p">.</span><span class="nx">process</span><span class="p">.</span><span class="nx">pid</span><span class="si">}</span><span class="sb"> ha sido aniquilado`</span><span class="p">);</span>
+<a id="__codelineno-5-26" name="__codelineno-5-26" href="#__codelineno-5-26"></a><span class="w">          </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Iniciando otro worker&quot;</span><span class="p">);</span>
+<a id="__codelineno-5-27" name="__codelineno-5-27" href="#__codelineno-5-27"></a><span class="w">          </span><span class="nx">cluster</span><span class="p">.</span><span class="nx">fork</span><span class="p">();</span>
+<a id="__codelineno-5-28" name="__codelineno-5-28" href="#__codelineno-5-28"></a><span class="p">});</span>
+</code></pre></div>
+<p>Creamos tantos procesos secundarios como núcleos de CPU hay en la máquina en la que se ejecuta la aplicación. Se recomienda no crear más <em>workers</em> que núcleos lógicos en la computadora, ya que esto puede causar una sobrecarga en términos de costos de programación. Esto sucede porque el sistema tendrá que programar todos los procesos creados para que se vayan ejecutando por turnos en los núcleos.</p>
+<p>Los <em>workers</em> son creados y administrados por el proceso maestro. </p>
+<p>Si el proceso es un maestro, llamamos a <code>cluster.fork()</code> para generar varios procesos. Registramos los ID de proceso maestro y <em>worker</em>. Cuando un proceso secundario muere, generamos uno nuevo para seguir utilizando los núcleos de CPU disponibles.</p>
+<p>Si ejecutamos ahora <strong>primary.js</strong> con <code>node primary.js</code>, veremos que se indica que se crea un proceso primario y tantos secundarios como núcleos tenga la máquina, escuchando en el puerto 3000.</p>
+<p>Comprueba también que todo funciona correctamente con <code>curl</code> o  con un navegador web, igual que antes.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Con varios <em>workers</em> disponibles para aceptar solicitudes, se mejoran tanto la disponibilidad del servidor como el rendimiento.</p>
+</div>
+<h4 id="metricas-de-rendimiento">Métricas de rendimiento</h4>
+<p>Realizaremos una prueba de carga en nuestras aplicación para ver cómo maneja una gran cantidad de conexiones entrantes. Usaremos el paquete <code>loadtest</code> instalado al inicio para esto.</p>
+<p>El paquete <code>loadtest</code> nos permite simular una gran cantidad de conexiones simultáneas a nuestra aplicación para que podamos medir su rendimiento.</p>
+<p>Primeramente, iniciamos nuestra aplicación sin cluster:</p>
+<p>`node index.js``</p>
+<p>Y cuando ya tengamos la aplicación corriendo y a la escucha, ejecutamos a la vez <strong>loadtest</strong> para las métricas:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>loadtest<span class="w"> </span>-n<span class="w"> </span><span class="m">1200</span><span class="w"> </span>-c<span class="w"> </span><span class="m">200</span><span class="w"> </span>-k<span class="w"> </span>http://localhost:3000/
+</code></pre></div>
+<p>La opción <code>-n</code> indica el número de peticiones o solicitudes que se envían a la aplicación, mientras que la opción <code>-c</code> indica cuántas de esas peticiones serán concurrentes (simultáneas).</p>
+<p>La salida de esta prueba con <strong><em>loadtest</em></strong> nos ofrecerá múltiples métricas:</p>
+<ul>
+<li>Total time: cuánto tiempo han tardado en procesarse todas las peticiones.</li>
+<li>Requests per second (rps): número de peticiones que el servidor puede manejar por segundo</li>
+<li>Mean latency: mide el tiempo medio que tarda una petición en ser enviada y obtener una respuesta</li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Atención</p>
+<p>Estas métricas variarán en función de la máquina y sus características.</p>
+</div>
+<div class="admonition task">
+<p class="admonition-title">Tarea</p>
+<p>Realiza y documenta adecuadamente esta prueba, en primera instancia con la aplicación sin clusters <code>index.js</code> y, posteriormente, con clusters (<code>primary.js</code>).
+Compara y comenta los resultados.</p>
+</div>
+<h4 id="uso-de-pm2-para-administrar-un-cluster-de-nodejs">Uso de PM2 para administrar un clúster de Node.js</h4>
+<p>En nuestra aplicación, hemos usado el módulo <code>cluster</code> de Node.js para crear y administrar manualmente los procesos.</p>
+<p>Primero hemos determinado la cantidad de <em>workers</em> (usando la cantidad de núcleos de CPU como referencia), luego los hemos generado y, finalmente, escuchamos si hay <em>workers</em> muertos para poder generar nuevos.</p>
+<p>En nuestra aplicación de ejemplo muy sencilla, tuvimos que escribir una cantidad considerable de código solo para administración la agrupación en clústeres. En una aplicación de producción es bastante probable que se deba escribir aún más código.</p>
+<p>Existe una herramienta que nos puede ayudar a administrar todo esto un poco mejor: el administrador de procesos <code>PM2</code> que hemos instalado al principio. <code>PM2</code> es un administrador de procesos de producción para aplicaciones Node.js con un balanceador de carga incorporado.</p>
+<p>Cuando está configurado correctamente, <code>PM2</code> ejecuta automáticamente la aplicación en modo de clúster, generando <em>workers</em> y se encarga de generar nuevos <em>workers</em> cuando uno de ellos muera.</p>
+<p><code>PM2</code> facilita la parada, eliminación e inicio de procesos, además de disponer de algunas herramientas de monitorización que pueden ayudarnos a monitorizar y ajustar el rendimiento de su aplicación.</p>
+<p>Vamos a utilizarlo con nuestra primera aplicación, la que no estaba "clusterizada" en el código. Para ello ejecutaremos el siguiente comando:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>pm2<span class="w"> </span>start<span class="w"> </span>index.js<span class="w"> </span>-i<span class="w"> </span><span class="m">0</span>
+</code></pre></div>
+<p>Donde:</p>
+<ul>
+<li>
+<p><code>-i</code> <número workers> le indicará a <code>PM2</code> que inicie la aplicación en <code>cluster_mode</code> (a diferencia de <code>fork_mode</code>).</p>
+<p>Si <número workers>se establece a 0, <code>PM2</code> generará automáticamente tantos <em>workers</em> como núcleos de CPU haya.</p>
+</li>
+</ul>
+<p>Y así, nuestra aplicación se ejecuta en modo de clúster, sin necesidad de cambios de código. </p>
 <div class="admonition task">
 <p class="admonition-title">Task</p>
-<p>Documenta el despliegue manual de la aplicación que os podéis descargar para tal efecto en Aules (archivo .war).</p>
+<p>Ejecuta y documenta con capturas de pantallas, las misma prueba que antes utilizando <code>loadtest</code> pero utilizando PM2 y comprueba si se obtienen los mismos resultados. Obviamente, hablamos de la aplicación clusterizada.</p>
 </div>
-<h3 id="despliegue-con-maven">Despliegue con Maven</h3>
-<h4 id="instalacion-de-maven">Instalación de Maven</h4>
-<p>Para instalar Maven en nuestro Debian tenemos, de nuevo, dos opciones:</p>
+<p>Por detrás, <code>PM2</code> también utiliza el módulo <code>cluster</code> de Node.js, así como otras herramientas que facilitan la gestión de procesos.</p>
+<p>En el Terminal, obtendremos una tabla que muestra algunos detalles de los procesos generados.</p>
+<p>Podemos detener la aplicación con el siguiente comando:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>pm2<span class="w"> </span>stop<span class="w"> </span>app.js
+</code></pre></div>
+<p>La aplicación se desconectará y la salida por terminal mostrará todos los procesos con un estado <code>stopped</code>.</p>
+<p>En vez de tener pasar siempre las configuraciones cuando ejecuta la aplicación con <code>pm2 start app.js -i 0</code>, podríamos facilitarnos la tarea y guardarlas en un archivo de configuración separado, llamado <a href="https://pm2.keymetrics.io/docs/usage/application-declaration/">Ecosystem</a>. </p>
+<p>Este archivo también nos permite establecer configuraciones específicas para diferentes aplicaciones.</p>
+<p>Crearemos el archivo <em>Ecosystem</em> con el siguiente comando:</p>
+<p><img alt="" src="../img/ecosystem.png" /></p>
+<p>Que generará un archivo llamado <strong><em>ecosystem.config.js</em></strong>. Para poder utilizar módulos, debéis renombrarlo a <strong><em>ecosystem.config.cjs</em></strong>. Tras ello y para el caso concreto de nuestra aplicación, necesitamos modificarlo como se muestra a continuación:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="l l-Scalar l-Scalar-Plain">module.exports = {</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apps</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span>
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="w"> </span><span class="p p-Indicator">{</span>
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="nt"> name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;nombre_aplicacion&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span>
+<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="nt">  script</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;index.js&quot;</span><span class="p p-Indicator">,</span>
+<a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a><span class="nt"> instances</span><span class="p">:</span><span class="w"> </span><span class="nv">0</span><span class="p p-Indicator">,</span>
+<a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a><span class="nt"> exec_mode</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;cluster&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span>
+<a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a><span class="w"> </span><span class="p p-Indicator">},</span>
+<a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a><span class="w"> </span><span class="p p-Indicator">]</span><span class="err">,</span>
+<a id="__codelineno-9-10" name="__codelineno-9-10" href="#__codelineno-9-10"></a><span class="err">}</span><span class="l l-Scalar l-Scalar-Plain">;</span>
+</code></pre></div>
+<p>Al configurar <code>exec_mode</code> con el valor <code>cluster</code>, le indica a <code>PM2</code> que balancee la carga entre cada instancia. <code>instances</code> está configurado a <strong>0</strong> como antes, lo que generará tantos <em>workers</em> como núcleos de CPU.</p>
+<p>La opción <code>-i</code> o <code>instances</code> se puede establecer con los siguientes valores:</p>
 <ul>
 <li>
-<p>Instalación mediante gestor de paquetes APT</p>
+<p><code>0</code> o <code>max</code>(en desuso) para "repartir" la aplicación entre todas las CPU</p>
 </li>
 <li>
-<p>Instalación manual</p>
+<p><code>-1</code> para "repartir" la aplicación en todas las CPU - 1</p>
+</li>
+<li>
+<p><code>número</code> para difundir la aplicación a través de un número concreto de CPU</p>
 </li>
 </ul>
-<p>La primera, <u>recomendada</u>,  es mucho más sencilla y automatizada (establece todos los paths y variables de entorno), aunque con la segunda se podría conseguir un paquete más actualizado.</p>
-<p>Ambos métodos vienen explicados <a href="https://www.how2shout.com/linux/how-to-install-apache-maven-on-debian-11-bullseye/">aquí</a></p>
-<p>Si decidimos seguir el primer método, el más sencillo, vemos que es tan simple como actualizar los repositorios:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>sudo<span class="w"> </span>apt<span class="w"> </span>update
+<p>Ahora podemos ejecutar la aplicación con:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>pm2<span class="w"> </span>start<span class="w"> </span>ecosystem.config.cjs
 </code></pre></div>
-<p>E instalar Maven</p>
-<p><div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>maven
-</code></pre></div>
-Para comprobar que todo ha ido correctamente, podemos ver la versión instalada de Maven:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>mvn<span class="w"> </span>--v
-</code></pre></div>
-<h4 id="configuracion-de-maven">Configuración de Maven</h4>
-<p>Para poder realizar despliegues en nuestro Tomcat previamente instalado, necesitamos realizar la configuración adecuada para Maven. Ya sabemos que esto en Linux significa editar los archivos de configuración adecuados. Vamos a ello.</p>
-<ol>
-<li>
-<p>En primer lugar necesitamos asegurarnos de que en el apartado anterior de la práctica hemos añadido todos los usuarios necesarios, así como sus respectivos roles. Debemos añadir el rol de <code>manager-script</code> para permitir que Maven se autentique contra Tomcat y pueda realizar el despliegue.</p>
-<p>Los roles utilizados por Tomcat vienen detallados en <a href="https://tomcat.apache.org/tomcat-9.0-doc/manager-howto.html">su documentación</a>, que merece ser consultada:</p>
-<p><img alt="" src="../img/roles.png" /></p>
-<p>En dicha documentación se nos indica que, por temas de seguridad, es recomendable no otorgar los roles de <strong>manager-script</strong> o <strong>manager-jmx</strong> al mismo usuario que tenga el rol de <strong>manager-gui</strong>. </p>
-<div class="admonition info">
-<p class="admonition-title">Info</p>
-<p>Tendremos dos usuarios, uno para la GUI y otro exclusivamente para hacer los deploys de Maven.</p>
+<p>La aplicación se ejecutará en modo clúster, exactamente como antes y podremos realizar las pruebas que necesitemos.</p>
+<div class="admonition task">
+<p class="admonition-title">Tarea</p>
+<p>Recoge las métricas con <code>loadtest</code> y este nuevo método para gestionar clusters. Compara y explica los resultados con los casos anteriores.</p>
 </div>
-<p>Así las cosas, modificamos el archivo <code>/etc/tomcat9/tomcat-users.xml</code> acorde a nuestras necesidades (los nombres de usuario y contraseña deberán ser los que elijáis para vosotros):</p>
-<p><img alt="" src="../img/tomcat-users.png" /></p>
-</li>
-<li>
-<p>Editar el archivo <code>/etc/maven/settings.xml</code>  para indicarle a Maven, un identificador para el servidor sobre el que vamos a desplegar (no es más que un nombre, ponedle el nombre que consideréis), así como las credenciales. Todo esto se hará dentro del bloque <em>servers</em> del XML:</p>
-<p><img alt="" src="../img/maven-settings.png" /></p>
-</li>
-<li>
-<p>Maven despliega proyectos ubicados en carpetas con todos los elementos necesarios para ello y uno de esos archivos será el <code>pom.xml</code>. Debemos modificar el <code>POM</code> del proyecto para que haga referencia a que el despliegue se realice con el plugin de Maven para Tomcat. </p>
-<p><img alt="" src="../img/POM.png" /></p>
-<p>Donde la parte que hemos de añadimir nosotros es el bloque </p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="nt">&lt;build&gt;</span>
-<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="w">        </span><span class="nt">&lt;finalName&gt;</span>war-deploy<span class="nt">&lt;/finalName&gt;</span><span class="w"> </span><span class="cm">&lt;!--(1)--&gt;</span>
-<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="w">        </span><span class="nt">&lt;plugins&gt;</span><span class="w"> </span>
-<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="w">        </span><span class="nt">&lt;plugin&gt;</span>
-<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="w">        </span><span class="nt">&lt;groupId&gt;</span>org.apache.tomcat.maven<span class="nt">&lt;/groupId&gt;</span>
-<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="w">        </span><span class="nt">&lt;artifactId&gt;</span>tomcat7-maven-plugin<span class="nt">&lt;/artifactId&gt;</span>
-<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="w">        </span><span class="nt">&lt;version&gt;</span>2.2<span class="nt">&lt;/version&gt;</span>
-<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="w">        </span><span class="nt">&lt;configuration&gt;</span>
-<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="w">            </span><span class="nt">&lt;url&gt;</span>http://localhost:8080/manager/text<span class="nt">&lt;/url&gt;</span><span class="w"> </span><span class="cm">&lt;!--(2)--&gt;</span>
-<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="w">            </span><span class="nt">&lt;server&gt;</span>Tomcat.P.3.1<span class="nt">&lt;/server&gt;</span><span class="w"> </span><span class="cm">&lt;!--(3)--&gt;</span>
-<a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a><span class="w">            </span><span class="nt">&lt;path&gt;</span>/myapp<span class="nt">&lt;/path&gt;</span><span class="w"> </span><span class="cm">&lt;!--(4)--&gt;</span>
-<a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a><span class="w">        </span><span class="nt">&lt;/configuration&gt;</span>
-<a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a><span class="w">        </span><span class="nt">&lt;/plugin&gt;</span>
-<a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a><span class="w">        </span><span class="nt">&lt;/plugins&gt;</span>
-<a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a><span class="nt">&lt;/build&gt;</span>
+<p>Podremos iniciar, reiniciar, recargar, detener y eliminar una aplicación con los siguientes comandos, respectivamente:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>$<span class="w"> </span>pm2<span class="w"> </span>start<span class="w"> </span>nombre_aplicacion
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>$<span class="w"> </span>pm2<span class="w"> </span>restart<span class="w"> </span>nombre_aplicacion
+<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>$<span class="w"> </span>pm2<span class="w"> </span>reload<span class="w"> </span>nombre_aplicacion
+<a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a>$<span class="w"> </span>pm2<span class="w"> </span>stop<span class="w"> </span>nombre_aplicacion
+<a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a>$<span class="w"> </span>pm2<span class="w"> </span>delete<span class="w"> </span>nombre_aplicacion
+<a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a>
+<a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a><span class="c1"># Cuando usemos el archivo Ecosystem:</span>
+<a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a>
+<a id="__codelineno-11-9" name="__codelineno-11-9" href="#__codelineno-11-9"></a>$<span class="w"> </span>pm2<span class="w"> </span><span class="o">[</span>start<span class="p">|</span>restart<span class="p">|</span>reload<span class="p">|</span>stop<span class="p">|</span>delete<span class="o">]</span><span class="w"> </span>ecosystem.config.cjs
 </code></pre></div>
-<ol>
-<li>
-<p>Nombre final del ejecutable .jar que se va a generar</p>
-</li>
-<li>
-<p>URL del servidor Tomcat donde se hará el despliegue. Como en nuestro caso Maven y Tomcat están en el mismo servidor, la URL corresponde a localhost.
-    Esta URL debe ir seguida por <code>/manager/text</code>, tal y como leemos en la <a href="https://tomcat.apache.org/maven-plugin-2.2/">documentación del plugin</a>.</p>
-</li>
-<li>
-<p>Nombre del server donde se va a desplegar la aplicación. El nombre debe ser consistente con lo que hayamos puesto en el <code>settings.xml</code> del paso anterior.</p>
-</li>
-<li>
-<p>Nombre que la aplicación utilizará en el path de la URL</p>
-</li>
-</ol>
-<div class="admonition info">
-<p class="admonition-title">Info</p>
-<p>No existen plugins <strong>oficiales</strong> para Tomcat más allá de la versión 7 del servidor. No obstante, el plugin para Tomcat 7 sigue funcionando correctamente con Tomcat 9. </p>
-<p>Otra opción sería utilizar el plugin <a href="https://codehaus-cargo.github.io/cargo/Home.html">Cargo</a></p>
-</div>
-</li>
-</ol>
-<p>Puede que esto no os funcione todavía y debáis añadir un par de plugins adicionales en el bloque <code>&lt;plugins&gt;</code>:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="nt">&lt;plugin&gt;</span>
-<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="w">        </span><span class="nt">&lt;groupId&gt;</span>org.apache.maven.plugins<span class="nt">&lt;/groupId&gt;</span>
-<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="w">        </span><span class="nt">&lt;artifactId&gt;</span>maven-compiler-plugin<span class="nt">&lt;/artifactId&gt;</span>
-<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="w">        </span><span class="nt">&lt;configuration&gt;</span>
-<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="w">            </span><span class="nt">&lt;source&gt;</span>1.8<span class="nt">&lt;/source&gt;</span>
-<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="w">            </span><span class="nt">&lt;target&gt;</span>1.8<span class="nt">&lt;/target&gt;</span>
-<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="w">        </span><span class="nt">&lt;/configuration&gt;</span>
-<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="w">    </span><span class="nt">&lt;/plugin&gt;</span>
-<a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a><span class="w">        </span><span class="nt">&lt;plugin&gt;</span>
-<a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a><span class="w">    </span><span class="nt">&lt;artifactId&gt;</span>maven-war-plugin<span class="nt">&lt;/artifactId&gt;</span>
-<a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a><span class="w">    </span><span class="nt">&lt;version&gt;</span>3.2.2<span class="nt">&lt;/version&gt;</span>
-<a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a><span class="nt">&lt;/plugin&gt;</span>
-</code></pre></div>
-<h4 id="despliegue">Despliegue</h4>
-<p>Teniendo ya todo listo para realizar despliegues y sabiendo lo que deberemos modificar, crearemos una aplicación Java <u>de prueba</u> para ver si podemos desplegarla sobre la arquitectura que hemos montado. Para ello utilizamos el comando:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>$<span class="w"> </span>mvn<span class="w"> </span>archetype:generate<span class="w"> </span>-DgroupId<span class="o">=</span>raul<span class="w"> </span>-DartifactId<span class="o">=</span>war-deploy<span class="w"> </span>-DarchetypeArtifactId<span class="o">=</span>maven-archetype-webapp<span class="w"> </span>-DinteractiveMode<span class="o">=</span><span class="nb">false</span>
-</code></pre></div>
-<p>Podéis sustituir los valores de <code>groupID</code> y <code>artifactId</code> (este será el nombre de la aplicación) por lo que queráis.</p>
-<p>Y con esto se creará la carpeta del proyecto con los archivos necesarios, incluido el <code>pom.xml</code>.</p>
-<p>Tras generar esta aplicación, los comandos finales que se utilizan en Maven para desplegar, volver a desplegar o desplegar una aplicación, son:</p>
-<ul>
-<li><code>mvn tomcat7:deploy</code></li>
-<li><code>mvn tomcat7:redeploy</code></li>
-<li><code>mvn tomcat7:undeploy</code></li>
-</ul>
-<p>Así pues, tras el despliegue con Maven nos indicará que todo ha ido correctamente con un mensaje de <code>BUILD SUCCESS</code>, tal que así:</p>
-<p><img alt="" src="../img/build.png" /></p>
-<p>Y, accediendo a través de la GUI, debemos ver que la aplicación está desplegado y que podemos acceder a ella perfectamente:</p>
-<p><img alt="" src="../img/maven-desplegado.png" /></p>
-<h5 id="tarea">Tarea</h5>
-<p>Realizar el despliegue con la aplicación de prueba.</p>
-<p>Repetir el despliegue pero esta vez con otra aplicación que no es la de prueba. Más adelante ya hablaremos de <code>git</code> pero de momento, usaremos los comandos que veremos a continuación.</p>
-<p>Nos clonamos el repositorio:</p>
-<p><code>git clone https://github.com/cameronmcnz/rock-paper-scissors.git</code></p>
-<p>Nos situamos dentro de él:</p>
-<p><code>cd rock-paper-scissors</code></p>
-<p>Y cambiamos de rama:</p>
-<p><code>git checkout patch-1</code></p>
-<p>Tras esto debemos proceder exactamente igual que en el caso anterior, con la ventaja de que ya tenemos configurados los usuarios de Tomcat y los parámetros de Maven.</p>
-<p>Así pues, sólo habría que añadir el bloque <code>&lt;plugin&gt;...&lt;/plugin&gt;</code> adecuado para poder hacer nuestro despliegue.</p>
+<p>El comando <code>restart</code> elimina y reinicia inmediatamente los procesos, mientras que el comando <code>reload</code> logra un tiempo de inactividad de 0 segundos donde los <em>workers</em> se reinician uno por uno, esperando que aparezca un nuevo <em>worker</em> antes de matar al anterior.</p>
+<p>También puede verificar el estado, los registros y las métricas de las aplicaciones en ejecución.</p>
 <div class="admonition task">
 <p class="admonition-title">Task</p>
-<p>Documenta, incluyendo capturas de pantallas, el proceso que has seguido para realizar el despliegue de esta nueva aplicación, así como el resultado final.</p>
+<p>Investiga los siguientes comandos y explica que salida por terminal nos ofrecen y para qué se utilizan:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>pm2<span class="w"> </span>ls
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>pm2<span class="w"> </span>logs
+<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>pm2<span class="w"> </span>monit
+</code></pre></div>
+<p>Identifica en los logs la creación de los workers y la aplicación a la escucha en el puerto indicado.</p>
 </div>
-<h3 id="cuestiones">Cuestiones</h3>
-<p>Habéis visto que los archivos de configuración que hemos tocado contienen contraseñas en texto plano, por lo que cualquiera con acceso a ellos obtendría las credenciales de nuestras herramientas. </p>
-<p>En principio esto representa un gran riesgo de seguridad, ¿sabrías razonar o averigüar por qué esto está diseñado de esta forma?</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Documenta la realización de toda esta práctica adecuadamente, con las explicaciones y justificaciones necesarias, las respuestas a las preguntas planteadas y las capturas de pantalla pertinentes.</p>
+</div>
+<h2 id="cuestiones">Cuestiones</h2>
+<p>Fijáos en las siguientes imágenes:</p>
+<p><img alt="" src="../img/loadtest_no_cluster_3.png" /></p>
+<p><img alt="" src="../img/loadtest_cluster_3.png" /></p>
+<p>La primera imagen ilustra los resultados de unas pruebas de carga sobre una aplicación sin clúster y la segunda sobre la aplicación clusterizada.</p>
+<p>¿Sabrías decir por qué en algunos casos concretos, como este, la aplicación sin clusterizar tiene mejores resultados?</p>
 <h2 id="referencias">Referencias</h2>
-<p><a href="https://www.how2shout.com/linux/install-apache-tomcat-10-on-debian-11-linux/">Tutorial Tomcat I</a></p>
-<p><a href="https://www.linuxtechi.com/how-to-install-apache-tomcat-on-debian/">Tutorial Tomcat II</a></p>
-<p><a href="https://www.digitalocean.com/community/tutorials/how-to-install-apache-tomcat-10-on-ubuntu-20-04">Tutorial Tomcat para Ubuntu</a></p>
-<p><a href="https://www.how2shout.com/linux/how-to-install-apache-maven-on-debian-11-bullseye/">Instalación Maven</a></p>
-<p><a href="https://www.nestoralmeida.com/jsf-3-0-en-tomcat-10-con-java-11/#9-renombrar-javax-a-jakarta">JSF 3.0 en Tomcat 10 con Java 11</a></p>
-<p><a href="https://www.adictosaltrabajo.com/2019/05/21/migracion-de-java-8-a-java-11/">Migración de Java 8 a Java 11</a></p>
-<p><a href="https://developpaper.com/install-and-configure-jdk11-tomcat-maven-under-linux-system/">Install and configure jdk11 + Tomcat + Maven under Linux system</a></p>
-<p><a href="https://www.theserverside.com/video/Step-by-step-Maven-Tomcat-WAR-file-deploy-example">Step-by-step Maven Tomcat WAR file deploy example</a></p>
-<p><a href="https://devopspilot.com/content/tomcat/tutorials/how-to-deploy-java-application-to-tomcat-using-maven.html">How to deploy the java application to Tomcat 9 webserver using Maven</a></p>
-<p><a href="https://www.how2shout.com/linux/how-to-install-apache-maven-on-debian-11-bullseye/">How to Install Apache Maven on Debian 11 Bullseye</a></p>
-<p><a href="https://www.baeldung.com/tomcat-deploy-war">How to Deploy a WAR File to Tomcat</a></p>
-<p><a href="https://winterbe.com/posts/2018/08/29/migrate-maven-projects-to-java-11-jigsaw/">Migrate Maven Projects to Java 11</a></p>
-<p><a href="https://programmer.group/how-to-configure-tomcat-9.0-in-maven.html">How to configure Tomcat 9.0 in Maven</a></p>
-<p><a href="https://github.com/cameronmcnz/rock-paper-scissors">Github: cameronmcnz/rock-paper-scissors</a></p>
-<p><a href="https://cwiki.apache.org/confluence/display/TOMCAT/Password">Why are plain text passwords in the config files?</a></p>
-<p><a href="https://stackoverflow.com/questions/129160/how-to-avoid-storing-passwords-in-the-clear-for-tomcats-server-xml-resource-def">How to avoid storing passwords in the clear for tomcat's server.xml Resource definition of a DataSource?</a></p>
+<p><a href="https://unixcop.com/how-to-install-expressjs-on-debian-11/">How to install ExpressJS on Debian 11?</a></p>
+<p><a href="https://blog.appsignal.com/2021/02/03/improving-node-application-performance-with-clustering.html">Improving Node.js Application Performance With Clustering</a></p>
+<p><a href="https://www.digitalocean.com/community/tutorials/how-to-scale-node-js-applications-with-clustering">How To Scale Node.js Applications with Clustering</a></p>
 <h2 id="evaluacion">Evaluación</h2>
-<table>
-<thead>
-<tr>
-<th>Criterio</th>
-<th>Puntuación</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Despliegue manual de un <code>.war</code> en Tomcat correcto y bien documentado</td>
-<td><strong>1 punto</strong></td>
-</tr>
-<tr>
-<td>Despliegue del <code>.war</code> de prueba utilizando maven correcto y bien documentado</td>
-<td><strong>0.25 puntos</strong></td>
-</tr>
-<tr>
-<td>Despliegue de una aplicación con maven desde un repositorio de Github correcto y bien documentado</td>
-<td><strong>4.75 puntos</strong></td>
-</tr>
-<tr>
-<td>Cuestiones</td>
-<td><strong>2 puntos</strong></td>
-</tr>
-<tr>
-<td>Se ha prestado especial atención al formato del documento, utilizando la plantilla actualizada y haciendo un correcto uso del lenguaje técnico</td>
-<td><strong>2 puntos</strong></td>
-</tr>
-</tbody>
-</table>
+<p>De acuerdo a la rúbrica publicada en Aules.</p>
 
 
   
