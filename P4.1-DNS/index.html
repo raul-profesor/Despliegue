@@ -14,10 +14,10 @@
         <link rel="prev" href="../dns/">
       
       
-        <link rel="next" href="../index_git/">
+        <link rel="next" href="../P4.2.DNS-AWS/">
       
       <link rel="icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.1.6">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.1.8">
     
     
       
@@ -129,25 +129,31 @@
       </div>
     </div>
     
-      <form class="md-header__option" data-md-component="palette">
-        
+      
+        <form class="md-header__option" data-md-component="palette">
           
-          <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="green" data-md-color-accent="blue"  aria-label="Cambiar a modo oscuro"  type="radio" name="__palette" id="__palette_1">
+            
+            
+            
+            <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="green" data-md-color-accent="blue"  aria-label="Cambiar a modo oscuro"  type="radio" name="__palette" id="__palette_1">
+            
+              <label class="md-header__button md-icon" title="Cambiar a modo oscuro" for="__palette_2" hidden>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6zm0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4zM7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+              </label>
+            
           
-            <label class="md-header__button md-icon" title="Cambiar a modo oscuro" for="__palette_2" hidden>
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6zm0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4zM7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
-            </label>
+            
+            
+            
+            <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="deep-orange"  aria-label="Cambiar a modo claro"  type="radio" name="__palette" id="__palette_2">
+            
+              <label class="md-header__button md-icon" title="Cambiar a modo claro" for="__palette_1" hidden>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6zm0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4zM7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+              </label>
+            
           
-        
-          
-          <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="deep-orange"  aria-label="Cambiar a modo claro"  type="radio" name="__palette" id="__palette_2">
-          
-            <label class="md-header__button md-icon" title="Cambiar a modo claro" for="__palette_1" hidden>
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6zm0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4zM7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
-            </label>
-          
-        
-      </form>
+        </form>
+      
     
     
     
@@ -908,17 +914,24 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#evaluacion" class="md-nav__link">
-    Evaluación
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
       
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../P4.2.DNS-AWS/" class="md-nav__link">
+        Práctica 4.1 - Configuración de Route 53 (DNS) en AWS
+      </a>
     </li>
   
 
@@ -1716,7 +1729,7 @@
 </div>
 <h2 id="instalacion-de-servidor-dns">Instalación de servidor DNS</h2>
 <p>Bind es el estándar de facto para servidores DNS. Es una herramienta de software libre y se distribuye con la mayoría de plataformas Unix y Linux, donde también se le conoce con el sobrenombre de named (name daemon). Bind9 es la versión recomendada para usarse y es la que emplearemos.</p>
-<p>Para instalar el servidor DNS en Debian, usaremos los repositorios oficiales. Por ello, podremos instalarlo como cualquier paquete en Ubuntu:</p>
+<p>Para instalar el servidor DNS en Ubuntu Server, usaremos los repositorios oficiales. Por ello, podremos instalarlo como cualquier paquete en Ubuntu:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>bind9<span class="w"> </span>bind9utils<span class="w"> </span>bind9-doc<span class="w"> </span>
 </code></pre></div>
 <h2 id="configuracion-del-servidor">Configuración del servidor</h2>
@@ -1778,7 +1791,7 @@
 <p>El contenido será algo así (procurad respetar el formato):</p>
 <p><img alt="" src="../img/3.1.bind_7.png" /></p>
 <p>Recordad de teoría que los registros SOA son para detallar aspectos de la zona autoritativa, los NS para indicar los servidores DNS de la zona y los A las IPs respectivas.</p>
-<p>Donde aparecen las X debéis poner vuestras IPs privadas correspondientes, tanto de vuestro servidor como de vuestro cliente.</p>
+<p>Donde aparecen las X debéis poner vuestras IPs privadas correspondientes, tanto de vuestro servidor como de vuestro cliente..</p>
 <h3 id="creacion-del-archivo-de-zona-para-la-resolucion-inversa">Creación del archivo de zona para la resolución inversa</h3>
 <p>Recordad que deben existir ambos archivos de zona, uno para la resolución directa y otro para la inversa. Vamos pues a crear el archivo de zona inversa.</p>
 <p>En primer lugar, debemos añadir las líneas correspondientes a esta zona inversa en el archivo
@@ -1811,15 +1824,6 @@
 <p><img alt="" src="../img/3.1.bind_14.png" /></p>
 </div>
 </div>
-</div>
-<div class="admonition warning">
-<p class="admonition-title">¡Atención!</p>
-<p>Si os habéis fijado en la salida de dig o nslookup desde el cliente, cuando os dice qué servidor DNS ha utilizado para la consulta, os pone que ha sido el <em>127.0.0.53</em>.</p>
-<p>Easta dirección es la dirección local de vuestra máquina cliente. Esto pasa porque <strong>systemd</strong>, el ya no tan nuevo sistema de gestión de servicios de Linux, tiene una especie de servidor DNS local que es al primero que consulta y, si no obtiene respuesta, la reenvía al servidor DNS configurado por nosotros.</p>
-<p>Esto es un fallo conocido de <em>systemd</em> y hay una especie de <em>workaraund</em> o "ñapa" para solucionarlo, y es crear un link simbólico.</p>
-<p>$ sudo rm -f /etc/resolv.conf
-$ sudo ln -s /run/systemd/resolve/resolv.conf /etc/resolv.conf</p>
-<p>Tras esto reiniciamos la configuración de la red y debería cogernos los cambios.</p>
 </div>
 <h2 id="tarea-a-realizar">Tarea a realizar</h2>
 <p>Configura el DNS para que resuelva el nombre de vuestro sitio web de la práctica 3.5 y de la 3.2.</p>
@@ -1869,41 +1873,7 @@ $ sudo ln -s /run/systemd/resolve/resolv.conf /etc/resolv.conf</p>
 <p class="admonition-title">Cuestión 10</p>
 <p>En una resolución inversa, ¿a qué nombre se mapearía la dirección IP 172.16.34.56?</p>
 </div>
-<h2 id="evaluacion">Evaluación</h2>
-<table>
-<thead>
-<tr>
-<th align="left">Criterio</th>
-<th align="center">Puntuación</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td align="left">Configuración correcta del servidor y zona DNS</td>
-<td align="center"><strong>3 puntos</strong></td>
-</tr>
-<tr>
-<td align="left">Evidencias de las comprobaciones del correcto funcionamento</td>
-<td align="center"><strong>2 puntos</strong></td>
-</tr>
-<tr>
-<td align="left">Se ha utilizado SSH</td>
-<td align="center"><strong>0.5 puntos</strong></td>
-</tr>
-<tr>
-<td align="left">Introducción de IPs de ejercicios anteriores para la resolución DNS</td>
-<td align="center"><strong>1</strong></td>
-</tr>
-<tr>
-<td align="left">Cuestiones finales</td>
-<td align="center"><strong>2.5 puntos puntos</strong></td>
-</tr>
-<tr>
-<td align="left">Se ha prestado especial atención al formato del documento, utilizando la plantilla actualizada y haciendo un correcto uso del lenguaje técnico</td>
-<td align="center"><strong>1 punto</strong></td>
-</tr>
-</tbody>
-</table>
+<p>|</p>
 
 
   
