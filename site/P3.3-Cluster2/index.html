@@ -8,10 +8,10 @@
       
       
       
-        <link rel="canonical" href="https://raul-profesor.github.io/Despliegue/P3.3-Cluster/">
+        <link rel="canonical" href="https://raul-profesor.github.io/Despliegue/P3.3-Cluster2/">
       
       
-        <link rel="prev" href="../P3.2-NodeJS-Express/">
+        <link rel="prev" href="../P3.3-Cluster/">
       
       
         <link rel="next" href="../P3.4-Heroku/">
@@ -21,7 +21,7 @@
     
     
       
-        <title>Práctica 3.3 - Despliegue de una aplicación "clusterizada" con Node Express - Despliegue de aplicaciones web</title>
+        <title>(ACTUALIZADA) Práctica 3.3 - Despliegue de una aplicación "clusterizada" con Node Express - Despliegue de aplicaciones web</title>
       
     
     
@@ -122,7 +122,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Práctica 3.3 - Despliegue de una aplicación "clusterizada" con Node Express
+              (ACTUALIZADA) Práctica 3.3 - Despliegue de una aplicación "clusterizada" con Node Express
             
           </span>
         </div>
@@ -630,6 +630,20 @@
               
   
   
+  
+    <li class="md-nav__item">
+      <a href="../P3.3-Cluster/" class="md-nav__link">
+        Práctica 3.3 - Despliegue de una aplicación "clusterizada" con Node Express
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
     
   
   
@@ -642,12 +656,12 @@
       
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
-          Práctica 3.3 - Despliegue de una aplicación "clusterizada" con Node Express
+          (ACTUALIZADA) Práctica 3.3 - Despliegue de una aplicación "clusterizada" con Node Express
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <a href="./" class="md-nav__link md-nav__link--active">
-        Práctica 3.3 - Despliegue de una aplicación "clusterizada" con Node Express
+        (ACTUALIZADA) Práctica 3.3 - Despliegue de una aplicación "clusterizada" con Node Express
       </a>
       
         
@@ -1721,128 +1735,149 @@
 </ul>
 <h3 id="usando-los-clusters">Usando los clusters</h3>
 <h4 id="primero-sin-cluster">Primero sin clúster</h4>
-<p>Para ver las ventajas que ofrece la agrupación en clústeres, comenzaremos con una aplicación de prueba en Node.js que no usa clústeres y la compararemos con una que sí los usa, se trata de la siguiente:</p>
-<p><div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">import</span><span class="w"> </span><span class="nx">express</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;express&quot;</span><span class="p">;</span>
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="kd">const</span><span class="w"> </span><span class="nx">port</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">3000</span><span class="p">;</span>
-<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="kd">const</span><span class="w"> </span><span class="nx">app</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">express</span><span class="p">();</span>
-<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>
-<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`worker pid=</span><span class="si">${</span><span class="nx">process</span><span class="p">.</span><span class="nx">pid</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
-<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>
-<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="nx">app</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">&quot;/carga&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">req</span><span class="p">,</span><span class="w"> </span><span class="nx">res</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="w">          </span><span class="kd">let</span><span class="w"> </span><span class="nx">total</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span>
-<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="w">          </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kd">let</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mf">5</span><span class="nx">_000_000</span><span class="p">;</span><span class="w"> </span><span class="nx">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="w">                      </span><span class="nx">total</span><span class="o">++</span><span class="p">;</span>
-<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="w">                    </span><span class="p">}</span>
-<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="w">          </span><span class="nx">res</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="sb">`El resultado de la tarea instensiva de la CPU es </span><span class="si">${</span><span class="nx">total</span><span class="si">}</span><span class="sb">\n`</span><span class="p">);</span>
-<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="p">});</span>
-<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>
-<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="nx">app</span><span class="p">.</span><span class="nx">listen</span><span class="p">(</span><span class="nx">port</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a><span class="w">          </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Aplicación escuchando en puerto </span><span class="si">${</span><span class="nx">port</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
-<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a><span class="p">});</span>
+<p>Para ver las ventajas que ofrece la agrupación en clústeres, comenzaremos con una aplicación de prueba en Node.js que no usa clústeres y la compararemos con una que sí los usa, se trata de la siguiente.</p>
+<p>Primero nos crearemos un directorio para los archivos que utilizaremos: <code>mkdir ....</code> y con <code>cd</code> nos ubicaremos dentro de dicho directorio.</p>
+<p>Trase ello, inicializamos el proyecto, lo que creará un <strong>package.json</strong> automáticamente:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="go">npm init -y</span>
 </code></pre></div>
-Se trata de una aplicación un tanto <em>prefabricada</em> en el sentido de que es algo que jamás encontraríamos en el mundo real. No obstante, nos servirá para ilustrar nuestro propósito.</p>
-<p>Esta aplicación contiene dos rutas, una ruta raíz <code>/</code> que devuelve la cadena <code>Hello World!</code> y otra ruta <code>/api/n</code> donde se toma <code>n</code> como parámetro y va realizando una operación de suma (el bucle for) cuyo resultado acumula en la variable <code>count</code> que se muestra al final.</p>
-<p>Si a este parámetro <code>n</code>, le damos un valor muy alto, nos permitirá simular operaciones intensivas y de ejecución prolongada en el servidor. Le damos como valor límite <code>5000000000</code> para evitar una operación demasiado costosa para nuestro ordenador.</p>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>Cuando lo acompañamos con <code>-y</code>, le estamos diciendo a NPM que acepte todas las opciones por defecto.</p>
+</div>
+<p>Al <strong>package.json</strong> generado hemos de añadirle las siguiente línea:</p>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="w">  </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;module&quot;</span>
+</code></pre></div>
+Tal y como podéis ver en la imagen (cuidado con la <em>coma</em>):</p>
+<p><img alt="" src="../img/%20cluster-nuevo1.png" /></p>
+<p>Y tras esto, instalaremos las herramientas que nos harán falta en el resto de la práctica, si es que no las teníamos ya:</p>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>npm<span class="w"> </span>install<span class="w"> </span>express
+</code></pre></div>
+Y de forma global:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>npm<span class="w"> </span>install<span class="w"> </span>-g<span class="w"> </span>loadtest<span class="w"> </span>pm2
+</code></pre></div>
+<p>Y ahora creemos una aplicación sencilla que ejecutará una tarea intensiva de CPU cada vez que la ejecute el usuario. Este pequeño programa aún no utilizará el módulo <code>cluster</code> para que de esta manera sólo se ejecute una sola instancia en la CPU cada vez que se lance. Más tarde la compararemos con otra utilizando dicho módulo.</p>
+<p>Cread en el directorio el siguiente archivo:</p>
+<div class="highlight"><span class="filename">index.js</span><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="c1">//Se importa el paquete &quot;express&quot;, se establece el p uerto a 3000 y se crea la variable app como una instancia de express</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="k">import</span><span class="w"> </span><span class="nx">express</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;express&quot;</span><span class="p">;</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="kd">const</span><span class="w"> </span><span class="nx">port</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">3000</span><span class="p">;</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="kd">const</span><span class="w"> </span><span class="nx">app</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">express</span><span class="p">();</span>
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`worker pid=</span><span class="si">${</span><span class="nx">process</span><span class="p">.</span><span class="nx">pid</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>
+<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="c1">//se crea el bucle que ejecutará la carga intensiva puesto que incrementa la variable &quot;total&quot;, 5 millones de veces</span>
+<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a>
+<a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a><span class="nx">app</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">&quot;/carga&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">req</span><span class="p">,</span><span class="w"> </span><span class="nx">res</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a><span class="w">          </span><span class="kd">let</span><span class="w"> </span><span class="nx">total</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span>
+<a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a><span class="w">          </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kd">let</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mf">5</span><span class="nx">_000_000</span><span class="p">;</span><span class="w"> </span><span class="nx">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a><span class="w">                      </span><span class="nx">total</span><span class="o">++</span><span class="p">;</span>
+<a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a><span class="w">                    </span><span class="p">}</span>
+<a id="__codelineno-4-16" name="__codelineno-4-16" href="#__codelineno-4-16"></a><span class="w">          </span><span class="nx">res</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="sb">`El resultado de la tarea instensiva de la CPU es </span><span class="si">${</span><span class="nx">total</span><span class="si">}</span><span class="sb">\n`</span><span class="p">);</span>
+<a id="__codelineno-4-17" name="__codelineno-4-17" href="#__codelineno-4-17"></a><span class="p">});</span>
+<a id="__codelineno-4-18" name="__codelineno-4-18" href="#__codelineno-4-18"></a>
+<a id="__codelineno-4-19" name="__codelineno-4-19" href="#__codelineno-4-19"></a><span class="c1">//Ponemos a escuchar nuestra aplicación en el puerto anteriormente definido</span>
+<a id="__codelineno-4-20" name="__codelineno-4-20" href="#__codelineno-4-20"></a><span class="nx">app</span><span class="p">.</span><span class="nx">listen</span><span class="p">(</span><span class="nx">port</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-4-21" name="__codelineno-4-21" href="#__codelineno-4-21"></a><span class="w">          </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Aplicación escuchando en puerto </span><span class="si">${</span><span class="nx">port</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+<a id="__codelineno-4-22" name="__codelineno-4-22" href="#__codelineno-4-22"></a><span class="p">});</span>
+</code></pre></div>
+<p>Se trata de una aplicación un tanto <em>prefabricada</em> en el sentido de que es algo que jamás encontraríamos en el mundo real. No obstante, nos servirá para ilustrar nuestro propósito.</p>
 <div class="admonition task">
-<p class="admonition-title">Task</p>
+<p class="admonition-title">Resumen</p>
 <ol>
 <li>Debéis conectaros al servidor Debian mediante SSH</li>
 <li>Debéis crear un directorio para el proyecto de esta aplicación</li>
-<li>DENTRO del directorio ejecutaréis 2 comandos:<ol>
-<li><code>npm init</code> para crear automáticamente la estructura de carpetas y el archivo <code>package.json</code> (Con ir dándole a &lt;ENTER> a todas las preguntas, os basta)</li>
-<li><code>npm install express</code> para instalar express para este proyecto</li>
-</ol>
-</li>
-<li>Tras esto, DENTRO del directorio, ya podéis iniciar la aplicación con: <code>node nombre_aplicacion.js</code></li>
+<li>DENTRO del directorio debéis iniciar el proyecto y modificar el <em>package.json</em></li>
+<li>Tras esto, DENTRO del directorio, ya podéis iniciar la aplicación con: <code>node index.js</code></li>
 </ol>
 </div>
-<p>Para comprobarlo, podéis acceder a <code>http://IP-maq-virtual:3000</code> o a <code>http://IP-maq-virtual:3000/api/50</code> donde <code>IP-maq-virtual</code> es la IP del adaptador puente de vuestra Debian.</p>
-<p>Utilizada un valor de <code>n</code> relativamente pequeño, como el 50 del ejemplo anterior y comprobaréis que se ejecutará rápidamente, devolviendo una respuesta casi inmediata.</p>
-<p>Hagamos otra simple comprobación para valores de <code>n</code> más grandes. Desplegada e iniciada la aplicación, acceded a la ruta <code>http://IP-maq-virtual:3000/api/5000000000</code>. </p>
-<p><img alt="" src="../img/no-cluster-1.png" /></p>
-<p>Mientras esta solicitud que tarda unos segundos se está procesando, acceded en otra pestaña del navegador a <code>http://IP-maq-virtual:3000</code> o a <code>http://IP-maq-virtual:3000/api/n</code> siendo <code>n</code> el valor que le queráis dar.</p>
-<p><img alt="" src="../img/no-cluster-2.png" /></p>
-<p>Utilizando las devoloper tools, podemos ver el tiempo que tardan en procesarse las solicitudes:</p>
+<p>Se debe mostrar el <strong>id</strong> del proceso corriendo y un mensaje confirmando que el servidor está escuchando en el puerto 3000.</p>
+<p>Para comprobarlo, podéis acceder a <code>http://IP-maq-virtual:3000</code>, done <code>IP-maq-virtual</code> es la IP de vuestra Debian. Podéis hacerlo de dos formas:</p>
 <ol>
-<li>La primera solicitud, al tener un valor de <code>n</code> grande, nos lleva unos cuantos segundos completarla.</li>
-<li>La segunda solicitud, pese a tener un valor de <code>n</code> que ya habíamos comprobado que ofrecía una respuesta casi inmediata, también se demora unos segundos.</li>
+<li>
+<p>Utilizando <code>curl</code> desde cualquier terminal de otra máquina:</p>
+<p><code>curl http://IP-maq-virtual:3000/carga</code></p>
+</li>
+<li>
+<p>Desde un navegador web desde cualquier otra máquina.</p>
+</li>
 </ol>
-<p><strong>¿Por qué ocurre esto?</strong> Porque el único subproceso estará ocupado procesando la otra operación de ejecución prolongada. El único núcleo de la CPU tiene que completar la primera solicitud antes de que pueda encargarse de la otra.</p>
+<p>La salida debe ofrecernos el resultado del cálculo intensivo.</p>
+<p>Cuando ejecutamos el archivo `index.js`` con el comando node, el sistema operativo crea un proceso. Un proceso es una abstracción que el sistema operativo hace para un programa en ejecución. El SO asigna memoria para el programa y crea una entrada en una lista que contiene todos los procesos del SO. Esa entrada es un ID de proceso.</p>
+<p>El binario del programa se localiza y se carga en la memoria asignada al proceso. A partir de ahí, comienza a ejecutarse. Mientras se ejecuta, no tiene conocimiento de otros procesos en el sistema, y cualquier cosa que ocurra en el proceso no afecta a otros procesos.</p>
 <h4 id="ahora-con-mas-cluster">¡Ahora con más clúster!</h4>
 <p>Ahora usaremos el módulo de clúster en la aplicación para generar algunos procesos secundarios y ver cómo eso mejora las cosas.</p>
-<p>A continuación se muestra la aplicación modificada:</p>
-<p><div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="k">import</span><span class="w"> </span><span class="nx">cluster</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;cluster&quot;</span><span class="p">;</span>
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="k">import</span><span class="w"> </span><span class="nx">os</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;os&quot;</span><span class="p">;</span>
-<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">dirname</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;path&quot;</span><span class="p">;</span>
-<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">fileURLToPath</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;url&quot;</span><span class="p">;</span>
-<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>
-<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="kd">const</span><span class="w"> </span><span class="nx">__dirname</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">dirname</span><span class="p">(</span><span class="nx">fileURLToPath</span><span class="p">(</span><span class="k">import</span><span class="p">.</span><span class="nx">meta</span><span class="p">.</span><span class="nx">url</span><span class="p">));</span>
-<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>
-<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="kd">const</span><span class="w"> </span><span class="nx">cpuCount</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">os</span><span class="p">.</span><span class="nx">cpus</span><span class="p">().</span><span class="nx">length</span><span class="p">;</span>
-<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>
-<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`El número total de CPUs es </span><span class="si">${</span><span class="nx">cpuCount</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
-<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Primario pid=</span><span class="si">${</span><span class="nx">process</span><span class="p">.</span><span class="nx">pid</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
-<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="nx">cluster</span><span class="p">.</span><span class="nx">setupPrimary</span><span class="p">({</span>
-<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="w">          </span><span class="nx">exec</span><span class="o">:</span><span class="w"> </span><span class="nx">__dirname</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s2">&quot;/sin.js&quot;</span><span class="p">,</span>
-<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a><span class="p">});</span>
-<a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a>
-<a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kd">let</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="nx">cpuCount</span><span class="p">;</span><span class="w"> </span><span class="nx">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a><span class="w">          </span><span class="nx">cluster</span><span class="p">.</span><span class="nx">fork</span><span class="p">();</span>
-<a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a><span class="p">}</span>
-<a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a><span class="nx">cluster</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s2">&quot;exit&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">worker</span><span class="p">,</span><span class="w"> </span><span class="nx">code</span><span class="p">,</span><span class="w"> </span><span class="nx">signal</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a><span class="w">          </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`El worker </span><span class="si">${</span><span class="nx">worker</span><span class="p">.</span><span class="nx">process</span><span class="p">.</span><span class="nx">pid</span><span class="si">}</span><span class="sb"> ha sido aniquilado`</span><span class="p">);</span>
-<a id="__codelineno-1-21" name="__codelineno-1-21" href="#__codelineno-1-21"></a><span class="w">          </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Iniciando otro worker&quot;</span><span class="p">);</span>
-<a id="__codelineno-1-22" name="__codelineno-1-22" href="#__codelineno-1-22"></a><span class="w">          </span><span class="nx">cluster</span><span class="p">.</span><span class="nx">fork</span><span class="p">();</span>
-<a id="__codelineno-1-23" name="__codelineno-1-23" href="#__codelineno-1-23"></a><span class="p">});</span>
+<p>Crearemos un nuevo archivo llamado <code>primary.js</code>que será la aplicación anterior utilizando el módulo cluster. A continuación se muestra el archivo que contiene la lógica de los cluster:</p>
+<div class="highlight"><span class="filename">primary.js</span><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="c1">//importamos módulos cluster y os y además todo lo necesario para conocer la ubicación del &quot;index.js&quot;</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="k">import</span><span class="w"> </span><span class="nx">cluster</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;cluster&quot;</span><span class="p">;</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="k">import</span><span class="w"> </span><span class="nx">os</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;os&quot;</span><span class="p">;</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">dirname</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;path&quot;</span><span class="p">;</span>
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">fileURLToPath</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;url&quot;</span><span class="p">;</span>
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>
+<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="kd">const</span><span class="w"> </span><span class="nx">__dirname</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">dirname</span><span class="p">(</span><span class="nx">fileURLToPath</span><span class="p">(</span><span class="k">import</span><span class="p">.</span><span class="nx">meta</span><span class="p">.</span><span class="nx">url</span><span class="p">));</span>
+<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a>
+<a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a><span class="c1">//Parte de código que hace referencia a &quot;index.js&quot;</span>
+<a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a><span class="c1">//Se determina el número de CPUs de la máquina y se loguean el PID del proceso principal, que es el que recibirá </span>
+<a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a><span class="c1">//todas las peticiones y las distribuirá a los workers</span>
+<a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a><span class="kd">const</span><span class="w"> </span><span class="nx">cpuCount</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">os</span><span class="p">.</span><span class="nx">cpus</span><span class="p">().</span><span class="nx">length</span><span class="p">;</span>
+<a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a>
+<a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`El número total de CPUs es </span><span class="si">${</span><span class="nx">cpuCount</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+<a id="__codelineno-5-15" name="__codelineno-5-15" href="#__codelineno-5-15"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Primario pid=</span><span class="si">${</span><span class="nx">process</span><span class="p">.</span><span class="nx">pid</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+<a id="__codelineno-5-16" name="__codelineno-5-16" href="#__codelineno-5-16"></a><span class="nx">cluster</span><span class="p">.</span><span class="nx">setupPrimary</span><span class="p">({</span>
+<a id="__codelineno-5-17" name="__codelineno-5-17" href="#__codelineno-5-17"></a><span class="w">          </span><span class="nx">exec</span><span class="o">:</span><span class="w"> </span><span class="nx">__dirname</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s2">&quot;/index.js&quot;</span><span class="p">,</span>
+<a id="__codelineno-5-18" name="__codelineno-5-18" href="#__codelineno-5-18"></a><span class="p">});</span>
+<a id="__codelineno-5-19" name="__codelineno-5-19" href="#__codelineno-5-19"></a>
+<a id="__codelineno-5-20" name="__codelineno-5-20" href="#__codelineno-5-20"></a><span class="c1">//Este bucle itera tantas veces como núcleos hay en la máquina, llamando al método fork para crear el worker</span>
+<a id="__codelineno-5-21" name="__codelineno-5-21" href="#__codelineno-5-21"></a><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kd">let</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="nx">cpuCount</span><span class="p">;</span><span class="w"> </span><span class="nx">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-5-22" name="__codelineno-5-22" href="#__codelineno-5-22"></a><span class="w">          </span><span class="nx">cluster</span><span class="p">.</span><span class="nx">fork</span><span class="p">();</span>
+<a id="__codelineno-5-23" name="__codelineno-5-23" href="#__codelineno-5-23"></a><span class="p">}</span>
+<a id="__codelineno-5-24" name="__codelineno-5-24" href="#__codelineno-5-24"></a><span class="nx">cluster</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s2">&quot;exit&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">worker</span><span class="p">,</span><span class="w"> </span><span class="nx">code</span><span class="p">,</span><span class="w"> </span><span class="nx">signal</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-5-25" name="__codelineno-5-25" href="#__codelineno-5-25"></a><span class="w">          </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`El worker </span><span class="si">${</span><span class="nx">worker</span><span class="p">.</span><span class="nx">process</span><span class="p">.</span><span class="nx">pid</span><span class="si">}</span><span class="sb"> ha sido aniquilado`</span><span class="p">);</span>
+<a id="__codelineno-5-26" name="__codelineno-5-26" href="#__codelineno-5-26"></a><span class="w">          </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Iniciando otro worker&quot;</span><span class="p">);</span>
+<a id="__codelineno-5-27" name="__codelineno-5-27" href="#__codelineno-5-27"></a><span class="w">          </span><span class="nx">cluster</span><span class="p">.</span><span class="nx">fork</span><span class="p">();</span>
+<a id="__codelineno-5-28" name="__codelineno-5-28" href="#__codelineno-5-28"></a><span class="p">});</span>
 </code></pre></div>
-Esta aplicación hace lo mismo que antes pero esta vez estamos generando varios procesos secundarios que compartirán el puerto 3000 y que podrán manejar las solicitudes enviadas a este puerto. Los procesos de trabajo se generan utilizando el método <code>child_process.fork()</code>. El método devuelve un objeto <code>ChildProcess</code> que tiene un canal de comunicación incorporado que permite que los mensajes se transmitan entre el hijo y su padre.</p>
 <p>Creamos tantos procesos secundarios como núcleos de CPU hay en la máquina en la que se ejecuta la aplicación. Se recomienda no crear más <em>workers</em> que núcleos lógicos en la computadora, ya que esto puede causar una sobrecarga en términos de costos de programación. Esto sucede porque el sistema tendrá que programar todos los procesos creados para que se vayan ejecutando por turnos en los núcleos.</p>
-<p>Los <em>workers</em> son creados y administrados por el proceso maestro. Cuando la aplicación se ejecuta por primera vez, verificamos si es un proceso maestro con <code>isMaster</code>. Esto está determinado por la variable <code>process.env.NODE_UNIQUE_ID</code>. Si <code>process.env.NODE_UNIQUE_ID</code> tiene valor <em>undefined</em>, entonces <code>isMaster</code> será <em>true</em>.</p>
+<p>Los <em>workers</em> son creados y administrados por el proceso maestro. </p>
 <p>Si el proceso es un maestro, llamamos a <code>cluster.fork()</code> para generar varios procesos. Registramos los ID de proceso maestro y <em>worker</em>. Cuando un proceso secundario muere, generamos uno nuevo para seguir utilizando los núcleos de CPU disponibles.</p>
-<p>Ahora repetiremos el mismo experimento de antes, primero realizamos una solicitud al servidor con un valor alto <code>n</code>: </p>
-<p><img alt="" src="../img/clusterOK-1.png" /></p>
-<p>Y ejecutamos rápidamente otra solicitud en otra pestaña del navegador, midiendo los tiempos de procesamiento de ambas:</p>
-<p><img alt="" src="../img/clusterOK-2.png" /></p>
-<p>Comprobaremos que éstos se reducen drásticamente.</p>
+<p>Si ejecutamos ahora <strong>primary.js</strong> con <code>node primary.js</code>, veremos que se indica que se crea un proceso primario y tantos secundarios como núcleos tenga la máquina, escuchando en el puerto 3000.</p>
+<p>Comprueba también que todo funciona correctamente con <code>curl</code> o  con un navegador web, igual que antes.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Con varios <em>workers</em> disponibles para aceptar solicitudes, se mejoran tanto la disponibilidad del servidor como el rendimiento.</p>
 </div>
-<p>Ejecutar una solicitud en una pestaña del navegador y ejecutar rápidamente otra en una segunda pestaña sirve para mostrarnos la mejora que ofrece la agrupación en clústeres para nuestro ejemplo de una forma más o menos rápida, pero es un método un tanto "chapucero" y no es una forma adecuada o confiable de determinar las mejoras de rendimiento.</p>
-<p>En el siguiente apartado echaremos un vistazo a algunos puntos de referencia que demostrarán mejor cuánto ha mejorado la agrupación en clústeres nuestra aplicación.</p>
 <h4 id="metricas-de-rendimiento">Métricas de rendimiento</h4>
-<p>Realizaremos una prueba de carga en nuestras dos aplicaciones para ver cómo cada una maneja una gran cantidad de conexiones entrantes. Usaremos el paquete <code>loadtest</code> para esto.</p>
-<p>El paquete <code>loadtest</code> nos permite simular una gran cantidad de conexiones simultáneas a nuestra API para que podamos medir su rendimiento.</p>
-<p>Para usar <code>loadtest</code>, primero debemos instalarlo globalmente. Tras conectaros por SSH al servidor Debian:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>npm<span class="w"> </span>install<span class="w"> </span>-g<span class="w"> </span>loadtest
+<p>Realizaremos una prueba de carga en nuestras aplicación para ver cómo maneja una gran cantidad de conexiones entrantes. Usaremos el paquete <code>loadtest</code> instalado al inicio para esto.</p>
+<p>El paquete <code>loadtest</code> nos permite simular una gran cantidad de conexiones simultáneas a nuestra aplicación para que podamos medir su rendimiento.</p>
+<p>Primeramente, iniciamos nuestra aplicación sin cluster:</p>
+<p>`node index.js``</p>
+<p>Y cuando ya tengamos la aplicación corriendo y a la escucha, ejecutamos a la vez <strong>loadtest</strong> para las métricas:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>loadtest<span class="w"> </span>-n<span class="w"> </span><span class="m">1200</span><span class="w"> </span>-c<span class="w"> </span><span class="m">200</span><span class="w"> </span>-k<span class="w"> </span>http://localhost:3000/
 </code></pre></div>
-<p>Luego ejecutamos la aplicación que queremos probar (<code>node nombre_aplicacion.js</code>). Comenzaremos probando la versión que no utiliza la agrupación en clústeres.</p>
-<p>Mientras ejecutamos la aplicación, en otro terminal realizamos la siguiente prueba de carga:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>loadtest<span class="w"> </span>http://localhost:3000/api/500000<span class="w"> </span>-n<span class="w"> </span><span class="m">1000</span><span class="w"> </span>-c<span class="w"> </span><span class="m">100</span>
-</code></pre></div>
-<p>El comando anterior enviará 1000 solicitudes a la URL dada, de las cuales 100 son concurrentes. El siguiente es el resultado de ejecutar el comando anterior:</p>
-<p><img alt="" src="../img/loadtest_no_cluster.png" /></p>
-<p>Vemos que con la misma solicitud (con n= 500000) el servidor ha podido manejar 404 solicitudes por segundo con una latencia media de 232.4 milisegundos (el tiempo promedio que tarda en completar una sola solicitud).</p>
-<p>Intentémoslo de nuevo, pero esta vez con más solicitudes (y sin clústeres):</p>
-<p><img alt="" src="../img/loadtest_no_cluster_2.png" /></p>
-<p>Vemos que las métricas arrojan resultados aún peores.</p>
-<p>Ahora detenemos nuestra aplicación sin clústers y ejecutamos la que sí los tiene (<code>node nombre_aplicacion_cluster.js</code>). Ejecutaremos exactamente las mismas pruebas con el objetivo de realizar una comparación:</p>
-<p><img alt="" src="../img/loadtest_cluster.png" /></p>
-<p><img alt="" src="../img/loadtest_cluster_2.png" /></p>
-<p>Es obvio que los clústers permiten manejar una mayor cantidad de peticiones por segundo con una menor latencia.</p>
+<p>La opción <code>-n</code> indica el número de peticiones o solicitudes que se envían a la aplicación, mientras que la opción <code>-c</code> indica cuántas de esas peticiones serán concurrentes (simultáneas).</p>
+<p>La salida de esta prueba con <strong><em>loadtest</em></strong> nos ofrecerá múltiples métricas:</p>
+<ul>
+<li>Total time: cuánto tiempo han tardado en procesarse todas las peticiones.</li>
+<li>Requests per second (rps): número de peticiones que el servidor puede manejar por segundo</li>
+<li>Mean latency: mide el tiempo medio que tarda una petición en ser enviada y obtener una respuesta</li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Atención</p>
+<p>Estas métricas variarán en función de la máquina y sus características.</p>
+</div>
+<div class="admonition task">
+<p class="admonition-title">Tarea</p>
+<p>Realiza y documenta adecuadamente esta prueba, en primera instancia con la aplicación sin clusters <code>index.js</code> y, posteriormente, con clusters (<code>primary.js</code>).
+Compara y comenta los resultados.</p>
+</div>
 <h4 id="uso-de-pm2-para-administrar-un-cluster-de-nodejs">Uso de PM2 para administrar un clúster de Node.js</h4>
 <p>En nuestra aplicación, hemos usado el módulo <code>cluster</code> de Node.js para crear y administrar manualmente los procesos.</p>
 <p>Primero hemos determinado la cantidad de <em>workers</em> (usando la cantidad de núcleos de CPU como referencia), luego los hemos generado y, finalmente, escuchamos si hay <em>workers</em> muertos para poder generar nuevos.</p>
 <p>En nuestra aplicación de ejemplo muy sencilla, tuvimos que escribir una cantidad considerable de código solo para administración la agrupación en clústeres. En una aplicación de producción es bastante probable que se deba escribir aún más código.</p>
-<p>Existe una herramienta que nos puede ayudar a administrar todo esto un poco mejor: el administrador de procesos <code>PM2</code>. <code>PM2</code> es un administrador de procesos de producción para aplicaciones Node.js con un balanceador de carga incorporado.</p>
+<p>Existe una herramienta que nos puede ayudar a administrar todo esto un poco mejor: el administrador de procesos <code>PM2</code> que hemos instalado al principio. <code>PM2</code> es un administrador de procesos de producción para aplicaciones Node.js con un balanceador de carga incorporado.</p>
 <p>Cuando está configurado correctamente, <code>PM2</code> ejecuta automáticamente la aplicación en modo de clúster, generando <em>workers</em> y se encarga de generar nuevos <em>workers</em> cuando uno de ellos muera.</p>
 <p><code>PM2</code> facilita la parada, eliminación e inicio de procesos, además de disponer de algunas herramientas de monitorización que pueden ayudarnos a monitorizar y ajustar el rendimiento de su aplicación.</p>
-<p>Para usar <code>PM2</code>, primero instalamos globalmente en nuestra Debian:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>npm<span class="w"> </span>install<span class="w"> </span>pm2<span class="w"> </span>-g
-</code></pre></div>
-<p>Vamos a utilizarlo con nuestra primera aplicación, la que no estab "clusterizada" en el código. Para ello ejecutaremos el siguiente comando:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>pm2<span class="w"> </span>start<span class="w"> </span>nombre_aplicacion_sin_cluster.js<span class="w"> </span>-i<span class="w"> </span><span class="m">0</span>
+<p>Vamos a utilizarlo con nuestra primera aplicación, la que no estaba "clusterizada" en el código. Para ello ejecutaremos el siguiente comando:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>pm2<span class="w"> </span>start<span class="w"> </span>index.js<span class="w"> </span>-i<span class="w"> </span><span class="m">0</span>
 </code></pre></div>
 <p>Donde:</p>
 <ul>
@@ -1854,31 +1889,29 @@ Esta aplicación hace lo mismo que antes pero esta vez estamos generando varios 
 <p>Y así, nuestra aplicación se ejecuta en modo de clúster, sin necesidad de cambios de código. </p>
 <div class="admonition task">
 <p class="admonition-title">Task</p>
-<p>Ejecuta y documenta con capturas de pantallas, las mismas pruebas que antes pero utilizando PM2 y comprueba si se obtienen los mismos resultados.</p>
+<p>Ejecuta y documenta con capturas de pantallas, las misma prueba que antes utilizando <code>loadtest</code> pero utilizando PM2 y comprueba si se obtienen los mismos resultados. Obviamente, hablamos de la aplicación clusterizada.</p>
 </div>
 <p>Por detrás, <code>PM2</code> también utiliza el módulo <code>cluster</code> de Node.js, así como otras herramientas que facilitan la gestión de procesos.</p>
-<p>En el Terminal, obtendremos una tabla que muestra algunos detalles de los procesos generados:</p>
-<p><img alt="" src="../img/pm2_1.png" /></p>
+<p>En el Terminal, obtendremos una tabla que muestra algunos detalles de los procesos generados.</p>
 <p>Podemos detener la aplicación con el siguiente comando:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>pm2<span class="w"> </span>stop<span class="w"> </span>app.js
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>pm2<span class="w"> </span>stop<span class="w"> </span>app.js
 </code></pre></div>
 <p>La aplicación se desconectará y la salida por terminal mostrará todos los procesos con un estado <code>stopped</code>.</p>
-<p><img alt="" src="../img/pm2_2.png" /></p>
 <p>En vez de tener pasar siempre las configuraciones cuando ejecuta la aplicación con <code>pm2 start app.js -i 0</code>, podríamos facilitarnos la tarea y guardarlas en un archivo de configuración separado, llamado <a href="https://pm2.keymetrics.io/docs/usage/application-declaration/">Ecosystem</a>. </p>
 <p>Este archivo también nos permite establecer configuraciones específicas para diferentes aplicaciones.</p>
 <p>Crearemos el archivo <em>Ecosystem</em> con el siguiente comando:</p>
 <p><img alt="" src="../img/ecosystem.png" /></p>
-<p>Que generará un archivo llamado <strong><em>ecosystem.config.js</em></strong>. Para el caso concreto de nuestra aplicación, necesitamos modificarlo como se muestra a continuación:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="err">module.expor</span><span class="kc">ts</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="w"> </span><span class="err">apps</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="w"> </span><span class="kc">na</span><span class="err">me</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;nombre_aplicacion&quot;</span><span class="p">,</span>
-<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="w"> </span><span class="err">scrip</span><span class="kc">t</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;nombre_aplicacion_sin_cluster.js&quot;</span><span class="p">,</span>
-<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="w"> </span><span class="err">i</span><span class="kc">nstan</span><span class="err">ces</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
-<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="w"> </span><span class="err">exec_mode</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;cluster&quot;</span><span class="p">,</span>
-<a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a><span class="w"> </span><span class="p">},</span>
-<a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a><span class="w"> </span><span class="p">],</span>
-<a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a><span class="p">}</span><span class="err">;</span>
+<p>Que generará un archivo llamado <strong><em>ecosystem.config.js</em></strong>. Para poder utilizar módulos, debéis renombrarlo a <strong><em>ecosystem.config.cjs</em></strong>. Tras ello y para el caso concreto de nuestra aplicación, necesitamos modificarlo como se muestra a continuación:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="l l-Scalar l-Scalar-Plain">module.exports = {</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apps</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span>
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="w"> </span><span class="p p-Indicator">{</span>
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="nt"> name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;nombre_aplicacion&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span>
+<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="nt">  script</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;index.js&quot;</span><span class="p p-Indicator">,</span>
+<a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a><span class="nt"> instances</span><span class="p">:</span><span class="w"> </span><span class="nv">0</span><span class="p p-Indicator">,</span>
+<a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a><span class="nt"> exec_mode</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;cluster&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span>
+<a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a><span class="w"> </span><span class="p p-Indicator">},</span>
+<a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a><span class="w"> </span><span class="p p-Indicator">]</span><span class="err">,</span>
+<a id="__codelineno-9-10" name="__codelineno-9-10" href="#__codelineno-9-10"></a><span class="err">}</span><span class="l l-Scalar l-Scalar-Plain">;</span>
 </code></pre></div>
 <p>Al configurar <code>exec_mode</code> con el valor <code>cluster</code>, le indica a <code>PM2</code> que balancee la carga entre cada instancia. <code>instances</code> está configurado a <strong>0</strong> como antes, lo que generará tantos <em>workers</em> como núcleos de CPU.</p>
 <p>La opción <code>-i</code> o <code>instances</code> se puede establecer con los siguientes valores:</p>
@@ -1894,29 +1927,34 @@ Esta aplicación hace lo mismo que antes pero esta vez estamos generando varios 
 </li>
 </ul>
 <p>Ahora podemos ejecutar la aplicación con:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>pm2<span class="w"> </span>start<span class="w"> </span>ecosystem.config.js
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>pm2<span class="w"> </span>start<span class="w"> </span>ecosystem.config.cjs
 </code></pre></div>
-<p>La aplicación se ejecutará en modo clúster, exactamente como antes.</p>
+<p>La aplicación se ejecutará en modo clúster, exactamente como antes y podremos realizar las pruebas que necesitemos.</p>
+<div class="admonition task">
+<p class="admonition-title">Tarea</p>
+<p>Recoge las métricas con <code>loadtest</code> y este nuevo método para gestionar clusters. Compara y explica los resultados con los casos anteriores.</p>
+</div>
 <p>Podremos iniciar, reiniciar, recargar, detener y eliminar una aplicación con los siguientes comandos, respectivamente:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>$<span class="w"> </span>pm2<span class="w"> </span>start<span class="w"> </span>nombre_aplicacion
-<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>$<span class="w"> </span>pm2<span class="w"> </span>restart<span class="w"> </span>nombre_aplicacion
-<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>$<span class="w"> </span>pm2<span class="w"> </span>reload<span class="w"> </span>nombre_aplicacion
-<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>$<span class="w"> </span>pm2<span class="w"> </span>stop<span class="w"> </span>nombre_aplicacion
-<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a>$<span class="w"> </span>pm2<span class="w"> </span>delete<span class="w"> </span>nombre_aplicacion
-<a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a>
-<a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a><span class="c1"># Cuando usemos el archivo Ecosystem:</span>
-<a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a>
-<a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a>$<span class="w"> </span>pm2<span class="w"> </span><span class="o">[</span>start<span class="p">|</span>restart<span class="p">|</span>reload<span class="p">|</span>stop<span class="p">|</span>delete<span class="o">]</span><span class="w"> </span>ecosystem.config.js
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>$<span class="w"> </span>pm2<span class="w"> </span>start<span class="w"> </span>nombre_aplicacion
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>$<span class="w"> </span>pm2<span class="w"> </span>restart<span class="w"> </span>nombre_aplicacion
+<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>$<span class="w"> </span>pm2<span class="w"> </span>reload<span class="w"> </span>nombre_aplicacion
+<a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a>$<span class="w"> </span>pm2<span class="w"> </span>stop<span class="w"> </span>nombre_aplicacion
+<a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a>$<span class="w"> </span>pm2<span class="w"> </span>delete<span class="w"> </span>nombre_aplicacion
+<a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a>
+<a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a><span class="c1"># Cuando usemos el archivo Ecosystem:</span>
+<a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a>
+<a id="__codelineno-11-9" name="__codelineno-11-9" href="#__codelineno-11-9"></a>$<span class="w"> </span>pm2<span class="w"> </span><span class="o">[</span>start<span class="p">|</span>restart<span class="p">|</span>reload<span class="p">|</span>stop<span class="p">|</span>delete<span class="o">]</span><span class="w"> </span>ecosystem.config.cjs
 </code></pre></div>
 <p>El comando <code>restart</code> elimina y reinicia inmediatamente los procesos, mientras que el comando <code>reload</code> logra un tiempo de inactividad de 0 segundos donde los <em>workers</em> se reinician uno por uno, esperando que aparezca un nuevo <em>worker</em> antes de matar al anterior.</p>
 <p>También puede verificar el estado, los registros y las métricas de las aplicaciones en ejecución.</p>
 <div class="admonition task">
 <p class="admonition-title">Task</p>
 <p>Investiga los siguientes comandos y explica que salida por terminal nos ofrecen y para qué se utilizan:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>pm2<span class="w"> </span>ls
-<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>pm2<span class="w"> </span>logs
-<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>pm2<span class="w"> </span>monit
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>pm2<span class="w"> </span>ls
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>pm2<span class="w"> </span>logs
+<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>pm2<span class="w"> </span>monit
 </code></pre></div>
+<p>Identifica en los logs la creación de los workers y la aplicación a la escucha en el puerto indicado.</p>
 </div>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
@@ -1926,46 +1964,14 @@ Esta aplicación hace lo mismo que antes pero esta vez estamos generando varios 
 <p>Fijáos en las siguientes imágenes:</p>
 <p><img alt="" src="../img/loadtest_no_cluster_3.png" /></p>
 <p><img alt="" src="../img/loadtest_cluster_3.png" /></p>
-<p>La primera imagen ilustra los resultados de unas pruebas de carga sobre la aplicación sin clúster y la segunda sobre la aplicación clusterizada.</p>
+<p>La primera imagen ilustra los resultados de unas pruebas de carga sobre una aplicación sin clúster y la segunda sobre la aplicación clusterizada.</p>
 <p>¿Sabrías decir por qué en algunos casos concretos, como este, la aplicación sin clusterizar tiene mejores resultados?</p>
 <h2 id="referencias">Referencias</h2>
 <p><a href="https://unixcop.com/how-to-install-expressjs-on-debian-11/">How to install ExpressJS on Debian 11?</a></p>
 <p><a href="https://blog.appsignal.com/2021/02/03/improving-node-application-performance-with-clustering.html">Improving Node.js Application Performance With Clustering</a></p>
+<p><a href="https://www.digitalocean.com/community/tutorials/how-to-scale-node-js-applications-with-clustering">How To Scale Node.js Applications with Clustering</a></p>
 <h2 id="evaluacion">Evaluación</h2>
-<table>
-<thead>
-<tr>
-<th>Criterio</th>
-<th>Puntuación</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Pruebas correctas y bien documentadas de despliegue de la aplicación <strong>sin</strong> cluster</td>
-<td><strong>2 puntos</strong></td>
-</tr>
-<tr>
-<td>Pruebas correctas y bien documentadas de despliegue de la aplicación <strong>con</strong> cluster</td>
-<td><strong>2 puntos</strong></td>
-</tr>
-<tr>
-<td>Pruebas correctas y bien documentadas de todas las opciones con loadtest</td>
-<td><strong>2 puntos</strong></td>
-</tr>
-<tr>
-<td>Pruebas correctas y bien documentadas de todas las opciones con PM2</td>
-<td><strong>2 puntos</strong></td>
-</tr>
-<tr>
-<td>Respuestas correctas a las cuestiones</td>
-<td><strong>1 puntos</strong></td>
-</tr>
-<tr>
-<td>Se ha prestado especial atención al formato del documento, utilizando la plantilla actualizada y haciendo un correcto uso del lenguaje técnico</td>
-<td><strong>1 puntos</strong></td>
-</tr>
-</tbody>
-</table>
+<p>De acuerdo a la rúbrica publicada en Aules.</p>
 
 
   
