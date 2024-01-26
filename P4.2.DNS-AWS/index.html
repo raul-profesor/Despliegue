@@ -17,11 +17,11 @@
         <link rel="next" href="../index_git/">
       
       <link rel="icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.1.8">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.1.6">
     
     
       
-        <title>Práctica 4.1 - Configuración de Route 53 (DNS) en AWS - Despliegue de aplicaciones web</title>
+        <title>Práctica 4.2 - Configuración de Route 53 (DNS) en AWS - Despliegue de aplicaciones web</title>
       
     
     
@@ -87,7 +87,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#practica-41-configuracion-de-route-53-dns-en-aws" class="md-skip">
+        <a href="#practica-42-configuracion-de-route-53-dns-en-aws" class="md-skip">
           Saltar a contenido
         </a>
       
@@ -122,38 +122,32 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Práctica 4.1 - Configuración de Route 53 (DNS) en AWS
+              Práctica 4.2 - Configuración de Route 53 (DNS) en AWS
             
           </span>
         </div>
       </div>
     </div>
     
-      
-        <form class="md-header__option" data-md-component="palette">
+      <form class="md-header__option" data-md-component="palette">
+        
           
-            
-            
-            
-            <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="green" data-md-color-accent="blue"  aria-label="Cambiar a modo oscuro"  type="radio" name="__palette" id="__palette_1">
-            
-              <label class="md-header__button md-icon" title="Cambiar a modo oscuro" for="__palette_2" hidden>
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6zm0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4zM7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
-              </label>
-            
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="green" data-md-color-accent="blue"  aria-label="Cambiar a modo oscuro"  type="radio" name="__palette" id="__palette_1">
           
-            
-            
-            
-            <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="deep-orange"  aria-label="Cambiar a modo claro"  type="radio" name="__palette" id="__palette_2">
-            
-              <label class="md-header__button md-icon" title="Cambiar a modo claro" for="__palette_1" hidden>
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6zm0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4zM7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
-              </label>
-            
+            <label class="md-header__button md-icon" title="Cambiar a modo oscuro" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6zm0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4zM7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+            </label>
           
-        </form>
-      
+        
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="deep-orange"  aria-label="Cambiar a modo claro"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Cambiar a modo claro" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6zm0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4zM7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+            </label>
+          
+        
+      </form>
     
     
     
@@ -829,12 +823,12 @@
       
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
-          Práctica 4.1 - Configuración de Route 53 (DNS) en AWS
+          Práctica 4.2 - Configuración de Route 53 (DNS) en AWS
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <a href="./" class="md-nav__link md-nav__link--active">
-        Práctica 4.1 - Configuración de Route 53 (DNS) en AWS
+        Práctica 4.2 - Configuración de Route 53 (DNS) en AWS
       </a>
       
         
@@ -1667,7 +1661,7 @@
                   
 
 
-<h1 id="practica-41-configuracion-de-route-53-dns-en-aws">Práctica 4.1 - Configuración de Route 53 (DNS) en AWS</h1>
+<h1 id="practica-42-configuracion-de-route-53-dns-en-aws">Práctica 4.2 - Configuración de Route 53 (DNS) en AWS</h1>
 <h2 id="introduccion">Introducción</h2>
 <p>En este caso vamos a realizar una práctica similar a la anterior pero configurando el servidor DNS en un entorno de AWS.</p>
 <p>Citando textualmente la <a href="https://docs.aws.amazon.com/es_es/Route53/latest/DeveloperGuide/Welcome.html">documentación de Amazon</a>:</p>
@@ -1685,8 +1679,13 @@
 </ol>
 <p>En primera instancia, debemos iniciar nuestro Learner Lab.</p>
 <h2 id="proceso-en-imagenes">Proceso en imágenes</h2>
+<p>Lo primero que haremos será crear nuestras insntancias EC2, tanto las Linux como la Windows.</p>
+<p>Empezamos con el servidor Linux:</p>
 <p><img alt="" src="../img/route53_1.png" /></p>
+<p>Crearemos claves para todas nuestras instancias, para poder conectarnos a ellas posteriormente:</p>
 <p><img alt="" src="../img/route53_2.png" /></p>
+<p>En nuestro servidor Linux, rellenamos los datos de usuario. Se trata de un script en bash que se ejecutará en tiempo de creación de la máquina. </p>
+<p>Su cometido es instalar el servicio de Docker y correr un contenedor que contendrá nuestra web estática (Juice Shop). Al ser una aplicación en Node, el puerto que se utiliza del contenedor es el 3000, pero con la opción <code>-p</code> le decimos que ese puerto lo mapee y lo exponga en el 80 de nuestra instancia EC2:</p>
 <p><img alt="" src="../img/route53_3.png" /></p>
 <div class="highlight"><span class="filename">Código</span><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="ch">#!/bin/bash </span>
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>yum<span class="w"> </span>update<span class="w"> </span>-y<span class="w"> </span>
@@ -1696,10 +1695,15 @@
 <a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>docker<span class="w"> </span>pull<span class="w"> </span>bkimminich/juice-shop<span class="w"> </span>
 <a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>docker<span class="w"> </span>run<span class="w"> </span>-d<span class="w"> </span>-p<span class="w"> </span><span class="m">80</span>:3000<span class="w"> </span>bkimminich/juice-shop
 </code></pre></div>
+<p>Ahora creamos la instacia para el cliente Linux con el mismo mecanismo:</p>
 <p><img alt="" src="../img/route53_4.png" /></p>
+<p>Creamos ahora el cliente Windows, siguiendo el mismo procedimiento:</p>
 <p><img alt="" src="../img/route53_5.png" /></p>
+<p>No olvidar crear las claves:</p>
 <p><img alt="" src="../img/route53_6.png" /></p>
+<p>Y vemos que, tras un rato, nuestras instancias están ya en ejecución:</p>
 <p><img alt="" src="../img/route53_7.png" /></p>
+<p>Debemos crear un grupo de seguridad para que se permita el acceso al puerto 80 (HTTP), es decir, nuestra web, desde las IPs <u><strong>privadas</strong></u> de los clientes:</p>
 <p><img alt="" src="../img/route53_8.png" /></p>
 <p><img alt="" src="../img/route53_9.png" /></p>
 <p><img alt="" src="../img/route53_10.png" /></p>
@@ -1707,18 +1711,34 @@
 <p><img alt="" src="../img/route53_12.png" /></p>
 <p><img alt="" src="../img/route53_13.png" /></p>
 <p><img alt="" src="../img/route53_14.png" /></p>
+<p>Eliminamos el grupo de seguridad por defecto que se crea junto con la instancia y aplicamos el nuevo que hemos creado:</p>
 <p><img alt="" src="../img/route53_15.png" /></p>
+<p>También, de forma más sencilla, podríamos directamente haber modificado el SG por defecto que se crea junto con la instancia añadiendo la regla pertinente.</p>
+<p>Comprobamos que, efectivamente, tenemos acceso a la web en nuestro servidor desde nuestro cliente Linux. Utilizamos <code>curl</code> para este cometido:</p>
 <p><img alt="" src="../img/route53_16.png" /></p>
+<p>A la instancia Windows no nos conectamos por SSH sino por RDP (Escritorio remoto). Para ello el procedimiento es:</p>
+<ul>
+<li>Bajarnos el archivo <code>.rdp</code> para conectarnos a la instancia</li>
+<li>Obtener la contraseña del usuario. Para ello subimos la clave privada que generamos y descargamos en el proceso de creación de la instancia</li>
+<li>Conectarnos por RDP metiendo esta contraseña:</li>
+</ul>
 <p><img alt="" src="../img/route53_17.png" /></p>
 <p><img alt="" src="../img/route53_18.png" /></p>
 <p><img alt="" src="../img/route53_19.png" /></p>
 <p><img alt="" src="../img/route53_20.png" /></p>
+<p>Desde esta máquina, utilizando el navegador, hacemo sla comprobación:</p>
 <p><img alt="" src="../img/route53_22.png" /></p>
+<p>Viendo que todo está en orden, sólo nos quedaría configurar el DNS (Route 53) para poder acceder por nombre en lugar de IP:</p>
 <p><img alt="" src="../img/route53_21.png" /></p>
+<p>Creamos la zona correspondiente:</p>
 <p><img alt="" src="../img/route53_23.png" /></p>
+<p>Le indicamos el nombre de dominio, le decimos que la zona es pivada (está en nuestra VPC privada), en la zona del Norte de Virginia y como VPC, la única que tenemos hasta ahora, que es donde se encuentran nuestras instancias EC2.</p>
 <p><img alt="" src="../img/route53_24.png" /></p>
 <p><img alt="" src="../img/route53_25.png" /></p>
+<p>Debemos añadir un registro A a la zona, tal y como hicistéis con Bind en la práctica anterior, para hacer corresponder el nombre de nuestro sitio web con su IP privada.</p>
 <p><img alt="" src="../img/route53_26.png" /></p>
+<p>Tras ello, podréis hacer las comprobaciones pertinentes tanto desde el terminal como desde el navegador.</p>
+<p>No obstante, lo importante es realizar estas comprobaciones con las herramientas adecuadas, como <strong>nslookup</strong> o <strong>dig</strong>.</p>
 <p><img alt="" src="../img/route53_27.png" /></p>
 <p><img alt="" src="../img/route53_28.png" /></p>
 
