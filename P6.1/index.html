@@ -17,7 +17,7 @@
         <link rel="next" href="../P6.2/">
       
       <link rel="icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.1.6">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.1.8">
     
     
       
@@ -129,25 +129,31 @@
       </div>
     </div>
     
-      <form class="md-header__option" data-md-component="palette">
-        
+      
+        <form class="md-header__option" data-md-component="palette">
           
-          <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="green" data-md-color-accent="blue"  aria-label="Cambiar a modo oscuro"  type="radio" name="__palette" id="__palette_1">
+            
+            
+            
+            <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="green" data-md-color-accent="blue"  aria-label="Cambiar a modo oscuro"  type="radio" name="__palette" id="__palette_1">
+            
+              <label class="md-header__button md-icon" title="Cambiar a modo oscuro" for="__palette_2" hidden>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6zm0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4zM7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+              </label>
+            
           
-            <label class="md-header__button md-icon" title="Cambiar a modo oscuro" for="__palette_2" hidden>
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6zm0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4zM7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
-            </label>
+            
+            
+            
+            <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="deep-orange"  aria-label="Cambiar a modo claro"  type="radio" name="__palette" id="__palette_2">
+            
+              <label class="md-header__button md-icon" title="Cambiar a modo claro" for="__palette_1" hidden>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6zm0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4zM7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+              </label>
+            
           
-        
-          
-          <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="deep-orange"  aria-label="Cambiar a modo claro"  type="radio" name="__palette" id="__palette_2">
-          
-            <label class="md-header__button md-icon" title="Cambiar a modo claro" for="__palette_1" hidden>
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6zm0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4zM7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
-            </label>
-          
-        
-      </form>
+        </form>
+      
     
     
     
@@ -810,7 +816,7 @@
   
     <li class="md-nav__item">
       <a href="../P4.2.DNS-AWS/" class="md-nav__link">
-        Práctica 4.2 - Configuración de Route 53 (DNS) en AWS
+        Práctica 4.1 - Configuración de Route 53 (DNS) en AWS
       </a>
     </li>
   
@@ -1469,6 +1475,19 @@
     Despliegue con Docker
   </a>
   
+    <nav class="md-nav" aria-label="Despliegue con Docker">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#docker-compose" class="md-nav__link">
+    Docker Compose
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -1676,7 +1695,7 @@
 
 <h1 id="practica-61-dockerizacion-del-despliegue-de-una-aplicacion-nodejs">Práctica 6.1 - Dockerización del despliegue de una aplicación Node.js</h1>
 <h2 id="introduccion">Introducción</h2>
-<p>En este caso vamos a Dockerizar la aplicación que ya desplegamos en la <a href="../P3.2-NodeJS-Express/">práctica 3.2</a>.</p>
+<p>En este caso vamos a Dockerizar una aplicación escrita en Node.js que hace uso de una API para gestionar personas en un libro de direcciones que guardará en una base de datos PostgreSQL.</p>
 <h3 id="por-que-dockerizar">¿Por qué <em>dockerizar</em>?</h3>
 <p><a href="https://www.campusmvp.es/recursos/post/los-beneficios-de-utilizar-docker-y-contenedores-a-la-hora-de-programar.aspx">Si uno trata de informarse</a>, encontrará <a href="https://developerexperience.io/practices/dockerizing">múltiples y variadas razones</a> para dockerizar nuestras aplicaciones y servicios.</p>
 <p>Por citar sólo algunas:</p>
@@ -1688,44 +1707,47 @@
 <p><strong>6. Fácil configuración de múltiples entornos:</strong> como hacen la mayoría de los equipos de desarrollo, se establece un entorno local, de integración, de puesta en escena (preprod) y de producción. Esto se hace más fácil cuando los servicios están en contenedores y, la mayoría de las veces, con sólo un cambio de VARIABLES DE ENTORNO.</p>
 <p><strong>7. Apoyo de la comunidad:</strong> existe una fuerte comunidad de ingenieros de software que continuamente contribuyen con grandes imágenes que pueden ser reutilizadas para desarrollar un gran software. ¿Por qué reinventar la rueda, no?</p>
 <h2 id="despliegue-con-docker">Despliegue con Docker</h2>
+<p>https://semaphoreci.com/community/tutorials/dockerizing-a-node-js-web-application</p>
 <p>En primer lugar, si eliminastéis el repositorio en su momento, debéis volver a clonarlo en vuestra Debian, en caso contrario obviad este paso:</p>
-<p><div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/contentful/the-example-app.nodejs.git
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>$<span class="w"> </span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/raul-profesor/DAW_practica_6.1_2024.git
 </code></pre></div>
 Ahora, puesto que la aplicación ya viene con el <code>Dockerfile</code> necesario dentro del directorio para construir la imagen y correr el contenedor, vamos a estudiar su contenido.</p>
 <div class="admonition task">
 <p class="admonition-title">Tarea</p>
 <p>Completa este Dockerfile con las opciones/directivas adecuadas, leed los comentarios y podéis apoyaros <a href="https://raul-profesor.github.io/DEAW/dockerfile/?h=dockerfile#mi-primer-dockerfile">en la teoría</a>, en <a href="https://devhints.io/dockerfile">este cheatsheet</a>, en <a href="https://kapeli.com/cheat_sheets/Dockerfile.docset/Contents/Resources/Documents/index">este otro</a> o en cualquiera que encontréis.</p>
 </div>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="l l-Scalar l-Scalar-Plain">_____ node:9</span><span class="w"> </span><span class="c1">#(1) </span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="l l-Scalar l-Scalar-Plain">_____ node:18.16.0-alpine3.17</span><span class="w"> </span><span class="c1">#(1) </span>
 <a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>
-<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="l l-Scalar l-Scalar-Plain">_____ /app</span><span class="w"> </span><span class="c1">#(2)</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="l l-Scalar l-Scalar-Plain">_____  mkdir -p /opt/app</span><span class="w"> </span><span class="c1">#(3)</span>
 <a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>
-<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="l l-Scalar l-Scalar-Plain">_____ npm install -g contentful-cli</span><span class="w"> </span><span class="c1">#(3)</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="l l-Scalar l-Scalar-Plain">_____ /opt/app</span><span class="w"> </span><span class="c1">#(2)</span>
 <a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>
-<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="l l-Scalar l-Scalar-Plain">_____ package.json .</span><span class="w"> </span><span class="c1">#(4)</span>
-<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="l l-Scalar l-Scalar-Plain">_____ npm install</span><span class="w"> </span><span class="c1">#(5)</span>
-<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>
-<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="l l-Scalar l-Scalar-Plain">_____ . .</span><span class="w"> </span><span class="c1">#(6)</span>
-<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>
-<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="l l-Scalar l-Scalar-Plain">_____ node</span><span class="w"> </span><span class="c1">#(7)</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="l l-Scalar l-Scalar-Plain">_____ src/package.json src/package-lock.json .</span><span class="w"> </span><span class="c1">#(4)</span>
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="l l-Scalar l-Scalar-Plain">_____ npm install</span><span class="w"> </span><span class="c1">#(5)</span>
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>
+<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="l l-Scalar l-Scalar-Plain">_____ src/ .</span><span class="w"> </span><span class="c1">#(6)</span>
+<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a>
 <a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="l l-Scalar l-Scalar-Plain">_____ 3000</span><span class="w"> </span><span class="c1">#(8)</span>
 <a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a>
 <a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a><span class="l l-Scalar l-Scalar-Plain">_____ [&quot;npm&quot;, &quot;run&quot;, &quot;start:dev&quot;]</span><span class="w"> </span><span class="c1">#(9)</span>
 </code></pre></div>
 <ol>
-<li>Con <code>_____</code> indicamos que vamos a utilizar la imagen de Docker Hub oficial de Node, en su versión 9   </li>
+<li>Con <code>_____</code> indicamos que vamos a utilizar la imagen de Docker Hub oficial de Node, en su versión 18.16.0 junto con Alpine, una diminuta distribución Linux   </li>
 <li><code>_____</code> define el directorio sobre el que se ejecutarán las subsiguientes instrucciones del <code>Dockerfile</code>   </li>
 <li><code>_____</code> ejecuta un comando en una nueva capa de la imagen (podemos tener varios comandos <code>_____</code>)</li>
-<li><code>_____</code> como su nombre indica, copia los archivos que le indiquemos dentro del contenedor, en este caso <code>package.json</code>  <br />
-    !!!info
-        Recordemos que <code>package.json</code> cumplía ciertas funciones importantes:
-         + Centraliza la forma de interactuar con la aplicación por medio de definición de scripts (indica comandos que podemos correr dentro de nuestro proyecto, asociándolos a una palabra clave para que npm (o yarn) los reconozca cuando queramos ejecutarlos.)
-         + Gestiona de una forma clara y sencilla las dependencias necesarias para que la aplicación pueda funcionar correctamente.</li>
+<li><code>_____</code> como su nombre indica, copia los archivos que le indiquemos dentro del contenedor, en este caso <code>package.json</code>   <br />
+    Recordemos que <code>package.json</code> cumplía ciertas funciones importantes:<ul>
+<li>Centraliza la forma de interactuar con la aplicación por medio de definición de scripts (indica comandos que podemos correr dentro de nuestro proyecto, asociándolos a una palabra clave para que npm (o yarn) los reconozca cuando queramos ejecutarlos.)</li>
+<li>Gestiona de una forma clara y sencilla las dependencias necesarias para que la aplicación pueda funcionar correctamente.</li>
+</ul>
+</li>
 <li>Con otro <code>_____</code> ejecutamos el ya conocido comando que nos instala las dependencias que se indican en el archivo que hemos copiado en el paso anterior, el <code>package.json</code></li>
-<li>Copiamos todos los archivos de nuestro directorio de trabajo al contenedor</li>
+<li>Copiamos todos los archivos de nuestro directorio <code>/src</code> al contenedor</li>
 <li>Con <code>_____</code> le indicaremos el usuario con el que correrá el contenedor</li>
 <li><code>_____</code> nos permite documentar que puertos están expuestos o a la escucha en el contenedor (sólo será accesible desde otros contenedores)</li>
 <li>Y finalmente <code>_____</code> nos permite ejecutar un comando <strong><u>dentro</u></strong> del contenedor. En este caso iniciamos la aplicación.</li>
+<li>Este comando <code>_____</code> de un <code>Dockerfile</code> permite ejecutar comandos dentro del contenedor, en este caso crea los directorios para la aplicación</li>
 </ol>
 <div class="admonition note">
 <p class="admonition-title">Nota</p>
@@ -1733,16 +1755,88 @@ Ahora, puesto que la aplicación ya viene con el <code>Dockerfile</code> necesar
 <p>Si dentro de nuestro directorio actual tenemos una carpeta llamada <code>prueba</code>, podemos hacer referencia a ella como <code>./prueba</code>, ya que el <code>.</code> hace referencia precisamente al directorio donde nos encontramos</p>
 </div>
 <p>Así pues, tener nuestra aplicación corriendo es cuestión de un par de comandos.</p>
-<p>Hacemos un build de la imagen de Docker. Le indicamos que ésta se llama <code>the-example-app.nodejs</code> y que haga el build con el contexto del directorio actual de trabajo, así como del Dockerfile que hay en él:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>docker<span class="w"> </span>build<span class="w"> </span>-t<span class="w"> </span>the-example-app.nodejs<span class="w"> </span>.
+<p>Hacemos un build de la imagen de Docker. Le indicamos que ésta se llama <code>librodirecciones</code> y que haga el build con el contexto del directorio actual de trabajo, así como del Dockerfile que hay en él:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>$<span class="w"> </span>docker<span class="w"> </span>build<span class="w"> </span>-t<span class="w"> </span>librodirecciones<span class="w"> </span>.
 </code></pre></div>
 <p>Y por último, iniciamos el contenedor con nuestra aplicación. Ahora sí, con la opción <code>-p</code>, le indicamos que escuche conexiones entrantes de cualquier máquina en el puerto 3000 de nuestra máquina anfitrión que haremos coincidir con el puerto 3000 del contenedor (<code>-p 3000:3000</code>). Y con la opción <code>-d</code> lo haremos correr en modo demonio, en background:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>docker<span class="w"> </span>run<span class="w"> </span>-p<span class="w"> </span><span class="m">3000</span>:3000<span class="w"> </span>-d<span class="w"> </span>the-example-app.nodejs
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>$<span class="w"> </span>docker<span class="w"> </span>run<span class="w"> </span>-p<span class="w"> </span><span class="m">3000</span>:3000<span class="w"> </span>-d<span class="w"> </span>librodirecciones
 </code></pre></div>
-<p>Tras esto sólo queda comprobar que, efectivamente, desde nuestra máquina podemos acceder a: <code>http://IP_Maq_Virtual:3000</code> y que allí está nuestra aplicación en funcionamiento.</p>
+<p>Tras esto sólo queda comprobar que al intentar acceder desde nuestra máquina a la aplicaicón: <code>http://IP_Maq_Virtual:3000</code> se produce un error de conexión.</p>
 <div class="admonition task">
 <p class="admonition-title">Tarea</p>
 <p>Documenta, incluyendo capturas de pantallas, el proceso que has seguido para realizar el despliegue de esta nueva aplicación, así como el resultado final.</p>
+</div>
+<p>Esto sirve para ilustrar un punto importante de los contenedores: poseen su propia red. La aplicación, por defecto, intenta buscar la base de datos en nuestro localhost pero, técnicamente, está en otro host (su contenedor).</p>
+<p>A pesar de que todos los contenedores corren en la misma máquina, cada uno es considerado un host diferente y por eso la aplicación falla al conectar.</p>
+<p>Podríamos utilizar los comandos <a href="https://docs.docker.com/engine/reference/commandline/network_connect/">network</a> de Docker para solucionar el asunto. En lugar de eso, introduciremos el concepto de Docker Compose para administrar contenedores.</p>
+<h3 id="docker-compose">Docker Compose</h3>
+<p>Docker Compose es una herramienta para gestionar aplicaciones multicontenedor. En Linux tiene que ser instalado por separado, consultad <a href="https://docs.docker.com/compose/install/linux/">su documentación</a> para ello.</p>
+<p>Docker Compose puede:</p>
+<ul>
+<li>Iniciar y detener múltiples contenedores en secuencia.</li>
+<li>Conectar contenedores utilizando una red virtual.</li>
+<li>Manejar la persistencia de datos usando Docker Volumes.</li>
+<li>Establecer variables de entorno.</li>
+<li>Construir o descargar imágenes de contenedores según sea necesario.</li>
+</ul>
+<p>Docker Compose utiliza un archivo de definición YAML para describir toda la aplicación. En nuestro caso:</p>
+<div class="highlight"><span class="filename">docker-compose.yml</span><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;3.9&quot;</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="nt">services</span><span class="p">:</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="w">  </span><span class="nt">postgres</span><span class="p">:</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">postgres:latest</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="w">    </span><span class="nt">environment</span><span class="p">:</span>
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="w">      </span><span class="nt">POSTGRES_USER</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">postgres</span>
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="w">      </span><span class="nt">POSTGRES_PASSWORD</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">postgres</span>
+<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="w">    </span><span class="nt">ports</span><span class="p">:</span><span class="w"> </span>
+<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&#39;5432:5432&#39;</span>
+<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="w">    </span><span class="nt">volumes</span><span class="p">:</span>
+<a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">addressbook-db:/var/lib/postgresql/data</span>
+<a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a>
+<a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a><span class="w">  </span><span class="nt">addressbook</span><span class="p">:</span>
+<a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a><span class="w">    </span><span class="nt">build</span><span class="p">:</span>
+<a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a><span class="w">      </span><span class="nt">context</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">.</span>
+<a id="__codelineno-4-16" name="__codelineno-4-16" href="#__codelineno-4-16"></a><span class="w">    </span><span class="nt">environment</span><span class="p">:</span>
+<a id="__codelineno-4-17" name="__codelineno-4-17" href="#__codelineno-4-17"></a><span class="w">      </span><span class="nt">DB_SCHEMA</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">postgres</span>
+<a id="__codelineno-4-18" name="__codelineno-4-18" href="#__codelineno-4-18"></a><span class="w">      </span><span class="nt">DB_USER</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">postgres</span>
+<a id="__codelineno-4-19" name="__codelineno-4-19" href="#__codelineno-4-19"></a><span class="w">      </span><span class="nt">DB_PASSWORD</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">postgres</span>
+<a id="__codelineno-4-20" name="__codelineno-4-20" href="#__codelineno-4-20"></a><span class="w">      </span><span class="nt">DB_HOST</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">postgres</span>
+<a id="__codelineno-4-21" name="__codelineno-4-21" href="#__codelineno-4-21"></a><span class="w">    </span><span class="nt">depends_on</span><span class="p">:</span>
+<a id="__codelineno-4-22" name="__codelineno-4-22" href="#__codelineno-4-22"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">postgres</span>
+<a id="__codelineno-4-23" name="__codelineno-4-23" href="#__codelineno-4-23"></a><span class="w">    </span><span class="nt">ports</span><span class="p">:</span>
+<a id="__codelineno-4-24" name="__codelineno-4-24" href="#__codelineno-4-24"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&#39;3000:3000&#39;</span>
+<a id="__codelineno-4-25" name="__codelineno-4-25" href="#__codelineno-4-25"></a>
+<a id="__codelineno-4-26" name="__codelineno-4-26" href="#__codelineno-4-26"></a><span class="nt">volumes</span><span class="p">:</span>
+<a id="__codelineno-4-27" name="__codelineno-4-27" href="#__codelineno-4-27"></a><span class="w">  </span><span class="nt">addressbook-db</span><span class="p">:</span>
+</code></pre></div>
+<p>Así las cosas, para levantar nuestra infraestructura basada en contenedores no tenemos más que hacer:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>$<span class="w"> </span>docker<span class="w"> </span>compose<span class="w"> </span>run<span class="w"> </span>addressbook<span class="w"> </span>npm<span class="w"> </span>run<span class="w"> </span>migrate
+</code></pre></div>
+<p>Esto creará las tablas necesarias en la base de datos.</p>
+<p>Y construiremos nuestros contenedores a partir de las imágenes:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>$<span class="w"> </span>docker<span class="w"> </span>compose<span class="w"> </span>up<span class="w"> </span>--build<span class="w"> </span>-d
+</code></pre></div>
+<p>Una vez construidas las imágenes, podemos levantar los contenedores:</p>
+<p>Podéis correr unos tests para comprobar que la aplicación funciona correctamente con:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>$<span class="w"> </span>docker<span class="w"> </span>compose<span class="w"> </span>run<span class="w"> </span>addressbook<span class="w"> </span>npm<span class="w"> </span><span class="nb">test</span>
+</code></pre></div>
+<div class="admonition task">
+<p class="admonition-title">Tarea</p>
+<p>Probad que la aplicación junto con la BBDD funciona correctamente. El funcionamiento de la API es:</p>
+<ul>
+<li><code>GET /persons/all</code> muestra todas las personas en el libro de direcciones</li>
+<li><code>GET /persons/1</code> muestra la persona con el id 1</li>
+<li><code>PUT /persons/</code> añade una persona al libro de direcciones</li>
+<li><code>DELETE /persons/1</code> elimina a la persona con el id 1</li>
+</ul>
+<p>Ejemplos:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="w"> </span>curl<span class="w"> </span>-X<span class="w"> </span>PUT<span class="w"> </span>http://IP_APLICACION:3000/persons<span class="w"> </span>-H<span class="w"> </span><span class="s1">&#39;Content-Type: application/json&#39;</span><span class="w"> </span>-d<span class="w"> </span><span class="s1">&#39;{&quot;id&quot;: 1, &quot;firstName&quot;: &quot;Raúl&quot;, &quot;lastName&quot;: &quot;Profesor&quot;}&#39;</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="w"> </span>curl<span class="w"> </span>-X<span class="w"> </span>GET<span class="w"> </span>http://localhost:3000/persons<span class="w"> </span>-H<span class="w"> </span><span class="s1">&#39;Content-Type: application/json&#39;</span>
+</code></pre></div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Recordatorio</p>
+<p>Deberás modificar el grupo de seguridad de tu instancia EC2 de AWS para permitir el tráfico de entrada al puerto 3000, que es el que utiliza por defecto nuestra aplicación de Node.js.</p>
 </div>
 <h2 id="referencias">Referencias</h2>
 <p><a href="https://www.campusmvp.es/recursos/post/los-beneficios-de-utilizar-docker-y-contenedores-a-la-hora-de-programar.aspx">Los beneficios de utilizar Docker y contenedores a la hora de programar </a></p>

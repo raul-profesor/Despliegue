@@ -8,20 +8,20 @@
       
       
       
-        <link rel="canonical" href="https://raul-profesor.github.io/Despliegue/tips/">
+        <link rel="canonical" href="https://raul-profesor.github.io/Despliegue/%28obsoleta%29.P6.1/">
       
       
-        <link rel="prev" href="../dockerfile/">
+        <link rel="prev" href="..">
       
       
-        <link rel="next" href="../P6.1/">
+        <link rel="next" href="../ArqWeb/">
       
       <link rel="icon" href="../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.1.8">
     
     
       
-        <title>Trucos - Despliegue de aplicaciones web</title>
+        <title>Práctica 6.1 - Dockerización del despliegue de una aplicación con Node.js - Despliegue de aplicaciones web</title>
       
     
     
@@ -87,7 +87,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#trucos" class="md-skip">
+        <a href="#practica-61-dockerizacion-del-despliegue-de-una-aplicacion-nodejs" class="md-skip">
           Saltar a contenido
         </a>
       
@@ -122,7 +122,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Trucos
+              Práctica 6.1 - Dockerización del despliegue de una aplicación con Node.js
             
           </span>
         </div>
@@ -1183,16 +1183,14 @@
 
   
   
-    
-  
   
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
       
       
       
-      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
       
       
       
@@ -1201,7 +1199,7 @@
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
         <label class="md-nav__title" for="__nav_6">
           <span class="md-nav__icon md-icon"></span>
           Tema 6
@@ -1212,16 +1210,14 @@
               
   
   
-    
-  
   
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
       
       
       
-      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_1" checked>
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_1" >
       
       
       
@@ -1230,7 +1226,7 @@
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_1_label" aria-expanded="true">
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_1_label" aria-expanded="false">
         <label class="md-nav__title" for="__nav_6_1">
           <span class="md-nav__icon md-icon"></span>
           Teoría
@@ -1367,80 +1363,11 @@
               
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          Trucos
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../tips/" class="md-nav__link">
         Trucos
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Tabla de contenidos
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#portainer" class="md-nav__link">
-    Portainer
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#limpieza" class="md-nav__link">
-    Limpieza
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#copias-de-seguridad" class="md-nav__link">
-    Copias de seguridad
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#fuentes-de-esta-pagina" class="md-nav__link">
-    Fuentes de esta página:
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#imagenes-base" class="md-nav__link">
-    Imágenes base
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1681,69 +1608,81 @@
                   
 
 
-<h1 id="trucos">Trucos</h1>
-<h2 id="portainer">Portainer</h2>
-<p>Portainer es una gestor de contenedores a través de una interfaz web. Para usarlo creamos un directorio donde guardar nuestro <em>docker-compose.yaml</em>.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>mkdir<span class="w"> </span>-p<span class="w"> </span>~/Sites/portainer
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="nb">cd</span><span class="w"> </span>~/Sites/portainer
+<h1 id="practica-61-dockerizacion-del-despliegue-de-una-aplicacion-nodejs">Práctica 6.1 - Dockerización del despliegue de una aplicación Node.js</h1>
+<h2 id="introduccion">Introducción</h2>
+<p>En este caso vamos a Dockerizar la aplicación que ya desplegamos en la <a href="../P3.2-NodeJS-Express/">práctica 3.2</a>.</p>
+<h3 id="por-que-dockerizar">¿Por qué <em>dockerizar</em>?</h3>
+<p><a href="https://www.campusmvp.es/recursos/post/los-beneficios-de-utilizar-docker-y-contenedores-a-la-hora-de-programar.aspx">Si uno trata de informarse</a>, encontrará <a href="https://developerexperience.io/practices/dockerizing">múltiples y variadas razones</a> para dockerizar nuestras aplicaciones y servicios.</p>
+<p>Por citar sólo algunas:</p>
+<p><strong>1. Configuración rápida del entorno en local para el equipo de desarrollo:</strong> si todos los servicios están implementados con contenedores, es muy rápida la configuración de dicho entorno.</p>
+<p><strong>2. Evita el clásico "en mi máquina funciona":</strong> gran parte de los problemas de desarrollo provienen de la propia configuración que los integrantes del equipo de desarrollo tienen de su entorno. Con los servicios en contenedores, esto queda solucionado en gran medida.</p>
+<p><strong>3. Despliegues más rápidos</strong></p>
+<p><strong>4. Mejor control de versiones:</strong> como ya sabéis, se puede etiquetar (tags), lo que ayuda en el CONTROL DE VERSIONES.</p>
+<p><strong>5. Rollbacks más fáciles:</strong> puesto que se tienen las cosas mas controladas por la versión, es más fácil revertir el código. A veces, simplemente apuntando a su versión de trabajo anterior.</p>
+<p><strong>6. Fácil configuración de múltiples entornos:</strong> como hacen la mayoría de los equipos de desarrollo, se establece un entorno local, de integración, de puesta en escena (preprod) y de producción. Esto se hace más fácil cuando los servicios están en contenedores y, la mayoría de las veces, con sólo un cambio de VARIABLES DE ENTORNO.</p>
+<p><strong>7. Apoyo de la comunidad:</strong> existe una fuerte comunidad de ingenieros de software que continuamente contribuyen con grandes imágenes que pueden ser reutilizadas para desarrollar un gran software. ¿Por qué reinventar la rueda, no?</p>
+<h2 id="despliegue-con-docker">Despliegue con Docker</h2>
+<p>https://semaphoreci.com/community/tutorials/dockerizing-a-node-js-web-application</p>
+<p>En primer lugar, si eliminastéis el repositorio en su momento, debéis volver a clonarlo en vuestra Debian, en caso contrario obviad este paso:</p>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/contentful/the-example-app.nodejs.git
 </code></pre></div>
-<p>Guardamos el siguiente fichero como <em>docker-compose.yaml</em> en nuestro directorio:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;2&#39;</span>
+Ahora, puesto que la aplicación ya viene con el <code>Dockerfile</code> necesario dentro del directorio para construir la imagen y correr el contenedor, vamos a estudiar su contenido.</p>
+<div class="admonition task">
+<p class="admonition-title">Tarea</p>
+<p>Completa este Dockerfile con las opciones/directivas adecuadas, leed los comentarios y podéis apoyaros <a href="https://raul-profesor.github.io/DEAW/dockerfile/?h=dockerfile#mi-primer-dockerfile">en la teoría</a>, en <a href="https://devhints.io/dockerfile">este cheatsheet</a>, en <a href="https://kapeli.com/cheat_sheets/Dockerfile.docset/Contents/Resources/Documents/index">este otro</a> o en cualquiera que encontréis.</p>
+</div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="l l-Scalar l-Scalar-Plain">_____ node:9</span><span class="w"> </span><span class="c1">#(1) </span>
 <a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>
-<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="nt">services</span><span class="p">:</span>
-<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">    </span><span class="nt">portainer</span><span class="p">:</span>
-<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">portainer/portainer</span>
-<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w">    </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">-H unix:///var/run/docker.sock</span>
-<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="w">    </span><span class="nt">volumes</span><span class="p">:</span>
-<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/var/run/docker.sock:/var/run/docker.sock</span>
-<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">portainer_data:/data</span>
-<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="w">    </span><span class="nt">ports</span><span class="p">:</span>
-<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">127.0.0.1:9000:9000</span>
-<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="nt">volumes</span><span class="p">:</span>
-<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="w">    </span><span class="nt">portainer_data</span><span class="p">:</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="l l-Scalar l-Scalar-Plain">_____ /app</span><span class="w"> </span><span class="c1">#(2)</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="l l-Scalar l-Scalar-Plain">_____ npm install -g contentful-cli</span><span class="w"> </span><span class="c1">#(3)</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="l l-Scalar l-Scalar-Plain">_____ package.json .</span><span class="w"> </span><span class="c1">#(4)</span>
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="l l-Scalar l-Scalar-Plain">_____ npm install</span><span class="w"> </span><span class="c1">#(5)</span>
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="l l-Scalar l-Scalar-Plain">_____ . .</span><span class="w"> </span><span class="c1">#(6)</span>
+<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>
+<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="l l-Scalar l-Scalar-Plain">_____ node</span><span class="w"> </span><span class="c1">#(7)</span>
+<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="l l-Scalar l-Scalar-Plain">_____ 3000</span><span class="w"> </span><span class="c1">#(8)</span>
+<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a>
+<a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a><span class="l l-Scalar l-Scalar-Plain">_____ [&quot;npm&quot;, &quot;run&quot;, &quot;start:dev&quot;]</span><span class="w"> </span><span class="c1">#(9)</span>
 </code></pre></div>
-<p>Y ejecutamos el contenedor:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>docker-compose<span class="w"> </span>up<span class="w"> </span>-d
-</code></pre></div>
-<h2 id="limpieza">Limpieza</h2>
-<p>Para borrar objetos que no están en uso:</p>
-<p><div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>docker<span class="w"> </span>system<span class="w"> </span>prune
-</code></pre></div>
-Para borrar volúmenes que no están asociados a ningún contenedor:</p>
-<div class="highlight"><pre><span></span><code>docker volume rm $(docker volume ls -q -f &quot;dangling=true&quot;)
-</code></pre></div>
-<p>Para borrar contenedores que han terminado su ejecución:</p>
-<div class="highlight"><pre><span></span><code>docker rm $(docker ps -q -f &quot;status=exited&quot;)
-</code></pre></div>
-<p>Para borrar imágenes que no están etiquetadas:</p>
-<div class="highlight"><pre><span></span><code>docker rmi $(docker images -q -f &quot;dangling=true&quot;)
-</code></pre></div>
-<h2 id="copias-de-seguridad">Copias de seguridad</h2>
-<p>Para hacer una copia de seguridad:</p>
-<div class="highlight"><pre><span></span><code>docker run --rm -v /tmp:/backup \
-    --volumes-from &lt;container-name&gt; \
-    busybox tar -cvf /backup/backup.tar &lt;path-to-data&gt;
-</code></pre></div>
-<p>Para restaurar:</p>
-<div class="highlight"><pre><span></span><code>docker run --rm -v /tmp:/backup \
-    --volumes-from &lt;container-name&gt; 
-    busybox tar -xvf /backup/backup.tar &lt;path-to-data&gt;
-</code></pre></div>
-<h2 id="fuentes-de-esta-pagina">Fuentes de esta página:</h2>
 <ol>
-<li><a href="https://codefresh.io/docker-tutorial/everyday-hacks-docker/">https://codefresh.io/docker-tutorial/everyday-hacks-docker/</a></li>
-<li><a href="http://blog.labianchin.me/2016/02/15/docker-tips-and-tricks">http://blog.labianchin.me/2016/02/15/docker-tips-and-tricks</a></li>
+<li>Con <code>_____</code> indicamos que vamos a utilizar la imagen de Docker Hub oficial de Node, en su versión 9   </li>
+<li><code>_____</code> define el directorio sobre el que se ejecutarán las subsiguientes instrucciones del <code>Dockerfile</code>   </li>
+<li><code>_____</code> ejecuta un comando en una nueva capa de la imagen (podemos tener varios comandos <code>_____</code>)</li>
+<li><code>_____</code> como su nombre indica, copia los archivos que le indiquemos dentro del contenedor, en este caso <code>package.json</code>  <br />
+    !!!info
+        Recordemos que <code>package.json</code> cumplía ciertas funciones importantes:
+         + Centraliza la forma de interactuar con la aplicación por medio de definición de scripts (indica comandos que podemos correr dentro de nuestro proyecto, asociándolos a una palabra clave para que npm (o yarn) los reconozca cuando queramos ejecutarlos.)
+         + Gestiona de una forma clara y sencilla las dependencias necesarias para que la aplicación pueda funcionar correctamente.</li>
+<li>Con otro <code>_____</code> ejecutamos el ya conocido comando que nos instala las dependencias que se indican en el archivo que hemos copiado en el paso anterior, el <code>package.json</code></li>
+<li>Copiamos todos los archivos de nuestro directorio de trabajo al contenedor</li>
+<li>Con <code>_____</code> le indicaremos el usuario con el que correrá el contenedor</li>
+<li><code>_____</code> nos permite documentar que puertos están expuestos o a la escucha en el contenedor (sólo será accesible desde otros contenedores)</li>
+<li>Y finalmente <code>_____</code> nos permite ejecutar un comando <strong><u>dentro</u></strong> del contenedor. En este caso iniciamos la aplicación.</li>
 </ol>
-<h2 id="imagenes-base">Imágenes base</h2>
-<p>Son las imágenes más conocidas por las que podemos usar para no partir desde cero para crear la nuestra.</p>
-<ul>
-<li><a href="https://hub.docker.com/r/phusion/baseimg/">phusion/baseimage</a>: 209mb</li>
-<li><a href="https://hub.docker.com/_/centos/">centos</a>: 200mb</li>
-<li><a href="https://hub.docker.com/_/debian/">debian</a>: 101mb</li>
-<li><a href="https://hub.docker.com/_/ubuntu/">ubuntu</a>: 84mb</li>
-<li><a href="https://hub.docker.com/_/alpine/">alpine</a>: 4.4mb</li>
-<li><a href="https://hub.docker.com/_/busybox/">busybox</a>: 1.16mb</li>
-</ul>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>En Linux, cuando queremos hacer referencia al directorio actual, lo hacemos con un punto <code>.</code> </p>
+<p>Si dentro de nuestro directorio actual tenemos una carpeta llamada <code>prueba</code>, podemos hacer referencia a ella como <code>./prueba</code>, ya que el <code>.</code> hace referencia precisamente al directorio donde nos encontramos</p>
+</div>
+<p>Así pues, tener nuestra aplicación corriendo es cuestión de un par de comandos.</p>
+<p>Hacemos un build de la imagen de Docker. Le indicamos que ésta se llama <code>the-example-app.nodejs</code> y que haga el build con el contexto del directorio actual de trabajo, así como del Dockerfile que hay en él:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>docker<span class="w"> </span>build<span class="w"> </span>-t<span class="w"> </span>the-example-app.nodejs<span class="w"> </span>.
+</code></pre></div>
+<p>Y por último, iniciamos el contenedor con nuestra aplicación. Ahora sí, con la opción <code>-p</code>, le indicamos que escuche conexiones entrantes de cualquier máquina en el puerto 3000 de nuestra máquina anfitrión que haremos coincidir con el puerto 3000 del contenedor (<code>-p 3000:3000</code>). Y con la opción <code>-d</code> lo haremos correr en modo demonio, en background:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>docker<span class="w"> </span>run<span class="w"> </span>-p<span class="w"> </span><span class="m">3000</span>:3000<span class="w"> </span>-d<span class="w"> </span>the-example-app.nodejs
+</code></pre></div>
+<p>Tras esto sólo queda comprobar que, efectivamente, desde nuestra máquina podemos acceder a: <code>http://IP_Maq_Virtual:3000</code> y que allí está nuestra aplicación en funcionamiento.</p>
+<div class="admonition task">
+<p class="admonition-title">Tarea</p>
+<p>Documenta, incluyendo capturas de pantallas, el proceso que has seguido para realizar el despliegue de esta nueva aplicación, así como el resultado final.</p>
+</div>
+<h2 id="referencias">Referencias</h2>
+<p><a href="https://www.campusmvp.es/recursos/post/los-beneficios-de-utilizar-docker-y-contenedores-a-la-hora-de-programar.aspx">Los beneficios de utilizar Docker y contenedores a la hora de programar </a></p>
+<p><a href="https://developerexperience.io/practices/dockerizing">Dockerizing</a></p>
+<p><a href="https://github.com/contentful/the-example-app.nodejs">Github</a></p>
 
 
   
