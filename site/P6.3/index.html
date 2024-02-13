@@ -2026,7 +2026,8 @@ En esta configuración le decimos a Nginx:</p>
 </code></pre></div>
 </li>
 <li>
-<p>Corremos el contenedor indicando las credenciales de nuestra cuenta LDAP mediante variables de entorno con la flag <code>-e</code>. Para este caso, vamos a probar un servidor LDAP externo, csimulando que tuviéramos que integrar nuestro despliegue con un servidor ya existente en la empresa. Utilizaremos un servidor público en Internet dedicado a pruebas: <a href="https://www.freeipa.org/page/Demo">https://www.freeipa.org/page/Demo</a></p>
+<p>Corremos el contenedor indicando las credenciales de nuestra cuenta LDAP mediante variables de entorno con la flag <code>-e</code>. Para este caso, vamos a probar un servidor LDAP externo, csimulando que tuviéramos que integrar nuestro despliegue con un servidor ya existente en la empresa. </p>
+<p>Utilizaremos un servidor público en Internet dedicado a pruebas: <a href="https://www.freeipa.org/page/Demo">https://www.freeipa.org/page/Demo</a>. En esa misma URL podéis consultar usuarios y contraseñas.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>docker<span class="w"> </span>run<span class="w"> </span><span class="se">\</span>
 <a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="w">    </span>-p<span class="w"> </span><span class="m">3000</span>:80<span class="w"> </span><span class="se">\</span>
 <a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="w">    </span>--name<span class="w"> </span>ldap_demo<span class="w"> </span><span class="se">\</span>
