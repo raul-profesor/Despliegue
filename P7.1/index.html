@@ -1677,13 +1677,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#evaluacion" class="md-nav__link">
-    Evaluación
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -1753,14 +1746,13 @@
 <p>Y utilizamos yarn una vez más para iniciar la aplicación:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="gp">$ </span>yarn<span class="w"> </span>start
 </code></pre></div>
-<p>Si ahora accedemos a la IP de la máquina virtual, en el puerto 8080, deberíamos tener acceso al sitio web:</p>
-<p><img alt="" src="" /></p>
+<p>Si ahora accedemos a la IP de la máquina virtual, en el puerto 8080, deberíamos tener acceso al sitio web.</p>
 <p>Si actualizáis varias veces, podréis ver qué otros animales hay en la granja. </p>
 <p>También tenemos una batería de pruebas, no muy exhaustiva, en el directorio <code>test</code>. Probemos a ejecutarlos con yarn:</p>
 <p><img alt="" src="../img/7.1.Primer.test.png" /></p>
 <h2 id="creando-nuestro-primer-workflow">Creando nuestro primer workflow</h2>
 <p>Todos los repositorios de GitHub vienen con <em>Actions</em> activado por defecto. Comprobad en vuestro repositorio que existe una pestaña llamada <strong>Actions</strong>. Lo que necesitáis hacer es, en los <em>settings</em> de vuestro repositorio buscar el apartado de <em>Actions</em> y darle permisos para realizar cualquier acción. Podéis consultar el procedimiento en detalle <a href="https://docs.github.com/es/repositories/managing-your-repositorys-settings-and-features/enabling-features-for-your-repository/managing-github-actions-settings-for-a-repository">aquí</a></p>
-<p>Como ya hemos dicho, Actions ejecuta los workflows, los cuales suelen estar asociados a fases específicas del ciclo de desarrollo. Por ejemplo, un workflow que crra cuando se abra un pull request. También hemos comentado que dentro de los workflows están los jobs, que son acciones individuales dentro de un workflow. Por ejemplo:</p>
+<p>Como ya hemos dicho, Actions ejecuta los workflows, los cuales suelen estar asociados a fases específicas del ciclo de desarrollo. Por ejemplo, un workflow que corra cuando se abra un pull request. También hemos comentado que dentro de los workflows están los jobs, que son acciones individuales dentro de un workflow. Por ejemplo:</p>
 <p><div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>Workflow 1
 <a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>    1. Clona el repositorio
 <a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>    2. Instala los prerrequisitos
@@ -1949,33 +1941,6 @@ Ahora crearemos un pull request para esta rama. Tras crearlo, Actions iniciará 
 <p>Y esto es sólo una pequeñínisima muestra de todo lo que se puede hacer con GitHub Actions.</p>
 <h2 id="referencias">Referencias</h2>
 <p><a href="https://github.com/readme/guides/sothebys-github-actions">Build a CI/CD workflow with Github Actions </a></p>
-<h2 id="evaluacion">Evaluación</h2>
-<table>
-<thead>
-<tr>
-<th align="left">Criterio</th>
-<th align="center">Puntuación</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td align="left">Creación y comprobación del correcto funcionamiento del workflow de test</td>
-<td align="center"><strong>3 puntos</strong></td>
-</tr>
-<tr>
-<td align="left">Creación y comprobación del correcto funcionamiento del workflow de creación de imágenes Docker</td>
-<td align="center"><strong>4 puntos</strong></td>
-</tr>
-<tr>
-<td align="left">Comprobación del correcto funcionamiento de los contenedores creados a partir de las imágenes anteriores</td>
-<td align="center"><strong>2.5 puntos</strong></td>
-</tr>
-<tr>
-<td align="left">Se ha prestado especial atención al formato del documento, utilizando la plantilla actualizada y haciendo un correcto uso del lenguaje técnico</td>
-<td align="center"><strong>0.5 puntos</strong></td>
-</tr>
-</tbody>
-</table>
 
 
   
