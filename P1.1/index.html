@@ -570,8 +570,8 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#configurar-servidor-sftp-en-debian" class="md-nav__link">
-    Configurar servidor SFTP en Debian
+  <a href="#configurar-servidor-sftp-en-instancia-ec2-debian" class="md-nav__link">
+    Configurar servidor SFTP en instancia EC2 (Debian)
   </a>
   
 </li>
@@ -1821,6 +1821,10 @@ Y os deberá aparecer algo así: </p>
 <p>Y deberemos añadirle la línea:</p>
 <p><code>192.168.X.X nombre_web</code></p>
 <p>donde debéis sustituir la IP por la que tenga vuestra máquina virtual.</p>
+<div class="admonition warning">
+<p class="admonition-title">¡Atención!</p>
+<p>Cada vez que iniciamos el laboratorio de AWS, las IPs públicas cambiarán. Tenedlo en cuenta por si tenéis que cambiar esta IP en el archivo hosts al retomar la realización de la práctica.</p>
+</div>
 <h3 id="comprobar-registros-del-servidor">Comprobar registros del servidor</h3>
 <p>Comprobad que las peticiones se están registrando correctamente en los archivos de logs, tanto las correctas como las erróneas: </p>
 <ul>
@@ -1845,83 +1849,32 @@ Para solucionar esto, podéis acceder con el <em>modo privado</em> del navegador
 <p><strong>SFTP</strong> no es más que el mismo protocolo FTP pero implementado por un canal seguro. Son las siglas de SSH File Transfer Protocol y consiste en una extensión de Secure Shell Protocol (SSH) creada para poder hacer transmisiones de archivos.</p>
 <p>La seguridad que nos aporta <strong>SFTP</strong> es importante para la transferencia de archivos porque, si no disponemos de ella, los archivos viajarán tal cual por la red, sin ningún tipo de encriptación. Así pues, usando FTP tradicional, si algún agente consigue escuchar las transferencias, podría ocurrir que la información quedase al descubierto. Esto sería especialmente importante si los archivos que subimos contienen información confidencial o datos personales.</p>
 <p>Dado que usar <strong>SFTP</strong> aporta mayor seguridad a las transmisiones, es recomendable utilizarlo, más aún sabiendo que realmente no hay mucha dificultad en establecer las conexiones por el protocolo seguro.</p>
-<h3 id="configurar-servidor-sftp-en-debian">Configurar servidor SFTP en Debian</h3>
-<p>En primer lugar, lo instalaremos desde los repositorios:</p>
-<p><div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>sudo<span class="w"> </span>apt-get<span class="w"> </span>update
-<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>vsftpd
-</code></pre></div>
-Ahora vamos a crear una carpeta en nuestro <em>home</em> en Debian:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>mkdir<span class="w"> </span>/home/nombre_usuario/ftp
-</code></pre></div>
-<p>En la configuración de <em>vsftpd</em> indicaremos que este será el directorio al cual vsftpd se cambia después de conectarse el usuario.</p>
-<p>Ahora vamos a crear los certificados de seguridad necesarios para aportar la capa de cifrado a nuestra conexión (algo parecido a HTTPS)</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>sudo<span class="w"> </span>openssl<span class="w"> </span>req<span class="w"> </span>-x509<span class="w"> </span>-nodes<span class="w"> </span>-days<span class="w"> </span><span class="m">365</span><span class="w"> </span>-newkey<span class="w"> </span>rsa:2048<span class="w"> </span>-keyout<span class="w"> </span>/etc/ssl/private/vsftpd.pem<span class="w"> </span>-out<span class="w"> </span>/etc/ssl/private/vsftpd.pem
-</code></pre></div>
-<p>Y una vez realizados estos pasos, procedemos a realizar la configuración de <em>vsftpd</em> propiamente dicha. Se trata, con el editor de texto que más os guste, de editar el archivo de configuración de este servicio, por ejemplo con <em>nano</em>:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>sudo<span class="w"> </span>nano<span class="w"> </span>/etc/vsftpd.conf
-</code></pre></div>
-<p>En primer lugar, buscaremos las siguientes líneas del archivo y las eliminaremos por completo:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>rsa_cert_file<span class="s">=/etc/ssl/certs/ssl-cert-snakeoil.pem</span>
-<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>rsa_private_key_file<span class="s">=/etc/ssl/private/ssl-cert-snakeoil.key</span>
-<a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a>ssl_enable<span class="s">=NO</span>
-</code></pre></div>
-<p>Tras ello, añadiremos estas líneas en su lugar</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>rsa_cert_file<span class="s">=/etc/ssl/private/vsftpd.pem</span>
-<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>rsa_private_key_file<span class="s">=/etc/ssl/private/vsftpd.pem</span>
-<a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a>ssl_enable<span class="s">=YES</span>
-<a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a>allow_anon_ssl<span class="s">=NO</span>
-<a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a>force_local_data_ssl<span class="s">=YES</span>
-<a id="__codelineno-15-6" name="__codelineno-15-6" href="#__codelineno-15-6"></a>force_local_logins_ssl<span class="s">=YES</span>
-<a id="__codelineno-15-7" name="__codelineno-15-7" href="#__codelineno-15-7"></a>ssl_tlsv1<span class="s">=YES</span>
-<a id="__codelineno-15-8" name="__codelineno-15-8" href="#__codelineno-15-8"></a>ssl_sslv2<span class="s">=NO</span>
-<a id="__codelineno-15-9" name="__codelineno-15-9" href="#__codelineno-15-9"></a>ssl_sslv3<span class="s">=NO</span>
-<a id="__codelineno-15-10" name="__codelineno-15-10" href="#__codelineno-15-10"></a>require_ssl_reuse<span class="s">=NO</span>
-<a id="__codelineno-15-11" name="__codelineno-15-11" href="#__codelineno-15-11"></a>ssl_ciphers<span class="s">=HIGH</span>
-<a id="__codelineno-15-12" name="__codelineno-15-12" href="#__codelineno-15-12"></a>
-<a id="__codelineno-15-13" name="__codelineno-15-13" href="#__codelineno-15-13"></a>local_root<span class="s">=/home/nombre_usuario/ftp</span>
-</code></pre></div>
-<p>Y, tras guardar los cambios, reiniciamos el servicio para que coja la nueva configuración:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>restart<span class="w"> </span>--now<span class="w"> </span>vsftpd
-</code></pre></div>
+<h3 id="configurar-servidor-sftp-en-instancia-ec2-debian">Configurar servidor SFTP en instancia EC2 (Debian)</h3>
+<p>Por lo explicado en el apartado anterior, no necesitamos un software que haga de servidor FTP para nuestro objetivo, sino únicamente un servidor de SSH. Precisamente ya tenemos uno instalado en nuestra instancia EC2 (OpenSSH), que es el que venimos usando hasta ahora.</p>
+<p><strong>Sí necesitaremos un cliente de FTP para realizar la conexión, como por ejemplo <a href="https://filezilla-project.org/">Filezilla</a></strong></p>
 <div class="admonition task">
 <p class="admonition-title">Tarea</p>
 <p>Configura un nuevo dominio (nombre web) para el .zip con el nuevo sitio web que os proporcionado. <strong>En este caso debéis transferir los archivos a vuestra Debian mediante SFTP.</strong></p>
 </div>
-<p>Tras acabar esta configuración, ya podremos acceder a nuestro servidor mediante un cliente FTP adecuado, como por ejemplo <a href="https://filezilla-project.org/">Filezilla</a> de dos formas, a saber:</p>
-<ul>
-<li>
-<p>Mediante el puerto por defecto del protocolo <u>inseguro</u> FTP, el 21, pero utilizando certificados que cifran el intercambio de datos convirtiéndolo así en <u>seguro</u></p>
-</li>
-<li>
-<p>Haciendo uso del protocolo <em>SFTP</em>, dedicado al intercambio de datos mediante una conexión similar a SSH, utilizando de hecho el puerto 22.</p>
-</li>
-</ul>
 <p>Tras descargar <U><strong>el cliente FTP</strong></u> en nuestro ordenador, introducimos los datos necesarios para conectarnos a nuestro servidor FTP en Debian:</p>
-<p><img alt="" src="../img/ftp1.png" /></p>
+<p><img alt="" src="../img/sftp1.png" /></p>
 <ul>
-<li>La IP de Debian (recuadro rojo)</li>
-<li>El nombre de usuario de Debian (recuadro verde)</li>
-<li>La contraseña de ese usuario (recuadro fucsia)</li>
-<li>El puerto de conexión, que será el 21 para conectarnos utilizando los certificados generados previamente (recuadro marrón)</li>
+<li>La IP pública de nuestra instancia EC2 Debian (recuadro verde). Debe ir precedida de <code>sftp://</code> o en caso contrario habría que indicar que el puerto es el 22.</li>
+<li>El nombre de usuario de Debian (recuadro rojo)</li>
 </ul>
-<p>Tras darle al botón de <em>Conexión rápida</em>, nos saltará un aviso a propósito del certificado, le damos a aceptar puesto que no entraña peligro ya que lo hemos genrado nosotros mismos:</p>
-<p><img alt="" src="../img/ftp2.png" /></p>
-<p>Nos conectaremos directamente a la carpeta que le habíamos indicado en el archivo de configuración <code>/home/raul/ftp</code></p>
+<p>Tras darle al botón de <em>Conexión rápida</em>, se nos muestra un error:</p>
+<p><img alt="" src="../img/sftp2.png" /></p>
+<p>Nos está avisando de algo que ya sabemos. Para conectarnos a esta máquina mediante SSH (puerto 22), o lo que es lo mismo, SFTP, sólo podemos hacerlo mediante el uso de claves. Así pues, necesitamos decirle a <em>Filezilla</em> qué clave debe usar. Tan fácil como ir a <code>Edición &gt; Opciones</code>y explicitarlo:</p>
+<p><img alt="" src="../img/sftp3.png" /></p>
+<p>Tras ello, la conexión será exitosa y accederemos directamente a la carpeta <code>home</code> de nuestro usuario <code>admin</code>-</p>
+<p><img alt="" src="../img/sftp4.png" /></p>
 <p>Una vez conectados, buscamos la carpeta de nuestro ordenador donde hemos descargado el <em>.zip</em> (en la parte izquierda de la pantalla) y en la parte derecha de la pantalla, buscamos la carpeta donde queremos subirla. Con un doble click o utilizando <em>botón derecho &gt; subir</em>, la subimos al servidor.</p>
-<p><img alt="" src="../img/ftp3.png" /></p>
-<p>Si lo que quisiéramos es conectarnos por <strong>SFTP</strong>, exactamente igual de válido, haríamos:</p>
-<p><img alt="" src="../img/ftp5.png" /></p>
-<p>Fijáos que al utilizar las claves de SSH que ya estamos utilizando desde la Práctica 1, no se debe introducir la contraseña, únicamente el nombre de usuario.</p>
-<p>Puesto que nos estamos conectando usando las claves FTP, nos sale el mismo aviso que nos salía al conectarnos por primera vez por SSH a nuestra Debian, que aceptamos porque sabemos que no entraña ningún peligro en este caso:</p>
-<p><img alt="" src="../img/ftp6.png" /></p>
-<p><img alt="" src="../img/ftp7.png" /></p>
-<p>Y vemos que al ser una especie de conexión SSH, nos conecta al <code>home</code> del usuario, en lugar de a la carpeta <code>ftp</code>. A partir de aquí ya procederíamos igual que en el otro caso.</p>
 <p>Recordemos que debemos tener nuestro sitio web en la carpeta <code>/var/www</code> y darle los permisos adecuados, de forma similiar a cómo hemos hecho con el otro sitio web. </p>
 <p>El comando que nos permite descomprimir un <em>.zip</em> en un directorio concreto es:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>unzip<span class="w"> </span>archivo.zip<span class="w"> </span>-d<span class="w"> </span>/nombre/directorio
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>unzip<span class="w"> </span>archivo.zip<span class="w"> </span>-d<span class="w"> </span>/nombre/directorio
 </code></pre></div>
 <p>Si no tuvieráis unzip instalado, lo instaláis:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>sudo<span class="w"> </span>apt-get<span class="w"> </span>update<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>unzip
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>sudo<span class="w"> </span>apt-get<span class="w"> </span>update<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>unzip
 </code></pre></div>
 <h2 id="https">HTTPS</h2>
 <p>En este apartado le añadiremos a nuestro servidor una capa de seguridad necesaria. Haremos que todos nuestros sitios web alojados hagan uso de certificados SSL y se acceda a ellos por medio de HTTPS.</p>
