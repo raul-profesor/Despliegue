@@ -761,22 +761,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../P3.3-Cluster/" class="md-nav__link">
-        Práctica 3.3 - Despliegue de una aplicación "clusterizada" con Node Express
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../P3.3-Cluster2/" class="md-nav__link">
-        (ACTUALIZADA) Práctica 3.3 - Despliegue de una aplicación "clusterizada" con Node Express
+        Práctica 3.3 - Despliegue de una aplicación "clusterizada" con Node Express
       </a>
     </li>
   
@@ -1754,8 +1740,7 @@
 <p>En conclusión, no es raro encontrarse en el mundo real un proyecto a desplegar realizado en Java 8. Podría realizarse una migración y los conceptos de despliegue que veremos seguirían aplicando. Así las cosas, por facilidad en la realización de las prácticas utilizaremos Tomcat 9 y el plugin oficial de Maven para Tomcat 7 para el despliegue (luego veremos el motivo).</p>
 <h3 id="instalacion-de-tomcat">Instalación de Tomcat</h3>
 <p>Para Debian 12 Bookworm, los paquetes de Tomcat desaparecen de los repositorios y toca instalarlo a mano, decargándose los binarios y llevando a cabo todas las acciones de configuración necesarias.</p>
-<p>Para este cometido podéis seguir <a href="https://techviewleo.com/install-apache-tomcat-on-debian-bookworm/">el siguiente tutorial</a> hasta el paso 7 inclusive (sin configurar nada de proxy inverso), hasta el paso 7 inclusive pero únicamente el "Method 1".</p>
-<p>No obstante hay algún punto del tutorial que debemos variar para que todo funcione correctamente:</p>
+<p>Para este cometido podéis seguir <a href="https://www.server-world.info/en/note?os=Debian_12&amp;p=java&amp;f=2">el siguiente tutorial</a> o <a href="https://chachocool.com/como-instalar-tomcat-10-en-debian-12-bookworm/">este otro</a></p>
 <ul>
 <li>A la hora de configurar Tomcat como un servicio más del sistema para poder controlarlo con <em>systemd</em>, el archivo debe quedar así</li>
 </ul>
@@ -1784,6 +1769,7 @@
 <a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a>[Install]
 <a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a>WantedBy=multi-user.target
 </code></pre></div>
+<p>El firewall no hace falta tocarlo porque probablemente no estará activo.</p>
 <h3 id="despliegue-manual-mediante-la-gui-de-administracion">Despliegue manual mediante la GUI de administración</h3>
 <p>Realizaremos el despliegue manual de una aplicación ya previamente empaquetada en formato WAR. Para ello:</p>
 <ol>
