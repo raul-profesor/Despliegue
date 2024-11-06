@@ -1769,21 +1769,19 @@
 <ol>
 <li>
 <p>Instalamos el gestor de paquetes de Python pip:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>sudo<span class="w"> </span>apt-get<span class="w"> </span>update
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>sudo<span class="w"> </span>apt<span class="w"> </span>update
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>python3-pip
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>python3-pip
 </code></pre></div>
 </li>
 <li>
 <p>Instalamos el paquete <code>pipenv</code> para gestionar los entornos virtuales:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>pip3<span class="w"> </span>install<span class="w"> </span>pipenv
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>pipenv
 </code></pre></div>
 </li>
 <li>
 <p>Y comprobamos que está instalado correctamente mostrando su versión:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="nv">PATH</span><span class="o">=</span><span class="nv">$PATH</span>:/home/raul/.local/bin
-<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>
-<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>pipenv<span class="w"> </span>--version
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>pipenv<span class="w"> </span>--version
 </code></pre></div>
 </li>
 <li>
@@ -1850,6 +1848,12 @@ Y tras crear los archivos, los editamos para dejarlos así:</p>
 <p><img alt="" src="../img/app-1.png" /></p>
 <p>Tras la comprobación, paramos el servidor con <code>CTRL+C</code></p>
 </li>
+</ol>
+<div class="admonition tip">
+<p class="admonition-title">Recordatorio</p>
+<p>Habrás de abrir el puerto correspondiente en el grupo de seguridad</p>
+</div>
+<ol>
 <li>
 <p>Comprobemos ahora que Gunicorn funciona correctamente también. Si os ha funcionado el servidor de desarrollo de Flask, podéis usar el siguiente comando para probar que la alicación funciona correctamente usando Gunicorn, accediendo con vuestro navegador de la misma forma que en el paso anterior:</p>
 <p><div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>gunicorn<span class="w"> </span>--workers<span class="w"> </span><span class="m">4</span><span class="w"> </span>--bind<span class="w"> </span><span class="m">0</span>.0.0.0:5000<span class="w"> </span>wsgi:app
