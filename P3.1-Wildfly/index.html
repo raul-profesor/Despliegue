@@ -1832,63 +1832,63 @@ A fecha de realización de estos apuntes, WildFly soporta Java 17 y Java 11, pod
 <div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="go">sudo apt install curl wget</span>
 </code></pre></div>
 <p>Bajamos el archivo comprimido con la última versión de WildFly:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="go">WildFly_RELEASE=$(curl -s https://api.github.com/repos/WildFly/WildFly/releases/latest|grep tag_name|cut -d &#39;&quot;&#39; -f 4)</span>
-<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="go">wget https://github.com/WildFly/WildFly/releases/download/${WildFly_RELEASE}/WildFly-${WildFly_RELEASE}.tar.gz</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="go">Wildfly_RELEASE=$(curl -s https://api.github.com/repos/wildfly/wildfly/releases/latest|grep tag_name|cut -d &#39;&quot;&#39; -f 4)</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="go">wget https://github.com/Wildfly/wildfly/releases/download/${wildfly_RELEASE}/wildfly-${wildfly_RELEASE}.tar.gz</span>
 </code></pre></div>
 <p>Descomprimimos:</p>
-<p><div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="go">tar xvf WildFly-${WildFly_RELEASE}.tar.gz</span>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="go">tar xvf wildfly-${wildfly_RELEASE}.tar.gz</span>
 </code></pre></div>
 Movemos el contenido descomprimido al directorio <code>/opt</code>:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="go">sudo mv WildFly-${WildFly_RELEASE} /opt/WildFly</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="go">sudo mv wildfly-${wildfly_RELEASE} /opt/wildfly</span>
 </code></pre></div>
 </li>
 <li>
 <p><strong>Configurar WildFly como un servicio más de Systemd</strong></p>
-<p>Para facilitar la asministración de WildFly, lo configuraremos con un servicio más del sistema. Para empezar añadiso el usuario de sistema <code>WildFly</code>que es el que se encargará del servicio:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="go">sudo groupadd --system WildFly</span>
-<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="go">sudo useradd -s /sbin/nologin --system -d /opt/WildFly  -g WildFly WildFly</span>
+<p>Para facilitar la asministración de WildFly, lo configuraremos con un servicio más del sistema. Para empezar añadiso el usuario de sistema <code>wildfly</code>que es el que se encargará del servicio:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="go">sudo groupadd --system wildfly</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="go">sudo useradd -s /sbin/nologin --system -d /opt/wildfly  -g wildfly wildfly</span>
 </code></pre></div>
 <p>Creamos el directorio que contendrá las configuraciones de WildFly:</p>
-<p><div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="go">sudo mkdir /etc/WildFly</span>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="go">sudo mkdir /etc/wildfly</span>
 </code></pre></div>
-Copiamos el archivo del servicio así como los scripts de inicisio al directorio <code>/opt/WildFly/docs/contrib/scripts/systemd/</code>:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="go">sudo cp /opt/WildFly/docs/contrib/scripts/systemd/WildFly.conf /etc/WildFly/</span>
-<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="go">sudo cp /opt/WildFly/docs/contrib/scripts/systemd/WildFly.service /etc/systemd/system/</span>
-<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="go">sudo cp /opt/WildFly/docs/contrib/scripts/systemd/launch.sh /opt/WildFly/bin/</span>
-<a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="go">sudo chmod +x /opt/WildFly/bin/launch.sh</span>
+Copiamos el archivo del servicio así como los scripts de inicisio al directorio <code>/opt/wildfly/docs/contrib/scripts/systemd/</code>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="go">sudo cp /opt/wildfly/docs/contrib/scripts/systemd/wildfly.conf /etc/wildfly/</span>
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="go">sudo cp /opt/wildfly/docs/contrib/scripts/systemd/wildfly.service /etc/systemd/system/</span>
+<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="go">sudo cp /opt/wildfly/docs/contrib/scripts/systemd/launch.sh /opt/wildfly/bin/</span>
+<a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="go">sudo chmod +x /opt/wildfly/bin/launch.sh</span>
 </code></pre></div>
-<p>Le damos los permisos adecuados al directorio <code>/opt/WildFly</code>:</p>
-<p><div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="go">sudo chown -R WildFly:WildFly /opt/WildFly</span>
+<p>Le damos los permisos adecuados al directorio <code>/opt/wildfly</code>:</p>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="go">sudo chown -R wildfly:wildfly /opt/wildfly</span>
 </code></pre></div>
 Recargamos los servicios de systemd (sistema que se encarga de manejar los servicios en nuestra Debian):</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="go">sudo systemctl daemon-reload</span>
 </code></pre></div>
 <p>Iniciamos el servicio WildFly y lo habilitamos para que se inicie automáticamente al arrancar la máquina:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="go">sudo systemctl start WildFly</span>
-<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="go">sudo systemctl enable WildFly</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="go">sudo systemctl start wildfly</span>
+<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="go">sudo systemctl enable wildfly</span>
 </code></pre></div>
 <p>Comprobamos que se etá ejecutando:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="gp">admin@ip-172-31-89-217:~$ </span>sudo<span class="w"> </span>systemctl<span class="w"> </span>status<span class="w"> </span>WildFly
-<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="go">● WildFly.service - The WildFly Application Server</span>
-<a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a><span class="go">    Loaded: loaded (/etc/systemd/system/WildFly.service; enabled; preset: enabled)</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="gp">admin@ip-172-31-89-217:~$ </span>sudo<span class="w"> </span>systemctl<span class="w"> </span>status<span class="w"> </span>wildfly
+<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="go">● wildfly.service - The wildfly Application Server</span>
+<a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a><span class="go">    Loaded: loaded (/etc/systemd/system/wildfly.service; enabled; preset: enabled)</span>
 <a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a><span class="go">    Active: active (running) since Sat 2024-11-09 07:58:20 UTC; 2h 46min ago</span>
 <a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a><span class="go">Main PID: 1829 (launch.sh)</span>
 <a id="__codelineno-15-6" name="__codelineno-15-6" href="#__codelineno-15-6"></a><span class="go">    Tasks: 55 (limit: 2345)</span>
 <a id="__codelineno-15-7" name="__codelineno-15-7" href="#__codelineno-15-7"></a><span class="go">    Memory: 315.9M</span>
 <a id="__codelineno-15-8" name="__codelineno-15-8" href="#__codelineno-15-8"></a><span class="go">        CPU: 30.111s</span>
-<a id="__codelineno-15-9" name="__codelineno-15-9" href="#__codelineno-15-9"></a><span class="go">    CGroup: /system.slice/WildFly.service</span>
-<a id="__codelineno-15-10" name="__codelineno-15-10" href="#__codelineno-15-10"></a><span class="go">            ├─1829 /bin/bash /opt/WildFly/bin/launch.sh standalone standalone.xml 0.0.0.0</span>
-<a id="__codelineno-15-11" name="__codelineno-15-11" href="#__codelineno-15-11"></a><span class="go">            ├─1832 /bin/sh /opt/WildFly/bin/standalone.sh -c standalone.xml -b 0.0.0.0 -bmanagement=0.0.0.0</span>
+<a id="__codelineno-15-9" name="__codelineno-15-9" href="#__codelineno-15-9"></a><span class="go">    CGroup: /system.slice/wildfly.service</span>
+<a id="__codelineno-15-10" name="__codelineno-15-10" href="#__codelineno-15-10"></a><span class="go">            ├─1829 /bin/bash /opt/wildfly/bin/launch.sh standalone standalone.xml 0.0.0.0</span>
+<a id="__codelineno-15-11" name="__codelineno-15-11" href="#__codelineno-15-11"></a><span class="go">            ├─1832 /bin/sh /opt/wildfly/bin/standalone.sh -c standalone.xml -b 0.0.0.0 -bmanagement=0.0.0.0</span>
 <a id="__codelineno-15-12" name="__codelineno-15-12" href="#__codelineno-15-12"></a><span class="go">            └─1957 java &quot;-D[Standalone]&quot; &quot;-Djdk.serialFilter=maxbytes=10485760;maxdepth=128;maxarray=100000;maxrefs=300000&quot; -Xms64m -Xmx512m -XX:MetaspaceSize=96M -XX:MaxMetaspaceSize=256m -Djava.net.prefer&gt;</span>
 <a id="__codelineno-15-13" name="__codelineno-15-13" href="#__codelineno-15-13"></a>
-<a id="__codelineno-15-14" name="__codelineno-15-14" href="#__codelineno-15-14"></a><span class="go">Nov 09 07:58:20 ip-172-31-89-217 systemd[1]: Started WildFly.service - The WildFly Application Server.</span>
+<a id="__codelineno-15-14" name="__codelineno-15-14" href="#__codelineno-15-14"></a><span class="go">Nov 09 07:58:20 ip-172-31-89-217 systemd[1]: Started wildfly.service - The wildfly Application Server.</span>
 </code></pre></div>
 </li>
 <li>
 <p><strong>Crear usuarios de WildFly</strong></p>
 <p>WildFly tiene medidas de seguridad activadas para las interfaces de administración. Por este motivo necesitamos crear un usuario que sea capaz de acceder a la consola de administración de forma remota o usando el CLI. </p>
 <p>WildFly nos proporciona un archivo para administrar los usuarios, así que en primer lugar y para crear un usuario:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="go">sudo /opt/WildFly/bin/add-user.sh</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="go">sudo /opt/wildfly/bin/add-user.sh</span>
 </code></pre></div>
 <p>Cuando nos pregunte qué tipo de usuario queremos crear:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="go">What type of user do you wish to add? </span>
@@ -1913,10 +1913,10 @@ Y finalizáis la creación:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="go">What groups do you want this user to belong to? (Please enter a comma separated list, or leave blank for none)[  ]: &lt;Enter&gt;</span>
 <a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a><span class="go">About to add user &#39;raul&#39; for realm &#39;ManagementRealm&#39;</span>
 <a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a><span class="go">Is this correct yes/no? yes</span>
-<a id="__codelineno-20-4" name="__codelineno-20-4" href="#__codelineno-20-4"></a><span class="go">Added user &#39;raul&#39; to file &#39;/opt/WildFly/standalone/configuration/mgmt-users.properties&#39;</span>
-<a id="__codelineno-20-5" name="__codelineno-20-5" href="#__codelineno-20-5"></a><span class="go">Added user &#39;raul&#39; to file &#39;/opt/WildFly/domain/configuration/mgmt-users.properties&#39;</span>
-<a id="__codelineno-20-6" name="__codelineno-20-6" href="#__codelineno-20-6"></a><span class="go">Added user &#39;raul&#39; with groups  to file &#39;/opt/WildFly/standalone/configuration/mgmt-groups.properties&#39;</span>
-<a id="__codelineno-20-7" name="__codelineno-20-7" href="#__codelineno-20-7"></a><span class="go">Added user &#39;raul&#39; with groups  to file &#39;/opt/WildFly/domain/configuration/mgmt-groups.properties&#39;</span>
+<a id="__codelineno-20-4" name="__codelineno-20-4" href="#__codelineno-20-4"></a><span class="go">Added user &#39;raul&#39; to file &#39;/opt/wildfly/standalone/configuration/mgmt-users.properties&#39;</span>
+<a id="__codelineno-20-5" name="__codelineno-20-5" href="#__codelineno-20-5"></a><span class="go">Added user &#39;raul&#39; to file &#39;/opt/wildfly/domain/configuration/mgmt-users.properties&#39;</span>
+<a id="__codelineno-20-6" name="__codelineno-20-6" href="#__codelineno-20-6"></a><span class="go">Added user &#39;raul&#39; with groups  to file &#39;/opt/wildfly/standalone/configuration/mgmt-groups.properties&#39;</span>
+<a id="__codelineno-20-7" name="__codelineno-20-7" href="#__codelineno-20-7"></a><span class="go">Added user &#39;raul&#39; with groups  to file &#39;/opt/wildfly/domain/configuration/mgmt-groups.properties&#39;</span>
 <a id="__codelineno-20-8" name="__codelineno-20-8" href="#__codelineno-20-8"></a><span class="go">Is this new user going to be used for one AS process to connect to another AS process? </span>
 <a id="__codelineno-20-9" name="__codelineno-20-9" href="#__codelineno-20-9"></a><span class="go">e.g. for a slave host controller connecting to the master or for a Remoting connection for server to server EJB calls.</span>
 <a id="__codelineno-20-10" name="__codelineno-20-10" href="#__codelineno-20-10"></a><span class="go">yes/no? yes</span>
@@ -1926,10 +1926,10 @@ Y finalizáis la creación:</p>
 <li>
 <p><strong>Accediendo a la consola de administración de WildFly</strong></p>
 <p>Para comprobar que todo está correcto, vamos a cerciorarnos de que podemos acceder a la consola de administración. </p>
-<p>Para ser capaces de ejecutar los scripts de WildFly desde nuestra sesión actual, añadimos el directorio  <code>/opt/WildFly/bin/</code> a nuestro PATH:</p>
+<p>Para ser capaces de ejecutar los scripts de WildFly desde nuestra sesión actual, añadimos el directorio  <code>/opt/wildfly/bin/</code> a nuestro PATH:</p>
 <p><div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="go">cat &gt;&gt; ~/.bashrc &lt;&lt;EOF</span>
-<a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a><span class="go">export WildFly_BIN=&quot;/opt/WildFly/bin/&quot;</span>
-<a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a><span class="go">export PATH=\$PATH:\$WildFly_BIN                                                                                                                    </span>
+<a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a><span class="go">export wildfly_BIN=&quot;/opt/wildfly/bin/&quot;</span>
+<a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a><span class="go">export PATH=\$PATH:\$wildfly_BIN                                                                                                                    </span>
 <a id="__codelineno-21-4" name="__codelineno-21-4" href="#__codelineno-21-4"></a><span class="go">EOF</span>
 </code></pre></div>
 Y para no tener que reiniciar nuestra sesión actual SSH, aplicamos los cambios en la sesión actual así:</p>
@@ -1943,24 +1943,24 @@ Y para no tener que reiniciar nuestra sesión actual SSH, aplicamos los cambios 
 <a id="__codelineno-23-5" name="__codelineno-23-5" href="#__codelineno-23-5"></a><span class="go">[standalone@localhost:9990 /] exit</span>
 </code></pre></div>
 <h4 id="accediendo-a-la-consola-de-administracion-desde-la-interfaz-web">Accediendo a la consola de administración desde la interfaz web</h4>
-<p>Debemos modificar el archivo <code>/opt/WildFly/bin/launch.sh/opt/WildFly/bin/launch.sh</code> y dejarlo así:</p>
+<p>Debemos modificar el archivo <code>/opt/wildfly/bin/launch.sh/opt/wildfly/bin/launch.sh</code> y dejarlo así:</p>
 <p><div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a><span class="ch">#!/bin/bash</span>
 <a id="__codelineno-24-2" name="__codelineno-24-2" href="#__codelineno-24-2"></a>
-<a id="__codelineno-24-3" name="__codelineno-24-3" href="#__codelineno-24-3"></a><span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span><span class="s2">&quot;x</span><span class="nv">$WildFly_HOME</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;x&quot;</span><span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
-<a id="__codelineno-24-4" name="__codelineno-24-4" href="#__codelineno-24-4"></a><span class="w">    </span><span class="nv">WildFly_HOME</span><span class="o">=</span><span class="s2">&quot;/opt/WildFly&quot;</span>
+<a id="__codelineno-24-3" name="__codelineno-24-3" href="#__codelineno-24-3"></a><span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span><span class="s2">&quot;x</span><span class="nv">$wildfly_HOME</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;x&quot;</span><span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<a id="__codelineno-24-4" name="__codelineno-24-4" href="#__codelineno-24-4"></a><span class="w">    </span><span class="nv">wildfly_HOME</span><span class="o">=</span><span class="s2">&quot;/opt/wildfly&quot;</span>
 <a id="__codelineno-24-5" name="__codelineno-24-5" href="#__codelineno-24-5"></a><span class="k">fi</span>
 <a id="__codelineno-24-6" name="__codelineno-24-6" href="#__codelineno-24-6"></a>
 <a id="__codelineno-24-7" name="__codelineno-24-7" href="#__codelineno-24-7"></a><span class="k">if</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$1</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">&quot;domain&quot;</span><span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
-<a id="__codelineno-24-8" name="__codelineno-24-8" href="#__codelineno-24-8"></a><span class="w">    </span><span class="nv">$WildFly_HOME</span>/bin/domain.sh<span class="w"> </span>-c<span class="w"> </span><span class="nv">$2</span><span class="w"> </span>-b<span class="w"> </span><span class="nv">$3</span>
+<a id="__codelineno-24-8" name="__codelineno-24-8" href="#__codelineno-24-8"></a><span class="w">    </span><span class="nv">$wildfly_HOME</span>/bin/domain.sh<span class="w"> </span>-c<span class="w"> </span><span class="nv">$2</span><span class="w"> </span>-b<span class="w"> </span><span class="nv">$3</span>
 <a id="__codelineno-24-9" name="__codelineno-24-9" href="#__codelineno-24-9"></a><span class="k">else</span>
-<a id="__codelineno-24-10" name="__codelineno-24-10" href="#__codelineno-24-10"></a><span class="w">    </span><span class="nv">$WildFly_HOME</span>/bin/standalone.sh<span class="w"> </span>-c<span class="w"> </span><span class="nv">$2</span><span class="w"> </span>-b<span class="w"> </span><span class="nv">$3</span><span class="w"> </span>-bmanagement<span class="o">=</span><span class="m">0</span>.0.0.0
+<a id="__codelineno-24-10" name="__codelineno-24-10" href="#__codelineno-24-10"></a><span class="w">    </span><span class="nv">$wildfly_HOME</span>/bin/standalone.sh<span class="w"> </span>-c<span class="w"> </span><span class="nv">$2</span><span class="w"> </span>-b<span class="w"> </span><span class="nv">$3</span><span class="w"> </span>-bmanagement<span class="o">=</span><span class="m">0</span>.0.0.0
 <a id="__codelineno-24-11" name="__codelineno-24-11" href="#__codelineno-24-11"></a><span class="k">fi</span>
 </code></pre></div>
 Reiniciamos el servicio tras el cambio:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a><span class="go">sudo systemctl restart WildFly</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a><span class="go">sudo systemctl restart wildfly</span>
 </code></pre></div>
 <p>Comprobamos su estado:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a><span class="go">systemctl status  WildFly</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a><span class="go">systemctl status  wildfly</span>
 </code></pre></div>
 <p>Y tras esto, debemos ser capaces de acceder a nuestra interfaz web de administración en la URL <code>http://IP-EC2:9990</code> y podremos autenticarnos con el usuario creado anteriormente.</p>
 <div class="admonition tip">
@@ -2015,8 +2015,8 @@ Pero podemos solventarlo fćilmente indicando en el <code>pom.xml</code>que se u
 </code></pre></div>
 <p>Y por último, configuramos el despliegue y retirada de una aplicación en WildFly usando Maven:</p>
 <p><plugin>
-    <groupId>org.WildFly.plugins</groupId>
-    <artifactId>WildFly-maven-plugin</artifactId>
+    <groupId>org.wildfly.plugins</groupId>
+    <artifactId>wildfly-maven-plugin</artifactId>
     <version>4.2.2.Final</version>
 </plugin></p>
 <p>Quedando el <code>pom.xml</code>definitivo tal que así:</p>
@@ -2071,8 +2071,8 @@ Pero podemos solventarlo fćilmente indicando en el <code>pom.xml</code>que se u
 <a id="__codelineno-32-49" name="__codelineno-32-49" href="#__codelineno-32-49"></a><span class="w">            </span><span class="nt">&lt;/plugin&gt;</span>
 <a id="__codelineno-32-50" name="__codelineno-32-50" href="#__codelineno-32-50"></a>
 <a id="__codelineno-32-51" name="__codelineno-32-51" href="#__codelineno-32-51"></a><span class="w">            </span><span class="nt">&lt;plugin&gt;</span>
-<a id="__codelineno-32-52" name="__codelineno-32-52" href="#__codelineno-32-52"></a><span class="w">                </span><span class="nt">&lt;groupId&gt;</span>org.WildFly.plugins<span class="nt">&lt;/groupId&gt;</span>
-<a id="__codelineno-32-53" name="__codelineno-32-53" href="#__codelineno-32-53"></a><span class="w">                </span><span class="nt">&lt;artifactId&gt;</span>WildFly-maven-plugin<span class="nt">&lt;/artifactId&gt;</span>
+<a id="__codelineno-32-52" name="__codelineno-32-52" href="#__codelineno-32-52"></a><span class="w">                </span><span class="nt">&lt;groupId&gt;</span>org.Wildfly.plugins<span class="nt">&lt;/groupId&gt;</span>
+<a id="__codelineno-32-53" name="__codelineno-32-53" href="#__codelineno-32-53"></a><span class="w">                </span><span class="nt">&lt;artifactId&gt;</span>Wildfly-maven-plugin<span class="nt">&lt;/artifactId&gt;</span>
 <a id="__codelineno-32-54" name="__codelineno-32-54" href="#__codelineno-32-54"></a><span class="w">                </span><span class="nt">&lt;version&gt;</span>4.2.2.Final<span class="nt">&lt;/version&gt;</span>
 <a id="__codelineno-32-55" name="__codelineno-32-55" href="#__codelineno-32-55"></a><span class="w">            </span><span class="nt">&lt;/plugin&gt;</span>
 <a id="__codelineno-32-56" name="__codelineno-32-56" href="#__codelineno-32-56"></a>
@@ -2180,7 +2180,7 @@ Pero podemos solventarlo fćilmente indicando en el <code>pom.xml</code>que se u
 Esto generará el paquete <code>target/module.backend-0.0.1-snapshot.war</code>. Veamos ahora cómo desplegarlo en WildFly.</p>
 <h3 id="despliegue-en-wildfly">Despliegue en WildFly</h3>
 <p>Ya tenemos WildFly corriendo desde el principio de este proceso. Para realizar el despliegue, basta con meter el siguiente comando:</p>
-<p><div class="highlight"><pre><span></span><code><a id="__codelineno-36-1" name="__codelineno-36-1" href="#__codelineno-36-1"></a><span class="go">mvn WildFly::deploy</span>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-36-1" name="__codelineno-36-1" href="#__codelineno-36-1"></a><span class="go">mvn Wildfly::deploy</span>
 </code></pre></div>
 Os pedirá vuestro usuario/contraseña y si todo ha ido bien, veréis algo como esto:</p>
 <p><img alt="" src="../img/mvn_deploy_wildfly.png" /></p>
@@ -2191,8 +2191,8 @@ Os pedirá vuestro usuario/contraseña y si todo ha ido bien, veréis algo como 
 <p>Que nos devuelve una respuesta JSON, correctamente renderizada por el navegador. </p>
 <p>Comprobad que ocurre lo mismo con <code>/pojo/find</code>.</p>
 <h4 id="usando-curl-para-hacer-peticiones">Usando curl para hacer peticiones</h4>
-<p>Ejecuta el siguiente comando para poder ver a tiempo real el log de WildFly:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-37-1" name="__codelineno-37-1" href="#__codelineno-37-1"></a><span class="go">tail -f /opt/WildFly/standalone/log/server.log</span>
+<p>Ejecuta el siguiente comando para poder ver a tiempo real el log de Wildfly:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-37-1" name="__codelineno-37-1" href="#__codelineno-37-1"></a><span class="go">tail -f /opt/wildfly/standalone/log/server.log</span>
 </code></pre></div>
 <p>Y realiza las siguiente peticiones en el terminal de tu instancia, de forma que simulamos diferentes llamadas a los endpoints de la API:</p>
 <ul>
