@@ -3,16 +3,16 @@ site_url: https://raul-profesor.github.io/Despliegue
 
 theme:
   name: material
+  font:
+    code: Roboto
   palette: 
     - media: "(prefers-color-scheme: light)"    
     # Palette toggle for light mode
-      scheme: default
       primary: green
       accent: blue
       toggle:
         icon: material/toggle-switch-off-outline
         name: Cambiar a modo oscuro
-
     # Palette toggle for dark mode
     - media: "(prefers-color-scheme: dark)"
       scheme: slate
@@ -29,6 +29,7 @@ theme:
     - toc.integrate
     - search.highlight
     - content.code.annotate
+    - content.code.copy
 markdown_extensions:
   - meta
   - tables
