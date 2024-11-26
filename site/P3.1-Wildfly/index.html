@@ -1976,8 +1976,11 @@ Reiniciamos el servicio tras el cambio:</p>
 </li>
 </ol>
 <h2 id="configuracion-de-carpeta-de-proyecto-para-maven">Configuración de carpeta de proyecto para Maven</h2>
-<p>Debéis crearos una carpeta con el nombre que queráis y que contendrá todos los archivos y directorios necesarios para la aplicación y apra poder desplegarla con Maven.</p>
+<p>En teoría, si desarrollaráis una aplicación de 0, deberíais crearos una carpeta con el nombre que queráis y que contendrá todos los archivos y directorios necesarios para la aplicación y apra poder desplegarla con Maven.</p>
 <p>Una vez creada la carpeta, dentro de ella y como ya sabemos de la parte teórica, deber ir el archivo de configuración <a href="https://www.campusmvp.es/recursos/post/java-que-es-maven-que-es-el-archivo-pom-xml.aspx"><code>pom.xml</code></a>.</p>
+<p>Como ya hemos comentado otras veces, este módulo se centra en el proceso de despliegue y no en el de desarrollo. </p>
+<p><strong>Así las cosas, supondremos que la aplicación que hemos desarrollado es la que podéis encontrar en este directorio <a href="https://github.com/raul-profesor/practica-jakarta-wildfly">https://github.com/raul-profesor/practica-jakarta-wildfly</a></strong></p>
+<p>Deberéis clonaros el repositorio y ubicar el <code>pom.xml</code> en el lugar correcto dentro del directorio.</p>
 <p>Dentro del POM debemos establecer la dependencia de Jakarta API tal que así:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a><span class="nt">&lt;dependencies&gt;</span>
 <a id="__codelineno-27-2" name="__codelineno-27-2" href="#__codelineno-27-2"></a>
