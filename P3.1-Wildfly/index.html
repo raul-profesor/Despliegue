@@ -2189,7 +2189,7 @@ Pero podemos solventarlo fćilmente indicando en el <code>pom.xml</code>que se u
 Esto generará el paquete <code>target/module.backend-0.0.1-snapshot.war</code>. Veamos ahora cómo desplegarlo en WildFly.</p>
 <h3 id="despliegue-en-wildfly">Despliegue en WildFly</h3>
 <p>Ya tenemos WildFly corriendo desde el principio de este proceso. Para realizar el despliegue, basta con meter el siguiente comando:</p>
-<p><div class="highlight"><pre><span></span><code><a id="__codelineno-36-1" name="__codelineno-36-1" href="#__codelineno-36-1"></a><span class="go">mvn Wildfly::deploy</span>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-36-1" name="__codelineno-36-1" href="#__codelineno-36-1"></a><span class="go">mvn wildfly::deploy</span>
 </code></pre></div>
 Os pedirá vuestro usuario/contraseña y si todo ha ido bien, veréis algo como esto:</p>
 <p><img alt="" src="../img/mvn_deploy_wildfly.png" /></p>
