@@ -1666,7 +1666,7 @@
 <a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>service<span class="w"> </span>docker<span class="w"> </span>start<span class="w"> </span>
 <a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>systemctl<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>docker.service
 <a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>docker<span class="w"> </span>pull<span class="w"> </span>bkimminich/juice-shop<span class="w"> </span>
-<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>docker<span class="w"> </span>run<span class="w"> </span>-d<span class="w"> </span>-p<span class="w"> </span><span class="m">80</span>:3000<span class="w"> </span>bkimminich/juice-shop
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>docker<span class="w"> </span>run<span class="w"> </span>-d<span class="w"> </span>--restart<span class="w"> </span>always<span class="w"> </span>-p<span class="w"> </span><span class="m">80</span>:3000<span class="w"> </span>bkimminich/juice-shop
 </code></pre></div>
 <p><img alt="" src="../img/route53_4.png" /></p>
 <p><img alt="" src="../img/route53_5.png" /></p>
