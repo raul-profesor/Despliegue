@@ -811,6 +811,13 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#instancias-ec2-necesarias" class="md-nav__link">
+    Instancias EC2 necesarias
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#instalacion-de-servidor-dns" class="md-nav__link">
     Instalación de servidor DNS
   </a>
@@ -1699,6 +1706,17 @@
 <p class="admonition-title">Nota importante</p>
 <p>Es muy importante que antes de empezar esta práctica eliminéis las entradas que habéis ido introduciendo hasta ahora en vuestro archivo <code>/etc/hosts</code> para asegurarnos que realmente la resolución de nombres va a nuestro servidor DNS. Si no hacéis esto, resolverá los nombres, pensaréis que está bien pero en realidad estará mal.</p>
 </div>
+<div class="admonition note">
+<p class="admonition-title">Concepto importante antes de empezar</p>
+<p><strong>Una IP es una dirección de 32 bits, o lo que es lo mismo, 4 bytes, separados entre ellos por puntos: 192.168.15.18</strong></p>
+</div>
+<h2 id="instancias-ec2-necesarias">Instancias EC2 necesarias</h2>
+<p>Para esta práctica utilizaremos 3 máquinas:</p>
+<ol>
+<li><u>Debian:</u> Será dónde instalaremos y configuraremos nuestro servidor DNS</li>
+<li><u>Amazon Linux 2023:</u> Donde instalaremos la aplicación web Juicy Shop (podéis reutilizar la máquina de la práctica 4.2)</li>
+<li><u>Windows:</u> Será el cliente que haga las peticiones DNS y desde donde haremos las comprobaciones (podéis reutilizar la máquina de la práctica 4.2)</li>
+</ol>
 <h2 id="instalacion-de-servidor-dns">Instalación de servidor DNS</h2>
 <p>Bind es el estándar de facto para servidores DNS. Es una herramienta de software libre y se distribuye con la mayoría de plataformas Unix y Linux, donde también se le conoce con el sobrenombre de named (name daemon). Bind9 es la versión recomendada para usarse y es la que emplearemos.</p>
 <p>Para instalar el servidor DNS en Ubuntu Server, usaremos los repositorios oficiales. Por ello, podremos instalarlo como cualquier paquete en Ubuntu:</p>
@@ -1725,14 +1743,17 @@
 <ul>
 <li>
 <p>Por motivos de seguridad, vamos a incluir una lista de acceso para que sólo puedan hacer consultas recursivas al servidor aquellos hosts que nosotros decidamos.</p>
-<p>En nuestro caso, los hosts confiables serán los de la red 192.168.X.0/24 (donde la X depende de vuestra red de casa). Así pues, justo antes del bloque <code>options {…}</code>, al principio del archivo, añadiremos algo así:</p>
-<p><img alt="" src="../img/3.1.bind_2.png" /></p>
-</li>
-</ul>
-<p>Si nos fijamos el servidor por defecto ya viene configurado para ser un DNS caché. El directorio donde se cachearán o guardarán las zonas es <code>/var/cache/bind</code>.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>/var/cache/bind
+<p>En nuestro caso, los hosts confiables serán los de nuestra red privada de AWS. Si consultamos en la sección de <strong><em>VPC</em></strong> cuál es nuestra dirección de red (privada), veremos algo así:</p>
+<p><img alt="" src="../img/vpc_dns.png" /></p>
+<p>Así pues, justo antes del bloque <code>options {…}</code>, al principio del archivo, añadiremos otro bloque como el siguiente:</p>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>    acl confiables {
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>    172.31.0.0/16;
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>    };
 </code></pre></div>
-<ul>
+Si nos fijamos el servidor por defecto ya viene configurado para ser un DNS caché. El directorio donde se cachearán o guardarán las zonas es <code>/var/cache/bind</code>.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>/var/cache/bind
+</code></pre></div>
+</li>
 <li>
 <p>Que sólo se permitan las consultas recursivas a los hosts que hemos decidido en la lista de acceso anterior</p>
 </li>
@@ -1763,19 +1784,23 @@
 <p>El contenido será algo así (procurad respetar el formato):</p>
 <p><img alt="" src="../img/3.1.bind_7.png" /></p>
 <p>Recordad de teoría que los registros SOA son para detallar aspectos de la zona autoritativa, los NS para indicar los servidores DNS de la zona y los A las IPs respectivas.</p>
-<p>Donde aparecen las X debéis poner vuestras IPs privadas correspondientes, tanto de vuestro servidor como de vuestro cliente..</p>
+<p>Donde aparecen las X debéis poner vuestras IPs privadas correspondientes, tanto de vuestro servidor DNS como de vuestro servidor web.</p>
 <h3 id="creacion-del-archivo-de-zona-para-la-resolucion-inversa">Creación del archivo de zona para la resolución inversa</h3>
 <p>Recordad que deben existir ambos archivos de zona, uno para la resolución directa y otro para la inversa. Vamos pues a crear el archivo de zona inversa.</p>
 <p>En primer lugar, debemos añadir las líneas correspondientes a esta zona inversa en el archivo
 <strong><code>named.conf.local</code></strong>, igual que hemos hecho antes con la zona de resolución directa:</p>
 <p><img alt="" src="../img/3.1.bind_8.png" /></p>
-<p>Donde la X es el tercer byte de vuestra red.</p>
 <p>Y la configuración de la zona de resolución inversa:</p>
 <p><img alt="" src="../img/3.1.bind_9.png" /></p>
+<div class="admonition warning">
+<p class="admonition-title">Cuidado</p>
+<p>Acordaos que cuando se produce cualquier resolución DNS, la lectura del término que se consulta se produce de derecha a izquierda (del dominio raíz hacia abajo).
+Esto quiere decir que los bytes de la IP que tenéis que poner en X.X son el 4º y el 3º respectivamente.</p>
+</div>
 <p>Podemos comprobar que la configuración de las zonas es correcta con el comando adecuado.</p>
 <h3 id="comprobacion-de-las-configuraciones">Comprobación de las configuraciones</h3>
 <p>Para comprobar la configuración de la zona de resolución directa:</p>
-<p><img alt="" src="../img/3.1.bind_10.png" />m</p>
+<p><img alt="" src="../img/3.1.bind_10.png" /></p>
 <p>Y para comprobar la configuración de la zona de resolución inversa:</p>
 <p><img alt="" src="../img/3.1.bind_11.png" /></p>
 <p>Si todo está bien, devolverá OK. En caso de haber algún error, nos informará de ello.</p>
@@ -1783,26 +1808,74 @@
 <p><img alt="" src="../img/3.1.bind_12.png" /></p>
 <div class="admonition warning">
 <p class="admonition-title">Atención</p>
-<p>Es muy importante que el cliente esté configurado para usar como servidor DNS el que acabamos de instalar y configurar. Ya sea Windows, ya sea Linux, debéis cambiar vuestra configuración de red para que la máquina con la que hagáis las pruebas utilice este servidor DNS como el principal.</p>
+<ul>
+<li>
+<p><u>Es vital que en el grupo de seguridad haya una regla de entrada que permita el tráfico hacia el puerto del DNS desde nuestra dirección de red privada de AWS.</u></p>
+</li>
+<li>
+<p><strong>Es muy importante</strong> que el cliente esté configurado para usar como servidor DNS el que acabamos de instalar y configurar. Debéis cambiar vuestra configuración de red para que la máquina con la que hagáis las pruebas utilice este servidor DNS como el principal:</p>
+<p><img alt="" src="../img/3.1.bind_15.png" /> </p>
+</li>
+</ul>
 </div>
 <h3 id="comprobacion-de-las-resoluciones-y-de-las-consultas">Comprobación de las resoluciones y de las consultas</h3>
-<p>Podemos comprobar desde los clientes, con dig o nslookup las resoluciones directas e inversas:</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Comprobación usando <em>dig</em></label><label for="__tabbed_1_2">Comprobación usando <em>nslookup</em></label></div>
+<p>Podemos comprobar desde los clientes las resoluciones directas con nslookup o con el mismo navegador web:</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Comprobación usando <em>nslookup</em></label><label for="__tabbed_1_2">Comprobación usando <em>navegador web</em></label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <p><img alt="" src="../img/3.1.bind_13.png" /></p>
 </div>
 <div class="tabbed-block">
-<p><img alt="" src="../img/3.1.bind_14.png" /></p>
+<p><img alt="" src="../img/3.1.bind_16.png" /></p>
+</div>
+</div>
+</div>
+<p>Y las resoluciones inversas:</p>
+<p>Podemos comprobar desde los clientes las resoluciones inversas:</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:3"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><input id="__tabbed_2_3" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Comprobación usando <em>nslookup</em></label><label for="__tabbed_2_2">Comprobación usando <em>ping</em></label><label for="__tabbed_2_3">Comprobación usando Powershell</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p><img alt="" src="../img/3.1.bind_17.png" /></p>
+</div>
+<div class="tabbed-block">
+<p><img alt="" src="../img/3.1.bind_18.png" /></p>
+</div>
+<div class="tabbed-block">
+<p><img alt="" src="../img/3.1.bind_19.png" /></p>
 </div>
 </div>
 </div>
 <h2 id="tarea-a-realizar">Tarea a realizar</h2>
-<p>Configura el DNS para que resuelva el nombre de vuestro sitio web de la práctica 3.5 y de la 3.2.</p>
+<p>Hemos configurado el servidor DNS para que acepte peticiones DNS únicamente desde su red privada y de hecho, si lo pruebas desde tu propio ordendor, verás que no funciona.</p>
+<div class="admonition task">
+<p class="admonition-title">Tarea</p>
+<ul>
+<li>
+<p>Configura el servidor para que acepte ahora peticiones desde el exterior (tu ordenador personal p.e.) y <strong>resuelva la petición DNS de <code>juicy.deaw.es</code> a su IP pública.</strong></p>
+</li>
+<li>
+<p>Realiza las mismas dos comprobaciones, únicamente de resolución directa, de antes, mediante nslookup y mediante navegador web.</p>
+</li>
+</ul>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Recordatorio y pistas</p>
+<ul>
+<li>
+<p>Para que en la lista de acceso se permitan peticiones DNS desde cualquier red/máquina, debéis sustituir la IP por el valor <code>any</code>.</p>
+</li>
+<li>
+<p>Se debe abrir el puerto para DNS a cualuier IP.</p>
+</li>
+<li>
+<p>Recuerda que se debe configurar que el servidor DNS a utilizar por el sistema sea el que acabas de configurar en AWS (su IP pública obviamente)</p>
+</li>
+</ul>
+</div>
 <p>Recuerda que con nuestra configuración actual, para acceder a los sitios web necesitaremos añadir el dominio <code>deaw.es</code> en el nombre.</p>
 <div class="admonition caution">
 <p class="admonition-title">Atención para el informe</p>
-<p>Documenta toda la práctica con  las capturas de pantalla correspondientes de cada configuración y comprobación..</p>
+<p>Documenta toda la práctica con  las capturas de pantalla correspondientes de cada configuración y comprobación.</p>
 </div>
 <h2 id="cuestiones-finales">Cuestiones finales</h2>
 <div class="admonition task">
