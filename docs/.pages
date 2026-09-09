@@ -1,7 +1,8 @@
 nav:
     - Tema 1:
       - Teoría:
-        - debian_teoria.md
+        - intro-aws.md
+        - intro-terraform.md
       - Prácticas:
         - ... | debian.md
     - Tema 2:

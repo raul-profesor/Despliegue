@@ -32,9 +32,12 @@ Los servidores de aplicaciones, como ya hemos dicho, se sitúan física o virtua
 |  **Servidor web**  | Responsable de almacenar, procesar y entregar los datos de E/S de las páginas web |
 | **Cliente web**   |  Punto final que intenta acceder a los recursos de la web o de la aplicación |
 | **HTTPS**   |  Protocolo de comunicación seguro entre el servidor web y los clientes web |
-|  **JSON**  | Lenguaje para el intercambio entre los servidores web y de aplicaciones |
+|  **JSON**  | Formato de intercambio de datos ligero entre los servidores web y de aplicaciones |
 |  **Lógica de negocio**  | Reglas para el almacenamiento de datos y la transferencia de recursos de la aplicación |
 |  **Aplicación**  | Un programa de software o un sitio web unido a una base de datos |
+|  **Framework**  | Conjunto de herramientas y convenciones que facilitan el desarrollo de aplicaciones |
+|  **Entorno de ejecución**  | Infraestructura necesaria para ejecutar código de un lenguaje determinado |
+|  **Proxy inverso**  | Servidor intermediario que distribuye peticiones del cliente a servidores internos |
 
 
 ## El papel del servidor de aplicaciones en la arquitectura de servicios
@@ -60,7 +63,7 @@ Las organizaciones pueden proteger aún más sus datos con un servidor proxy inv
 
 ### ¿Cómo funcionan los servidores de aplicaciones? 
 
-Pongamos como ejemplo un servidor de aplicaciones Java.
+Pongamos como ejemplo un servidor de aplicaciones Java, tomando como referencia el modelo fundacional basado en servlets. Los **servlets** son programas Java que forman la base sobre la que se construyeron todos los frameworks modernos del ecosistema Java, incluidos Spring Boot.
 
 !!! info "**¿Qué son los servlets?**" 
 
@@ -68,19 +71,19 @@ Pongamos como ejemplo un servidor de aplicaciones Java.
 
     Comparado con un CGI, un servlet es más sencillo de utilizar, más eficiente (se arranca un hilo por cada petición y no un proceso entero), más potente y portable. Con los servlets podremos, entre otras cosas, procesar, sincronizar y coordinar múltiples peticiones de clientes, reenviar peticiones a otros servlets o a otros servidores u otros.
 
-Como la mayoría de los servidores de hoy en día, los servidores de aplicaciones contienen características de seguridad, transacciones, servicios, clustering, diagnósticos y bases de datos. En lo que se diferencian los servidores de aplicaciones es en su capacidad para procesar peticiones de servlets (programas Java) desde un servidor web.
+Como la mayoría de los servidores de hoy en día, los servidores de aplicaciones contienen características de seguridad, transacciones, servicios, clustering, diagnósticos y bases de datos. En lo que se diferencian los servidores de aplicaciones es en su capacidad para procesar peticiones dinámicas desde un servidor web, ya sea en forma de servlets (en el modelo tradicional), controladores REST (en Spring Boot), rutas (en Flask o Express) u otros componentes equivalentes en cada tecnología.
 
-En la imagen anterior, se muestra el flujo general de los servidores de aplicaciones web:
+Aunque los detalles de implementación varían según la tecnología (Java, Python, PHP, JavaScript), el flujo general de funcionamiento es siempre el mismo:
 
 1. El cliente abre un navegador y solicita acceso a un sitio web
 2. El servidor web recibe la petición HTTP y responde con la página web deseada
 3. El servidor web gestiona las peticiones de datos estáticos, pero el cliente quiere utilizar una herramienta interactiva
 4. Al tratarse de una petición de datos dinámicos, el servidor web transfiere la petición a un servidor de aplicaciones
-5. El servidor de aplicaciones recibe la petición HTTP y la convierte en una petición de servlet
-6. El servlet llega al servidor de la base de datos, y el servidor de aplicaciones recibe una respuesta del servlet
-7. El servidor de aplicaciones traduce la respuesta del servlet al formato HTTP para el acceso del cliente
+5. El servidor de aplicaciones recibe la petición y la procesa ejecutando la lógica de negocio correspondiente
+6. La aplicación accede al servidor de la base de datos si es necesario, y genera una respuesta
+7. El servidor de aplicaciones traduce la respuesta al formato HTTP para el acceso del cliente
 
-Al recibir una solicitud de servlet de un servidor web, el servidor de aplicaciones procesa la solicitud y responde al servidor web mediante la respuesta de servlet. Dado que los servidores de aplicaciones trabajan principalmente con peticiones de lógica de negocio, el servidor web traduce la respuesta del servlet y pasa una respuesta HTTP accesible para el usuario.
+Al recibir una solicitud de un servidor web, el servidor de aplicaciones procesa la solicitud y responde al servidor web. Dado que los servidores de aplicaciones trabajan principalmente con peticiones de lógica de negocio, el servidor web traduce la respuesta y pasa una respuesta HTTP accesible para el usuario.
 
 ![](img/capas.webp)
 
@@ -89,7 +92,7 @@ Al recibir una solicitud de servlet de un servidor web, el servidor de aplicacio
 |  ***Diseñado para*** | Sirve peticiones HTTP y de otra lógica de negocio  |  Sirve peticiones HTTP |
 |  ***Almacena y proporciona*** |  Lógica de negocio |  Contenido web estático |
 |  ***La utilización de los recursos es*** | Pesada  |  Ligera  |
-| ***Soporta***  | Transacciones distribuidas y Enterprise JavaBeans (EJB)  | Servlets, Java Server Pages (JSP) y JSON  |
+| ***Soporta***  | Procesamiento dinámico, transacciones, conexión a bases de datos  | Contenido estático (HTML, CSS, imágenes, JS del cliente) |
 
 ## Servidores de aplicaciones en la década de 2020
 
@@ -297,7 +300,7 @@ Al crear todo el contenido en un entorno de puesta en escena/preprod (o similar)
 Y si la herramienta de despliegue incluye roles de usuario con configuración de permisos, es posible que un editor de contenidos haga todo esto -incluyendo el despliegue de los cambios- sin involucrar a un desarrollador en el proceso.
 
  
-## Despliegue de aplicaciones Java
+## Despliegue de aplicaciones Java: modelo tradicional
 
 ### Introducción
 
@@ -308,6 +311,10 @@ Así, para el cliente el servidor no habrá hecho nada distinto a lo estipulado 
 Los programas de aplicación son típicamente programas que realizan consultas a bases de datos, procesan la información resultante y devuelven la salida al servidor, entre otras tareas.
 
 Vamos a centrarnos en las aplicaciones web JavaEE, en las que los componentes dinámicos que recibirán las peticiones HTTP en el servidor serán los servlets y JSPs. Estos componentes podrán analizar esta petición y utilizar otros componentes Java para realizar las acciones necesarias (beans, EJBs, etc).
+
+!!! note "**Nota: modelo tradicional vs. moderno**"
+
+    Lo que se describe a continuación corresponde al modelo clásico de despliegue Java, que consiste en empaquetar la aplicación en un archivo WAR y desplegarla en un servidor de aplicaciones externo. En la actualidad, el enfoque más extendido es el de **Spring Boot**, que embebe el servidor web dentro de la propia aplicación. Ambos modelos coexisten y son válidos. Puedes consultar la subsección "Modelo moderno con Spring Boot" más adelante en este mismo tema.
 
 ### Estructura de una aplicación Java
 
@@ -323,17 +330,27 @@ Esta estructura estará contenida dentro de algún directorio, que será el dire
 
 Cada aplicación web JavaEE es un contexto, una unidad que comprende un conjunto de recursos, clases Java y su configuración. Cuando hablemos de contexto, nos estaremos refiriendo a la aplicación web en conjunto.
 
+!!! note "**Nota**"
+
+    En el modelo moderno de Spring Boot, esta estructura tradicional cambia. No existe un directorio WEB-INF, ya que las vistas y plantillas (como las de Thymeleaf) se colocan en `src/main/resources/templates`, y los recursos estáticos en `src/main/resources/static`. La configuración de la aplicación se centraliza en un archivo `application.properties` o `application.yml`.
+
 ### Empaquetamiento
 
 Una forma de distribuir aplicaciones Web es empaquetar toda la aplicación (a partir de su directorio inicial) dentro de un fichero WAR (de forma parecida a como se hace con un TAR o un JAR), y distribuir dicho fichero. Podemos crear un fichero WAR de la misma forma que creamos un JAR, utilizando la herramienta JAR.
 
 Estos ficheros WAR son un estándar de JavaEE, por lo que podremos utilizarlos en los diferentes servidores de aplicaciones JavaEE existentes. 
 
+!!! note "**Nota**"
+
+    En el modelo de Spring Boot, en lugar de un archivo WAR se suele generar un JAR ejecutable ("fat JAR") que incluye tanto la aplicación como el servidor web embebido. No obstante, Spring Boot también es capaz de generar archivos WAR si se necesita desplegar en un servidor de aplicaciones externo. 
+
 ### Despliegue de archivos WAR
 
 Los archivos WAR, son un tipo especial de JAR utilizado para distribuir los artefactos o contenido de las aplicaciones Web en tecnología JEE: páginas Web HTML o JSP,clases Java, servlets Java, archivos XML, librerías de etiquetas (tag libraries) y otros recursos.
 
 El empaquetamiento en archivos WAR es algo estándar, pero no así el proceso de despliegue, que es dependiente del servidor. No obstante, la mayoría de servidores JavaEE funcionan en este aspecto de modo similar: permiten desplegar las aplicaciones desde una consola de administración y también "dejando caer" el fichero en determinado directorio.
+
+Este modelo de despliegue sigue siendo vigente, especialmente en entornos empresariales donde los servidores de aplicaciones se gestionan de forma centralizada y se despliegan múltiples aplicaciones en un mismo servidor. En entornos más modernos con arquitecturas de microservicios, sin embargo, es más común el enfoque de Spring Boot con JARs ejecutables.
 
 
 ### Maven
@@ -376,6 +393,25 @@ Además, en el caso de las librerías, no tienes ni tan siquiera que descargarla
 Digamos que Maven aporta una semántica común al proceso de build y desarrollo del software.
 
 Incluso, establece una estructura común de directorios para todos los proyectos. Por ejemplo el código estará en `${raíz del proyecto}/src/main/java`, los recursos en `${raíz del proyecto }/src/main/resources`. Los tests están en `${raíz del proyecto }/src/test`.
+
+### Modelo moderno con Spring Boot
+
+El modelo tradicional de desplegar aplicaciones Java descrito en las secciones anteriores ha evolucionado significativamente con la llegada de **Spring Boot**. Mientras que el enfoque clásico requiere instalar y configurar un servidor de aplicaciones externo (como Tomcat, Wildfly o Glassfish) y desplegar en él un archivo WAR, Spring Boot propone un modelo radicalmente diferente.
+
+Spring Boot **embebe el servidor web dentro de la propia aplicación**. Esto significa que la aplicación Java se empaqueta como un archivo JAR ejecutable (a menudo llamado "fat JAR" o "executable JAR") que contiene todo lo necesario para funcionar: el código de la aplicación, las librerías de las que depende, y un servidor web integrado (habitualmente Tomcat, aunque también pueden usarse Jetty o Undertow). Para poner la aplicación en marcha basta con ejecutarla directamente, sin necesidad de instalar ningún servidor de aplicaciones por separado.
+
+Esta aproximación simplifica enormemente el despliegue y la operación. La aplicación lleva consigo todo su entorno de ejecución, lo que elimina problemas de compatibilidad entre la versión de la aplicación y la del servidor donde se despliega. Además, facilita la creación de arquitecturas de microservicios, ya que cada servicio puede empaquetarse, desplegarse y escalarse de forma completamente independiente.
+
+La estructura de un proyecto Spring Boot también difiere del modelo tradicional:
+
++ El código fuente va en `src/main/java`, como en cualquier proyecto Maven.
++ Las vistas y plantillas (por ejemplo, usando **Thymeleaf**, que ha reemplazado en gran medida a las JSP) van en `src/main/resources/templates`.
++ Los recursos estáticos (imágenes, CSS, JavaScript del lado del cliente) van en `src/main/resources/static`.
++ La configuración de la aplicación se centraliza en un archivo `application.properties` o `application.yml` en `src/main/resources`.
+
+**Thymeleaf** es un motor de plantillas moderno para Java que se ejecuta tanto en entornos web como independientes. A diferencia de las páginas JSP, que necesitan un contenedor de servlets para funcionar, Thymeleaf puede procesar plantillas de forma autónoma. Además, las plantillas Thymeleaf son archivos HTML válidos que se pueden abrir directamente en un navegador sin necesidad de servidor, lo que facilita enormemente el diseño y la maquetación.
+
+A pesar de la popularidad de Spring Boot, el modelo tradicional con archivos WAR y servidores de aplicaciones externos sigue siendo válido y ampliamente utilizado, especialmente en entornos empresariales donde ya existe infraestructura dedicada y políticas de despliegue establecidas.
 
 ## Despliegue de aplicaciones Node.js con Express
 
@@ -429,22 +465,109 @@ Cada proyecto en JavaScript puede enfocarse como un paquete npm con su propia in
 
 #### NPM scripts
 
-package.json también soporta la propiedad scripts que puede definirse para ejecutar herramientas de línea de comandos que se instalan en el contexto local del proyecto. Por ejemplo, la porción de scripts de un proyecto npm puede tener un aspecto similar a este:
+package.json también soporta la propiedad scripts, que permite definir tareas automatizadas para ejecutar herramientas de línea de comandos instaladas en el contexto local del proyecto. Estos scripts pueden servir para compilar código, formatear archivos, ejecutar pruebas, analizar errores en el código o combinar varias de estas tareas en un solo comando. De esta forma, las herramientas no necesitan estar instaladas de forma global en el sistema, sino que se gestionan de manera independiente para cada proyecto. Esta aproximación es similar a lo que Maven ofrece en el ecosistema Java con sus ciclos de vida.
 
-```json
-{
-  "scripts": {
-    "build": "tsc",
-    "format": "prettier --write **/*.ts",
-    "format-check": "prettier --check **/*.ts",
-    "lint": "eslint src/**/*.ts",
-    "pack": "ncc build",
-    "test": "jest",
-    "all": "npm run build && npm run format && npm run lint && npm run pack && npm test"
-  }
-}
-```
-Con eslint, prettier, ncc, jest no necesariamente instalados como ejecutables globales sino como locales de tu proyecto dentro de `node_modules/.bin/`.
+## Entornos de ejecución y frameworks modernos
+
+A lo largo de la historia del desarrollo web han surgido diferentes tecnologías y enfoques para ejecutar aplicaciones en el servidor. A continuación se presentan las más relevantes en el panorama actual.
+
+### PHP y PHP-FPM
+
+PHP es uno de los lenguajes más utilizados en el desarrollo web desde sus inicios. A diferencia de los lenguajes compilados como Java, PHP se interpreta en el momento de la petición, lo que significa que cada vez que un cliente solicita una página, el servidor debe procesar el código PHP para generar la respuesta.
+
+En los primeros tiempos de PHP, la forma habitual de ejecutarlo era mediante un módulo integrado en el servidor web Apache. Cada petición que requería PHP arrancaba un nuevo proceso de interpretación, lo que resultaba ineficiente cuando el número de peticiones era elevado.
+
+Aquí es donde entra en juego **PHP-FPM** (FastCGI Process Manager). PHP-FPM es un gestor de procesos que mantiene un grupo de instancias de PHP ya iniciadas y listas para atender peticiones. En lugar de arrancar un proceso nuevo por cada solicitud, el servidor web (como Nginx o Apache) envía la petición a PHP-FPM, que la asigna a uno de los procesos disponibles. Esto mejora significativamente el rendimiento y la capacidad de manejar múltiples peticiones simultáneas.
+
+El flujo de funcionamiento es el siguiente: el servidor web recibe la petición del navegador, identifica que necesita ser procesada por PHP y la reenvía a PHP-FPM. Este ejecuta el código de la aplicación, consulta la base de datos si es necesario, y devuelve la página generada al servidor web, que a su vez la entrega al cliente. PHP-FPM también se encarga de gestionar cuántos procesos mantener activos, reiniciar los que fallan y ajustar los recursos de forma dinámica según la carga de trabajo.
+
+### Flask y el ecosistema Python
+
+Python se ha consolidado como uno de los lenguajes más populares para el desarrollo web, la ciencia de datos y la automatización. En el ámbito web, existen diversas opciones, siendo **Flask** una de las más accesibles para principiantes.
+
+Flask se define como un microframework porque proporciona únicamente lo esencial para crear una aplicación web: un sistema de rutas para asociar URLs con funciones, un motor de plantillas para generar HTML y herramientas básicas de gestión de peticiones y respuestas. A diferencia de frameworks más completos como Django, Flask no impone una estructura rígida ni incluye de serie componentes como sistemas de autenticación o gestión de bases de datos. Esta filosofía permite al desarrollador elegir las herramientas que mejor se adapten a cada proyecto e ir añadiendo funcionalidades mediante extensiones conforme las necesite.
+
+En el ecosistema Python existe un concepto fundamental llamado **WSGI** (Web Server Gateway Interface). WSGI es un estándar que define cómo debe comunicarse un servidor web con una aplicación web escrita en Python. Gracias a este estándar, cualquier aplicación Python puede funcionar con cualquier servidor compatible, sin depender de una combinación específica.
+
+En la práctica, el servidor web (como Nginx) no habla directamente con Flask. Entre ambos se sitúa un **servidor de aplicaciones WSGI**, como Gunicorn o uWSGI. Este intermediario recibe las peticiones del servidor web, las traduce al formato que entiende la aplicación Python a través de WSGI, ejecuta la aplicación, y devuelve la respuesta generada. Además, este servidor intermedio gestiona múltiples instancias de la aplicación para poder atender varias peticiones en paralelo.
+
+El flujo es similar al de PHP-FPM pero adaptado al mundo Python: el servidor web recibe la petición, la pasa al servidor WSGI (por ejemplo, Gunicorn), este la procesa a través de la aplicación Flask, y devuelve la respuesta al servidor web para que llegue al cliente.
+
+### Spring Boot: la evolución del despliegue Java
+
+Tradicionalmente, el despliegue de aplicaciones Java en la web requería varios pasos: se empaquetaba la aplicación en un archivo WAR y se desplegaba en un servidor de aplicaciones externo como Tomcat o Wildfly, que debía instalarse y configurarse de forma independiente. Este modelo, aunque funcional, añade complejidad operativa, ya que el servidor y la aplicación tienen ciclos de vida separados y deben gestionarse por separado.
+
+**Spring Boot** surgió como una evolución de este modelo. En lugar de requerir un servidor de aplicaciones externo, Spring Boot embebe el servidor web dentro de la propia aplicación. Esto significa que la aplicación Java se convierte en un ejecutable autónomo que puede lanzarse directamente con un simple comando. No es necesario instalar, configurar ni mantener un servidor de aplicaciones por separado.
+
+Esta aproximación tiene varias ventajas conceptuales importantes. Primero, simplifica enormemente el despliegue: basta con ejecutar el archivo de la aplicación. Segundo, facilita la creación de microservicios, ya que cada servicio puede empaquetarse y ejecutarse de forma independiente. Tercero, la aplicación lleva consigo todo lo que necesita para funcionar, lo que reduce los problemas de compatibilidad entre la aplicación y el servidor donde se despliega.
+
+A pesar de este cambio de paradigma, los archivos WAR tradicionales y los servidores de aplicaciones externos siguen siendo válidos y ampliamente utilizados, especialmente en entornos empresariales donde ya existe infraestructura dedicada para este propósito.
+
+## Elementos modernos en el despliegue de aplicaciones
+
+Además de los entornos de ejecución y frameworks, el despliegue de aplicaciones web modernas se apoya en una serie de elementos arquitectónicos y operativos que complementan la infraestructura del servidor de aplicaciones.
+
+### Proxy inverso
+
+Un proxy inverso es un servidor que se sitúa entre los clientes y los servidores de aplicaciones internos. A diferencia de un proxy tradicional (que actúa en nombre del cliente), el proxy inverso actúa en nombre del servidor: recibe las peticiones de los clientes, las procesa y las redistribuye a los servidores internos correspondientes.
+
+Un proxy inverso cumple varias funciones clave:
+
+- **Terminación SSL**: gestiona la encriptación y desencriptación de las comunicaciones HTTPS, liberando a los servidores de aplicaciones de esta carga.
+- **Caché**: almacena respuestas estáticas o frecuentemente solicitadas para servirlas directamente sin molestar a los servidores de aplicaciones.
+- **Compresión**: comprime las respuestas antes de enviarlas al cliente para reducir el consumo de ancho de banda.
+- **Seguridad**: filtra peticiones maliciosas, oculta la estructura interna de la red y protege los servidores backend del acceso directo desde Internet.
+- **Redirección**: dirige las peticiones a distintos servidores de aplicaciones según la ruta, el dominio u otros criterios.
+
+Los proxies inversos más populares son **Nginx** y **Apache** (en su configuración de proxy), aunque existen otras opciones como **HAProxy** y **Caddy**.
+
+### Balanceo de carga
+
+Cuando una aplicación crece y el número de usuarios aumenta, un único servidor de aplicaciones puede no ser suficiente para atender toda la demanda. El balanceo de carga es la técnica que permite distribuir las peticiones entrantes entre múltiples instancias de la aplicación, mejorando tanto el rendimiento como la disponibilidad del servicio.
+
+Un **balanceador de carga** puede ser un dispositivo físico, un software (como el propio Nginx o HAProxy) o un servicio gestionado en la nube. Su función es recibir las peticiones de los clientes y repartirlas entre los distintos servidores disponibles según diferentes estrategias:
+
+- **Round Robin**: reparte las peticiones de forma circular y equitativa entre todos los servidores.
+- **Por menor carga**: envía la petición al servidor que tenga menos trabajo pendiente.
+- **Por afinidad de sesión**: dirige las peticiones de un mismo usuario siempre al mismo servidor para mantener su sesión activa.
+
+El balanceo de carga también aporta alta disponibilidad: si uno de los servidores falla, el balanceador deja de enviarle tráfico y redirige las peticiones a los servidores que siguen funcionando.
+
+### Observabilidad
+
+Una vez que una aplicación está en producción, es fundamental poder monitorizar su funcionamiento para detectar problemas antes de que afecten a los usuarios. La observabilidad va más allá de la simple monitorización: proporciona las herramientas necesarias para entender qué está ocurriendo dentro del sistema basándose en los datos que este genera externamente.
+
+La observabilidad se apoya en tres pilares fundamentales:
+
+- **Logs**: son registros de eventos que la aplicación y el servidor van anotando a medida que ocurren cosas relevantes (una petición recibida, un error producido, una conexión a la base de datos). Los logs son útiles para investigar problemas concretos y entender la secuencia de eventos que llevó a un fallo.
+
+- **Métricas**: son datos numéricos que se recogen de forma continua, como el uso de CPU, la memoria consumida, el número de peticiones por segundo, el tiempo medio de respuesta o la tasa de errores. Las métricas permiten detectar tendencias, identificar cuellos de botella y configurar alertas automáticas cuando se superan ciertos umbrales.
+
+- **Trazas**: siguen el recorrido completo de una petición individual a medida que pasa por los distintos componentes del sistema. Si una aplicación está compuesta por varios servicios, una traza permite ver exactamente por qué servicio pasó una petición, cuánto tiempo tardó cada uno y en qué punto se produjo un error.
+
+Herramientas como **Prometheus** y **Grafana** para métricas, **ELK Stack** (Elasticsearch, Logstash, Kibana) para logs, y **Jaeger** para trazas, forman parte del ecosistema moderno de observabilidad.
+
+### Plataformas como servicio (PaaS) y Serverless
+
+A medida que las organizaciones buscan simplificar la gestión de infraestructura, han surgido modelos de despliegue que abstraen al desarrollador de los detalles del servidor.
+
+#### PaaS (Platform as a Service)
+
+Las plataformas como servicio, o **PaaS**, ofrecen un entorno completo donde los desarrolladores pueden desplegar su código sin preocuparse por configurar servidores, gestionar sistemas operativos, instalar dependencias o mantener la infraestructura. El proveedor de la plataforma se encarga de todo ello: el sistema operativo, el entorno de ejecución, la red, el almacenamiento y la escalabilidad.
+
+El desarrollador simplemente sube su aplicación (generalmente a través de un repositorio Git) y la plataforma se encarga del resto: construye la aplicación, la despliega y la mantiene en ejecución. Si la aplicación necesita más recursos, la plataforma escala automáticamente.
+
+Ejemplos populares de PaaS son **Heroku**, **Render** y **Google App Engine**.
+
+#### Serverless y FaaS (Function as a Service)
+
+El modelo **serverless** (sin servidor) lleva la abstracción un paso más allá. En lugar de desplegar una aplicación completa, el desarrollador escribe funciones individuales que se ejecutan en respuesta a eventos específicos: una petición HTTP, la subida de un archivo, un mensaje en una cola, etc.
+
+En este modelo, el proveedor de cloud se encarga absolutamente de toda la infraestructura. Las funciones solo se ejecutan cuando son necesarias, y el cobro se basa en el tiempo real de ejecución de cada función, no en reservar un servidor que esté encendido constantemente. La escala es completamente automática e instantánea: si llegan mil peticiones simultáneas, el proveedor crea mil instancias de la función sin intervención del desarrollador.
+
+Ejemplos de servicios FaaS son **AWS Lambda**, **Google Cloud Functions** y **Azure Functions**.
+
+Es importante aclarar que el término "serverless" no significa que no haya servidores: simplemente el desarrollador no tiene que gestionarlos. Los servidores siguen existiendo, pero son responsabilidad del proveedor.
 
 ## CI/CD (Continous Integration/Continous Deployment-Delivery)
 
@@ -498,7 +621,9 @@ En la práctica, los cambios que implementan los desarrolladores en la aplicaci�
 
 ## Conclusión
 
-Se ha explicado en este tema cuáles son las características, usos y diferencias entre los servidores web y los servidores de aplicaciones.
+Se ha explicado en este tema cuáles son las características, usos y diferencias entre los servidores web y los servidores de aplicaciones. También se han presentado los principales entornos de ejecución y frameworks utilizados en la actualidad, como PHP con PHP-FPM, Flask con el ecosistema WSGI de Python, Spring Boot con su modelo de servidor embebido, y Node.js con Express.
+
+Además, se han introducido los elementos modernos que complementan la infraestructura de despliegue: el proxy inverso como punto de entrada del tráfico, el balanceo de carga para distribuir la demanda entre múltiples instancias, la observabilidad para monitorizar la salud de las aplicaciones en producción, y los modelos PaaS y Serverless como alternativas que simplifican la gestión de infraestructura.
 
 También hemos explicado detalladamente en qué consiste un proceso de despliegue clásico de una aplicación web, cuáles son sus fases y características. Para reforzar este proceso, hemos listado una serie de buenas prácticas a la hora de llevarlo a cabo.
 
@@ -519,5 +644,15 @@ Por último, hemos presentado las nuevas tendencias en el mundo del despliegue, 
 [Título de experto universitario en desarrollo de aplicaciones y servicios con JavaEE](http://www.jtech.ua.es/j2ee/restringido/cw/sesion01-apuntes.html)
 
 [Qué es Node.js y por qué debería usarlo](https://kinsta.com/es/base-de-conocimiento/que-es-node-js/)
+
+[¿Qué es PHP-FPM?](https://www.php.net/manual/es/install.fpm.php)
+
+[Documentación de Flask](https://flask.palletsprojects.com/)
+
+[Spring Boot - Overview](https://spring.io/projects/spring-boot)
+
+[¿Qué es un proxy inverso?](https://www.cloudflare.com/es-es/learning/cdn/what-is-a-reverse-proxy/)
+
+[¿Qué es la observabilidad?](https://newrelic.com/es/blog/best-practices/what-is-observability)
 
 [¿Qué son la integración y la distribución continuas (CI/CD)?](https://www.redhat.com/es/topics/devops/what-is-ci-cd)
