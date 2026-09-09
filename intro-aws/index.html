@@ -1,0 +1,5862 @@
+
+<!doctype html>
+<html lang="es" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://raul-profesor.github.io/Despliegue/intro-aws/">
+      
+      
+      
+        <link rel="next" href="../intro-terraform/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+    
+    
+      
+        <title>Guía Completa de Amazon Web Services (AWS) para Principiantes - Despliegue de aplicaciones web</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-3NX5MD5C8H"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-3NX5MD5C8H",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-3NX5MD5C8H",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="green" data-md-color-accent="blue">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#guia-completa-de-amazon-web-services-aws-para-principiantes" class="md-skip">
+          Saltar a contenido
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabecera">
+    <a href=".." title="Despliegue de aplicaciones web" class="md-header__button md-logo" aria-label="Despliegue de aplicaciones web" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Despliegue de aplicaciones web
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Guía Completa de Amazon Web Services (AWS) para Principiantes
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="green" data-md-color-accent="blue"  aria-label="Cambiar a modo oscuro"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Cambiar a modo oscuro" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6m0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4M7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="deep-orange"  aria-label="Cambiar a modo claro"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Cambiar a modo claro" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6m0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4M7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Búsqueda" placeholder="Búsqueda" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Buscar">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpiar" aria-label="Limpiar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando búsqueda
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navegación" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Despliegue de aplicaciones web" class="md-nav__button md-logo" aria-label="Despliegue de aplicaciones web" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Despliegue de aplicaciones web
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tema 1
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Tema 1
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_1" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_1_1" id="__nav_1_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Teoría
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_1_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Teoría
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Guía Completa de Amazon Web Services (AWS) para Principiantes
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Guía Completa de Amazon Web Services (AWS) para Principiantes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#tabla-de-contenidos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tabla de Contenidos
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#que-es-la-nube" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ¿Qué es la nube?
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="¿Qué es la nube?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#la-nube-como-concepto" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        La nube como concepto
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#modelos-de-servicio-en-la-nube" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Modelos de servicio en la nube
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#beneficios-de-la-nube" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Beneficios de la nube
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#que-es-on-demand-vs-reserved" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ¿Qué es "on-demand" vs "reserved"?
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#que-es-aws" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ¿Qué es AWS?
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="¿Qué es AWS?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#los-servicios-mas-importantes-de-aws" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Los servicios más importantes de AWS
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aws-vs-otros-proveedores-de-nube" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        AWS vs otros proveedores de nube
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#aws-academy-que-es-y-como-acceder" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        AWS Academy: qué es y cómo acceder
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="AWS Academy: qué es y cómo acceder">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#que-incluye-aws-academy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ¿Qué incluye AWS Academy?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#como-y-empezar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cómo注册 y empezar
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#diferencia-entre-aws-academy-y-cuenta-aws-normal" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Diferencia entre AWS Academy y cuenta AWS normal
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#primeros-pasos-en-la-consola-de-aws-academy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Primeros pasos en la consola de AWS Academy
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#consejos-para-estudiantes-de-aws-academy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Consejos para estudiantes de AWS Academy
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conceptos-fundamentales-de-aws" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Conceptos fundamentales de AWS
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Conceptos fundamentales de AWS">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#todo-es-una-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Todo es una API
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#everything-is-regional-except" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Everything is regional... except...
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#recursos-y-sus-identificadores" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Recursos y sus identificadores
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#el-concepto-de-resource" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        El concepto de "resource"
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#el-panel-de-aws-la-consola-de-gestion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        El panel de AWS: la consola de gestión
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="El panel de AWS: la consola de gestión">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#navegacion-basica" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Navegación básica
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#el-dashboard" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        El dashboard
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#buscador-de-servicios" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Buscador de servicios
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#panel-de-un-servicio-especifico" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Panel de un servicio específico
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#regiones-y-zonas-de-disponibilidad" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Regiones y zonas de disponibilidad
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Regiones y zonas de disponibilidad">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#regiones" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Regiones
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#zonas-de-disponibilidad-azs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Zonas de disponibilidad (AZs)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#seleccion-de-region" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Selección de región
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#servicios-esenciales-de-aws" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Servicios esenciales de AWS
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Servicios esenciales de AWS">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#amazon-ec2-computacion-en-la-nube" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Amazon EC2: Computación en la nube
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#amazon-s3-almacenamiento-simple" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Amazon S3: Almacenamiento simple
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#amazon-vpc-redes-privadas-virtuales" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Amazon VPC: Redes privadas virtuales
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#amazon-iam-gestion-de-identidades" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Amazon IAM: Gestión de identidades
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#amazon-rds-bases-de-datos-gestionadas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Amazon RDS: Bases de datos gestionadas
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#amazon-cloudwatch-monitorizacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Amazon CloudWatch: Monitorización
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aws-lambda-computacion-sin-servidor" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        AWS Lambda: Computación sin servidor
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#amazon-ec2-tu-primer-servidor-en-la-nube" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Amazon EC2: Tu primer servidor en la nube
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Amazon EC2: Tu primer servidor en la nube">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#que-es-una-instancia-ec2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ¿Qué es una instancia EC2?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#componentes-de-una-instancia-ec2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Componentes de una instancia EC2
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tipos-de-instancias-ec2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tipos de instancias EC2
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Tipos de instancias EC2">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#familia-t-burstable-performance" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Familia T: Burstable Performance
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#familia-m-general-purpose" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Familia M: General Purpose
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#familia-c-compute-optimized" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Familia C: Compute Optimized
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#familia-r-memory-optimized" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Familia R: Memory Optimized
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#que-tipo-usar-para-que" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ¿Qué tipo usar para qué?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#que-es-el-tier-gratuito-de-aws" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ¿Qué es el tier gratuito de AWS?
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#creando-tu-primera-instancia-ec2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Creando tu primera instancia EC2
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Creando tu primera instancia EC2">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#paso-1-acceder-al-servicio-ec2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Paso 1: Acceder al servicio EC2
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#paso-2-nombrar-la-instancia" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Paso 2: Nombrar la instancia
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#paso-3-elegir-la-ami" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Paso 3: Elegir la AMI
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#paso-4-elegir-el-tipo-de-instancia" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Paso 4: Elegir el tipo de instancia
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#paso-5-configurar-detalles-de-red" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Paso 5: Configurar detalles de red
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#paso-6-agregar-almacenamiento" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Paso 6: Agregar almacenamiento
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#paso-7-configurar-advanced-details-opcional" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Paso 7: Configurar advanced details (opcional)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#paso-8-anadir-etiquetas-tags" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Paso 8: Añadir etiquetas (Tags)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#paso-9-configurar-el-security-group" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Paso 9: Configurar el Security Group
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#paso-10-revisar-y-lanzar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Paso 10: Revisar y lanzar
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#paso-11-seleccionar-o-crear-key-pair" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Paso 11: Seleccionar o crear Key Pair
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#paso-12-esperar-a-que-la-instancia-este-corriendo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Paso 12: Esperar a que la instancia esté corriendo
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#grupos-de-seguridad-el-firewall-de-aws" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Grupos de seguridad: el firewall de AWS
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Grupos de seguridad: el firewall de AWS">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#como-funcionan-los-security-groups" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cómo funcionan los Security Groups
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#componentes-de-una-regla-de-security-group" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Componentes de una regla de Security Group
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#security-groups-comunes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Security Groups comunes
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#editar-security-groups" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Editar Security Groups
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejemplo-anadir-regla-para-http" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejemplo: Añadir regla para HTTP
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#errores-comunes-con-security-groups" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Errores comunes con Security Groups
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#buenas-practicas-con-security-groups" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Buenas prácticas con Security Groups
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conectandose-a-ec2-mediante-ssh" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Conectándose a EC2 mediante SSH
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Conectándose a EC2 mediante SSH">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#que-es-ssh" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ¿Qué es SSH?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#prerrequisitos-para-conectar-por-ssh" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Prerrequisitos para conectar por SSH
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#diferencia-entre-usuario-segun-ami" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Diferencia entre usuario según AMI
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#conectarse-desde-linux-o-macos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Conectarse desde Linux o macOS
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#conectarse-desde-windows" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Conectarse desde Windows
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#problemas-comunes-de-conexion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Problemas comunes de conexión
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ya-estoy-conectado-que-ahora" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ya estoy conectado, ¿qué ahora?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cerrar-la-conexion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cerrar la conexión
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gestion-de-claves-ssh" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Gestión de claves SSH
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Gestión de claves SSH">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#como-funcionan-las-claves-ssh-con-ec2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cómo funcionan las claves SSH con EC2
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#crear-un-par-de-claves-ec2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Crear un par de claves EC2
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#crear-clave-ssh-localmente" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Crear clave SSH localmente
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#la-importancia-de-guardar-tu-clave-privada" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        La importancia de guardar tu clave privada
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#guardar-la-clave-en-un-lugar-seguro" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Guardar la clave en un lugar seguro
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#usar-ssh-config-para-multiples-servidores" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Usar SSH config para múltiples servidores
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rotacion-de-claves" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Rotación de claves
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#diferentes-claves-para-diferentes-entornos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Diferentes claves para diferentes entornos
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#almacenamiento-ebs-y-s3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Almacenamiento: EBS y S3
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Almacenamiento: EBS y S3">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#amazon-ebs-elastic-block-store" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Amazon EBS (Elastic Block Store)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#amazon-s3-simple-storage-service" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Amazon S3 (Simple Storage Service)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cuando-usar-ebs-vs-s3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ¿Cuándo usar EBS vs S3?
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#redes-basicas-vpc-simplificado" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Redes básicas: VPC simplificado
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Redes básicas: VPC simplificado">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#vpc-por-defecto" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        VPC por defecto
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#conceptos-basicos-de-vpc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Conceptos básicos de VPC
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#que-configuracion-tiene-mi-instancia-por-defecto" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ¿Qué configuración tiene mi instancia por defecto?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejemplo-simple-de-arquitectura" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejemplo simple de arquitectura
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#para-profundizar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Para profundizar
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#costes-y-economia-de-aws" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Costes y economía de AWS
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Costes y economía de AWS">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#como-aws-cobra-por-ec2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cómo AWS cobra por EC2
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#otros-costes-asociados-a-ec2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Otros costes asociados a EC2
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#servicios-con-coste-gratuito" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Servicios con coste gratuito
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#herramientas-para-gestionar-costes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Herramientas para gestionar costes
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#estimar-costes-antes-de-crear" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Estimar costes antes de crear
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#consejos-para-ahorrar-en-aws-academy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Consejos para ahorrar en AWS Academy
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#buenas-practicas-de-seguridad" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Buenas prácticas de seguridad
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Buenas prácticas de seguridad">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#principios-fundamentales" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Principios fundamentales
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#seguridad-para-instancias-ec2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Seguridad para instancias EC2
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#seguridad-de-la-cuenta-aws" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Seguridad de la cuenta AWS
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#security-groups-seguros" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Security Groups seguros
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#datos-sensibles" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Datos sensibles
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#glosario-de-terminos-aws" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Glosario de términos AWS
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#recursos-adicionales" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Recursos adicionales
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Recursos adicionales">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#documentacion-oficial" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Documentación oficial
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#labs-practicos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Labs prácticos
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#comunidades-y-ayuda" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Comunidades y ayuda
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../intro-terraform/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Guía Completa de Terraform para Principiantes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_2" id="__nav_1_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Prácticas
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Prácticas
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../debian/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Instalación y configuración de nuestra máquina virtual
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tema 2
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Tema 2
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_1" id="__nav_2_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Teoría
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Teoría
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ArqWeb/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tema 2 - Arquitectura Web. Implantación y administración de servidores web
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Prácticas
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Prácticas
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../P1.1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pràctica 2.1 – Instalación y configuración de servidor web Nginx
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tema 3
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Tema 3
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_1" id="__nav_3_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Teoría
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Teoría
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ServAplic/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tema 3 - Servidores de aplicaciones
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Prácticas
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Prácticas
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../P3.1-Wildfly/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Práctica 3.1: Despliegue de una API Restful con Jakarta (Java) mediante Maven en WildFly (JBoss)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../P3.2-NodeJS-Express/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Práctica 3.2 - Despliegue de aplicaciones con Node Express
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../P3.4-Heroku/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Práctica 3.4 - Despliegue de una aplicación Node.js en Netlify (Paas) y Vercel
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../P3.5-Flask/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Práctica 3.5 - Despliegue de una aplicación Flask
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tema 4
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Tema 4
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_1" id="__nav_4_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Teoría
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Teoría
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dns/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tema 4 - Servicios de red implicados en el despliegue de aplicaciones web
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_2" id="__nav_4_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Prácticas
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Prácticas
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../P4.1-DNS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Práctica 4.1 - Configuración de un servidor DNS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../P4.2.DNS-AWS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Práctica 4.2 - Configuración de Route 53 (DNS) en AWS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tema 5
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Tema 5
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_1" id="__nav_5_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Teoría
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Teoría
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../index_git/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tema 5 - Control de versiones
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cvs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sistemas de control de versiones
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../introduccion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Introducción a git
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../git/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aspectos básicos de Git
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../usobasico/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Uso básico de Git
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../usoavanzado/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Uso avanzado de Git
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ramas/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ramas
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../github/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Github
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../github-zenodo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Citar proyectos en GitHub
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../github-flow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Flujo de trabajo en GitHub
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../github-avanzado/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Github avanzado
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../commands/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Comandos de git
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../gitflow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Flujo de trabajo con Git (git flow)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../referencias/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Referencias
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_2" id="__nav_5_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Prácticas
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Prácticas
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../P5.1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ejercicios Git y Github
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../P5.2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ejercicios Git y Github (II)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../P5.3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Git avanzado - Aprendiendo branching
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tema 6
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Tema 6
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_1" id="__nav_6_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Teoría
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Teoría
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../index_docker/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tema 6 - Contenedores
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../introduction/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Introducción
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../installation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Instalación
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../images/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Imágenes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../containers/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Contenedores
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../data/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Persistiendo datos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wordpress/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Levantar un WordPress con Docker
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../docker-compose/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Levantar un WordPress con Docker Compose
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dockerfile/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Crear imágenes propias
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tips/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Trucos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_2" id="__nav_6_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Prácticas
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Prácticas
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../P6.1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Práctica 6.1 - Dockerización del despliegue de una aplicación con Node.js
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../P6.2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Práctica 6.2 - Despliegue de una aplicación PHP con Nginx y MySQL usando Docker y docker-compose
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../P6.3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Práctica 6.3- Servidor web con usuarios autenticados mediante servicio de directorio (LDAP)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tema 7
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Tema 7
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_7_1" id="__nav_7_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Teoría
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Teoría
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cicd/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tema 7 - CI/CD (Integración y despliegue continuo)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_7_2" id="__nav_7_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Prácticas
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Prácticas
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../P7.1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Práctica 7.1- Toma de contacto con CI/CD usando Github actions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="guia-completa-de-amazon-web-services-aws-para-principiantes">Guía Completa de Amazon Web Services (AWS) para Principiantes</h1>
+<h2 id="tabla-de-contenidos">Tabla de Contenidos</h2>
+<ol>
+<li><a href="#qué-es-la-nube">¿Qué es la nube?</a></li>
+<li><a href="#qué-es-aws">¿Qué es AWS?</a></li>
+<li><a href="#aws-academy-qué-es-y-cómo-acceder">AWS Academy: qué es y cómo acceder</a></li>
+<li><a href="#conceptos-fundamentales-de-aws">Conceptos fundamentales de AWS</a></li>
+<li><a href="#el-panel-de-aws-la-consola-de-gestión">El panel de AWS: la consola de gestión</a></li>
+<li><a href="#regiones-y-zonas-de-disponibilidad">Regiones y zonas de disponibilidad</a></li>
+<li><a href="#servicios-esenciales-de-aws">Servicios esenciales de AWS</a></li>
+<li><a href="#amazon-ec2-tu-primer-servidor-en-la-nube">Amazon EC2: Tu primer servidor en la nube</a></li>
+<li><a href="#tipos-de-instancias-ec2">Tipos de instancias EC2</a></li>
+<li><a href="#creando-tu-primera-instancia-ec2">Creando tu primera instancia EC2</a></li>
+<li><a href="#grupos-de-seguridad-el-firewall-de-aws">Grupos de seguridad: el firewall de AWS</a></li>
+<li><a href="#conectándose-a-ec2-mediante-ssh">Conectándose a EC2 mediante SSH</a></li>
+<li><a href="#gestión-de-claves-ssh">Gestión de claves SSH</a></li>
+<li><a href="#almacenamiento-ebs-y-s3">Almacenamiento: EBS y S3</a></li>
+<li><a href="#redes-básicas-vpc-simplificado">Redes básicas: VPC simplificado</a></li>
+<li><a href="#costes-y-economía-de-aws">Costes y economía de AWS</a></li>
+<li><a href="#buenas-prácticas-de-seguridad">Buenas prácticas de seguridad</a></li>
+<li><a href="#glosario-de-términos-aws">Glosario de términos AWS</a></li>
+</ol>
+<hr />
+<h2 id="que-es-la-nube">¿Qué es la nube?</h2>
+<p>Antes de entender qué es AWS, necesitamos comprender qué significa "la nube" en el contexto de la informática. El término "nube" es una metáfora que se usa ampliamente, pero ¿qué significa realmente?</p>
+<h3 id="la-nube-como-concepto">La nube como concepto</h3>
+<p>En términos sencillos, "la nube" se refiere a servidores computers accesibles a través de internet, junto con el software que在这些 servidores上运行, las bases de datos que almacenan datos, y los servicios que potencian aplicaciones. En lugar de poseer y mantener tu propio centro de datos físico y servidores, puedes acceder a recursos de computación bajo demanda desde proveedores como AWS, Azure o Google Cloud.</p>
+<p>Históricamente, si una empresa quería ejecutar una aplicación web, necesitaba:</p>
+<ol>
+<li><strong>Comprar o alquilar espacio en un datacenter físico</strong>: Un cuarto oscuro con servidores propios, o espacio en un centro de datos de terceros</li>
+<li><strong>Adquirir servidores físicos</strong>: Máquinas con CPU, RAM, disco duro, que había que rackear, cablear, configurar</li>
+<li><strong>Instalar software de virtualización</strong>: Para aprovechar efficiently los recursos de cada servidor</li>
+<li><strong>Configurar redes</strong>: Switches, routers, firewalls, conexiones a internet con ancho de banda dedicado</li>
+<li><strong>Contratar técnicos especializados</strong>: Para mantener todo esto funcionando 24/7</li>
+<li><strong>Planificar la capacidad</strong>: ¿Cuántos servidores necesito? ¿Y si crezco? ¿Y si tengo picos de tráfico?</li>
+<li><strong>Pagar facturas de electricidad</strong>: Servidores que consumen mucha energía y generan mucho calor</li>
+</ol>
+<p>Este modelo tradicional se llama "on-premises" o "infraestructura on-premise".</p>
+<p>Con la nube, todo eso desaparece. En lugar de poseer servidores, alquilas recursos de computación a un proveedor que:</p>
+<ul>
+<li>Tiene datacenters distribuidos por todo el mundo</li>
+<li>Mantiene y actualiza el hardware por ti</li>
+<li>Escala los recursos hacia arriba o hacia abajo según tus necesidades</li>
+<li>Solo te cobra por lo que usas, cuando lo usas</li>
+</ul>
+<h3 id="modelos-de-servicio-en-la-nube">Modelos de servicio en la nube</h3>
+<p>La industria de la nube define tres modelos de servicio principales, que representan diferentes niveles de abstracción:</p>
+<p><strong>Infrastructure as a Service (IaaS)</strong>: El proveedor ofrece acceso a recursos de computación básicos: servidores virtuales, almacenamiento y redes. Tú eres responsable de instalar el sistema operativo, configurar el software y gestionar la infraestructura. AWS EC2 es un ejemplo de IaaS.</p>
+<p><strong>Platform as a Service (PaaS)</strong>: El proveedor gestiona más cosas por ti. Tú simplemente despliegas tu aplicación sin preocuparte por el servidor, el sistema operativo o la infraestructura de red. AWS Elastic Beanstalk o Heroku son ejemplos.</p>
+<p><strong>Software as a Service (SaaS)</strong>: El proveedor ofrece aplicaciones completas funcionando en la nube. Gmail, Spotify o Salesforce son ejemplos de SaaS. No instalas nada, solo usas la aplicación.</p>
+<p>Terraform y Ansible, tal como viste en el documento anterior, operan principalmente en la capa IaaS, ayudándote a gestionar esa infraestructura de forma programable.</p>
+<h3 id="beneficios-de-la-nube">Beneficios de la nube</h3>
+<p>La nube ofrece varias ventajas sobre la infraestructura tradicional:</p>
+<p><strong>Elasticidad</strong>: ¿Necesitas 10 servidores mañana y 100 hoy? Con la nube, puedes escalar hacia arriba y hacia abajo según la demanda, generalmente con unos pocos clics o una llamada a una API.</p>
+<p><strong>Coste</strong>: No hay inversión inicial en hardware. Pagas por uso, como el agua o la electricidad. Además, puedes reducir costes apagando recursos que no necesites (por ejemplo, entornos de desarrollo fuera de horario laboral).</p>
+<p><strong>Velocidad</strong>: En lugar de esperar semanas para que llegue hardware nuevo, puedes tener un servidor virtual funcionando en minutos.</p>
+<p><strong>Alcance global</strong>: Los grandes proveedores tienen datacenters en dozens de ubicaciones por todo el mundo. Puedes desplegar aplicaciones cerca de tus usuarios sin importar dónde estén.</p>
+<p><strong>Fiabilidad</strong>: Los datacenters de los grandes proveedores están diseñados para soportar fallos. Si un servidor se estropea, tu aplicación sigue funcionando porque el proveedor redistribuye la carga. Además, hacen backup de tus datos de forma automática.</p>
+<h3 id="que-es-on-demand-vs-reserved">¿Qué es "on-demand" vs "reserved"?</h3>
+<p>Dos conceptos importantes en la nube:</p>
+<p><strong>On-Demand (bajo demanda)</strong>: Pagas por hora de uso, sin compromisos a largo plazo. Es como taxis: pagas por el viaje cuando lo necesitas. Conveniente para flexibilidad, pero más caro por hora.</p>
+<p><strong>Reserved (reservado)</strong>: Te comprometes a usar un recurso durante 1-3 años y recibes un descuento significativo (hasta un 70%). Es como comprar un coche en lugar de taxi: inversión inicial, pero más barato a largo plazo.</p>
+<p>Para estudiantes aprendiendo, el modelo on-demand es ideal porque puedes experimentar sin grandes compromisos.</p>
+<hr />
+<h2 id="que-es-aws">¿Qué es AWS?</h2>
+<p>Amazon Web Services (AWS) es la subsidiaria de Amazon que proporciona una plataforma de computación en la nube pública. Lanzada oficialmente en 2002 como un conjunto de servicios web internos de Amazon, AWS se convirtió en una subsidiaria separada en 2003 y ha crecido hasta convertirse en el mayor proveedor de servicios de nube del mundo.</p>
+<p>AWS ofrece más de 200 servicios diferentes que van desde computación básica hasta inteligencia artificial, machine learning, IoT, y mucho más. Esta enorme variedad puede resultar abrumadora al principio, pero la mayoría de los estudiantes y proyectos начинают con un pequeño subconjunto de servicios fundamentales.</p>
+<h3 id="los-servicios-mas-importantes-de-aws">Los servicios más importantes de AWS</h3>
+<p>Aunque AWS tiene cientos de servicios, unos pocos son los más fundamentales y los que más vas a usar:</p>
+<p><strong>Amazon EC2 (Elastic Compute Cloud)</strong>: Máquinas virtuales (servidores) en la nube. Es el servicio más básico y el que más vas a usar para aprender. Te permite crear servidores de diferentes tamaños y sistemas operativos en minutos.</p>
+<p><strong>Amazon S3 (Simple Storage Service)</strong>: Almacenamiento de objetos en la nube. Piensa en él como un sistema de archivos enorme en internet donde guardas archivos. Muy usado para alojar archivos estáticos, backups, datos de aplicaciones, etc.</p>
+<p><strong>Amazon RDS (Relational Database Service)</strong>: Bases de datos gestionadas. En lugar de instalar y mantener MySQL, PostgreSQL u Oracle tú mismo, RDS lo hace por ti, manejando backups, actualizaciones y replicación.</p>
+<p><strong>Amazon VPC (Virtual Private Cloud)</strong>: Redes virtuales privadas. Te permite crear redes lógicamente aisladas dentro de la infraestructura de AWS, con control total sobre la topología de red.</p>
+<p><strong>Amazon IAM (Identity and Access Management)</strong>: Gestión de identidades y accesos. Controla quién puede hacer qué dentro de tu cuenta de AWS, definiendo permisos granulares.</p>
+<p><strong>Amazon CloudWatch</strong>: Monitorización y observabilidad. Te permite ver métricas, logs y alarmas de tus servicios AWS.</p>
+<p><strong>AWS Lambda</strong>: Computación sin servidores. Puedes ejecutar código sin aprovisionar ni gestionar servidores, pagando solo por el tiempo de ejecución.</p>
+<h3 id="aws-vs-otros-proveedores-de-nube">AWS vs otros proveedores de nube</h3>
+<p>El mercado de cloud pública está dominado por tres grandes proveedores:</p>
+<table>
+<thead>
+<tr>
+<th>Proveedor</th>
+<th>Cuota de mercado</th>
+<th>Particularidades</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>AWS</strong></td>
+<td>~32%</td>
+<td>El más antiguo, el más amplio, el más usado en la industria</td>
+</tr>
+<tr>
+<td><strong>Microsoft Azure</strong></td>
+<td>~23%</td>
+<td>Muy fuerte en entorno empresarial y Windows</td>
+</tr>
+<tr>
+<td><strong>Google Cloud Platform</strong></td>
+<td>~10%</td>
+<td>Fuerte en datos, machine learning y Kubernetes</td>
+</tr>
+</tbody>
+</table>
+<p>Para aprender, cualquier proveedor es válido. AWS es el más extendido en la industria, lo que significa más documentación, más tutoriales, y más conocimiento disponible en internet.</p>
+<hr />
+<h2 id="aws-academy-que-es-y-como-acceder">AWS Academy: qué es y cómo acceder</h2>
+<p>AWS Academy es un programa educativo de Amazon diseñado para instituciones académicas. Proporciona a estudiantes acceso gratuito a recursos de aprendizaje de AWS, laboratorios prácticos, y lo más importante: créditos gratuitos de AWS para práctica y experimentación.</p>
+<h3 id="que-incluye-aws-academy">¿Qué incluye AWS Academy?</h3>
+<p><strong>Contenido curricular</strong>: Cursos diseñados por AWS, disponibles a través de la plataforma AWS Academy. Cubren desde fundamentos hasta temas avanzados como machine learning, seguridad y arquitectura.</p>
+<p><strong>Laboratorios prácticos</strong>: Entornos donde puedes experimentar con servicios reales de AWS sin temor a romper algo o acumular facturas inesperadas.</p>
+<p><strong>Creditos AWS</strong>: Dependiendo de tu institución y curso, recibes créditos (generalmente entre $100-$300) que puedes usar para crear recursos reales en AWS. Esto te permite experimentar con la consola real y servicios reales.</p>
+<p><strong>Certificaciones</strong>: Descuentos o exámenes gratuitos para obtener certificaciones AWS, que son muy valoradas en la industria.</p>
+<h3 id="como-y-empezar">Cómo注册 y empezar</h3>
+<p>El proceso típico depende de tu institución, pero generalmente:</p>
+<ol>
+<li>
+<p><strong>Tu instructor o institución te proporcionará un enlace de invitación</strong> o un código de acceso a AWS Academy. Sin esto, no puedes acceder.</p>
+</li>
+<li>
+<p><strong>Regístrate en AWS Academy</strong>: Ve a https://awsacademy.com y crea una cuenta con tu email institucional o el que te proporcionen.</p>
+</li>
+<li>
+<p><strong>Accede al Learning Management System (LMS)</strong>: Una vez registrado, tendrás acceso a los cursos. Aquí encontrarás:</p>
+</li>
+<li>Fundamentos de arquitecturas en la nube</li>
+<li>Laboratorios prácticos guiados paso a paso</li>
+<li>
+<p>Exámenes de práctica</p>
+</li>
+<li>
+<p><strong>Activa tus créditos AWS</strong>:</p>
+</li>
+<li>Entra en la consola de AWS con las credenciales de AWS Academy (no tu cuenta personal de AWS)</li>
+<li>Los créditos se aplican automáticamente a tu cuenta</li>
+<li>IMPORTANTE: Usa solo esta cuenta para prácticas, no mezcles con otras cuentas</li>
+</ol>
+<h3 id="diferencia-entre-aws-academy-y-cuenta-aws-normal">Diferencia entre AWS Academy y cuenta AWS normal</h3>
+<table>
+<thead>
+<tr>
+<th>Aspecto</th>
+<th>AWS Academy</th>
+<th>Cuenta AWS normal</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Coste</strong></td>
+<td>Créditos educativos gratuitos</td>
+<td>Pagas por uso real</td>
+</tr>
+<tr>
+<td><strong>Acceso</strong></td>
+<td>Cuenta proporcionada por la institución</td>
+<td>Creada por ti</td>
+</tr>
+<tr>
+<td><strong>Límites</strong></td>
+<td>Servicios limitados generalmente</td>
+<td>Límites estándar de AWS</td>
+</tr>
+<tr>
+<td><strong>Propósito</strong></td>
+<td>Aprendizaje</td>
+<td>Producción o desarrollo personal</td>
+</tr>
+<tr>
+<td><strong>Soporte</strong></td>
+<td>A través del LMS de Academy</td>
+<td>Documentación pública o soporte de pago</td>
+</tr>
+</tbody>
+</table>
+<h3 id="primeros-pasos-en-la-consola-de-aws-academy">Primeros pasos en la consola de AWS Academy</h3>
+<p>Una vez dentro de tu cuenta de AWS Academy:</p>
+<ol>
+<li>
+<p><strong>Accede a la consola de gestión</strong>: https://console.aws.amazon.com</p>
+</li>
+<li>
+<p><strong>Explora el menú de servicios</strong>: En la esquina superior izquierda, verás un menú desplegable con todos los servicios AWS. Al principio, quédate solo con los fundamentales.</p>
+</li>
+<li>
+<p><strong>Selecciona tu región</strong>: En la esquina superior derecha, hay un selector de región. Para comenzar, usa una región cercana a tu ubicación como <code>US East (N. Virginia)</code> o <code>EU (Ireland)</code>.</p>
+</li>
+<li>
+<p><strong>Crea recursos poco a poco</strong>: No intentes crear todo de golpe. Empieza con una simple instancia EC2, aprende cómo funciona, y ve avanzando.</p>
+</li>
+</ol>
+<h3 id="consejos-para-estudiantes-de-aws-academy">Consejos para estudiantes de AWS Academy</h3>
+<p><strong>No tengas miedo de explorar</strong>: La cuenta de AWS Academy está pensada para que experimentes. Los recursos que crees típicamente tienen límites razonables.</p>
+<p><strong>Lee las advertencias de coste</strong>: AWS te avisa cuando estás a punto de crear recursos que pueden ser costosos. Presta atención a estos avisos.</p>
+<p><strong>Destruye lo que no uses</strong>: Si creas recursos para una práctica y luego no los necesitas, elimínalos. Así ahorras créditos para futuras prácticas.</p>
+<p><strong>Anota lo que aprendes</strong>: Lleva un cuaderno o documento donde registres qué hiciste, qué funcionó y qué no. Te servirá como referencia futura.</p>
+<hr />
+<h2 id="conceptos-fundamentales-de-aws">Conceptos fundamentales de AWS</h2>
+<p>Antes de empezar a crear recursos, hay algunos conceptos fundamentales que necesitas entender sobre cómo funciona AWS.</p>
+<h3 id="todo-es-una-api">Todo es una API</h3>
+<p>AWS funciona mediante APIs (Application Programming Interfaces). Cada acción que realizas en la consola web, ya sea crear una instancia o subir un archivo, se convierte internamente en llamadas a la API de AWS.</p>
+<p>Esto significa que:</p>
+<ul>
+<li><strong>La consola web es solo una interfaz</strong>: Hace las mismas llamadas API que podrías hacer tú programáticamente</li>
+<li><strong>Puedes automatizar todo</strong>: Con herramientas como Terraform o el AWS CLI, puedes hacer cualquier cosa que hagas en la consola</li>
+<li><strong>Todo tiene límites y cuotas</strong>: Las APIs tienen rate limits, lo que significa que hay un número máximo de llamadas por segundo</li>
+</ul>
+<h3 id="everything-is-regional-except">Everything is regional... except...</h3>
+<p>La mayoría de los servicios en AWS son regionales, lo que significa que eliges una región geográfica específica y tus recursos se crean en esa ubicación física. Sin embargo, hay excepciones importantes:</p>
+<p><strong>Servicios globales</strong>: IAM, Route 53 (DNS), CloudFront (CDN) no están atados a una región específica.</p>
+<p><strong>Servicios de infraestructura global</strong>: Los servicios de red como VPC requieren decisiones específicas de región, pero las arquitecturas pueden diseñarse para cubrir múltiples regiones.</p>
+<h3 id="recursos-y-sus-identificadores">Recursos y sus identificadores</h3>
+<p>Cada recurso en AWS tiene un identificador único. Los más comunes son:</p>
+<p><strong>ARN (Amazon Resource Name)</strong>: El identificador único universal para cualquier recurso AWS. Tiene un formato específico:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>arn:aws:service:region:account-id:resource-type/resource-id
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>arn:aws:ec2:us-east-1:123456789012:instance/i-0abc123def456789
+</code></pre></div>
+<p><strong>Resource IDs</strong>: Identificadores específicos por tipo de recurso. Por ejemplo:
+- Instancias EC2: <code>i-0abc123def456789</code>
+- Buckets S3: <code>mi-bucket-unico</code> (debe ser globalmente único)
+- Bases de datos RDS: <code>db-ABCDEFGHIJKLMNOP</code></p>
+<h3 id="el-concepto-de-resource">El concepto de "resource"</h3>
+<p>En AWS, casi todo lo que creas es un "recurso". Una instancia EC2 es un recurso. Un bucket S3 es un recurso. Un usuario IAM es un recurso. Esta terminología es importante porque IAM (gestión de identidades y accesos) te permite dar permisos específicos a nivel de recurso.</p>
+<hr />
+<h2 id="el-panel-de-aws-la-consola-de-gestion">El panel de AWS: la consola de gestión</h2>
+<p>La Consola de Gestión de AWS es la interfaz web que te permite interactuar con todos los servicios de AWS. Aunque puede parecer abrumadora al principio, tiene una estructura relativamente sencilla una vez que la entiendes.</p>
+<h3 id="navegacion-basica">Navegación básica</h3>
+<p><strong>Barra de navegación superior</strong>:
+- <strong>Logo de AWS</strong>: Te lleva al dashboard principal
+- <strong>Selector de región</strong>: Elige la región donde trabajarás. Recuerda: la mayoría de los recursos son regionales.
+- <strong>Cuadro de búsqueda de servicios</strong>: Si sabes lo que buscas, escribe aquí (ej: "EC2", "S3")
+- <strong>Notificaciones</strong>: Alertas y anuncios
+- <strong>Cuenta y soporte</strong>: Información de tu cuenta, cambiar región, cerrar sesión</p>
+<p><strong>Menú de servicios (esquina superior izquierda)</strong>:
+- Click en "Servicios" para ver el menú completo
+- Los servicios están categorizados: Compute, Storage, Database, Networking, etc.
+- Tu最近 utilizado muestra los servicios que has usado recientemente
+- Los "favoritos" te permiten guardar servicios que uses mucho (estrellita)</p>
+<h3 id="el-dashboard">El dashboard</h3>
+<p>Cuando entras en la consola sin un servicio seleccionado, ves el Dashboard. Aquí encontrarás:</p>
+<ul>
+<li><strong>Resumen de servicios populares</strong>: Enlaces directos a los servicios más usados</li>
+<li><strong>Panel de facturación</strong>: Uso de créditos, costes acumulados</li>
+<li><strong>Recursos recientes</strong>: Recursos que has creado o modificado recientemente</li>
+<li><strong>Noticias y announcements</strong>: Información de AWS</li>
+</ul>
+<h3 id="buscador-de-servicios">Buscador de servicios</h3>
+<p>Si sabes qué servicio quieres usar, escribe su nombre en el buscador de la esquina superior. Por ejemplo, escribe "EC2" y verás sugerencias:</p>
+<ul>
+<li>EC2</li>
+<li>EC2 Image Builder</li>
+<li>EC2 Instance Connect</li>
+<li>...</li>
+</ul>
+<p>Click en el primero y te lleva directamente al panel de ese servicio.</p>
+<h3 id="panel-de-un-servicio-especifico">Panel de un servicio específico</h3>
+<p>Cada servicio tiene su propio panel con:</p>
+<ul>
+<li><strong>Navegación izquierda</strong>: Categorías dentro del servicio (ej: en EC2: Instances, Images, Key Pairs, Security Groups, etc.)</li>
+<li><strong>Área principal</strong>: Lista de recursos, detalles, acciones</li>
+<li><strong>Barra de acciones</strong>: Botones como "Launch Instance", "Create", "Delete"</li>
+</ul>
+<hr />
+<h2 id="regiones-y-zonas-de-disponibilidad">Regiones y zonas de disponibilidad</h2>
+<p>Entender regiones y zonas de disponibilidad es fundamental para trabajar effectively con AWS.</p>
+<h3 id="regiones">Regiones</h3>
+<p>Una región es una ubicación geográfica que contiene múltiples zonas de disponibilidad. AWS tiene regiones en todo el mundo:</p>
+<table>
+<thead>
+<tr>
+<th>Región</th>
+<th>Nombre</th>
+<th>Ubicación</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>us-east-1</td>
+<td>US East (N. Virginia)</td>
+<td>Estados Unidos</td>
+</tr>
+<tr>
+<td>us-west-2</td>
+<td>US West (Oregon)</td>
+<td>Estados Unidos</td>
+</tr>
+<tr>
+<td>eu-west-1</td>
+<td>EU (Ireland)</td>
+<td>Europa</td>
+</tr>
+<tr>
+<td>eu-central-1</td>
+<td>EU (Frankfurt)</td>
+<td>Europa</td>
+</tr>
+<tr>
+<td>ap-southeast-1</td>
+<td>Asia Pacific (Singapore)</td>
+<td>Asia</td>
+</tr>
+<tr>
+<td>ap-northeast-1</td>
+<td>Asia Pacific (Tokyo)</td>
+<td>Asia</td>
+</tr>
+</tbody>
+</table>
+<p><strong>¿Por qué importa la región?</strong></p>
+<ul>
+<li><strong>Latencia</strong>: Elige una región cerca de tus usuarios para menor latencia</li>
+<li><strong>Coste</strong>: Los precios varían por región</li>
+<li><strong>Servicios disponibles</strong>: Algunos servicios no están en todas las regiones</li>
+<li><strong>Compliance</strong>: Algunas regulaciones requieren que los datos se guarden en regiones específicas</li>
+</ul>
+<p>Para aprender, usa cualquier región principal. <code>us-east-1</code> o <code>eu-west-1</code> son buenas opciones porque tienen todos los servicios disponibles.</p>
+<h3 id="zonas-de-disponibilidad-azs">Zonas de disponibilidad (AZs)</h3>
+<p>Cada región contiene múltiples zonas de disponibilidad, típicamente 3-6. Una zona de disponibilidad es un centro de datos completo con sus propios:</p>
+<ul>
+<li>Fuentes de energía independientes</li>
+<li>Sistemas de refrigeración</li>
+<li>Redes de conectividad</li>
+</ul>
+<p>Pero que está ubicado relativamente cerca de las otras AZs de la región (dentro de unos pocos kilómetros). Esto permite:</p>
+<ul>
+<li><strong>Alta disponibilidad</strong>: Si una AZ falla, las otras siguen funcionando</li>
+<li><strong>Baja latencia entre AZs</strong>: La comunicación entre AZs es rápida</li>
+<li><strong>Replica synchrone</strong>: Para bases de datos y aplicaciones que necesitan redundancia</li>
+</ul>
+<p>Cuando creas recursos críticos, puedes distribuirlos across múltiples AZs para mayor redundancia.</p>
+<h3 id="seleccion-de-region">Selección de región</h3>
+<p>Para la mayoría de las prácticas de este curso:</p>
+<ol>
+<li>Abre la consola de AWS</li>
+<li>Mira la esquina superior derecha</li>
+<li>Click en el selector de región</li>
+<li>Selecciona <code>US East (N. Virginia)</code> o <code>EU (Ireland)</code> o la que prefieras</li>
+<li>Los recursos que crees estarán en esa región</li>
+</ol>
+<p><strong>Importante</strong>: Si cambias de región, los recursos que creaste en otra región no aparecerán. Cada región es independiente.</p>
+<hr />
+<h2 id="servicios-esenciales-de-aws">Servicios esenciales de AWS</h2>
+<p>Vamos a revisar brevemente los servicios que más vas a usar, aunque profundizaremos en algunos más adelante.</p>
+<h3 id="amazon-ec2-computacion-en-la-nube">Amazon EC2: Computación en la nube</h3>
+<p>EC2 es el servicio más fundamental de AWS. Te permite crear máquinas virtuales (instancias) con diferentes sistemas operativos (Linux, Windows) y especificaciones (CPU, RAM, almacenamiento).</p>
+<p>Cada instancia EC2 es esencialmente un servidor en la nube que puedes:</p>
+<ul>
+<li>Elegir su sistema operativo (Amazon Linux, Ubuntu, Windows Server, etc.)</li>
+<li>Seleccionar su tamaño (CPU y RAM)</li>
+<li>Configurar su almacenamiento</li>
+<li>Conectarte por SSH (Linux) o RDP (Windows)</li>
+<li>Instalar cualquier software que necesites</li>
+</ul>
+<h3 id="amazon-s3-almacenamiento-simple">Amazon S3: Almacenamiento simple</h3>
+<p>S3 es un servicio de almacenamiento de objetos. Piensa en él como un sistema de archivos infinito en internet.</p>
+<p>Características principales:</p>
+<ul>
+<li><strong>Buckets</strong>: Los contenedores donde guardas archivos. Cada bucket tiene un nombre único globalmente.</li>
+<li><strong>Objetos</strong>: Los archivos que guardas. Cada objeto tiene una clave (path) y metadatos.</li>
+<li><strong>Durabilidad</strong>: 99.999999999% (once nueves) de durabilidad. Tus datos están muy seguros.</li>
+<li><strong>Coste</strong>: Pagas por GB almacenado y porRequests de lectura/escritura.</li>
+</ul>
+<p>Usos comunes:</p>
+<ul>
+<li>Alojar archivos estáticos de aplicaciones web (HTML, CSS, JS, imágenes)</li>
+<li>Backup de datos</li>
+<li>Data Lakes para análisis</li>
+<li>Distribución de contenido con CloudFront</li>
+</ul>
+<h3 id="amazon-vpc-redes-privadas-virtuales">Amazon VPC: Redes privadas virtuales</h3>
+<p>VPC te permite crear redes virtuales privadas en AWS. Es como crear tu propia red de area local pero en la nube.</p>
+<p>Con VPC puedes:</p>
+<ul>
+<li>Definir rangos de direcciones IP privadas (ej: 10.0.0.0/16)</li>
+<li>Crear subredes públicas y privadas</li>
+<li>Configurar routers y tablas de enrutamiento</li>
+<li>Implementar firewalls (Security Groups, Network ACLs)</li>
+<li>Conectar a otras redes (VPN, Direct Connect)</li>
+</ul>
+<p>Cuando creas recursos como instancias EC2, necesitas especificar en qué VPC y subred se crean.</p>
+<h3 id="amazon-iam-gestion-de-identidades">Amazon IAM: Gestión de identidades</h3>
+<p>IAM te permite controlar quién puede acceder a qué recursos de AWS. Es fundamental para la seguridad.</p>
+<p>Conceptos principales:</p>
+<ul>
+<li><strong>Usuarios</strong>: Cuentas individuales para personas</li>
+<li><strong>Grupos</strong>: Colecciones de usuarios con permisos comunes</li>
+<li><strong>Roles</strong>: Permisos que puedes asignar a recursos o usuarios temporales</li>
+<li><strong>Políticas</strong>: Documentos JSON que definen permisos específicos</li>
+</ul>
+<p>Por defecto, todo está denegado. Solo puedes acceder a lo que explícitamente se permite.</p>
+<h3 id="amazon-rds-bases-de-datos-gestionadas">Amazon RDS: Bases de datos gestionadas</h3>
+<p>RDS te proporciona bases de datos relacionales gestionadas sin tener que instalar y mantener el motor de base de datos tú mismo.</p>
+<p>Motores disponibles:</p>
+<ul>
+<li>MySQL</li>
+<li>PostgreSQL</li>
+<li>MariaDB</li>
+<li>Oracle</li>
+<li>SQL Server</li>
+</ul>
+<p>RDS maneja por ti:</p>
+<ul>
+<li>Backups automáticos</li>
+<li>Parches de software</li>
+<li>Replicación para alta disponibilidad</li>
+<li>Failover automático si una AZ deja de funcionar</li>
+</ul>
+<h3 id="amazon-cloudwatch-monitorizacion">Amazon CloudWatch: Monitorización</h3>
+<p>CloudWatch recopila métricas y logs de tus recursos AWS y aplicaciones.</p>
+<p>Puedes ver:</p>
+<ul>
+<li>Uso de CPU de tus instancias EC2</li>
+<li>Tráfico de red</li>
+<li>Logs de aplicaciones</li>
+<li>Crear alarmas que te alertan cuando algo supera un umbral</li>
+</ul>
+<h3 id="aws-lambda-computacion-sin-servidor">AWS Lambda: Computación sin servidor</h3>
+<p>Lambda te permite ejecutar código sin aprovisionar servidores. Solo escribes el código, lo subes, y Lambda lo ejecuta en respuesta a eventos.</p>
+<p>Pagas por cada 100ms de ejecución y por número de invocaciones, no por hora de servidor.</p>
+<hr />
+<h2 id="amazon-ec2-tu-primer-servidor-en-la-nube">Amazon EC2: Tu primer servidor en la nube</h2>
+<p>Amazon EC2 (Elastic Compute Cloud) es el servicio más importante de AWS para aprender. Una instancia EC2 es simplemente un servidor virtual con las características que tú elijas.</p>
+<h3 id="que-es-una-instancia-ec2">¿Qué es una instancia EC2?</h3>
+<p>Una instancia EC2 es una máquina virtual en la nube de AWS. Es como tener un ordenador accesible desde internet en el que tú decides:</p>
+<ul>
+<li><strong>Sistema operativo</strong>: Linux (Ubuntu, Amazon Linux, Debian, CentOS) o Windows</li>
+<li><strong>Hardware virtual</strong>: CPU, RAM, tipo de almacenamiento</li>
+<li><strong>Red</strong>: Qué VPC, qué subred, qué dirección IP</li>
+<li><strong>Seguridad</strong>: Qué puertos están abiertos, quién puede acceder</li>
+<li><strong>Software</strong>: Qué aplicaciones instalar una vez creado el servidor</li>
+</ul>
+<p>La palabra "Elastic" en el nombre se refiere a la capacidad de escalar hacia arriba o hacia abajo fácilmente. Puedes tener 1 instancia o 100, y puedes cambiarlas de tamaño según necesites.</p>
+<h3 id="componentes-de-una-instancia-ec2">Componentes de una instancia EC2</h3>
+<p>Cuando creas una instancia EC2, necesitas tomar decisiones sobre varios componentes:</p>
+<p><strong>1. AMI (Amazon Machine Image)</strong></p>
+<p>La AMI es la plantilla que define el sistema operativo y el software preinstalado. AWS proporciona muchas AMIs oficiales:</p>
+<ul>
+<li><strong>Amazon Linux 2023</strong>: Linux optimizado para AWS, gratuito</li>
+<li><strong>Ubuntu Server 22.04 LTS</strong>: Distribución Linux popular, gratuito</li>
+<li><strong>Microsoft Windows Server</strong>: Para ejecutar aplicaciones Windows, de pago por minuto</li>
+<li><strong>Red Hat Enterprise Linux</strong>: Enterprise Linux, de pago</li>
+</ul>
+<p>También existen AMIs de la comunidad y de mercado con software preconfigurado.</p>
+<p><strong>2. Tipo de instancia</strong></p>
+<p>El tipo de instancia define la combinación de CPU, memoria, almacenamiento y capacidad de red. AWS ofrece docenas de tipos organizados en familias:</p>
+<table>
+<thead>
+<tr>
+<th>Familia</th>
+<th>Propósito</th>
+<th>Ejemplos</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>t</strong> (Burstable)</td>
+<td>Uso general, económico</td>
+<td>t3.micro, t3.small</td>
+</tr>
+<tr>
+<td><strong>m</strong> (General Purpose)</td>
+<td>Más potencia que t</td>
+<td>m5.large, m5.xlarge</td>
+</tr>
+<tr>
+<td><strong>c</strong> (Compute Optimized)</td>
+<td>Mucha CPU</td>
+<td>c5.large, c5.2xlarge</td>
+</tr>
+<tr>
+<td><strong>r</strong> (Memory Optimized)</td>
+<td>Mucha RAM</td>
+<td>r5.large, r5.xlarge</td>
+</tr>
+</tbody>
+</table>
+<p>Para aprender y desarrollo, las instancias <strong>t3.micro</strong> o <strong>t3.small</strong> son ideales porque son gratuitas dentro del tier de uso gratuito de AWS.</p>
+<p><strong>3. Configuración de red (VPC y subred)</strong></p>
+<p>La VPC define la red virtual donde vivirá tu instancia. La subred determina si la instancia tiene una IP pública (accesible desde internet) o solo privada.</p>
+<p>Para una primera práctica simple, puedes usar la VPC por defecto que AWS crea automáticamente en cada cuenta.</p>
+<p><strong>4. IP Pública</strong></p>
+<p>Por defecto, las instancias en una subred pública reciben una IP pública automáticamente. Esta IP te permite conectarte desde internet.</p>
+<p>También puedes usar un Elastic IP (IP fija que no cambia) pero tiene coste aunque no la uses.</p>
+<p><strong>5. Almacenamiento (EBS)</strong></p>
+<p>EBS (Elastic Block Store) es el sistema de almacenamiento para instancias EC2. Es como un disco duro virtual.</p>
+<p>Opciones comunes:</p>
+<ul>
+<li><strong>gp3</strong>: SSD de propósito general, el más común, 3000 IOPS base</li>
+<li><strong>gp2</strong>: SSD de propósito general, más antiguo</li>
+<li><strong>io2</strong>: SSD de alto rendimiento para bases de datos</li>
+<li><strong>st1</strong>: HDD de bajo coste para almacenamiento masivo</li>
+<li><strong>sc1</strong>: HDD de menor coste aún</li>
+</ul>
+<p>El tamaño por defecto es 8GB o 10GB para muchas AMIs. Puedes aumentarlo.</p>
+<p><strong>6. Security Group (Grupo de seguridad)</strong></p>
+<p>El Security Group actúa como un firewall virtual para tu instancia. Controla qué tráfico puede entrar y salir.</p>
+<p>Por ejemplo, puedes definir:</p>
+<ul>
+<li>Permitir SSH (puerto 22) desde tu IP</li>
+<li>Permitir HTTP (puerto 80) desde cualquier lugar</li>
+<li>Permitir HTTPS (puerto 443) desde cualquier lugar</li>
+</ul>
+<p><strong>7. Key Pair (Par de claves)</strong></p>
+<p>Para conectarte a una instancia Linux, necesitas un par de claves SSH. Consiste en:</p>
+<ul>
+<li><strong>Clave pública</strong>: Se instala en la instancia durante la creación</li>
+<li><strong>Clave privada</strong>: Tú la descargas y guardas securely. Es la única forma de conectarte</li>
+</ul>
+<p><strong>Nunca pierdas tu clave privada</strong>. Si la pierdes, no podrás acceder a instancias creadas con ella.</p>
+<hr />
+<h2 id="tipos-de-instancias-ec2">Tipos de instancias EC2</h2>
+<p>Elegir el tipo de instancia correcto es importante para balancear rendimiento y coste. Aquí una guía más detallada.</p>
+<h3 id="familia-t-burstable-performance">Familia T: Burstable Performance</h3>
+<p>Las instancias T son económicas y adecuadas para workloads con uso moderado que tienen picos ocasionales.</p>
+<table>
+<thead>
+<tr>
+<th>Tipo</th>
+<th>vCPU</th>
+<th>RAM (GB)</th>
+<th>Coste/hora*</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>t3.micro</td>
+<td>2</td>
+<td>1</td>
+<td>$0.0104</td>
+</tr>
+<tr>
+<td>t3.small</td>
+<td>2</td>
+<td>2</td>
+<td>$0.0208</td>
+</tr>
+<tr>
+<td>t3.medium</td>
+<td>2</td>
+<td>4</td>
+<td>$0.0416</td>
+</tr>
+<tr>
+<td>t3.large</td>
+<td>2</td>
+<td>8</td>
+<td>$0.0832</td>
+</tr>
+</tbody>
+</table>
+<p>*Precios en us-east-1, Linux, On-Demand. Pueden cambiar.</p>
+<p>**Burstable significa que si tu servidor no está usando toda su CPU, acumula "creditos de CPU". Cuando tienes un pico de trabajo, usa esos créditos para burst (explotar) por encima de su capacidad base.</p>
+<h3 id="familia-m-general-purpose">Familia M: General Purpose</h3>
+<p>Más potencia sostenida que las T. Buenas para aplicaciones de propósito general.</p>
+<table>
+<thead>
+<tr>
+<th>Tipo</th>
+<th>vCPU</th>
+<th>RAM (GB)</th>
+<th>Coste/hora*</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>m5.large</td>
+<td>2</td>
+<td>8</td>
+<td>$0.096</td>
+</tr>
+<tr>
+<td>m5.xlarge</td>
+<td>4</td>
+<td>16</td>
+<td>$0.192</td>
+</tr>
+</tbody>
+</table>
+<h3 id="familia-c-compute-optimized">Familia C: Compute Optimized</h3>
+<p>Mucha CPU. Ideales para computational intensive workloads como HPC, machine learning, o servidores de gaming.</p>
+<table>
+<thead>
+<tr>
+<th>Tipo</th>
+<th>vCPU</th>
+<th>RAM (GB)</th>
+<th>Coste/hora*</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>c5.large</td>
+<td>2</td>
+<td>4</td>
+<td>$0.085</td>
+</tr>
+<tr>
+<td>c5.xlarge</td>
+<td>4</td>
+<td>8</td>
+<td>$0.17</td>
+</tr>
+</tbody>
+</table>
+<h3 id="familia-r-memory-optimized">Familia R: Memory Optimized</h3>
+<p>Mucha RAM. Para bases de datos, caches en memoria, big data analytics.</p>
+<table>
+<thead>
+<tr>
+<th>Tipo</th>
+<th>vCPU</th>
+<th>RAM (GB)</th>
+<th>Coste/hora*</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>r5.large</td>
+<td>2</td>
+<td>16</td>
+<td>$0.126</td>
+</tr>
+<tr>
+<td>r5.xlarge</td>
+<td>4</td>
+<td>32</td>
+<td>$0.252</td>
+</tr>
+</tbody>
+</table>
+<h3 id="que-tipo-usar-para-que">¿Qué tipo usar para qué?</h3>
+<p><strong>Para aprender y prácticas</strong>: <code>t3.micro</code> o <code>t3.small</code>. Son gratuitas en el tier de uso gratuito de AWS (750 horas/mes durante 12 meses para cuentas nuevas).</p>
+<p><strong>Para un servidor web pequeño</strong>: <code>t3.small</code> o <code>t3.medium</code> dependiendo del tráfico.</p>
+<p><strong>Para desarrollo con varias aplicaciones</strong>: <code>t3.medium</code> o <code>m5.large</code>.</p>
+<p><strong>Para producción con tráfico moderado</strong>: <code>m5.large</code> o superior, distribuido across varias instancias.</p>
+<h3 id="que-es-el-tier-gratuito-de-aws">¿Qué es el tier gratuito de AWS?</h3>
+<p>AWS ofrece un tier gratuito (Free Tier) para cuentas nuevas:</p>
+<p><strong>Always Free</strong>: Algunos servicios son siempre gratuitos:</p>
+<ul>
+<li>AWS Lambda: 1M de peticiones gratis al mes</li>
+<li>DynamoDB: 25 GB de almacenamiento</li>
+<li>CloudWatch: 10 dashboards al mes, 5 GB de logs al mes</li>
+</ul>
+<p><strong>12 Months Free</strong>: Disponible durante 12 meses desde la creación de la cuenta:</p>
+<ul>
+<li>EC2: 750 horas de t2.micro o t3.micro por mes</li>
+<li>S3: 5 GB de almacenamiento estándar</li>
+<li>RDS: 750 horas de db.t2.micro o db.t3.micro</li>
+</ul>
+<p><strong>Es importante</strong>: Si excedes estos límites, empezarás a pagar. Lee siempre los precios antes de crear recursos.</p>
+<hr />
+<h2 id="creando-tu-primera-instancia-ec2">Creando tu primera instancia EC2</h2>
+<p>Vamos a crear una instancia EC2 paso a paso. Asumimos que ya tienes acceso a la consola de AWS.</p>
+<h3 id="paso-1-acceder-al-servicio-ec2">Paso 1: Acceder al servicio EC2</h3>
+<ol>
+<li>En la consola de AWS, busca "EC2" en el buscador de servicios o navega a través del menú</li>
+<li>Una vez en el panel de EC2, busca el botón azul "Launch instance" o "Lanzar instancia"</li>
+</ol>
+<h3 id="paso-2-nombrar-la-instancia">Paso 2: Nombrar la instancia</h3>
+<ol>
+<li>En el campo "Name", escribe un nombre descriptivo: <code>mi-primera-instancia</code></li>
+<li>Este nombre aparecerá como etiqueta (tag) en la instancia y facilita identificarla</li>
+</ol>
+<h3 id="paso-3-elegir-la-ami">Paso 3: Elegir la AMI</h3>
+<ol>
+<li>En la sección "AMI", ver&aring;s una lista de AMIs disponibles</li>
+<li>Para empezar, busca "Ubuntu Server 22.04 LTS (Free tier eligible)" o "Amazon Linux 2023 (Free tier eligible)"</li>
+<li>Click en "Select" o en la AMI que elijas</li>
+</ol>
+<p><strong>Recomendación para principiantes</strong>: Ubuntu Server es una buena elección porque:</p>
+<ul>
+<li>Es muy popular y hay mucha documentación</li>
+<li>Es similar a otros sistemas Linux que probablemente conozcas</li>
+<li>La comunidad es activa y hay muchos tutoriales</li>
+</ul>
+<h3 id="paso-4-elegir-el-tipo-de-instancia">Paso 4: Elegir el tipo de instancia</h3>
+<ol>
+<li>En "Instance type", ver&aring;s el tipo preseleccionado (generalmente t2.micro o t3.micro)</li>
+<li>Asegúrate de que dice "Free tier eligible"</li>
+<li>Si quieres otra cosa, seleciona el tipo del menú desplegable</li>
+<li>Para aprender, <code>t3.micro</code> es más que suficiente</li>
+</ol>
+<h3 id="paso-5-configurar-detalles-de-red">Paso 5: Configurar detalles de red</h3>
+<ol>
+<li>Por ahora, usa los valores por defecto que aparecerán</li>
+<li>Si quieres profundizar más tarde, puedes elegir:</li>
+<li><strong>VPC</strong>: La red virtual donde se creará la instancia</li>
+<li><strong>Subnet</strong>: La zona de disponibilidad específica</li>
+<li><strong>Auto-assign public IP</strong>: Activa esto si quieres que la instancia tenga IP pública (necesario para SSH desde internet)</li>
+</ol>
+<h3 id="paso-6-agregar-almacenamiento">Paso 6: Agregar almacenamiento</h3>
+<ol>
+<li>En la sección "Storage", ver&aring;s el volumen raíz (generalmente 8GB o 10GB para Ubuntu)</li>
+<li>Puedes cambiar el tamaño o añadir más volúmenes</li>
+<li>Para empezar, los valores por defecto están bien</li>
+<li>El volumen gp3 es el más común actualmente</li>
+</ol>
+<h3 id="paso-7-configurar-advanced-details-opcional">Paso 7: Configurar advanced details (opcional)</h3>
+<p>Expandiendo "Advanced details" tienes opciones adicionales:</p>
+<ul>
+<li><strong>IAM role</strong>: Para dar permisos a la instancia (para scripts que acceden a otros servicios AWS)</li>
+<li><strong>User data</strong>: Script que se ejecuta al iniciar la instancia (útil para instalar software automáticamente)</li>
+<li><strong>Termination protection</strong>: Protege contra termination accidental</li>
+</ul>
+<p>Para una primera práctica, puedes dejarlo todo por defecto.</p>
+<h3 id="paso-8-anadir-etiquetas-tags">Paso 8: Añadir etiquetas (Tags)</h3>
+<ol>
+<li>En la sección "Tags", puedes añadir etiquetas para organizar recursos</li>
+<li>Click en "Add tag":</li>
+<li>Key: <code>Environment</code></li>
+<li>Value: <code>desarrollo</code></li>
+<li>O simplemente usa el tag de Name que ya pusiste</li>
+</ol>
+<h3 id="paso-9-configurar-el-security-group">Paso 9: Configurar el Security Group</h3>
+<ol>
+<li>En la sección "Security Group", defines las reglas de firewall</li>
+<li>Por defecto, verás algo como:</li>
+<li><strong>Type</strong>: SSH</li>
+<li><strong>Protocol</strong>: TCP</li>
+<li><strong>Port Range</strong>: 22</li>
+<li>
+<p><strong>Source</strong>: Anywhere (o tu IP si seleccionaste esa opción)</p>
+</li>
+<li>
+<p>Para desarrollo, está bien permitir SSH desde "My IP" para mayor seguridad, o "Anywhere" si quieres poder conectarte desde cualquier lugar (cuidado en producción)</p>
+</li>
+<li>
+<p><strong>Importante</strong>: SSH está bien para aprender, pero en producción deberías usar una VPN o AWS Direct Connect.</p>
+</li>
+</ol>
+<h3 id="paso-10-revisar-y-lanzar">Paso 10: Revisar y lanzar</h3>
+<ol>
+<li>Aparecerá un resumen de todas tus selections</li>
+<li>Revisa que todo está correcto</li>
+<li>Click en "Launch"</li>
+</ol>
+<h3 id="paso-11-seleccionar-o-crear-key-pair">Paso 11: Seleccionar o crear Key Pair</h3>
+<ol>
+<li>Al hacer click en Launch, AWS te pedir&aacute; que selecciones un Key Pair</li>
+<li><strong>Opción A</strong>: Crear uno nuevo:</li>
+<li>Click en "Create new key pair"</li>
+<li>Nombre: <code>mi-clave-aws</code> (o el nombre que prefieras)</li>
+<li>Click en "Download key pair"</li>
+<li><strong>GUARDA EL ARCHIVO .pem en un lugar seguro</strong></li>
+<li><strong>Opción B</strong>: Usar uno existente:</li>
+<li>
+<p>Si ya tienes un key pair creado, selecciónalo</p>
+</li>
+<li>
+<p><strong>MUY IMPORTANTE</strong>: Sin la clave privada, NO podrás conectarte a tu instancia. Guárdala bien.</p>
+</li>
+<li>
+<p>Checkbox: "I acknowledge that..." (reconozco que sin la clave no podré acceder)</p>
+</li>
+<li>Click en "Launch Instances"</li>
+</ol>
+<h3 id="paso-12-esperar-a-que-la-instancia-este-corriendo">Paso 12: Esperar a que la instancia esté corriendo</h3>
+<ol>
+<li>AWS te mostrará un mensaje de éxito</li>
+<li>Click en "View instance" para ver tu nueva instancia</li>
+<li>Verás la instancia en la lista. Su estado inicial será "Pending"</li>
+<li>En 30-60 segundos, cambiará a "Running"</li>
+<li>Cuando esté corriendo, verás:</li>
+<li><strong>Instance ID</strong>: <code>i-0abc123def456789</code></li>
+<li><strong>Public IPv4 address</strong>: <code>54.123.456.789</code> (anótala, la necesitarás)</li>
+<li><strong>Instance state</strong>: Running</li>
+</ol>
+<p><strong>¡Felicidades! Acabas de crear tu primer servidor en la nube.</strong></p>
+<hr />
+<h2 id="grupos-de-seguridad-el-firewall-de-aws">Grupos de seguridad: el firewall de AWS</h2>
+<p>Un Security Group actúa como un firewall virtual para tu instancia EC2 y otros recursos. Es absolutamente fundamental entender cómo funcionan.</p>
+<h3 id="como-funcionan-los-security-groups">Cómo funcionan los Security Groups</h3>
+<p>Los Security Groups tienen una lógica de "permitir solo lo explícitamente permitido". Por defecto:</p>
+<ul>
+<li><strong>Todo el tráfico entrante está DENEGADO</strong> (a menos que lo permitas)</li>
+<li><strong>Todo el tráfico saliente está PERMITIDO</strong></li>
+</ul>
+<p>Cada regla que añades es una regla de "permitir". No hay reglas de denegar explícitas (para eso están los NACLs, pero eso es más avanzado).</p>
+<h3 id="componentes-de-una-regla-de-security-group">Componentes de una regla de Security Group</h3>
+<p>Cada regla tiene:</p>
+<ul>
+<li><strong>Type</strong>: El tipo de tráfico (SSH, HTTP, HTTPS, All Traffic, Custom, etc.)</li>
+<li><strong>Protocol</strong>: TCP, UDP, ICMP, o All</li>
+<li><strong>Port range</strong>: Puerto o rango de puertos (ej: 22, 80, 5000-6000)</li>
+<li><strong>Source/Destination</strong>:</li>
+<li>IP específica (ej: 192.168.1.1/32)</li>
+<li>Rango CIDR (ej: 10.0.0.0/16)</li>
+<li>Otro Security Group (permite tráfico desde instancias con ese SG)</li>
+<li>"My IP" (tu IP pública actual)</li>
+<li>"Anywhere-IPv4" (0.0.0.0/0) - CUIDADO, permite a cualquiera</li>
+</ul>
+<h3 id="security-groups-comunes">Security Groups comunes</h3>
+<p><strong>Security Group para servidor web básico:</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>Entrada:
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>- SSH (22) desde My IP (solo tú puedes conectar)
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>- HTTP (80) desde Anywhere (tráfico web normal)
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>- HTTPS (443) desde Anywhere (tráfico web cifrado)
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>Salida:
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>- Todo (0.0.0.0/0) - La instancia puede conectarse a internet libremente
+</code></pre></div>
+<p><strong>Security Group para base de datos (solo acceso interno):</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>Entrada:
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>- MySQL/Aurora (3306) desde Security Group de aplicación (solo servidores de app pueden conectar)
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>Salida:
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>- Todo (0.0.0.0/0)
+</code></pre></div>
+<h3 id="editar-security-groups">Editar Security Groups</h3>
+<p>Puedes modificar los Security Groups de una instancia:</p>
+<ol>
+<li>En la lista de instancias, click en la instancia</li>
+<li>En la pestaña "Security", ver&aring;s los Security Groups asociados</li>
+<li>Click en el link al Security Group o en "Edit inbound rules" / "Edit outbound rules"</li>
+</ol>
+<h3 id="ejemplo-anadir-regla-para-http">Ejemplo: Añadir regla para HTTP</h3>
+<ol>
+<li>Click en "Edit inbound rules"</li>
+<li>Click en "Add rule"</li>
+<li>Rellena:</li>
+<li>Type: HTTP</li>
+<li>Port: 80 (automático para HTTP)</li>
+<li>Source: Anywhere-IPv4 (0.0.0.0/0)</li>
+<li>Click en "Save rules"</li>
+</ol>
+<h3 id="errores-comunes-con-security-groups">Errores comunes con Security Groups</h3>
+<p><strong>Error: "Connection timed out"</strong></p>
+<p>Significa que el tráfico está siendo bloqueado por el Security Group o el firewall del sistema operativo. Verifica que el Security Group permite el tráfico que necesitas.</p>
+<p><strong>Error: "Connection refused"</strong></p>
+<p>Significa que el Security Group permite el tráfico, pero no hay nada escuchando en ese puerto. Verifica que el servicio (nginx, apache, etc.) está corriendo.</p>
+<p><strong>Abrir SSH (22) a Anywhere</strong></p>
+<p>Es un riesgo de seguridad. En producción, limita siempre SSH a tu IP o a un rango de IPs de confianza.</p>
+<h3 id="buenas-practicas-con-security-groups">Buenas prácticas con Security Groups</h3>
+<ol>
+<li><strong>Principio de mínimo privilegio</strong>: Solo abre los puertos que necesites</li>
+<li><strong>Usa grupos en lugar de IPs</strong>: Para comunicación entre instancias, permite el Security Group de la otra en lugar de IPs específicas</li>
+<li><strong>Nombra descriptivamente</strong>: <code>web-servers-sg</code>, <code>database-sg</code>, <code>app-servers-sg</code></li>
+<li><strong>Documenta las reglas</strong>: Añade descripciones a cada regla explicando para qué sirve</li>
+<li><strong>Revisa periódicamente</strong>: Auditoría de qué puertos están abiertos</li>
+</ol>
+<hr />
+<h2 id="conectandose-a-ec2-mediante-ssh">Conectándose a EC2 mediante SSH</h2>
+<p>SSH (Secure Shell) es el protocolo que te permite conectarte remotamente a servidores Linux. Es la forma estándar de administrar servidores en la nube.</p>
+<h3 id="que-es-ssh">¿Qué es SSH?</h3>
+<p>SSH es un protocolo加密 que permite conexiones seguras sobre redes no seguras. Cuando te conectas a tu instancia EC2 por SSH, toda la comunicación entre tu ordenador y el servidor está cifrada.</p>
+<p>Sin SSH, tendrías que acceder al servidor físicamente (imposible si está en un datacenter a miles de kilómetros) o a través de una interfaz web menos práctica.</p>
+<h3 id="prerrequisitos-para-conectar-por-ssh">Prerrequisitos para conectar por SSH</h3>
+<p>Antes de poder conectarte, necesitas:</p>
+<ol>
+<li><strong>Una instancia EC2 corriendo</strong>: Con estado "Running"</li>
+<li><strong>Un Security Group que permita SSH</strong> (puerto 22) desde tu IP</li>
+<li><strong>La clave privada (.pem)</strong>: Que descargaste al crear la instancia</li>
+<li><strong>La IP pública de la instancia</strong>: En formato como <code>54.123.456.789</code></li>
+<li><strong>Un cliente SSH</strong>: En Linux y macOS ya viene instalado; en Windows puedes usar PowerShell, Git Bash, o Windows Subsystem for Linux (WSL)</li>
+</ol>
+<h3 id="diferencia-entre-usuario-segun-ami">Diferencia entre usuario según AMI</h3>
+<p>Según la AMI que hayas elegido, el usuario SSH es diferente:</p>
+<table>
+<thead>
+<tr>
+<th>AMI</th>
+<th>Usuario SSH</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Amazon Linux</td>
+<td><code>ec2-user</code></td>
+</tr>
+<tr>
+<td>Ubuntu</td>
+<td><code>ubuntu</code></td>
+</tr>
+<tr>
+<td>Debian</td>
+<td><code>admin</code> o <code>root</code></td>
+</tr>
+<tr>
+<td>RHEL</td>
+<td><code>ec2-user</code> o <code>root</code></td>
+</tr>
+<tr>
+<td>Fedora</td>
+<td><code>ec2-user</code> o <code>fedora</code></td>
+</tr>
+<tr>
+<td>SUSE</td>
+<td><code>ec2-user</code> o <code>root</code></td>
+</tr>
+</tbody>
+</table>
+<p>Para Ubuntu Server, el usuario es <code>ubuntu</code>.</p>
+<h3 id="conectarse-desde-linux-o-macos">Conectarse desde Linux o macOS</h3>
+<p><strong>Paso 1: Asegúrate de que tu clave tiene los permisos correctos</strong></p>
+<p>Antes de usar la clave, necesitas asegurarte de que tiene los permisos correctos (solo tú puedes leerla):</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>chmod<span class="w"> </span><span class="m">400</span><span class="w"> </span>/ruta/a/tu-clave.pem
+</code></pre></div>
+<p><strong>Paso 2: Conectar</strong></p>
+<p>Abre una terminal y ejecuta:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>ssh<span class="w"> </span>-i<span class="w"> </span>/ruta/a/tu-clave.pem<span class="w"> </span>ubuntu@54.123.456.789
+</code></pre></div>
+<p>Explicación:</p>
+<ul>
+<li><code>ssh</code>: El comando de SSH</li>
+<li><code>-i /ruta/a/tu-clave.pem</code>: Indica cuál es tu clave privada</li>
+<li><code>ubuntu</code>: El nombre de usuario</li>
+<li><code>@</code>: Separador</li>
+<li><code>54.123.456.789</code>: La IP pública de tu instancia</li>
+</ul>
+<p><strong>Paso 3: Aceptar la clave de host</strong></p>
+<p>La primera vez que te conectes, SSH te preguntará:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>The authenticity of host &#39;54.123.456.789 (54.123.456.789)&#39; can&#39;t be established.
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>ECDSA key fingerprint is SHA256:xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx.
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>Are you sure you want to continue connecting (yes/no)?
+</code></pre></div>
+<p>Escribe <code>yes</code> y presiona Enter. Esto añade el servidor a tu lista de hosts conocidos.</p>
+<p><strong>Paso 4: Deberías ver la terminal del servidor</strong></p>
+<p>Si todo fue bien, verás algo como:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>ubuntu@ip-10-0-1-123:~$
+</code></pre></div>
+<p>¡Estás dentro! El prompt muestra <code>ubuntu@...</code> indicando que eres el usuario ubuntu en ese servidor.</p>
+<h3 id="conectarse-desde-windows">Conectarse desde Windows</h3>
+<p><strong>Opción A: Windows Subsystem for Linux (WSL)</strong></p>
+<p>Si tienes WSL instalado (Ubuntu, Debian, etc.):</p>
+<ol>
+<li>Abre Ubuntu o tu distribución Linux en WSL</li>
+<li>Copia tu archivo .pem a WSL (puedes acceder a los archivos de Windows desde <code>/mnt/c/</code>)</li>
+<li>Sigue los pasos de Linux/macOS</li>
+</ol>
+<p><strong>Opción B: PowerShell</strong></p>
+<ol>
+<li>Abre PowerShell</li>
+<li>Asegúrate de que tienes SSH instalado (en Windows 10/11 generalmente ya viene)</li>
+<li>Los pasos son similares a Linux:</li>
+</ol>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="n">ssh</span> <span class="n">-i</span> <span class="p">.\</span><span class="n">tu-clave</span><span class="p">.</span><span class="n">pem</span> <span class="n">ubuntu</span><span class="nv">@54</span><span class="p">.</span><span class="n">123</span><span class="p">.</span><span class="n">456</span><span class="p">.</span><span class="n">789</span>
+</code></pre></div>
+<p><strong>Opción C: Git Bash</strong></p>
+<ol>
+<li>Descarga e instala Git Bash desde https://git-scm.com</li>
+<li>Abre Git Bash</li>
+<li>Los pasos son similares a Linux:</li>
+</ol>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>ssh<span class="w"> </span>-i<span class="w"> </span>/ruta/a/tu-clave.pem<span class="w"> </span>ubuntu@54.123.456.789
+</code></pre></div>
+<p><strong>Opción D: PuTTY</strong></p>
+<p>PuTTY es un cliente SSH clásico para Windows, pero requiere convertir la clave .pem a formato .ppk:</p>
+<ol>
+<li>Descarga PuTTYgen</li>
+<li>Carga tu archivo .pem</li>
+<li>Save as private key</li>
+<li>Abre PuTTY</li>
+<li>En Host Name: <code>ubuntu@54.123.456.789</code></li>
+<li>En Connection &gt; SSH &gt; Auth: carga tu archivo .ppk</li>
+<li>Click Open</li>
+</ol>
+<h3 id="problemas-comunes-de-conexion">Problemas comunes de conexión</h3>
+<p><strong>"Permission denied (publickey)"</strong></p>
+<p>Esto significa que la autenticación con clave SSH falló. Causas posibles:</p>
+<ol>
+<li><strong>Ruta incorrecta a la clave</strong>: Verifica que la ruta al archivo .pem es correcta</li>
+<li><strong>Permisos incorrectos en la clave</strong>: Asegúrate de haber hecho <code>chmod 400</code></li>
+<li><strong>Clave incorrecta</strong>: Si descargaste otra clave o la instancia se creó con otra clave, no funcionará</li>
+<li><strong>Usuario incorrecto</strong>: Verifica que usas el usuario correcto según la AMI</li>
+</ol>
+<p><strong>"Connection timed out"</strong></p>
+<p>El tráfico SSH está siendo bloqueado. Causas posibles:</p>
+<ol>
+<li><strong>El Security Group no permite SSH desde tu IP</strong>: Edita el Security Group y permite SSH desde "My IP"</li>
+<li><strong>La instancia no tiene IP pública</strong>: Verifica en los detalles de la instancia que tiene una IP pública</li>
+<li><strong>La instancia está en una subred privada</strong>: Las instancias en subredes privadas sin NAT no son accesibles desde internet</li>
+</ol>
+<p><strong>"No route to host"</strong></p>
+<p>Similar a connection timed out. Verifica networking y que la IP es correcta.</p>
+<h3 id="ya-estoy-conectado-que-ahora">Ya estoy conectado, ¿qué ahora?</h3>
+<p>¡Bienvenido a tu servidor! Ahora puedes:</p>
+<p><strong>Explorar el sistema:</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="c1"># Ver qué sistema operativo tienes</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>cat<span class="w"> </span>/etc/os-release
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="c1"># Ver información del hardware</span>
+<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a>cat<span class="w"> </span>/proc/cpuinfo<span class="w"> </span><span class="p">|</span><span class="w"> </span>head<span class="w"> </span>-20
+<a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a>free<span class="w"> </span>-h
+<a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a>df<span class="w"> </span>-h
+<a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a>
+<a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a><span class="c1"># Ver información de red</span>
+<a id="__codelineno-9-10" name="__codelineno-9-10" href="#__codelineno-9-10"></a>ip<span class="w"> </span>addr
+<a id="__codelineno-9-11" name="__codelineno-9-11" href="#__codelineno-9-11"></a>hostname<span class="w"> </span>-I
+</code></pre></div>
+<p><strong>Actualizar el sistema (importante al comenzar):</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>sudo<span class="w"> </span>apt<span class="w"> </span>update<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>sudo<span class="w"> </span>apt<span class="w"> </span>upgrade<span class="w"> </span>-y
+</code></pre></div>
+<p><strong>Instalar software:</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="c1"># Instalar Nginx (servidor web)</span>
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>nginx<span class="w"> </span>-y
+<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>
+<a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="c1"># Instalar Node.js</span>
+<a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>nodejs<span class="w"> </span>npm<span class="w"> </span>-y
+<a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a>
+<a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a><span class="c1"># Instalar Python</span>
+<a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>python3<span class="w"> </span>python3-pip<span class="w"> </span>-y
+</code></pre></div>
+<p><strong>Ver logs:</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="c1"># Ver logs del sistema</span>
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>sudo<span class="w"> </span>journalctl<span class="w"> </span>-f
+<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>
+<a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a><span class="c1"># Ver logs de nginx</span>
+<a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a>sudo<span class="w"> </span>tail<span class="w"> </span>-f<span class="w"> </span>/var/log/nginx/access.log
+</code></pre></div>
+<h3 id="cerrar-la-conexion">Cerrar la conexión</h3>
+<p>Cuando termines, simplemente:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="nb">exit</span>
+</code></pre></div>
+<p>O presiona <code>Ctrl+D</code>.</p>
+<hr />
+<h2 id="gestion-de-claves-ssh">Gestión de claves SSH</h2>
+<p>Las claves SSH son fundamentales para la seguridad de tus instancias EC2. Vamos a profundizar en cómo gestionarlas.</p>
+<h3 id="como-funcionan-las-claves-ssh-con-ec2">Cómo funcionan las claves SSH con EC2</h3>
+<p>Cuando creas un par de claves en EC2:</p>
+<ol>
+<li><strong>AWS almacena la clave pública</strong> en la instancia durante su creación</li>
+<li><strong>Tú descargas y guardas la clave privada</strong> (archivo .pem)</li>
+<li><strong>Para conectarte</strong>, usas la clave privada que debe coincidir con la pública en el servidor</li>
+</ol>
+<p>Esto es criptografía asimétrica:</p>
+<ul>
+<li><strong>Lo que cifras con la pública, solo se puede descifrar con la privada</strong></li>
+<li><strong>Lo que firmas con la privada, cualquiera puede verificar con la pública</strong></li>
+</ul>
+<h3 id="crear-un-par-de-claves-ec2">Crear un par de claves EC2</h3>
+<p>Puedes crear un par de claves desde la consola:</p>
+<ol>
+<li>En el panel de EC2, navega a "Key Pairs" en el menú izquierdo</li>
+<li>Click en "Create key pair"</li>
+<li>Dale un nombre: <code>mi-clave-persistente</code></li>
+<li>Tipo: RSA</li>
+<li>Formato: .pem (para Linux/Mac) o .ppk (para PuTTY)</li>
+<li>Click en "Create"</li>
+<li>Descarga automáticamente el archivo .pem</li>
+</ol>
+<h3 id="crear-clave-ssh-localmente">Crear clave SSH localmente</h3>
+<p>También puedes crear un par de claves en tu ordenador y solo importar la clave pública a AWS:</p>
+<p><strong>En Linux/macOS:</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="c1"># Crear clave RSA de 4096 bits</span>
+<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>ssh-keygen<span class="w"> </span>-t<span class="w"> </span>rsa<span class="w"> </span>-b<span class="w"> </span><span class="m">4096</span><span class="w"> </span>-C<span class="w"> </span><span class="s2">&quot;mi-email@ejemplo.com&quot;</span>
+<a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a>
+<a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a><span class="c1"># Te preguntará dónde guardarla, pulsa Enter para aceptar la ubicación por defecto</span>
+<a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a><span class="c1"># Te preguntará una contraseña (passphrase), puedes dejarla vacía o poner una</span>
+<a id="__codelineno-14-6" name="__codelineno-14-6" href="#__codelineno-14-6"></a>
+<a id="__codelineno-14-7" name="__codelineno-14-7" href="#__codelineno-14-7"></a><span class="c1"># Ver tu clave pública</span>
+<a id="__codelineno-14-8" name="__codelineno-14-8" href="#__codelineno-14-8"></a>cat<span class="w"> </span>~/.ssh/id_rsa.pub
+</code></pre></div>
+<p><strong>Importar a AWS:</strong></p>
+<ol>
+<li>En el panel de EC2, "Key Pairs"</li>
+<li>Click en "Actions" &gt; "Import key pair"</li>
+<li>Dale un nombre</li>
+<li>Pega el contenido de tu clave pública</li>
+<li>Click en "Import"</li>
+</ol>
+<p>Ahora puedes usar tu clave local existente para conectarte a instancias AWS.</p>
+<h3 id="la-importancia-de-guardar-tu-clave-privada">La importancia de guardar tu clave privada</h3>
+<p><strong>NUNCA pierdas tu clave privada</strong>. Si la pierdes:</p>
+<ul>
+<li><strong>Para instancias nuevas</strong>: Simplemente crea una nueva instancia con una nueva clave</li>
+<li><strong>Para instancias existentes</strong>: Si no tienes acceso a la clave original y no configuraste una forma alternativa de acceso, <strong>no podrás acceder a la instancia</strong>. AWS no puede recuperarte la clave.</li>
+</ul>
+<p><strong>Para recuperación</strong>, tendrías que:</p>
+<ol>
+<li>Detener la instancia</li>
+<li>Separar el volumen EBS</li>
+<li>Adjuntar el volumen a otra instancia donde tengas acceso</li>
+<li>Montar el volumen y modificar authorized_keys</li>
+<li>Volver a adjuntar el volumen a la instancia original</li>
+</ol>
+<p>Es un proceso tedioso, así que mejor no perder la clave.</p>
+<h3 id="guardar-la-clave-en-un-lugar-seguro">Guardar la clave en un lugar seguro</h3>
+<p>En Linux/macOS:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="c1"># Ubicación recomendada: ~/.ssh/</span>
+<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>mkdir<span class="w"> </span>-p<span class="w"> </span>~/.ssh
+<a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a>mv<span class="w"> </span>~/Downloads/mi-clave.pem<span class="w"> </span>~/.ssh/
+<a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a>chmod<span class="w"> </span><span class="m">400</span><span class="w"> </span>~/.ssh/mi-clave.pem
+</code></pre></div>
+<p><strong>Nunca</strong> guardes claves privadas en:</p>
+<ul>
+<li>Repositorios Git</li>
+<li>Dropbox, Google Drive u otras nubes públicas</li>
+<li>Carpetas compartidas</li>
+<li>Correo electrónico</li>
+</ul>
+<h3 id="usar-ssh-config-para-multiples-servidores">Usar SSH config para múltiples servidores</h3>
+<p>Si trabajas con varias instancias, puedes configurar SSH para no tener que recordar todas las IPs y claves:</p>
+<p>Edita o crea <code>~/.ssh/config</code>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>Host mi-servidor-web
+<a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>    HostName 54.123.456.789
+<a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a>    User ubuntu
+<a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a>    IdentityFile ~/.ssh/mi-clave.pem
+<a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a>
+<a id="__codelineno-16-6" name="__codelineno-16-6" href="#__codelineno-16-6"></a>Host mi-servidor-db
+<a id="__codelineno-16-7" name="__codelineno-16-7" href="#__codelineno-16-7"></a>    HostName 54.234.567.890
+<a id="__codelineno-16-8" name="__codelineno-16-8" href="#__codelineno-16-8"></a>    User ubuntu
+<a id="__codelineno-16-9" name="__codelineno-16-9" href="#__codelineno-16-9"></a>    IdentityFile ~/.ssh/mi-clave.pem
+</code></pre></div>
+<p>Ahora simplemente haz:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>ssh<span class="w"> </span>mi-servidor-web
+</code></pre></div>
+<h3 id="rotacion-de-claves">Rotación de claves</h3>
+<p>Por seguridad, es buena práctica rotar (cambiar) las claves periódicamente:</p>
+<ol>
+<li>Crea un nuevo par de claves en AWS</li>
+<li>Conecta a la instancia con la clave antigua</li>
+<li>Añade la nueva clave pública a <code>~/.ssh/authorized_keys</code></li>
+<li>Verifica que puedes conectar con la nueva clave</li>
+<li>Elimina la clave antigua de <code>authorized_keys</code></li>
+<li>Elimina el par de claves antiguo de AWS (ya no es necesario si no tienes instancias usándolo)</li>
+</ol>
+<h3 id="diferentes-claves-para-diferentes-entornos">Diferentes claves para diferentes entornos</h3>
+<p>Una buena práctica es usar diferentes claves para diferentes entornos:</p>
+<ul>
+<li><strong>Clave de desarrollo</strong>: Para instancias de desarrollo</li>
+<li><strong>Clave de producción</strong>: Para instancias de producción (más restrictiva)</li>
+</ul>
+<p>Esto te permite revocar la clave de desarrollo sin afectar producción, y aplicar diferentes políticas de seguridad.</p>
+<hr />
+<h2 id="almacenamiento-ebs-y-s3">Almacenamiento: EBS y S3</h2>
+<p>AWS ofrece diferentes servicios de almacenamiento para diferentes casos de uso. Los dos más importantes para empezar son EBS y S3.</p>
+<h3 id="amazon-ebs-elastic-block-store">Amazon EBS (Elastic Block Store)</h3>
+<p>EBS proporciona almacenamiento en bloques para instancias EC2. Es como un disco duro virtual que se adjunta a tu instancia.</p>
+<p><strong>Características:</strong></p>
+<ul>
+<li><strong>Persistente</strong>: Los datos sobreviven si la instancia se detiene o termina (si el volumen está configurado para ello)</li>
+<li><strong>Rendimiento específico</strong>: Diferentes tipos de volúmenes ofrecen diferentes niveles de IOPS (operaciones de entrada/salida por segundo)</li>
+<li><strong>Cifrado</strong>: Soporta cifrado AES-256</li>
+<li><strong>Snapshots</strong>: Puedes hacer backups (snapshots) a S3</li>
+</ul>
+<p><strong>Tipos de volúmenes EBS:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Tipo</th>
+<th>Uso</th>
+<th>Precio relativo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>gp3</strong></td>
+<td>Propósito general, SSD</td>
+<td>Medio</td>
+</tr>
+<tr>
+<td><strong>gp2</strong></td>
+<td>Propósito general, SSD (más antiguo)</td>
+<td>Medio</td>
+</tr>
+<tr>
+<td><strong>io2</strong></td>
+<td>Alto rendimiento, SSD</td>
+<td>Alto</td>
+</tr>
+<tr>
+<td><strong>st1</strong></td>
+<td>HDD de bajo coste para throughput</td>
+<td>Bajo</td>
+</tr>
+<tr>
+<td><strong>sc1</strong></td>
+<td>HDD de muy bajo coste</td>
+<td>Muy bajo</td>
+</tr>
+</tbody>
+</table>
+<p><strong>gp3</strong> es generalmente la mejor elección para la mayoría de workloads por su equilibrio entre coste y rendimiento.</p>
+<p><strong>Administrar volúmenes EBS:</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="c1"># Ver discos disponibles</span>
+<a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a>lsblk
+<a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a>
+<a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a><span class="c1"># Ver espacio en disco</span>
+<a id="__codelineno-18-5" name="__codelineno-18-5" href="#__codelineno-18-5"></a>df<span class="w"> </span>-h
+<a id="__codelineno-18-6" name="__codelineno-18-6" href="#__codelineno-18-6"></a>
+<a id="__codelineno-18-7" name="__codelineno-18-7" href="#__codelineno-18-7"></a><span class="c1"># Ver información del volumen (no montados)</span>
+<a id="__codelineno-18-8" name="__codelineno-18-8" href="#__codelineno-18-8"></a>sudo<span class="w"> </span>lsbock
+</code></pre></div>
+<h3 id="amazon-s3-simple-storage-service">Amazon S3 (Simple Storage Service)</h3>
+<p>S3 es almacenamiento de objetos, diferente a EBS. Es más como un sistema de archivos infinito donde guardas archivos (objetos) en buckets.</p>
+<p><strong>Características:</strong></p>
+<ul>
+<li><strong>global</strong>: Los buckets son globales, pero puedes restringir acceso por región</li>
+<li><strong>Escalabilidad automática</strong>: No hay límite práctico de capacidad</li>
+<li><strong>Muy duradero</strong>: 99.999999999% (once nueves)</li>
+<li><strong>Versiones</strong>: Puede mantener múltiples versiones de un archivo</li>
+<li><strong>Lifecycle policies</strong>: Automatizar la transición a clases de almacenamiento más baratas</li>
+</ul>
+<p><strong>Clases de almacenamiento S3:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Clase</th>
+<th>Uso</th>
+<th>Precio</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>S3 Standard</strong></td>
+<td>Datos frecuentemente accedidos</td>
+<td>Medio</td>
+</tr>
+<tr>
+<td><strong>S3 Intelligent-Tiering</strong></td>
+<td>Datos con patrones de acceso impredecibles</td>
+<td>Variable</td>
+</tr>
+<tr>
+<td><strong>S3 Standard-IA</strong></td>
+<td>Datos menos frecuentes pero que necesitan acceso rápido</td>
+<td>Menor</td>
+</tr>
+<tr>
+<td><strong>S3 Glacier</strong></td>
+<td>Archivos que raramente se accesan, retrieval en minutos a horas</td>
+<td>Muy bajo</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Buckets y objetos:</strong></p>
+<p>Un bucket es como un directorio de nivel superior. Dentro puedes crear "carpetas" lógicas (aunque técnicamente S3 es flat):</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>mi-bucket/
+<a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a>├── imagenes/
+<a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a>│   ├── logo.png
+<a id="__codelineno-19-4" name="__codelineno-19-4" href="#__codelineno-19-4"></a>│   └── screenshot.jpg
+<a id="__codelineno-19-5" name="__codelineno-19-5" href="#__codelineno-19-5"></a>└── documentos/
+<a id="__codelineno-19-6" name="__codelineno-19-6" href="#__codelineno-19-6"></a>    └── informe.pdf
+</code></pre></div>
+<p><strong>Crear un bucket S3:</strong></p>
+<ol>
+<li>En la consola de AWS, busca "S3"</li>
+<li>Click en "Create bucket"</li>
+<li>Dale un nombre único globalmente (ej: <code>mi-bucket-unico-12345</code>)</li>
+<li>Selecciona la región</li>
+<li>Las opciones por defecto están bien para empezar</li>
+<li>Click en "Create bucket"</li>
+</ol>
+<p><strong>Subir archivos a S3:</strong></p>
+<ol>
+<li>Entra en el bucket</li>
+<li>Click en "Upload"</li>
+<li>Arrastra archivos o click en "Add files"</li>
+<li>Click en "Upload"</li>
+</ol>
+<p><strong>Acceder a objetos:</strong></p>
+<p>Los objetos en buckets públicos tienen URLs como:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>https://mi-bucket.s3.amazonaws.com/imagenes/logo.png
+</code></pre></div>
+<h3 id="cuando-usar-ebs-vs-s3">¿Cuándo usar EBS vs S3?</h3>
+<table>
+<thead>
+<tr>
+<th>Aspecto</th>
+<th>EBS</th>
+<th>S3</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Qué almacena</strong></td>
+<td>Discos para instancias</td>
+<td>Archivos sueltos</td>
+</tr>
+<tr>
+<td><strong>Acceso</strong></td>
+<td>Como disco duro (archivos, bases de datos)</td>
+<td>Como URLs o API</td>
+</tr>
+<tr>
+<td><strong>Precio</strong></td>
+<td>Por GB/month + IOPS</td>
+<td>Por GB/month + requests</td>
+</tr>
+<tr>
+<td><strong>Persistencia</strong></td>
+<td>Hasta que lo borres</td>
+<td>Indefinido</td>
+</tr>
+<tr>
+<td><strong>Acceso desde instancia</strong></td>
+<td>Sí, como disco</td>
+<td>Sí, como API o mount</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Ejemplo:</strong></p>
+<ul>
+<li><strong>EBS</strong>: El disco raíz de tu instancia EC2, volume para base de datos</li>
+<li><strong>S3</strong>: Imágenes de perfil de usuarios, logs exportados, archivos estáticos de web, backups</li>
+</ul>
+<hr />
+<h2 id="redes-basicas-vpc-simplificado">Redes básicas: VPC simplificado</h2>
+<p>VPC (Virtual Private Cloud) es el servicio de redes de AWS. Permite crear redes privadas virtuales en la nube.</p>
+<h3 id="vpc-por-defecto">VPC por defecto</h3>
+<p>Cuando creas una cuenta de AWS, se crea automáticamente una VPC por defecto en cada región. Esta VPC incluye:</p>
+<ul>
+<li>Un bloque CIDR (rango de IPs) como 172.31.0.0/16</li>
+<li>Una gateway de internet</li>
+<li>Tablas de enrutamiento básicas</li>
+<li>Security Groups por defecto</li>
+<li>Network ACLs por defecto</li>
+</ul>
+<p>Para la mayoría de prácticas de aprendizaje, puedes usar esta VPC por defecto sin preocuparte por crear una personalizada.</p>
+<h3 id="conceptos-basicos-de-vpc">Conceptos básicos de VPC</h3>
+<p><strong>CIDR Block</strong>: El rango de direcciones IP privadas en la VPC. Por ejemplo, 10.0.0.0/16 significa que tienes 65,536 direcciones IP disponibles (10.0.0.0 a 10.0.255.255).</p>
+<p><strong>Subred</strong>: Una subdivisión de la VPC. Por ejemplo, dividiendo 10.0.0.0/16 en dos subredes:</p>
+<ul>
+<li>10.0.0.0/24 (256 IPs: 10.0.0.0 a 10.0.0.255)</li>
+<li>10.0.1.0/24 (256 IPs: 10.0.1.0 a 10.0.1.255)</li>
+</ul>
+<p><strong>Subred pública vs privada</strong>:</p>
+<ul>
+<li><strong>Pública</strong>: Tiene ruta directa a internet (a través de Internet Gateway)</li>
+<li><strong>Privada</strong>: No tiene ruta directa a internet. Para salir a internet, usa NAT Gateway o NAT Instance</li>
+</ul>
+<p><strong>Internet Gateway</strong>: El componente que permite a recursos en la VPC acceder a internet.</p>
+<p><strong>Route Table</strong>: Define hacia dónde va el tráfico. Cada subred tiene una tabla de enrutamiento.</p>
+<h3 id="que-configuracion-tiene-mi-instancia-por-defecto">¿Qué configuración tiene mi instancia por defecto?</h3>
+<p>Cuando creas una instancia EC2 en la consola:</p>
+<ul>
+<li>Se crea en la VPC por defecto</li>
+<li>En una subred de la VPC por defecto (generalmente la primera)</li>
+<li>Si la subred es pública, recibe IP pública automáticamente</li>
+<li>Se le aplica el Security Group que configures</li>
+</ul>
+<h3 id="ejemplo-simple-de-arquitectura">Ejemplo simple de arquitectura</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>Internet
+<a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a>    │
+<a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a>    ▼
+<a id="__codelineno-21-4" name="__codelineno-21-4" href="#__codelineno-21-4"></a>┌─────────────────────────────┐
+<a id="__codelineno-21-5" name="__codelineno-21-5" href="#__codelineno-21-5"></a>│        Internet Gateway       │
+<a id="__codelineno-21-6" name="__codelineno-21-6" href="#__codelineno-21-6"></a>└─────────────────────────────┘
+<a id="__codelineno-21-7" name="__codelineno-21-7" href="#__codelineno-21-7"></a>    │
+<a id="__codelineno-21-8" name="__codelineno-21-8" href="#__codelineno-21-8"></a>    ▼
+<a id="__codelineno-21-9" name="__codelineno-21-9" href="#__codelineno-21-9"></a>┌─────────────────────────────┐
+<a id="__codelineno-21-10" name="__codelineno-21-10" href="#__codelineno-21-10"></a>│     VPC: 10.0.0.0/16        │
+<a id="__codelineno-21-11" name="__codelineno-21-11" href="#__codelineno-21-11"></a>│                             │
+<a id="__codelineno-21-12" name="__codelineno-21-12" href="#__codelineno-21-12"></a>│  ┌───────────────────────┐  │
+<a id="__codelineno-21-13" name="__codelineno-21-13" href="#__codelineno-21-13"></a>│  │  Subred pública       │  │
+<a id="__codelineno-21-14" name="__codelineno-21-14" href="#__codelineno-21-14"></a>│  │  10.0.0.0/24           │  │
+<a id="__codelineno-21-15" name="__codelineno-21-15" href="#__codelineno-21-15"></a>│  │                       │  │
+<a id="__codelineno-21-16" name="__codelineno-21-16" href="#__codelineno-21-16"></a>│  │  [EC2 Instance]       │  │─── Security Group: SSH (22), HTTP (80)
+<a id="__codelineno-21-17" name="__codelineno-21-17" href="#__codelineno-21-17"></a>│  │  IP: 10.0.0.10        │  │
+<a id="__codelineno-21-18" name="__codelineno-21-18" href="#__codelineno-21-18"></a>│  │  Public IP: 54.x.x.x  │  │
+<a id="__codelineno-21-19" name="__codelineno-21-19" href="#__codelineno-21-19"></a>│  └───────────────────────┘  │
+<a id="__codelineno-21-20" name="__codelineno-21-20" href="#__codelineno-21-20"></a>│                             │
+<a id="__codelineno-21-21" name="__codelineno-21-21" href="#__codelineno-21-21"></a>│  ┌───────────────────────┐  │
+<a id="__codelineno-21-22" name="__codelineno-21-22" href="#__codelineno-21-22"></a>│  │  Subred privada       │  │
+<a id="__codelineno-21-23" name="__codelineno-21-23" href="#__codelineno-21-23"></a>│  │  10.0.1.0/24           │  │
+<a id="__codelineno-21-24" name="__codelineno-21-24" href="#__codelineno-21-24"></a>│  │                       │  │
+<a id="__codelineno-21-25" name="__codelineno-21-25" href="#__codelineno-21-25"></a>│  │  [RDS Database]       │  │
+<a id="__codelineno-21-26" name="__codelineno-21-26" href="#__codelineno-21-26"></a>│  │  IP: 10.0.1.10        │  │
+<a id="__codelineno-21-27" name="__codelineno-21-27" href="#__codelineno-21-27"></a>│  │  (No IP pública)      │  │
+<a id="__codelineno-21-28" name="__codelineno-21-28" href="#__codelineno-21-28"></a>│  └───────────────────────┘  │
+<a id="__codelineno-21-29" name="__codelineno-21-29" href="#__codelineno-21-29"></a>│                             │
+<a id="__codelineno-21-30" name="__codelineno-21-30" href="#__codelineno-21-30"></a>└─────────────────────────────┘
+</code></pre></div>
+<p>En este ejemplo:</p>
+<ul>
+<li>El servidor EC2 en la subred pública puede recibir tráfico de internet y también acceder a internet</li>
+<li>La base de datos RDS en la subred privada no es accesible directamente desde internet</li>
+<li>El servidor EC2 puede conectar a la base de datos porque están en la misma VPC</li>
+</ul>
+<h3 id="para-profundizar">Para profundizar</h3>
+<p>VPC es un tema muy amplio. Una vez domines lo básico de EC2,回来 aprender:</p>
+<ul>
+<li>Crear VPCs personalizadas con rangos de IP específicos</li>
+<li>Configurar subredes públicas y privadas</li>
+<li>Usar NAT Gateway para permitir a instancias privadas acceder a internet</li>
+<li>Configurar VPN o Direct Connect para conectar redes on-premises</li>
+<li>VPC Peering para comunicar VPCs entre sí</li>
+<li>Security Groups vs Network ACLs (NACLS)</li>
+</ul>
+<hr />
+<h2 id="costes-y-economia-de-aws">Costes y economía de AWS</h2>
+<p>Entender cómo AWS cobra por sus servicios es importante para evitar sorpresas en la factura.</p>
+<h3 id="como-aws-cobra-por-ec2">Cómo AWS cobra por EC2</h3>
+<p>EC2 se cobra por hora de uso, dependiendo de:</p>
+<ol>
+<li><strong>Tipo de instancia</strong>: t3.micro es más barato que m5.large</li>
+<li><strong>Sistema operativo</strong>: Linux es más barato que Windows (Windows incluye licencias de Microsoft)</li>
+<li><strong>Región</strong>: Los precios varían entre regiones</li>
+<li><strong>Modelo de precio</strong>:</li>
+<li><strong>On-Demand</strong>: Pagas por hora sin compromiso</li>
+<li><strong>Reserved</strong>: Descuento por compromiso de 1-3 años</li>
+<li><strong>Spot</strong>: Descuento muy alto (hasta 90%) por instancias que pueden ser interrumpidas</li>
+</ol>
+<p><strong>Ejemplo de precios t3.micro en us-east-1 (Linux):</strong></p>
+<table>
+<thead>
+<tr>
+<th>Modelo</th>
+<th>Precio/hora</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>On-Demand</td>
+<td>$0.0104</td>
+</tr>
+<tr>
+<td>1 year Reserved (sin upfront)</td>
+<td>$0.006</td>
+</tr>
+<tr>
+<td>1 year Reserved (all upfront)</td>
+<td>$0.005</td>
+</tr>
+<tr>
+<td>Spot</td>
+<td>$0.002 - $0.004 (variable)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="otros-costes-asociados-a-ec2">Otros costes asociados a EC2</h3>
+<p>Además de la instancia en sí, hay costes adicionales:</p>
+<ul>
+<li><strong>EBS Storage</strong>: ~$0.08/GB-month para gp3</li>
+<li><strong>EBS I/O</strong>: Los volúmenes gp3 tienen IOPS incluidas, gp2 cobra por IOPS extra</li>
+<li><strong>Data Transfer</strong>: Trasferencia de datos entre AZs, regiones, o fuera de AWS</li>
+<li><strong>Elastic IPs</strong>: Gratis si la usas, $0.005/hora si la reservas y no la usas</li>
+</ul>
+<h3 id="servicios-con-coste-gratuito">Servicios con coste gratuito</h3>
+<p>Algunos servicios son gratuitos dentro de límites:</p>
+<ul>
+<li><strong>CloudWatch Basic Monitoring</strong>: Metrics para EC2 cada 5 minutos (no detallado)</li>
+<li><strong>S3</strong>: 5 GB de almacenamiento estándar el primer año</li>
+<li><strong>CloudFront</strong>: 1TB de transferencia de datos al mes</li>
+<li><strong>Lambda</strong>: 1M de peticiones y 400,000 GB-segundos de computación al mes</li>
+</ul>
+<h3 id="herramientas-para-gestionar-costes">Herramientas para gestionar costes</h3>
+<p><strong>AWS Budgets</strong>: Te permite definir presupuestos y alertas cuando los costes alcancen ciertos umbrales.</p>
+<p><strong>Cost Explorer</strong>: Visualiza y analiza tus costes históricos.</p>
+<p><strong>Cost Allocation Tags</strong>: Etiquetas que te permiten desglosar costes por proyecto, entorno, etc.</p>
+<h3 id="estimar-costes-antes-de-crear">Estimar costes antes de crear</h3>
+<p>Antes de crear recursos, usa la <strong>Calculadora de Precios de AWS</strong>:</p>
+<ol>
+<li>Ve a https://calculator.aws</li>
+<li>Selecciona los servicios que planeas usar</li>
+<li>Especifica configuración (tipo de instancia, almacenamiento, transferencia, etc.)</li>
+<li>Obtén una estimación mensual</li>
+</ol>
+<p><strong>Ejemplo rápido para t3.micro:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Recurso</th>
+<th>Cantidad</th>
+<th>Precio estimado/mes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>EC2 t3.micro (Linux)</td>
+<td>1</td>
+<td>~$7.50 (720 horas)</td>
+</tr>
+<tr>
+<td>EBS gp3 20GB</td>
+<td>1</td>
+<td>~$1.60</td>
+</tr>
+<tr>
+<td>Transferencia 1GB</td>
+<td>1 GB</td>
+<td>~$0.09</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td></td>
+<td><strong>~$9.19</strong></td>
+</tr>
+</tbody>
+</table>
+<h3 id="consejos-para-ahorrar-en-aws-academy">Consejos para ahorrar en AWS Academy</h3>
+<p><strong>Monitorea tu uso</strong>: Revisa el dashboard de AWS Academy regularmente para ver cuánto has usado.</p>
+<p><strong>Usa el tier gratuito</strong>: t3.micro está dentro del tier gratuito (750 horas/mes).</p>
+<p><strong>Detén instancias cuando no las uses</strong>: Si no necesitas la instancia por unos días, simplemente Stop. No cobran por instancias detenidas, solo por el almacenamiento EBS.</p>
+<p><strong>Elimina recursos temporales</strong>: Si creaste recursos para una práctica, elimínalos cuando termines.</p>
+<p><strong>Cuidado con los Elastic IPs</strong>: Si reservas una IP elástica y no la asignas a una instancia, te cobran por cada hora que no la uses.</p>
+<hr />
+<h2 id="buenas-practicas-de-seguridad">Buenas prácticas de seguridad</h2>
+<p>La seguridad en AWS es responsabilidad compartida entre AWS y tú. AWS es responsable de la seguridad "de la nube", tú de la seguridad "en la nube".</p>
+<h3 id="principios-fundamentales">Principios fundamentales</h3>
+<p><strong>Principio de mínimo privilegio</strong>: Solo da los permisos estrictamente necesarios. No uses el usuario root de AWS para trabajo diario. Crea usuarios IAM con permisos específicos.</p>
+<p><strong>Defensa en profundidad</strong>: No confíes en una sola capa de seguridad. Usa múltiples capas: Security Groups, NACLS, IAM, cifrado, etc.</p>
+<p><strong>Todo registra y monitoriza</strong>: Usa CloudWatch Logs, AWS CloudTrail (registra llamadas a la API), y configura alarmas.</p>
+<h3 id="seguridad-para-instancias-ec2">Seguridad para instancias EC2</h3>
+<p><strong>1. Usa key pairs, nunca passwords</strong></p>
+<p>Nunca habilites password authentication en SSH. Usa siempre claves SSH.</p>
+<p><strong>2. Mantén el sistema actualizado</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a><span class="c1"># Actualizar sistema</span>
+<a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a>sudo<span class="w"> </span>apt<span class="w"> </span>update<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>sudo<span class="w"> </span>apt<span class="w"> </span>upgrade<span class="w"> </span>-y
+<a id="__codelineno-22-3" name="__codelineno-22-3" href="#__codelineno-22-3"></a>
+<a id="__codelineno-22-4" name="__codelineno-22-4" href="#__codelineno-22-4"></a><span class="c1"># Actualizar solo seguridad</span>
+<a id="__codelineno-22-5" name="__codelineno-22-5" href="#__codelineno-22-5"></a>sudo<span class="w"> </span>apt<span class="w"> </span>update<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>sudo<span class="w"> </span>apt<span class="w"> </span>upgrade<span class="w"> </span>-y<span class="w"> </span>security
+</code></pre></div>
+<p><strong>3. Instala solo lo necesario</strong></p>
+<p>Cada servicio instalado es una superficie de ataque potencial. Instala solo lo que necesites.</p>
+<p><strong>4. Usa usuarios normales, no root</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a><span class="c1"># Crear usuario</span>
+<a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a>sudo<span class="w"> </span>adduser<span class="w"> </span>deploy
+<a id="__codelineno-23-3" name="__codelineno-23-3" href="#__codelineno-23-3"></a>
+<a id="__codelineno-23-4" name="__codelineno-23-4" href="#__codelineno-23-4"></a><span class="c1"># Añadir a sudo</span>
+<a id="__codelineno-23-5" name="__codelineno-23-5" href="#__codelineno-23-5"></a>sudo<span class="w"> </span>usermod<span class="w"> </span>-aG<span class="w"> </span>sudo<span class="w"> </span>deploy
+<a id="__codelineno-23-6" name="__codelineno-23-6" href="#__codelineno-23-6"></a>
+<a id="__codelineno-23-7" name="__codelineno-23-7" href="#__codelineno-23-7"></a><span class="c1"># Luego ssh como deploy y usa sudo cuando necesites</span>
+</code></pre></div>
+<p><strong>5. Configura Firewall del SO</strong></p>
+<p>Además del Security Group de AWS, puedes usar ufw (Uncomplicated Firewall) en Linux:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a><span class="c1"># Instalar ufw</span>
+<a id="__codelineno-24-2" name="__codelineno-24-2" href="#__codelineno-24-2"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>ufw
+<a id="__codelineno-24-3" name="__codelineno-24-3" href="#__codelineno-24-3"></a>
+<a id="__codelineno-24-4" name="__codelineno-24-4" href="#__codelineno-24-4"></a><span class="c1"># Permitir SSH</span>
+<a id="__codelineno-24-5" name="__codelineno-24-5" href="#__codelineno-24-5"></a>sudo<span class="w"> </span>ufw<span class="w"> </span>allow<span class="w"> </span><span class="m">22</span>/tcp
+<a id="__codelineno-24-6" name="__codelineno-24-6" href="#__codelineno-24-6"></a>
+<a id="__codelineno-24-7" name="__codelineno-24-7" href="#__codelineno-24-7"></a><span class="c1"># Permitir HTTP/HTTPS</span>
+<a id="__codelineno-24-8" name="__codelineno-24-8" href="#__codelineno-24-8"></a>sudo<span class="w"> </span>ufw<span class="w"> </span>allow<span class="w"> </span><span class="m">80</span>/tcp
+<a id="__codelineno-24-9" name="__codelineno-24-9" href="#__codelineno-24-9"></a>sudo<span class="w"> </span>ufw<span class="w"> </span>allow<span class="w"> </span><span class="m">443</span>/tcp
+<a id="__codelineno-24-10" name="__codelineno-24-10" href="#__codelineno-24-10"></a>
+<a id="__codelineno-24-11" name="__codelineno-24-11" href="#__codelineno-24-11"></a><span class="c1"># Activar</span>
+<a id="__codelineno-24-12" name="__codelineno-24-12" href="#__codelineno-24-12"></a>sudo<span class="w"> </span>ufw<span class="w"> </span><span class="nb">enable</span>
+</code></pre></div>
+<h3 id="seguridad-de-la-cuenta-aws">Seguridad de la cuenta AWS</h3>
+<p><strong>1. Activa MFA en tu cuenta root</strong></p>
+<p>El usuario root (el email con el que creaste la cuenta) tiene todos los permisos. Protégelo con MFA (autenticación de múltiples factores).</p>
+<p><strong>2. No uses credenciales root para trabajo diario</strong></p>
+<p>Crea un usuario IAM con permisos de administrador o los permisos específicos que necesites.</p>
+<p><strong>3. Rota credenciales</strong></p>
+<p>Si usas access keys (para API/CLI), rotalas periódicamente.</p>
+<p><strong>4. Revisa permisos de IAM</strong></p>
+<p>Periódicamente, audita qué usuarios tienen qué permisos y elimina lo que no sea necesario.</p>
+<h3 id="security-groups-seguros">Security Groups seguros</h3>
+<p><strong>No</strong>:</p>
+<ul>
+<li>SSH desde Anywhere (0.0.0.0/0)</li>
+<li>Abrir puertos de base de datos (3306, 5432) a internet</li>
+</ul>
+<p><strong>Sí</strong>:</p>
+<ul>
+<li>SSH desde tu IP específica o un rango conocido</li>
+<li>Puertos de aplicación (80, 443) desde Anywhere si son servicios públicos legítimos</li>
+<li>Puertos de base de datos solo desde Security Groups de aplicaciones confiables</li>
+</ul>
+<h3 id="datos-sensibles">Datos sensibles</h3>
+<p><strong>Nunca hardcodees secrets en código</strong></p>
+<p>Si necesitas guardar contraseñas, API keys, tokens:</p>
+<ul>
+<li>Usa AWS Secrets Manager</li>
+<li>Usa AWS Systems Manager Parameter Store</li>
+<li>Usa variables de entorno</li>
+<li>Nunca en código fuente o archivos de configuración en repositorios</li>
+</ul>
+<p><strong>Cifra datos sensibles</strong></p>
+<ul>
+<li>EBS supports cifrado</li>
+<li>S3 supports cifrado (SSE-S3, SSE-KMS)</li>
+<li>RDS supports cifrado en reposo</li>
+</ul>
+<hr />
+<h2 id="glosario-de-terminos-aws">Glosario de términos AWS</h2>
+<table>
+<thead>
+<tr>
+<th>Término</th>
+<th>Definición</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>AWS</strong></td>
+<td>Amazon Web Services, plataforma de computación en la nube de Amazon</td>
+</tr>
+<tr>
+<td><strong>EC2</strong></td>
+<td>Elastic Compute Cloud, servicio de máquinas virtuales en la nube</td>
+</tr>
+<tr>
+<td><strong>AMI</strong></td>
+<td>Amazon Machine Image, plantilla para crear instancias</td>
+</tr>
+<tr>
+<td><strong>EBS</strong></td>
+<td>Elastic Block Store, almacenamiento en bloques para EC2</td>
+</tr>
+<tr>
+<td><strong>S3</strong></td>
+<td>Simple Storage Service, almacenamiento de objetos</td>
+</tr>
+<tr>
+<td><strong>VPC</strong></td>
+<td>Virtual Private Cloud, red virtual privada en AWS</td>
+</tr>
+<tr>
+<td><strong>IAM</strong></td>
+<td>Identity and Access Management, gestión de identidades y permisos</td>
+</tr>
+<tr>
+<td><strong>Region</strong></td>
+<td>Zona geográfica con datacenters de AWS</td>
+</tr>
+<tr>
+<td><strong>AZ (Availability Zone)</strong></td>
+<td>Centro de datos individual dentro de una región</td>
+</tr>
+<tr>
+<td><strong>Security Group</strong></td>
+<td>Firewall virtual para instancias y otros recursos</td>
+</tr>
+<tr>
+<td><strong>Key Pair</strong></td>
+<td>Par de claves SSH (pública/privada) para acceder a instancias</td>
+</tr>
+<tr>
+<td><strong>CIDR</strong></td>
+<td>Classless Inter-Domain Routing, método para definir rangos de IP</td>
+</tr>
+<tr>
+<td><strong>SSH</strong></td>
+<td>Secure Shell, protocolo para conexión segura a servidores</td>
+</tr>
+<tr>
+<td><strong>On-Demand</strong></td>
+<td>Modelo de pago por uso sin compromisos</td>
+</tr>
+<tr>
+<td><strong>Reserved</strong></td>
+<td>Modelo con descuento por compromiso a largo plazo</td>
+</tr>
+<tr>
+<td><strong>Spot</strong></td>
+<td>Instancias con descuento alto que pueden ser interrumpidas</td>
+</tr>
+<tr>
+<td><strong>Free Tier</strong></td>
+<td>Nivel gratuito para nuevos clientes de AWS</td>
+</tr>
+<tr>
+<td><strong>ARN</strong></td>
+<td>Amazon Resource Name, identificador único de recursos AWS</td>
+</tr>
+<tr>
+<td><strong>IOPS</strong></td>
+<td>Input/Output Operations Per Second, medida de rendimiento de almacenamiento</td>
+</tr>
+<tr>
+<td><strong>Snapshot</strong></td>
+<td>Backup point-in-time de un volumen EBS</td>
+</tr>
+<tr>
+<td><strong>Bucket</strong></td>
+<td>Contenedor de nivel superior en S3</td>
+</tr>
+<tr>
+<td><strong>Object</strong></td>
+<td>Archivo almacenado en S3</td>
+</tr>
+<tr>
+<td><strong>IAM Role</strong></td>
+<td>Permisos que puedes asignar a recursos o usuarios temporales</td>
+</tr>
+<tr>
+<td><strong>MFA</strong></td>
+<td>Multi-Factor Authentication, autenticación de múltiples factores</td>
+</tr>
+<tr>
+<td><strong>CloudWatch</strong></td>
+<td>Servicio de monitorización y logs de AWS</td>
+</tr>
+<tr>
+<td><strong>RDS</strong></td>
+<td>Relational Database Service, bases de datos gestionadas</td>
+</tr>
+<tr>
+<td><strong>Lambda</strong></td>
+<td>Servicio de computación sin servidor</td>
+</tr>
+<tr>
+<td><strong>CLI</strong></td>
+<td>Command Line Interface, interfaz de línea de comandos</td>
+</tr>
+<tr>
+<td><strong>Console</strong></td>
+<td>Interfaz web de gestión de AWS</td>
+</tr>
+<tr>
+<td><strong>API</strong></td>
+<td>Application Programming Interface, interfaz para programar servicios</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="recursos-adicionales">Recursos adicionales</h2>
+<h3 id="documentacion-oficial">Documentación oficial</h3>
+<ul>
+<li><strong>AWS Documentation</strong>: https://docs.aws.amazon.com</li>
+<li><strong>AWS Training</strong>: https://aws.amazon.com/training/</li>
+<li><strong>AWS Free Tier</strong>: https://aws.amazon.com/free/</li>
+</ul>
+<h3 id="labs-practicos">Labs prácticos</h3>
+<ul>
+<li><strong>AWS Academy Learner Lab</strong>: Labs proporcionados por tu instructor</li>
+<li><strong>AWS Workshop Studio</strong>: Talleres prácticos guiados</li>
+<li><strong>QwikLabs</strong>: Laboratorios prácticos (algunos gratuitos)</li>
+</ul>
+<h3 id="comunidades-y-ayuda">Comunidades y ayuda</h3>
+<ul>
+<li><strong>AWS re:Post</strong>: Foro oficial de AWS (antes AWS Forums)</li>
+<li><strong>Stack Overflow</strong>: Etiqueta <code>amazon-web-services</code></li>
+<li><strong>r/aws</strong>: Subreddit de AWS</li>
+</ul>
+<hr />
+<p><em>Este documento sirve como introducción a AWS para estudiantes sin conocimientos previos. La mejor forma de aprender es practicar, así que empieza a crear recursos en tu cuenta de AWS Academy.</em></p>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Volver al principio
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.top", "toc.integrate", "search.highlight", "content.code.annotate", "content.code.copy"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>
