@@ -3,8 +3,6 @@ nav:
       - Teoría:
         - intro-aws.md
         - intro-terraform.md
-      - Prácticas:
-        - ... | debian.md
     - Tema 2:
       - Teoría:
         - ArqWeb.md
