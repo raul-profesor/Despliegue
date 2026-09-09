@@ -29,19 +29,19 @@ Antes de entender qué es AWS, necesitamos comprender qué significa "la nube" e
 
 ### La nube como concepto
 
-En términos sencillos, "la nube" se refiere a servidores computers accesibles a través de internet, junto con el software que在这些 servidores上运行, las bases de datos que almacenan datos, y los servicios que potencian aplicaciones. En lugar de poseer y mantener tu propio centro de datos físico y servidores, puedes acceder a recursos de computación bajo demanda desde proveedores como AWS, Azure o Google Cloud.
+En términos sencillos, "la nube" se refiere a servidores accesibles a través de internet, junto con el software que ejecutan los servidores, las bases de datos que almacenan datos, y los servicios ofrecidos por las aplicaciones. En lugar de poseer y mantener tu propio centro de datos físico y sus servidores, puedes acceder a recursos de computación bajo demanda desde proveedores como AWS, Azure o Google Cloud.
 
 Históricamente, si una empresa quería ejecutar una aplicación web, necesitaba:
 
-1. **Comprar o alquilar espacio en un datacenter físico**: Un cuarto oscuro con servidores propios, o espacio en un centro de datos de terceros
+1. **Comprar o alquilar espacio en un datacenter físico**: Un cuarto aislado con servidores propios, o espacio en un centro de datos de terceros
 2. **Adquirir servidores físicos**: Máquinas con CPU, RAM, disco duro, que había que rackear, cablear, configurar
-3. **Instalar software de virtualización**: Para aprovechar efficiently los recursos de cada servidor
-4. **Configurar redes**: Switches, routers, firewalls, conexiones a internet con ancho de banda dedicado
+3. **Instalar software de virtualización**: Para aprovechar eficientemente los recursos de cada servidor
+4. **Configurar redes**: Switches, routers, firewalls, conexiones a internet con ancho de banda dedicado, fibra óptica
 5. **Contratar técnicos especializados**: Para mantener todo esto funcionando 24/7
 6. **Planificar la capacidad**: ¿Cuántos servidores necesito? ¿Y si crezco? ¿Y si tengo picos de tráfico?
 7. **Pagar facturas de electricidad**: Servidores que consumen mucha energía y generan mucho calor
 
-Este modelo tradicional se llama "on-premises" o "infraestructura on-premise".
+Este modelo tradicional se llama "(infraestructura) on-premise".
 
 Con la nube, todo eso desaparece. En lugar de poseer servidores, alquilas recursos de computación a un proveedor que:
 
@@ -60,7 +60,7 @@ La industria de la nube define tres modelos de servicio principales, que represe
 
 **Software as a Service (SaaS)**: El proveedor ofrece aplicaciones completas funcionando en la nube. Gmail, Spotify o Salesforce son ejemplos de SaaS. No instalas nada, solo usas la aplicación.
 
-Terraform y Ansible, tal como viste en el documento anterior, operan principalmente en la capa IaaS, ayudándote a gestionar esa infraestructura de forma programable.
+Terraform y Ansible operan principalmente en la capa IaaS, ayudándote a gestionar esa infraestructura de forma programable.
 
 ### Beneficios de la nube
 
@@ -72,7 +72,7 @@ La nube ofrece varias ventajas sobre la infraestructura tradicional:
 
 **Velocidad**: En lugar de esperar semanas para que llegue hardware nuevo, puedes tener un servidor virtual funcionando en minutos.
 
-**Alcance global**: Los grandes proveedores tienen datacenters en dozens de ubicaciones por todo el mundo. Puedes desplegar aplicaciones cerca de tus usuarios sin importar dónde estén.
+**Alcance global**: Los grandes proveedores tienen datacenters en decenas de ubicaciones por todo el mundo. Puedes desplegar aplicaciones cerca de tus usuarios sin importar dónde estén.
 
 **Fiabilidad**: Los datacenters de los grandes proveedores están diseñados para soportar fallos. Si un servidor se estropea, tu aplicación sigue funcionando porque el proveedor redistribuye la carga. Además, hacen backup de tus datos de forma automática.
 
@@ -92,7 +92,7 @@ Para estudiantes aprendiendo, el modelo on-demand es ideal porque puedes experim
 
 Amazon Web Services (AWS) es la subsidiaria de Amazon que proporciona una plataforma de computación en la nube pública. Lanzada oficialmente en 2002 como un conjunto de servicios web internos de Amazon, AWS se convirtió en una subsidiaria separada en 2003 y ha crecido hasta convertirse en el mayor proveedor de servicios de nube del mundo.
 
-AWS ofrece más de 200 servicios diferentes que van desde computación básica hasta inteligencia artificial, machine learning, IoT, y mucho más. Esta enorme variedad puede resultar abrumadora al principio, pero la mayoría de los estudiantes y proyectos начинают con un pequeño subconjunto de servicios fundamentales.
+AWS ofrece más de 200 servicios diferentes que van desde computación básica hasta inteligencia artificial, machine learning, IoT, y mucho más. Esta enorme variedad puede resultar abrumadora al principio, pero la mayoría de los estudiantes y proyectos empiezan con un pequeño subconjunto de servicios fundamentales.
 
 ### Los servicios más importantes de AWS
 
@@ -136,11 +136,11 @@ AWS Academy es un programa educativo de Amazon diseñado para instituciones acad
 
 **Laboratorios prácticos**: Entornos donde puedes experimentar con servicios reales de AWS sin temor a romper algo o acumular facturas inesperadas.
 
-**Creditos AWS**: Dependiendo de tu institución y curso, recibes créditos (generalmente entre $100-$300) que puedes usar para crear recursos reales en AWS. Esto te permite experimentar con la consola real y servicios reales.
+**Creditos AWS**: Dependiendo de tu institución y curso, recibes créditos (50$ durante 6 meses) que puedes usar para crear recursos reales en AWS. Esto te permite experimentar con la consola real y servicios reales.
 
 **Certificaciones**: Descuentos o exámenes gratuitos para obtener certificaciones AWS, que son muy valoradas en la industria.
 
-### Cómo注册 y empezar
+### Cómo registrarse y empezar
 
 El proceso típico depende de tu institución, pero generalmente:
 
@@ -172,7 +172,7 @@ El proceso típico depende de tu institución, pero generalmente:
 
 Una vez dentro de tu cuenta de AWS Academy:
 
-1. **Accede a la consola de gestión**: https://console.aws.amazon.com
+1. **Accede a la consola de gestión**: [https://console.aws.amazon.com](https://console.aws.amazon.com)
 
 2. **Explora el menú de servicios**: En la esquina superior izquierda, verás un menú desplegable con todos los servicios AWS. Al principio, quédate solo con los fundamentales.
 
@@ -252,7 +252,7 @@ La Consola de Gestión de AWS es la interfaz web que te permite interactuar con 
 **Menú de servicios (esquina superior izquierda)**:
 - Click en "Servicios" para ver el menú completo
 - Los servicios están categorizados: Compute, Storage, Database, Networking, etc.
-- Tu最近 utilizado muestra los servicios que has usado recientemente
+- Se muestran los servicios que has usado recientemente
 - Los "favoritos" te permiten guardar servicios que uses mucho (estrellita)
 
 ### El dashboard
@@ -287,11 +287,11 @@ Cada servicio tiene su propio panel con:
 
 ## Regiones y zonas de disponibilidad
 
-Entender regiones y zonas de disponibilidad es fundamental para trabajar effectively con AWS.
+Entender regiones y zonas de disponibilidad es fundamental para trabajar eficazmente con AWS.
 
 ### Regiones
 
-Una región es una ubicación geográfica que contiene múltiples zonas de disponibilidad. AWS tiene regiones en todo el mundo:
+Una región es una ubicación geográfica que contiene múltiples zonas de disponibilidad. AWS tiene regiones en todo el mundo, algunos ejemplos:
 
 | Región | Nombre | Ubicación |
 |--------|--------|-----------|
@@ -299,6 +299,8 @@ Una región es una ubicación geográfica que contiene múltiples zonas de dispo
 | us-west-2 | US West (Oregon) | Estados Unidos |
 | eu-west-1 | EU (Ireland) | Europa |
 | eu-central-1 | EU (Frankfurt) | Europa |
+| eu-south-1 | EU (Milán) | Europa |
+| eu-south-2 | EU (Spain) | Europa |
 | ap-southeast-1 | Asia Pacific (Singapore) | Asia |
 | ap-northeast-1 | Asia Pacific (Tokyo) | Asia |
 
@@ -325,7 +327,7 @@ Pero que está ubicado relativamente cerca de las otras AZs de la región (dentr
 - **Baja latencia entre AZs**: La comunicación entre AZs es rápida
 - **Replica synchrone**: Para bases de datos y aplicaciones que necesitan redundancia
 
-Cuando creas recursos críticos, puedes distribuirlos across múltiples AZs para mayor redundancia.
+Cuando creas recursos críticos, puedes distribuirlos entre múltiples AZs para mayor redundancia.
 
 ### Selección de región
 
@@ -334,10 +336,10 @@ Para la mayoría de las prácticas de este curso:
 1. Abre la consola de AWS
 2. Mira la esquina superior derecha
 3. Click en el selector de región
-4. Selecciona `US East (N. Virginia)` o `EU (Ireland)` o la que prefieras
+4. Selecciona `US East (N. Virginia) - us-east-1`
 5. Los recursos que crees estarán en esa región
 
-**Importante**: Si cambias de región, los recursos que creaste en otra región no aparecerán. Cada región es independiente.
+**Importante**: Esta es la única región que se permite en AWS Academy para evitar problemas de facturación y compatibilidad con los laboratorios.
 
 ---
 
@@ -482,7 +484,7 @@ El tipo de instancia define la combinación de CPU, memoria, almacenamiento y ca
 | **c** (Compute Optimized) | Mucha CPU | c5.large, c5.2xlarge |
 | **r** (Memory Optimized) | Mucha RAM | r5.large, r5.xlarge |
 
-Para aprender y desarrollo, las instancias **t3.micro** o **t3.small** son ideales porque son gratuitas dentro del tier de uso gratuito de AWS.
+Para aprender y desarrollar, las instancias **t3.micro** o **t3.small** son ideales porque son gratuitas dentro del tier de uso gratuito de AWS.
 
 **3. Configuración de red (VPC y subred)**
 
@@ -623,8 +625,8 @@ Vamos a crear una instancia EC2 paso a paso. Asumimos que ya tienes acceso a la 
 
 ### Paso 3: Elegir la AMI
 
-1. En la sección "AMI", ver&aring;s una lista de AMIs disponibles
-2. Para empezar, busca "Ubuntu Server 22.04 LTS (Free tier eligible)" o "Amazon Linux 2023 (Free tier eligible)"
+1. En la sección "AMI", verás una lista de AMIs disponibles
+2. Para empezar, busca "Ubuntu Server 24.04 o 26.04 LTS (Free tier eligible)" o "Amazon Linux 2023 (Free tier eligible)"
 3. Click en "Select" o en la AMI que elijas
 
 **Recomendación para principiantes**: Ubuntu Server es una buena elección porque:
@@ -635,7 +637,7 @@ Vamos a crear una instancia EC2 paso a paso. Asumimos que ya tienes acceso a la 
 
 ### Paso 4: Elegir el tipo de instancia
 
-1. En "Instance type", ver&aring;s el tipo preseleccionado (generalmente t2.micro o t3.micro)
+1. En "Instance type", verás el tipo preseleccionado (generalmente t2.micro o t3.micro)
 2. Asegúrate de que dice "Free tier eligible"
 3. Si quieres otra cosa, seleciona el tipo del menú desplegable
 4. Para aprender, `t3.micro` es más que suficiente
@@ -694,7 +696,7 @@ Para una primera práctica, puedes dejarlo todo por defecto.
 
 ### Paso 11: Seleccionar o crear Key Pair
 
-1. Al hacer click en Launch, AWS te pedir&aacute; que selecciones un Key Pair
+1. Al hacer click en Launch, AWS te pedirá; que selecciones un Key Pair
 2. **Opción A**: Crear uno nuevo:
    - Click en "Create new key pair"
    - Nombre: `mi-clave-aws` (o el nombre que prefieras)
@@ -779,7 +781,7 @@ Salida:
 Puedes modificar los Security Groups de una instancia:
 
 1. En la lista de instancias, click en la instancia
-2. En la pestaña "Security", ver&aring;s los Security Groups asociados
+2. En la pestaña "Security", verás los Security Groups asociados
 3. Click en el link al Security Group o en "Edit inbound rules" / "Edit outbound rules"
 
 ### Ejemplo: Añadir regla para HTTP
@@ -1429,7 +1431,7 @@ Algunos servicios son gratuitos dentro de límites:
 
 Antes de crear recursos, usa la **Calculadora de Precios de AWS**:
 
-1. Ve a https://calculator.aws
+1. Ve a [https://calculator.aws](https://calculator.aws)
 2. Selecciona los servicios que planeas usar
 3. Especifica configuración (tipo de instancia, almacenamiento, transferencia, etc.)
 4. Obtén una estimación mensual
