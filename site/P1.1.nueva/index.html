@@ -3088,33 +3088,32 @@ apartado <em>«¿Qué significa?»</em> que explica línea a línea qué hace y 
 No copies nada sin haberlo leído antes: en el examen y en la vida real nadie
 configura nada que no entiende.</p>
 <h2 id="1-el-escenario-que-vamos-a-montar">1. El escenario que vamos a montar</h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>flowchart TB
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    Internet((Internet))
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>    PlanesReq[&quot;Host: planes.daw&quot;]
-<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>    PuertosReq[&quot;Host: puertos.daw&quot;]
-<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>
-<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>    Internet --&gt;|HTTP puerto 80| PlanesReq
-<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>    Internet --&gt;|HTTP puerto 80| PuertosReq
-<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>
-<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>    PlanesReq --&gt; EC2
-<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>    PuertosReq --&gt; EC2
-<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>
-<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>    subgraph EC2[&quot;Instancia EC2 — Ubuntu Server 24.04, t2.small — «daw»&quot;]
-<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>        direction TB
-<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>        Nginx[&quot;nginx&quot;]
-<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>        PlanesVH[&quot;server_name planes.daw&quot;]
-<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>        PuertosVH[&quot;server_name puertos.daw&quot;]
-<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a>        PlanesApp[&quot;/var/www/planes (RunDash)&quot;]
-<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a>        PuertosApp[&quot;/var/www/puertos (Puertos)&quot;]
-<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a>
-<a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a>        Nginx --&gt; PlanesVH
-<a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a>        Nginx --&gt; PuertosVH
-<a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a>        PlanesVH --&gt; PlanesApp
-<a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a>        PuertosVH --&gt; PuertosApp
-<a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a>    end
-<a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a>
-<a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a>    SSH[&quot;Acceso SSH (puerto 22) con clave .pem&quot;] -.-&gt; EC2
-</code></pre></div>
+<pre class="mermaid"><code>flowchart TB
+    Internet((Internet))
+    PlanesReq["Host: planes.daw"]
+    PuertosReq["Host: puertos.daw"]
+
+    Internet --&gt;|HTTP puerto 80| PlanesReq
+    Internet --&gt;|HTTP puerto 80| PuertosReq
+
+    PlanesReq --&gt; EC2
+    PuertosReq --&gt; EC2
+
+    subgraph EC2["Instancia EC2 — Ubuntu Server 24.04, t2.small — «daw»"]
+        direction TB
+        Nginx["nginx"]
+        PlanesVH["server_name planes.daw"]
+        PuertosVH["server_name puertos.daw"]
+        PlanesApp["/var/www/planes (RunDash)"]
+        PuertosApp["/var/www/puertos (Puertos)"]
+
+        Nginx --&gt; PlanesVH
+        Nginx --&gt; PuertosVH
+        PlanesVH --&gt; PlanesApp
+        PuertosVH --&gt; PuertosApp
+    end
+
+    SSH["Acceso SSH (puerto 22) con clave .pem"] -.-&gt; EC2</code></pre>
 <p>El resultado final será:</p>
 <ul>
 <li><strong>Una instancia EC2</strong> con Ubuntu Server 24.04 LTS.</li>
@@ -3137,8 +3136,8 @@ Fíjate: ambas webs viven en la misma máquina, en el mismo puerto 80. ¿Cómo d
 nginx a cuál de las dos va dirigida cada petición?</p>
 <p>La respuesta está en la <strong>cabecera <code>Host</code></strong> del HTTP. Cuando tu navegador pide una
 página, no solo dice «dame <code>/</code>»: también envía el nombre del sitio que quiere:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>GET / HTTP/1.1
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>Host: planes.daw
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>GET / HTTP/1.1
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>Host: planes.daw
 </code></pre></div>
 <p>nginx lee esa cabecera y la compara con el <code>server_name</code> de cada uno de sus bloques
 <code>server</code>. El bloque cuyo <code>server_name</code> coincida es el que sirve la petición. A cada
@@ -3159,7 +3158,7 @@ público). Si el navegador pregunta al DNS, obtendrá «no existe» y no podrá 
 <p>La solución para la práctica: <strong>no usar el DNS público</strong>, sino el fichero local
 <strong><code>/etc/hosts</code></strong>. Ese fichero es una tabla nombre→IP que el sistema consulta <strong>antes</strong>
 que el DNS. Si ahí ponemos:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>&lt;IP&gt;  planes.daw puertos.daw
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>&lt;IP&gt;  planes.daw puertos.daw
 </code></pre></div>
 <p>nuestro ordenador resolverá ambos nombres hacia la IP de la instancia, sin necesidad
 de DNS real. Es el truco estándar para probar dominios que aún no existen.</p>
@@ -3311,12 +3310,12 @@ elegida en la esquina superior derecha de la consola antes de empezar.</p>
 <ol>
 <li>Despliega <strong>Advanced details</strong> y en <strong>User data</strong> pega exactamente esto:</li>
 </ol>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c1">#cloud-config</span>
-<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="nt">hostname</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">daw</span>
-<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="nt">package_update</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
-<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="nt">packages</span><span class="p">:</span>
-<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">python3</span>
-<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">python3-apt</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1">#cloud-config</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="nt">hostname</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">daw</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="nt">package_update</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="nt">packages</span><span class="p">:</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">python3</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">python3-apt</span>
 </code></pre></div>
 <p>El <em>user data</em> es un texto que AWS entrega a la instancia en su primer arranque. Si
    empieza por <code>#cloud-config</code>, <strong>cloud-init</strong> lo interpreta como instrucciones YAML y
@@ -3364,8 +3363,8 @@ elegida en la esquina superior derecha de la consola antes de empezar.</p>
 </ol>
 <h2 id="4-conectar-por-ssh">4. Conectar por SSH</h2>
 <p>Desde tu máquina local, ve al directorio donde descargaste la clave y ejecuta:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>chmod<span class="w"> </span><span class="m">600</span><span class="w"> </span>daw-key.pem
-<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>ssh<span class="w"> </span>-i<span class="w"> </span>daw-key.pem<span class="w"> </span>ubuntu@&lt;IP&gt;
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>chmod<span class="w"> </span><span class="m">600</span><span class="w"> </span>daw-key.pem
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>ssh<span class="w"> </span>-i<span class="w"> </span>daw-key.pem<span class="w"> </span>ubuntu@&lt;IP&gt;
 </code></pre></div>
 <ul>
 <li><code>chmod 600</code> deja la clave legible solo por tu usuario. SSH <strong>rechaza</strong> claves con
@@ -3384,20 +3383,20 @@ suplantaciones en el futuro.</p>
 <code>sudo</code> (instalar paquetes y escribir en <code>/etc</code>, <code>/var/www</code> requiere ser root).</p>
 <h3 id="51-nombre-de-host-y-paquetes-base">5.1. Nombre de host y paquetes base</h3>
 <p>Si no pusiste el <em>user data</em> del paso 3.7, hazlo a mano:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>sudo<span class="w"> </span>hostnamectl<span class="w"> </span>set-hostname<span class="w"> </span>daw
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>sudo<span class="w"> </span>hostnamectl<span class="w"> </span>set-hostname<span class="w"> </span>daw
 </code></pre></div>
 <p><code>hostnamectl set-hostname daw</code> fija el nombre de la máquina a <code>daw</code>.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>sudo<span class="w"> </span>apt<span class="w"> </span>update
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>sudo<span class="w"> </span>apt<span class="w"> </span>update
 </code></pre></div>
 <p><code>apt update</code> <strong>no instala nada</strong>: descarga la lista actualizada de paquetes de los
 repositorios. Hay que ejecutarlo en una máquina recién creada porque el índice de
 fábrica está desactualizado.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>python3<span class="w"> </span>python3-apt
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>python3<span class="w"> </span>python3-apt
 </code></pre></div>
 <p>Instala el intérprete Python y las librerías que permiten a Python usar apt.
 <code>-y</code> responde «sí» a la confirmación.</p>
 <p>Instala ahora nginx y git:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>nginx<span class="w"> </span>git
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>nginx<span class="w"> </span>git
 </code></pre></div>
 <ul>
 <li><strong>nginx</strong>: el servidor web. Escuchará en el puerto 80 y servirá los dos sitios.
@@ -3413,12 +3412,12 @@ uno o dos minutos y reintenta; vigílalo con <code>cloud-init status</code> (ter
 <p>En un escenario multitenant cada inquilino tiene <strong>su propio directorio</strong>. Vamos a
 clonar cada aplicación en el suyo, dentro de <code>/var/www</code> (el lugar convencional para
 contenido web en Linux):</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>sudo<span class="w"> </span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/raul-profesor/rundash.git<span class="w"> </span>/var/www/planes
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>sudo<span class="w"> </span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/raul-profesor/rundash.git<span class="w"> </span>/var/www/planes
 </code></pre></div>
 <p>Clona RunDash (el dashboard de planes de entrenamiento, un sitio estático generado
 con Astro) en <code>/var/www/planes</code>. Lo llamaremos <strong>planes</strong> porque es el sitio que
 responderá a <code>planes.daw</code>.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>sudo<span class="w"> </span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/raul-profesor/puertos-tour.git<span class="w"> </span>/var/www/puertos
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>sudo<span class="w"> </span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/raul-profesor/puertos-tour.git<span class="w"> </span>/var/www/puertos
 </code></pre></div>
 <p>Clona Puertos Míticos (una SPA estática sobre los puertos del Tour) en
 <code>/var/www/puertos</code>. Responderá a <code>puertos.daw</code>.</p>
@@ -3427,26 +3426,26 @@ responderá a <code>planes.daw</code>.</p>
 <code>/var/www</code> pertenece a root. El directorio de destino es el punto donde «se encuentran»
 el código y el servidor web: debe coincidir con el <code>root</code> de la configuración nginx.</p>
 <p>Comprueba que ambos tienen su <code>index.html</code>:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>ls<span class="w"> </span>/var/www/planes/index.html<span class="w"> </span>/var/www/puertos/index.html
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>ls<span class="w"> </span>/var/www/planes/index.html<span class="w"> </span>/var/www/puertos/index.html
 </code></pre></div>
 <h3 id="53-la-anatomia-de-nginx-en-ubuntu-que-hay-y-para-que">5.3. La anatomía de nginx en Ubuntu: qué hay y para qué</h3>
 <p>Antes de escribir un solo fichero, conviene saber <strong>dónde vive todo</strong> dentro de nginx.
 En Ubuntu, al instalar nginx con <code>apt</code>, se crea esta estructura de directorios:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>/etc/nginx/                 ← raíz de la configuración
-<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>├── nginx.conf               ← fichero principal (motor + includes)
-<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>├── sites-available/         ← configs de TODOS los sitios (se escriben aquí)
-<a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a>├── sites-enabled/           ← enlaces a los sitios ACTIVOS (lo que nginx lee)
-<a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a>├── snippets/                ← fragmentos reutilizables
-<a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a>├── conf.d/                  ← configs extra (no son virtual hosts)
-<a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a>└── mime.types               ← tabla extensión → tipo MIME
-<a id="__codelineno-12-8" name="__codelineno-12-8" href="#__codelineno-12-8"></a>
-<a id="__codelineno-12-9" name="__codelineno-12-9" href="#__codelineno-12-9"></a>/var/www/                    ← contenido web (document roots)
-<a id="__codelineno-12-10" name="__codelineno-12-10" href="#__codelineno-12-10"></a>
-<a id="__codelineno-12-11" name="__codelineno-12-11" href="#__codelineno-12-11"></a>/var/log/nginx/              ← logs
-<a id="__codelineno-12-12" name="__codelineno-12-12" href="#__codelineno-12-12"></a>├── access.log               ← registro de cada petición HTTP
-<a id="__codelineno-12-13" name="__codelineno-12-13" href="#__codelineno-12-13"></a>└── error.log                ← errores y problemas
-<a id="__codelineno-12-14" name="__codelineno-12-14" href="#__codelineno-12-14"></a>
-<a id="__codelineno-12-15" name="__codelineno-12-15" href="#__codelineno-12-15"></a>/run/nginx.pid               ← PID del proceso maestro (lo crea nginx)
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>/etc/nginx/                 ← raíz de la configuración
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>├── nginx.conf               ← fichero principal (motor + includes)
+<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>├── sites-available/         ← configs de TODOS los sitios (se escriben aquí)
+<a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a>├── sites-enabled/           ← enlaces a los sitios ACTIVOS (lo que nginx lee)
+<a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a>├── snippets/                ← fragmentos reutilizables
+<a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a>├── conf.d/                  ← configs extra (no son virtual hosts)
+<a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a>└── mime.types               ← tabla extensión → tipo MIME
+<a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a>
+<a id="__codelineno-11-9" name="__codelineno-11-9" href="#__codelineno-11-9"></a>/var/www/                    ← contenido web (document roots)
+<a id="__codelineno-11-10" name="__codelineno-11-10" href="#__codelineno-11-10"></a>
+<a id="__codelineno-11-11" name="__codelineno-11-11" href="#__codelineno-11-11"></a>/var/log/nginx/              ← logs
+<a id="__codelineno-11-12" name="__codelineno-11-12" href="#__codelineno-11-12"></a>├── access.log               ← registro de cada petición HTTP
+<a id="__codelineno-11-13" name="__codelineno-11-13" href="#__codelineno-11-13"></a>└── error.log                ← errores y problemas
+<a id="__codelineno-11-14" name="__codelineno-11-14" href="#__codelineno-11-14"></a>
+<a id="__codelineno-11-15" name="__codelineno-11-15" href="#__codelineno-11-15"></a>/run/nginx.pid               ← PID del proceso maestro (lo crea nginx)
 </code></pre></div>
 <h4 id="531-que-hace-cada-cosa-y-por-que-esta-ahi">5.3.1. ¿Qué hace cada cosa y por qué está ahí?</h4>
 <table>
@@ -3519,7 +3518,7 @@ En Ubuntu, al instalar nginx con <code>apt</code>, se crea esta estructura de di
 </ul>
 <p>Este mecanismo se conecta con <code>nginx.conf</code> mediante una única línea al final del bloque
 <code>http { ... }</code>:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="k">include</span><span class="w"> </span><span class="n">/etc/nginx/sites-enabled/*</span>;
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="k">include</span><span class="w"> </span><span class="n">/etc/nginx/sites-enabled/*</span>;
 </code></pre></div>
 <p>Es un <strong>enganche</strong>: nginx lee su propio motor y, al final, «barra» todo lo que haya en
 <code>sites-enabled</code>. Cada fichero que encuentre se convierte en un bloque <code>server { ... }</code> más.</p>
@@ -3532,19 +3531,19 @@ exigencia del software.</p>
 <h4 id="533-y-que-hay-dentro-de-nginxconf">5.3.3. ¿Y qué hay dentro de <code>nginx.conf</code>?</h4>
 <p>Aunque no lo vamos a editar, ayuda saber qué piezas tiene cuando lo abras. Su estructura
 básica es:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="k">user</span><span class="w"> </span><span class="s">www-data</span><span class="p">;</span><span class="w">                  </span><span class="c1"># usuario con el que corren los workers</span>
-<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="k">worker_processes</span><span class="w"> </span><span class="s">auto</span><span class="p">;</span><span class="w">          </span><span class="c1"># nº de procesos worker (auto = nº de CPUs)</span>
-<a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a><span class="k">pid</span><span class="w"> </span><span class="s">/run/nginx.pid</span><span class="p">;</span><span class="w">             </span><span class="c1"># ruta del fichero PID</span>
-<a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a><span class="k">events</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a><span class="w">    </span><span class="kn">worker_connections</span><span class="w"> </span><span class="mi">768</span><span class="p">;</span><span class="w">     </span><span class="c1"># conexiones simultáneas por worker</span>
-<a id="__codelineno-14-6" name="__codelineno-14-6" href="#__codelineno-14-6"></a><span class="p">}</span>
-<a id="__codelineno-14-7" name="__codelineno-14-7" href="#__codelineno-14-7"></a><span class="k">http</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-14-8" name="__codelineno-14-8" href="#__codelineno-14-8"></a><span class="w">    </span><span class="c1"># ... configuración global: tipos MIME, formato de logs por defecto,</span>
-<a id="__codelineno-14-9" name="__codelineno-14-9" href="#__codelineno-14-9"></a><span class="w">    </span><span class="c1"># compresión, timeouts, cabeceras por defecto...</span>
-<a id="__codelineno-14-10" name="__codelineno-14-10" href="#__codelineno-14-10"></a><span class="w">    </span><span class="kn">include</span><span class="w"> </span><span class="s">/etc/nginx/mime.types</span><span class="p">;</span>
-<a id="__codelineno-14-11" name="__codelineno-14-11" href="#__codelineno-14-11"></a><span class="w">    </span><span class="kn">include</span><span class="w"> </span><span class="s">/etc/nginx/conf.d/*.conf</span><span class="p">;</span>
-<a id="__codelineno-14-12" name="__codelineno-14-12" href="#__codelineno-14-12"></a><span class="w">    </span><span class="kn">include</span><span class="w"> </span><span class="s">/etc/nginx/sites-enabled/*</span><span class="p">;</span><span class="w">   </span><span class="c1"># ← aquí se enganchan nuestros sitios</span>
-<a id="__codelineno-14-13" name="__codelineno-14-13" href="#__codelineno-14-13"></a><span class="p">}</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="k">user</span><span class="w"> </span><span class="s">www-data</span><span class="p">;</span><span class="w">                  </span><span class="c1"># usuario con el que corren los workers</span>
+<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="k">worker_processes</span><span class="w"> </span><span class="s">auto</span><span class="p">;</span><span class="w">          </span><span class="c1"># nº de procesos worker (auto = nº de CPUs)</span>
+<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a><span class="k">pid</span><span class="w"> </span><span class="s">/run/nginx.pid</span><span class="p">;</span><span class="w">             </span><span class="c1"># ruta del fichero PID</span>
+<a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a><span class="k">events</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a><span class="w">    </span><span class="kn">worker_connections</span><span class="w"> </span><span class="mi">768</span><span class="p">;</span><span class="w">     </span><span class="c1"># conexiones simultáneas por worker</span>
+<a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a><span class="p">}</span>
+<a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a><span class="k">http</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-13-8" name="__codelineno-13-8" href="#__codelineno-13-8"></a><span class="w">    </span><span class="c1"># ... configuración global: tipos MIME, formato de logs por defecto,</span>
+<a id="__codelineno-13-9" name="__codelineno-13-9" href="#__codelineno-13-9"></a><span class="w">    </span><span class="c1"># compresión, timeouts, cabeceras por defecto...</span>
+<a id="__codelineno-13-10" name="__codelineno-13-10" href="#__codelineno-13-10"></a><span class="w">    </span><span class="kn">include</span><span class="w"> </span><span class="s">/etc/nginx/mime.types</span><span class="p">;</span>
+<a id="__codelineno-13-11" name="__codelineno-13-11" href="#__codelineno-13-11"></a><span class="w">    </span><span class="kn">include</span><span class="w"> </span><span class="s">/etc/nginx/conf.d/*.conf</span><span class="p">;</span>
+<a id="__codelineno-13-12" name="__codelineno-13-12" href="#__codelineno-13-12"></a><span class="w">    </span><span class="kn">include</span><span class="w"> </span><span class="s">/etc/nginx/sites-enabled/*</span><span class="p">;</span><span class="w">   </span><span class="c1"># ← aquí se enganchan nuestros sitios</span>
+<a id="__codelineno-13-13" name="__codelineno-13-13" href="#__codelineno-13-13"></a><span class="p">}</span>
 </code></pre></div>
 <p>La directiva clave es la última: el <code>include</code> que une el motor con los virtual hosts que
 vamos a crear en los siguientes apartados. El bloque <code>http { ... }</code> se cierra justo
@@ -3562,21 +3561,21 @@ de ese contexto HTTP.</p>
 </ul>
 <p>Vamos a crear <strong>dos</strong> ficheros, uno por tenant.</p>
 <h4 id="541-sitio-planesdaw">5.4.1. Sitio <code>planes.daw</code></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>sudo<span class="w"> </span>nano<span class="w"> </span>/etc/nginx/sites-available/planes.daw
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>sudo<span class="w"> </span>nano<span class="w"> </span>/etc/nginx/sites-available/planes.daw
 </code></pre></div>
 <p>Pega este contenido:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="k">server</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a><span class="w">    </span><span class="kn">listen</span><span class="w"> </span><span class="mi">80</span><span class="p">;</span>
-<a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a><span class="w">    </span><span class="kn">listen</span><span class="w"> </span><span class="s">[::]:80</span><span class="p">;</span>
-<a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a><span class="w">    </span><span class="kn">server_name</span><span class="w"> </span><span class="s">planes.daw</span><span class="p">;</span>
-<a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a>
-<a id="__codelineno-16-6" name="__codelineno-16-6" href="#__codelineno-16-6"></a><span class="w">    </span><span class="kn">root</span><span class="w"> </span><span class="s">/var/www/planes</span><span class="p">;</span>
-<a id="__codelineno-16-7" name="__codelineno-16-7" href="#__codelineno-16-7"></a><span class="w">    </span><span class="kn">index</span><span class="w"> </span><span class="s">index.html</span><span class="p">;</span>
-<a id="__codelineno-16-8" name="__codelineno-16-8" href="#__codelineno-16-8"></a>
-<a id="__codelineno-16-9" name="__codelineno-16-9" href="#__codelineno-16-9"></a><span class="w">    </span><span class="kn">location</span><span class="w"> </span><span class="s">/</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-16-10" name="__codelineno-16-10" href="#__codelineno-16-10"></a><span class="w">        </span><span class="kn">try_files</span><span class="w"> </span><span class="nv">$uri</span><span class="w"> </span><span class="nv">$uri/index.html</span><span class="w"> </span><span class="nv">$uri/</span><span class="w"> </span><span class="p">=</span><span class="mi">404</span><span class="p">;</span>
-<a id="__codelineno-16-11" name="__codelineno-16-11" href="#__codelineno-16-11"></a><span class="w">    </span><span class="p">}</span>
-<a id="__codelineno-16-12" name="__codelineno-16-12" href="#__codelineno-16-12"></a><span class="p">}</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="k">server</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="w">    </span><span class="kn">listen</span><span class="w"> </span><span class="mi">80</span><span class="p">;</span>
+<a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a><span class="w">    </span><span class="kn">listen</span><span class="w"> </span><span class="s">[::]:80</span><span class="p">;</span>
+<a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a><span class="w">    </span><span class="kn">server_name</span><span class="w"> </span><span class="s">planes.daw</span><span class="p">;</span>
+<a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a>
+<a id="__codelineno-15-6" name="__codelineno-15-6" href="#__codelineno-15-6"></a><span class="w">    </span><span class="kn">root</span><span class="w"> </span><span class="s">/var/www/planes</span><span class="p">;</span>
+<a id="__codelineno-15-7" name="__codelineno-15-7" href="#__codelineno-15-7"></a><span class="w">    </span><span class="kn">index</span><span class="w"> </span><span class="s">index.html</span><span class="p">;</span>
+<a id="__codelineno-15-8" name="__codelineno-15-8" href="#__codelineno-15-8"></a>
+<a id="__codelineno-15-9" name="__codelineno-15-9" href="#__codelineno-15-9"></a><span class="w">    </span><span class="kn">location</span><span class="w"> </span><span class="s">/</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-15-10" name="__codelineno-15-10" href="#__codelineno-15-10"></a><span class="w">        </span><span class="kn">try_files</span><span class="w"> </span><span class="nv">$uri</span><span class="w"> </span><span class="nv">$uri/index.html</span><span class="w"> </span><span class="nv">$uri/</span><span class="w"> </span><span class="p">=</span><span class="mi">404</span><span class="p">;</span>
+<a id="__codelineno-15-11" name="__codelineno-15-11" href="#__codelineno-15-11"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-15-12" name="__codelineno-15-12" href="#__codelineno-15-12"></a><span class="p">}</span>
 </code></pre></div>
 <p><strong>¿Qué significa cada línea?</strong></p>
 <table>
@@ -3628,21 +3627,21 @@ como directorios con un <code>index.html</code> dentro: <code>/planes/5k/</code>
 </blockquote>
 <p>Guarda (<code>Ctrl+O</code>, <code>Enter</code>, <code>Ctrl+X</code>).</p>
 <h4 id="542-sitio-puertosdaw">5.4.2. Sitio <code>puertos.daw</code></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>sudo<span class="w"> </span>nano<span class="w"> </span>/etc/nginx/sites-available/puertos.daw
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>sudo<span class="w"> </span>nano<span class="w"> </span>/etc/nginx/sites-available/puertos.daw
 </code></pre></div>
 <p>Pega este contenido:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="k">server</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a><span class="w">    </span><span class="kn">listen</span><span class="w"> </span><span class="mi">80</span><span class="p">;</span>
-<a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a><span class="w">    </span><span class="kn">listen</span><span class="w"> </span><span class="s">[::]:80</span><span class="p">;</span>
-<a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a><span class="w">    </span><span class="kn">server_name</span><span class="w"> </span><span class="s">puertos.daw</span><span class="p">;</span>
-<a id="__codelineno-18-5" name="__codelineno-18-5" href="#__codelineno-18-5"></a>
-<a id="__codelineno-18-6" name="__codelineno-18-6" href="#__codelineno-18-6"></a><span class="w">    </span><span class="kn">root</span><span class="w"> </span><span class="s">/var/www/puertos</span><span class="p">;</span>
-<a id="__codelineno-18-7" name="__codelineno-18-7" href="#__codelineno-18-7"></a><span class="w">    </span><span class="kn">index</span><span class="w"> </span><span class="s">index.html</span><span class="p">;</span>
-<a id="__codelineno-18-8" name="__codelineno-18-8" href="#__codelineno-18-8"></a>
-<a id="__codelineno-18-9" name="__codelineno-18-9" href="#__codelineno-18-9"></a><span class="w">    </span><span class="kn">location</span><span class="w"> </span><span class="s">/</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-18-10" name="__codelineno-18-10" href="#__codelineno-18-10"></a><span class="w">        </span><span class="kn">try_files</span><span class="w"> </span><span class="nv">$uri</span><span class="w"> </span><span class="nv">$uri/index.html</span><span class="w"> </span><span class="nv">$uri/</span><span class="w"> </span><span class="p">=</span><span class="mi">404</span><span class="p">;</span>
-<a id="__codelineno-18-11" name="__codelineno-18-11" href="#__codelineno-18-11"></a><span class="w">    </span><span class="p">}</span>
-<a id="__codelineno-18-12" name="__codelineno-18-12" href="#__codelineno-18-12"></a><span class="p">}</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="k">server</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a><span class="w">    </span><span class="kn">listen</span><span class="w"> </span><span class="mi">80</span><span class="p">;</span>
+<a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a><span class="w">    </span><span class="kn">listen</span><span class="w"> </span><span class="s">[::]:80</span><span class="p">;</span>
+<a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a><span class="w">    </span><span class="kn">server_name</span><span class="w"> </span><span class="s">puertos.daw</span><span class="p">;</span>
+<a id="__codelineno-17-5" name="__codelineno-17-5" href="#__codelineno-17-5"></a>
+<a id="__codelineno-17-6" name="__codelineno-17-6" href="#__codelineno-17-6"></a><span class="w">    </span><span class="kn">root</span><span class="w"> </span><span class="s">/var/www/puertos</span><span class="p">;</span>
+<a id="__codelineno-17-7" name="__codelineno-17-7" href="#__codelineno-17-7"></a><span class="w">    </span><span class="kn">index</span><span class="w"> </span><span class="s">index.html</span><span class="p">;</span>
+<a id="__codelineno-17-8" name="__codelineno-17-8" href="#__codelineno-17-8"></a>
+<a id="__codelineno-17-9" name="__codelineno-17-9" href="#__codelineno-17-9"></a><span class="w">    </span><span class="kn">location</span><span class="w"> </span><span class="s">/</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-17-10" name="__codelineno-17-10" href="#__codelineno-17-10"></a><span class="w">        </span><span class="kn">try_files</span><span class="w"> </span><span class="nv">$uri</span><span class="w"> </span><span class="nv">$uri/index.html</span><span class="w"> </span><span class="nv">$uri/</span><span class="w"> </span><span class="p">=</span><span class="mi">404</span><span class="p">;</span>
+<a id="__codelineno-17-11" name="__codelineno-17-11" href="#__codelineno-17-11"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-17-12" name="__codelineno-17-12" href="#__codelineno-17-12"></a><span class="p">}</span>
 </code></pre></div>
 <p>Es idéntico al anterior salvo <code>server_name</code> y <code>root</code>: ahora el bloque responde a
 <code>puertos.daw</code> y sirve <code>/var/www/puertos</code>.</p>
@@ -3655,9 +3654,9 @@ llegan peticiones a ficheros reales (<code>/</code>, <code>css/…</code>, <code
 <p>Guarda y sal.</p>
 <h3 id="55-activar-los-sitios-y-recargar-nginx">5.5. Activar los sitios y recargar nginx</h3>
 <p>Activa ambos sitios creando los enlaces simbólicos y desactiva el sitio de ejemplo:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>sudo<span class="w"> </span>ln<span class="w"> </span>-s<span class="w"> </span>/etc/nginx/sites-available/planes.daw<span class="w"> </span>/etc/nginx/sites-enabled/planes.daw
-<a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a>sudo<span class="w"> </span>ln<span class="w"> </span>-s<span class="w"> </span>/etc/nginx/sites-available/puertos.daw<span class="w"> </span>/etc/nginx/sites-enabled/puertos.daw
-<a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a>sudo<span class="w"> </span>rm<span class="w"> </span>/etc/nginx/sites-enabled/default
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>sudo<span class="w"> </span>ln<span class="w"> </span>-s<span class="w"> </span>/etc/nginx/sites-available/planes.daw<span class="w"> </span>/etc/nginx/sites-enabled/planes.daw
+<a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a>sudo<span class="w"> </span>ln<span class="w"> </span>-s<span class="w"> </span>/etc/nginx/sites-available/puertos.daw<span class="w"> </span>/etc/nginx/sites-enabled/puertos.daw
+<a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a>sudo<span class="w"> </span>rm<span class="w"> </span>/etc/nginx/sites-enabled/default
 </code></pre></div>
 <ul>
 <li><code>ln -s origen destino</code> crea un enlace simbólico (un acceso directo): el fichero real
@@ -3667,14 +3666,14 @@ llegan peticiones a ficheros reales (<code>/</code>, <code>css/…</code>, <code
   ningún <code>server_name</code>.</li>
 </ul>
 <p>Valida la sintaxis de <strong>toda</strong> la configuración antes de aplicarla:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>sudo<span class="w"> </span>nginx<span class="w"> </span>-t
+<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>sudo<span class="w"> </span>nginx<span class="w"> </span>-t
 </code></pre></div>
 <p>Debe terminar con <code>syntax is ok</code> y <code>test is successful</code>. Se hace siempre <strong>antes</strong> de
 recargar: si recargáramos con un error, podríamos dejar el servidor caído. Si da error,
 te dirá el fichero y la línea.</p>
 <p>Recarga y habilita nginx:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>reload<span class="w"> </span>nginx
-<a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>nginx
+<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>reload<span class="w"> </span>nginx
+<a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>nginx
 </code></pre></div>
 <ul>
 <li><code>reload</code> le dice a nginx que <strong>relea su configuración sin detenerse</strong>: los procesos
@@ -3683,7 +3682,7 @@ te dirá el fichero y la línea.</p>
 <li><code>enable</code> hace que nginx arranque solo al encender la máquina.</li>
 </ul>
 <p>Comprueba que nginx escucha en el 80:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>ss<span class="w"> </span>-tlnp<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>:80
+<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>ss<span class="w"> </span>-tlnp<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>:80
 </code></pre></div>
 <p><code>ss</code> muestra los sockets de red (<code>-t</code> TCP, <code>-l</code> escuchando, <code>-n</code> puertos numéricos,
 <code>-p</code> proceso). Debes ver <code>nginx</code> escuchando en <code>0.0.0.0:80</code> y/o <code>[::]:80</code>.</p>
@@ -3692,14 +3691,14 @@ te dirá el fichero y la línea.</p>
 ficheros son tu primera parada cuando algo no va. Aprende a mirarlos antes de
 necesitarlos de verdad: cuando llegue el momento del fallo, ya sabrás dónde buscar.</p>
 <p><strong>Ver los errores en tiempo real (mientras reproduces el fallo):</strong></p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a>sudo<span class="w"> </span>tail<span class="w"> </span>-f<span class="w"> </span>/var/log/nginx/error.log
+<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>sudo<span class="w"> </span>tail<span class="w"> </span>-f<span class="w"> </span>/var/log/nginx/error.log
 </code></pre></div>
 <p><code>tail -f</code> muestra las últimas líneas del fichero y se queda «siguiendo» los cambios:
 cada nuevo error aparece en pantalla al instante. Es ideal para reproducir un fallo
 mientras lo vigilas (abres el navegador, intentas cargar la página, y ves aparecer el
 error según ocurre).</p>
 <p><strong>Ver las últimas peticiones atendidas:</strong></p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a>sudo<span class="w"> </span>tail<span class="w"> </span>-n<span class="w"> </span><span class="m">50</span><span class="w"> </span>/var/log/nginx/access.log
+<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a>sudo<span class="w"> </span>tail<span class="w"> </span>-n<span class="w"> </span><span class="m">50</span><span class="w"> </span>/var/log/nginx/access.log
 </code></pre></div>
 <p>Las últimas 50 peticiones que ha atendido nginx. Sirve para responder preguntas como
 «¿ha llegado siquiera mi petición?», «¿con qué código ha respondido?», «¿desde qué
@@ -3707,7 +3706,7 @@ IP?».</p>
 <p><strong>Cómo leer una línea de <code>access.log</code></strong></p>
 <p>Por defecto, Ubuntu configura nginx con el formato <strong>combined</strong>, y cada línea tiene
 este aspecto:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a>203.0.113.42 - - [18/Sep/2026:12:34:56 +0000] &quot;GET / HTTP/1.1&quot; 200 1234 &quot;-&quot; &quot;Mozilla/5.0 ...&quot;
+<div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a>203.0.113.42 - - [18/Sep/2026:12:34:56 +0000] &quot;GET / HTTP/1.1&quot; 200 1234 &quot;-&quot; &quot;Mozilla/5.0 ...&quot;
 </code></pre></div>
 <table>
 <thead>
@@ -3752,7 +3751,7 @@ este aspecto:</p>
 </tbody>
 </table>
 <p><strong>Cómo leer una línea de <code>error.log</code></strong></p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a>2026/09/18 12:35:01 [error] 1234#0: *5 open() &quot;/var/www/planes/missing.html&quot; failed (2: No such file or directory), client: 203.0.113.42, server: planes.daw, request: &quot;GET /missing.html HTTP/1.1&quot;, host: &quot;planes.daw&quot;
+<div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a>2026/09/18 12:35:01 [error] 1234#0: *5 open() &quot;/var/www/planes/missing.html&quot; failed (2: No such file or directory), client: 203.0.113.42, server: planes.daw, request: &quot;GET /missing.html HTTP/1.1&quot;, host: &quot;planes.daw&quot;
 </code></pre></div>
 <table>
 <thead>
@@ -3803,7 +3802,7 @@ este aspecto:</p>
 <blockquote>
 <p>Truco: si un sitio da 404, el error aparece en <code>error.log</code>, pero también puedes
 encontrarlo en <code>access.log</code> buscando el código 404:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a>sudo<span class="w"> </span>grep<span class="w"> </span><span class="s2">&quot; 404 &quot;</span><span class="w"> </span>/var/log/nginx/access.log
+<div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a>sudo<span class="w"> </span>grep<span class="w"> </span><span class="s2">&quot; 404 &quot;</span><span class="w"> </span>/var/log/nginx/access.log
 </code></pre></div>
 <p>Ahí verás qué ruta exacta pidió el cliente y desde qué IP, sin tener que rebuscar
 entre los demás niveles del log de errores.</p>
@@ -3816,14 +3815,14 @@ entre los demás niveles del log de errores.</p>
 <ul>
 <li><strong>Linux / macOS</strong>:</li>
 </ul>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a>sudo<span class="w"> </span>nano<span class="w"> </span>/etc/hosts
+<div class="highlight"><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a>sudo<span class="w"> </span>nano<span class="w"> </span>/etc/hosts
 </code></pre></div>
 <ul>
 <li><strong>Windows</strong>: abre el Bloc de notas <strong>como administrador</strong> y abre el fichero
   <code>C:\Windows\System32\drivers\etc\hosts</code>.</li>
 </ul>
 <p>Añade esta línea al final (sustituye <code>&lt;IP&gt;</code> por la IP pública de la instancia):</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a>&lt;IP&gt;  planes.daw puertos.daw
+<div class="highlight"><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a>&lt;IP&gt;  planes.daw puertos.daw
 </code></pre></div>
 <p>Guarda y cierra.</p>
 <p><strong>¿Qué significa?</strong> <code>/etc/hosts</code> es una tabla local nombre→IP que el sistema operativo
@@ -3831,17 +3830,17 @@ consulta <strong>antes</strong> que el DNS. Con esa línea, cada vez que una apl
 pregunte «¿qué IP tiene <code>planes.daw</code>?», el sistema responderá <code>&lt;IP&gt;</code> sin salir a
 Internet. Así el navegador podrá conectar y enviar la cabecera <code>Host</code> correcta.</p>
 <p>Comprueba que tu máquina ya resuelve los nombres:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a>ping<span class="w"> </span>-c<span class="w"> </span><span class="m">1</span><span class="w"> </span>planes.daw
+<div class="highlight"><pre><span></span><code><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a>ping<span class="w"> </span>-c<span class="w"> </span><span class="m">1</span><span class="w"> </span>planes.daw
 </code></pre></div>
 <p>Debe mostrar la IP de la instancia (pulsa <code>Ctrl+C</code> para parar si no se detiene solo).</p>
 <h2 id="7-verificacion-final">7. Verificación final</h2>
 <h3 id="71-con-curl">7.1. Con <code>curl</code></h3>
 <p>Desde tu máquina local:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a>curl<span class="w"> </span>-I<span class="w"> </span>http://planes.daw
+<div class="highlight"><pre><span></span><code><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a>curl<span class="w"> </span>-I<span class="w"> </span>http://planes.daw
 </code></pre></div>
 <p><code>curl -I</code> pide solo las cabeceras (método HEAD). Debes obtener <code>HTTP/1.1 200 OK</code> y
 <code>Server: nginx</code>. Repite con el otro sitio:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a>curl<span class="w"> </span>-I<span class="w"> </span>http://puertos.daw
+<div class="highlight"><pre><span></span><code><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a>curl<span class="w"> </span>-I<span class="w"> </span>http://puertos.daw
 </code></pre></div>
 <p>Ambos deben dar <code>200 OK</code>. Aunque los dos viven en la misma máquina, cada uno responde
 por su nombre.</p>
@@ -3852,14 +3851,14 @@ página de detalle (eso demuestra que el <code>try_files</code> funciona). Abre
 <h3 id="73-demostrar-que-nginx-elige-por-la-cabecera-host">7.3. Demostrar que nginx elige por la cabecera <code>Host</code></h3>
 <p>Puedes ver el mecanismo sin depender del navegador. Pide a la IP directa, pero
 forzando la cabecera <code>Host</code>:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a>curl<span class="w"> </span>-sI<span class="w"> </span>-H<span class="w"> </span><span class="s2">&quot;Host: puertos.daw&quot;</span><span class="w"> </span>http://&lt;IP&gt;/<span class="w"> </span><span class="p">|</span><span class="w"> </span>head<span class="w"> </span>-1
-<a id="__codelineno-33-2" name="__codelineno-33-2" href="#__codelineno-33-2"></a>curl<span class="w"> </span>-sI<span class="w"> </span>-H<span class="w"> </span><span class="s2">&quot;Host: planes.daw&quot;</span><span class="w">  </span>http://&lt;IP&gt;/<span class="w"> </span><span class="p">|</span><span class="w"> </span>head<span class="w"> </span>-1
+<div class="highlight"><pre><span></span><code><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a>curl<span class="w"> </span>-sI<span class="w"> </span>-H<span class="w"> </span><span class="s2">&quot;Host: puertos.daw&quot;</span><span class="w"> </span>http://&lt;IP&gt;/<span class="w"> </span><span class="p">|</span><span class="w"> </span>head<span class="w"> </span>-1
+<a id="__codelineno-32-2" name="__codelineno-32-2" href="#__codelineno-32-2"></a>curl<span class="w"> </span>-sI<span class="w"> </span>-H<span class="w"> </span><span class="s2">&quot;Host: planes.daw&quot;</span><span class="w">  </span>http://&lt;IP&gt;/<span class="w"> </span><span class="p">|</span><span class="w"> </span>head<span class="w"> </span>-1
 </code></pre></div>
 <p><code>-H "Host: …"</code> añade esa cabecera a la petición. Aunque ambas van a la misma IP, nginx
 devuelve el sitio cuyo <code>server_name</code> coincide. Es la prueba definitiva de que el
 enrutado lo hace la cabecera <code>Host</code>.</p>
 <h3 id="74-que-pasa-si-entras-por-la-ip-sin-nombre">7.4. ¿Qué pasa si entras por la IP, sin nombre?</h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-34-1" name="__codelineno-34-1" href="#__codelineno-34-1"></a>curl<span class="w"> </span>-sI<span class="w"> </span>http://&lt;IP&gt;/<span class="w"> </span><span class="p">|</span><span class="w"> </span>head<span class="w"> </span>-1
+<div class="highlight"><pre><span></span><code><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a>curl<span class="w"> </span>-sI<span class="w"> </span>http://&lt;IP&gt;/<span class="w"> </span><span class="p">|</span><span class="w"> </span>head<span class="w"> </span>-1
 </code></pre></div>
 <p>Ningún <code>server_name</code> coincide con una IP, así que nginx usa el <strong>servidor por defecto</strong>
 del puerto 80: el bloque marcado <code>default_server</code> o, si no hay ninguno, <strong>el primer
@@ -3870,20 +3869,20 @@ comportamiento normal; por eso conviene saber qué sitio queda como «cajón de 
 <p>Esta prueba cierra el círculo y te enseña a <strong>leer lo que nginx ha visto</strong>. Hay que
 hacerla en una segunda terminal SSH contra la instancia (no en tu máquina local).</p>
 <p>En la terminal SSH contra la instancia, deja el log a la vista mientras se actualiza:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-35-1" name="__codelineno-35-1" href="#__codelineno-35-1"></a>sudo<span class="w"> </span>tail<span class="w"> </span>-f<span class="w"> </span>/var/log/nginx/access.log
+<div class="highlight"><pre><span></span><code><a id="__codelineno-34-1" name="__codelineno-34-1" href="#__codelineno-34-1"></a>sudo<span class="w"> </span>tail<span class="w"> </span>-f<span class="w"> </span>/var/log/nginx/access.log
 </code></pre></div>
 <p>Pulsa <code>Enter</code> un par de veces para dejar unas líneas en blanco y que se vea mejor
 dónde empieza cada petición nueva. Ahora, en tu <strong>máquina local</strong> (no en la sesión
 SSH), lanza peticiones:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-36-1" name="__codelineno-36-1" href="#__codelineno-36-1"></a>curl<span class="w"> </span>-s<span class="w"> </span>-o<span class="w"> </span>/dev/null<span class="w"> </span>http://planes.daw/
-<a id="__codelineno-36-2" name="__codelineno-36-2" href="#__codelineno-36-2"></a>curl<span class="w"> </span>-s<span class="w"> </span>-o<span class="w"> </span>/dev/null<span class="w"> </span>http://puertos.daw/
-<a id="__codelineno-36-3" name="__codelineno-36-3" href="#__codelineno-36-3"></a>curl<span class="w"> </span>-s<span class="w"> </span>-o<span class="w"> </span>/dev/null<span class="w"> </span>http://planes.daw/planes/5k/
+<div class="highlight"><pre><span></span><code><a id="__codelineno-35-1" name="__codelineno-35-1" href="#__codelineno-35-1"></a>curl<span class="w"> </span>-s<span class="w"> </span>-o<span class="w"> </span>/dev/null<span class="w"> </span>http://planes.daw/
+<a id="__codelineno-35-2" name="__codelineno-35-2" href="#__codelineno-35-2"></a>curl<span class="w"> </span>-s<span class="w"> </span>-o<span class="w"> </span>/dev/null<span class="w"> </span>http://puertos.daw/
+<a id="__codelineno-35-3" name="__codelineno-35-3" href="#__codelineno-35-3"></a>curl<span class="w"> </span>-s<span class="w"> </span>-o<span class="w"> </span>/dev/null<span class="w"> </span>http://planes.daw/planes/5k/
 </code></pre></div>
 <p>Vuelve a la terminal SSH: deberías ver cómo han ido apareciendo, en tiempo real, tres
 líneas nuevas con este aspecto (los números varían):</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-37-1" name="__codelineno-37-1" href="#__codelineno-37-1"></a>203.0.113.42 - - [18/Sep/2026:12:40:01 +0000] &quot;GET / HTTP/1.1&quot; 200 4521 &quot;-&quot; &quot;curl/8.5.0&quot;
-<a id="__codelineno-37-2" name="__codelineno-37-2" href="#__codelineno-37-2"></a>203.0.113.42 - - [18/Sep/2026:12:40:03 +0000] &quot;GET / HTTP/1.1&quot; 200 7820 &quot;-&quot; &quot;curl/8.5.0&quot;
-<a id="__codelineno-37-3" name="__codelineno-37-3" href="#__codelineno-37-3"></a>203.0.113.42 - - [18/Sep/2026:12:40:08 +0000] &quot;GET /planes/5k/ HTTP/1.1&quot; 200 1102 &quot;-&quot; &quot;curl/8.5.0&quot;
+<div class="highlight"><pre><span></span><code><a id="__codelineno-36-1" name="__codelineno-36-1" href="#__codelineno-36-1"></a>203.0.113.42 - - [18/Sep/2026:12:40:01 +0000] &quot;GET / HTTP/1.1&quot; 200 4521 &quot;-&quot; &quot;curl/8.5.0&quot;
+<a id="__codelineno-36-2" name="__codelineno-36-2" href="#__codelineno-36-2"></a>203.0.113.42 - - [18/Sep/2026:12:40:03 +0000] &quot;GET / HTTP/1.1&quot; 200 7820 &quot;-&quot; &quot;curl/8.5.0&quot;
+<a id="__codelineno-36-3" name="__codelineno-36-3" href="#__codelineno-36-3"></a>203.0.113.42 - - [18/Sep/2026:12:40:08 +0000] &quot;GET /planes/5k/ HTTP/1.1&quot; 200 1102 &quot;-&quot; &quot;curl/8.5.0&quot;
 </code></pre></div>
 <p>Lo importante:</p>
 <ul>
