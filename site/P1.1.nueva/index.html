@@ -1091,17 +1091,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#10-equivalencia-con-el-despliegue-automatizado" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        10. Equivalencia con el despliegue automatizado
-      
-    </span>
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -3084,7 +3073,7 @@
 
 
 <h1 id="guia-despliegue-multitenant-con-nginx-escenario-manual-sin-terraform-ni-ansible">Guía: despliegue multitenant con nginx (escenario manual, sin Terraform ni Ansible)</h1>
-<p>En esta práctica vamos a montar <strong>a mano</strong> el escenario que luego automatizaremos:
+<p>En esta práctica vamos a montar el escenario:
 <strong>una sola instancia EC2</strong> con nginx sirviendo <strong>dos aplicaciones web distintas</strong>,
 cada una con su propio nombre de dominio:</p>
 <ul>
@@ -3099,22 +3088,32 @@ apartado <em>«¿Qué significa?»</em> que explica línea a línea qué hace y 
 No copies nada sin haberlo leído antes: en el examen y en la vida real nadie
 configura nada que no entiende.</p>
 <h2 id="1-el-escenario-que-vamos-a-montar">1. El escenario que vamos a montar</h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>                        Internet
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>                           │
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>                     HTTP (puerto 80)
-<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>                           │
-<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>        ┌──────────────────┴──────────────────┐
-<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>        │  Host: planes.daw                   │  Host: puertos.daw
-<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>        ▼                                     ▼
-<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>┌───────────────────────────────────────────────────────────────┐
-<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>│  Instancia EC2 (Ubuntu Server 24.04, t2.small) — «daw»        │
-<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>│                                                               │
-<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>│  nginx                                                        │
-<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>│  ├─ server_name planes.daw  ──► /var/www/planes   (RunDash)   │
-<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>│  └─ server_name puertos.daw ──► /var/www/puertos  (Puertos)   │
-<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>│                                                               │
-<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>│  Acceso SSH (puerto 22) con clave .pem                        │
-<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>└───────────────────────────────────────────────────────────────┘
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>flowchart TB
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    Internet((Internet))
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>    PlanesReq[&quot;Host: planes.daw&quot;]
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>    PuertosReq[&quot;Host: puertos.daw&quot;]
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>    Internet --&gt;|HTTP puerto 80| PlanesReq
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>    Internet --&gt;|HTTP puerto 80| PuertosReq
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>    PlanesReq --&gt; EC2
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>    PuertosReq --&gt; EC2
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>    subgraph EC2[&quot;Instancia EC2 — Ubuntu Server 24.04, t2.small — «daw»&quot;]
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>        direction TB
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>        Nginx[&quot;nginx&quot;]
+<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>        PlanesVH[&quot;server_name planes.daw&quot;]
+<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>        PuertosVH[&quot;server_name puertos.daw&quot;]
+<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a>        PlanesApp[&quot;/var/www/planes (RunDash)&quot;]
+<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a>        PuertosApp[&quot;/var/www/puertos (Puertos)&quot;]
+<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a>
+<a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a>        Nginx --&gt; PlanesVH
+<a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a>        Nginx --&gt; PuertosVH
+<a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a>        PlanesVH --&gt; PlanesApp
+<a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a>        PuertosVH --&gt; PuertosApp
+<a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a>    end
+<a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a>
+<a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a>    SSH[&quot;Acceso SSH (puerto 22) con clave .pem&quot;] -.-&gt; EC2
 </code></pre></div>
 <p>El resultado final será:</p>
 <ul>
@@ -3228,8 +3227,8 @@ elegida en la esquina superior derecha de la consola antes de empezar.</p>
 <li>
 <p><strong>Name</strong>: <code>daw</code>.
    Es solo una etiqueta para identificar la instancia en la consola. Usar nombres
-   consistentes es buena práctica: Terraform pondrá esta misma etiqueta
-   (<code>Name = "daw"</code>).</p>
+   consistentes es buena práctica: ayuda a localizarla fácilmente en la consola y
+   en los logs.</p>
 </li>
 <li>
 <p>En <strong>Amazon Machine Image (AMI)</strong> busca y selecciona
@@ -3237,8 +3236,8 @@ elegida en la esquina superior derecha de la consola antes de empezar.</p>
 </li>
 <li>Una AMI es la imagen base del disco. Elegimos Ubuntu Server porque todo el
      software que necesitamos (nginx, git, python3) está en sus repositorios.</li>
-<li><strong>LTS</strong> (Long Term Support): Canonical la mantiene 5 años. La 24.04 es la que
-     busca Terraform (<code>ubuntu-noble-24.04-amd64-server-*</code>).</li>
+<li><strong>LTS</strong> (Long Term Support): Canonical la mantiene 5 años con actualizaciones
+      de seguridad.</li>
 <li><strong>x86_64/amd64</strong>: las instancias <code>t2</code> son x86_64, así que la imagen debe ser de
      esa arquitectura (no ARM).</li>
 <li>El propietario de las imágenes oficiales de Canonical es <code>099720109477</code>; usar
@@ -3248,7 +3247,7 @@ elegida en la esquina superior derecha de la consola antes de empezar.</p>
 <ol>
 <li><strong>Instance type</strong>: <code>t2.small</code> (1 vCPU, 2 GiB de RAM).
    Para servir dos sitios estáticos con nginx sobra máquina; una más grande solo
-   haría la práctica más cara sin aportar nada. Es el mismo tipo que usa Terraform.</li>
+   haría la práctica más cara sin aportar nada.</li>
 </ol>
 <h3 id="34-key-pair-par-de-claves">3.4. Key pair (par de claves)</h3>
 <ol>
@@ -3298,16 +3297,15 @@ elegida en la esquina superior derecha de la consola antes de empezar.</p>
      explícitamente queda bloqueado. Sin el 22 no entras por SSH; sin el 80 nadie ve
      las webs.</li>
 <li>El <strong>origen</strong> va en notación CIDR. <code>0.0.0.0/0</code> = cualquier dirección IPv4. Para
-     SSH sería más seguro tu IP (<code>x.y.z.w/32</code>), pero usamos <code>0.0.0.0/0</code> para que
-     funcione desde cualquier red. Es lo mismo que hace Terraform.</li>
+      SSH sería más seguro tu IP (<code>x.y.z.w/32</code>), pero usamos <code>0.0.0.0/0</code> para que
+      funcione desde cualquier red.</li>
 <li>La regla de salida por defecto permite todo el tráfico saliente (necesario para
      <code>apt</code> y <code>git</code>).</li>
 </ul>
 <h3 id="36-disco">3.6. Disco</h3>
 <ol>
 <li>En <strong>Configure storage</strong> deja el disco raíz en <strong>8 GiB</strong> (gp3). Para un Ubuntu con
-   nginx y dos sitios estáticos de unos pocos MB sobra espacio. Es lo que define
-   Terraform (<code>root_block_device { volume_size = 8 }</code>).</li>
+   nginx y dos sitios estáticos de unos pocos MB sobra espacio.</li>
 </ol>
 <h3 id="37-user-data-cloud-init-opcional-pero-recomendado">3.7. User data (cloud-init) — opcional pero recomendado</h3>
 <ol>
@@ -3345,11 +3343,11 @@ elegida en la esquina superior derecha de la consola antes de empezar.</p>
 </tr>
 <tr>
 <td><code>packages: [python3, python3-apt]</code></td>
-<td>Instala esos paquetes. Ansible ejecuta módulos Python en la máquina remota y su módulo <code>apt</code> necesita <code>python3-apt</code>. Sin esto, el playbook automatizado fallaría.</td>
+<td>Instala el intérprete de Python 3 y el módulo que permite a Python interactuar con <code>apt</code>.</td>
 </tr>
 </tbody>
 </table>
-<p>Si prefieres hacerlo 100% a mano, sáltalo y haz el paso 5.1 completo en la máquina.</p>
+<p>Si prefieres, sáltalo y haz el paso 5.1 completo en la máquina.</p>
 <h3 id="38-lanzar">3.8. Lanzar</h3>
 <ol>
 <li>
@@ -3396,9 +3394,9 @@ repositorios. Hay que ejecutarlo en una máquina recién creada porque el índic
 fábrica está desactualizado.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>python3<span class="w"> </span>python3-apt
 </code></pre></div>
-<p>Instala el intérprete Python y las librerías que permiten a Python usar apt. Es el
-requisito previo de Ansible. <code>-y</code> responde «sí» a la confirmación.</p>
-<p>Instala ahora nginx y git (esto es lo que hará Ansible en el despliegue automatizado):</p>
+<p>Instala el intérprete Python y las librerías que permiten a Python usar apt.
+<code>-y</code> responde «sí» a la confirmación.</p>
+<p>Instala ahora nginx y git:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>nginx<span class="w"> </span>git
 </code></pre></div>
 <ul>
@@ -3993,67 +3991,6 @@ entre clases.</p>
 </tr>
 </tbody>
 </table>
-<h2 id="10-equivalencia-con-el-despliegue-automatizado">10. Equivalencia con el despliegue automatizado</h2>
-<p>Cuando pasemos a Terraform + Ansible, cada paso manual corresponde a un recurso o
-tarea concreta:</p>
-<table>
-<thead>
-<tr>
-<th>Paso manual</th>
-<th>Equivalente automatizado</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Elegir AMI Ubuntu 24.04</td>
-<td><code>data "aws_ami" "ubuntu"</code> en <code>terraform/main.tf</code></td>
-</tr>
-<tr>
-<td>Crear key pair y descargar .pem</td>
-<td><code>tls_private_key</code>, <code>aws_key_pair</code> y <code>local_sensitive_file</code> en <code>terraform/main.tf</code></td>
-</tr>
-<tr>
-<td>Crear security group (22 y 80)</td>
-<td><code>aws_security_group "daw"</code> en <code>terraform/main.tf</code></td>
-</tr>
-<tr>
-<td>Lanzar instancia t2.small con user data</td>
-<td><code>aws_instance "daw"</code> + <code>terraform/cloud-init.yaml</code></td>
-</tr>
-<tr>
-<td><code>apt install nginx git</code></td>
-<td>Tarea <em>Instalar nginx y git</em> de <code>ansible/playbook.yml</code></td>
-</tr>
-<tr>
-<td><code>git clone</code> de RunDash y Puertos Míticos</td>
-<td>Tarea <em>Clonar cada aplicación desde GitHub</em>, que usa un <strong>bucle</strong> (<code>loop</code>) sobre la lista de sitios definida en la variable <code>sites</code></td>
-</tr>
-<tr>
-<td>Ficheros <code>planes.daw</code> y <code>puertos.daw</code> en <code>sites-available</code></td>
-<td>Tarea <em>Desplegar la configuración de cada sitio</em>, que aplica la plantilla <code>ansible/templates/site.conf.j2</code> una vez por sitio, sustituyendo <code>{{ item.name }}</code> y <code>{{ item.deploy_dir }}</code></td>
-</tr>
-<tr>
-<td>Enlaces en <code>sites-enabled</code> y borrar <code>default</code></td>
-<td>Tareas <em>Activar los sitios</em> y <em>Desactivar sitio por defecto</em></td>
-</tr>
-<tr>
-<td><code>nginx -t</code> y <code>systemctl reload nginx</code></td>
-<td>Tarea <em>Validar configuración de nginx</em> y el handler <em>Recargar nginx</em></td>
-</tr>
-<tr>
-<td>Línea en <code>/etc/hosts</code></td>
-<td>Output <code>hosts_line</code> de Terraform te imprime la línea exacta que debes añadir en <strong>tu</strong> máquina (esto no lo automatiza Ansible, porque es tu ordenador, no la instancia)</td>
-</tr>
-</tbody>
-</table>
-<p>Fíjate en la ventaja de la automatización: la lista <code>sites</code> del playbook describe cada
-tenant (nombre, repositorio y directorio). <strong>Añadir un tercer inquilino</strong> sería tan
-simple como añadir una entrada más a esa lista; el bucle clona, genera la configuración
-y activa el sitio nuevo sin escribir nada más. A mano tendrías que repetir los pasos
-5.2 y 5.4 una vez por cada tenant.</p>
-<p>Si algo de la automatización no se entiende, la forma de depurarla es volver a esta
-guía y reproducir el paso a mano: lo que hace la herramienta es exactamente esto, solo
-que sin clics.</p>
 
 
 
