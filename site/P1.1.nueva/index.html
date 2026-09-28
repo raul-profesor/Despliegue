@@ -25,7 +25,7 @@
     
     
       
-        <title>Guía: despliegue multitenant con nginx (escenario manual, sin Terraform ni Ansible) - Despliegue de aplicaciones web</title>
+        <title>Guía: despliegue multitenant con Nginx - Despliegue de aplicaciones web</title>
       
     
     
@@ -88,7 +88,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#guia-despliegue-multitenant-con-nginx-escenario-manual-sin-terraform-ni-ansible" class="md-skip">
+        <a href="#guia-despliegue-multitenant-con-nginx" class="md-skip">
           Saltar a contenido
         </a>
       
@@ -124,7 +124,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Guía: despliegue multitenant con nginx (escenario manual, sin Terraform ni Ansible)
+              Guía: despliegue multitenant con Nginx
             
           </span>
         </div>
@@ -610,7 +610,7 @@
   <span class="md-ellipsis">
     
   
-    Guía: despliegue multitenant con nginx (escenario manual, sin Terraform ni Ansible)
+    Guía: despliegue multitenant con Nginx
   
 
     
@@ -628,7 +628,7 @@
   <span class="md-ellipsis">
     
   
-    Guía: despliegue multitenant con nginx (escenario manual, sin Terraform ni Ansible)
+    Guía: despliegue multitenant con Nginx
   
 
     
@@ -669,7 +669,7 @@
   <a href="#11-que-es-el-multitenancy-y-como-lo-consigue-nginx" class="md-nav__link">
     <span class="md-ellipsis">
       
-        1.1. ¿Qué es el multitenancy y cómo lo consigue nginx?
+        1.1. ¿Qué es el multitenancy y cómo lo consigue Nginx?
       
     </span>
   </a>
@@ -868,12 +868,12 @@
   <a href="#53-la-anatomia-de-nginx-en-ubuntu-que-hay-y-para-que" class="md-nav__link">
     <span class="md-ellipsis">
       
-        5.3. La anatomía de nginx en Ubuntu: qué hay y para qué
+        5.3. La anatomía de Nginx en Ubuntu: qué hay y para qué
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="5.3. La anatomía de nginx en Ubuntu: qué hay y para qué">
+    <nav class="md-nav" aria-label="5.3. La anatomía de Nginx en Ubuntu: qué hay y para qué">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -902,7 +902,7 @@
   <a href="#533-y-que-hay-dentro-de-nginxconf" class="md-nav__link">
     <span class="md-ellipsis">
       
-        5.3.3. ¿Y qué hay dentro de nginx.conf?
+        5.3.3. ¿Y qué hay dentro de Nginx.conf?
       
     </span>
   </a>
@@ -957,19 +957,19 @@
   <a href="#55-activar-los-sitios-y-recargar-nginx" class="md-nav__link">
     <span class="md-ellipsis">
       
-        5.5. Activar los sitios y recargar nginx
+        5.5. Activar los sitios y recargar Nginx
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="5.5. Activar los sitios y recargar nginx">
+    <nav class="md-nav" aria-label="5.5. Activar los sitios y recargar Nginx">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#551-donde-mirar-cuando-algo-falla-los-logs-de-nginx" class="md-nav__link">
     <span class="md-ellipsis">
       
-        5.5.1. Dónde mirar cuando algo falla: los logs de nginx
+        5.5.1. Dónde mirar cuando algo falla: los logs de Nginx
       
     </span>
   </a>
@@ -994,6 +994,23 @@
       
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="6. Configurar la resolución de nombres en tu máquina">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#opcion-con-docker" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Opción con Docker
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1035,7 +1052,7 @@
   <a href="#73-demostrar-que-nginx-elige-por-la-cabecera-host" class="md-nav__link">
     <span class="md-ellipsis">
       
-        7.3. Demostrar que nginx elige por la cabecera Host
+        7.3. Demostrar que Nginx elige por la cabecera Host
       
     </span>
   </a>
@@ -1057,7 +1074,7 @@
   <a href="#75-verificar-que-nginx-registra-las-peticiones-en-accesslog" class="md-nav__link">
     <span class="md-ellipsis">
       
-        7.5. Verificar que nginx registra las peticiones en access.log
+        7.5. Verificar que Nginx registra las peticiones en access.log
       
     </span>
   </a>
@@ -3072,9 +3089,9 @@
 
 
 
-<h1 id="guia-despliegue-multitenant-con-nginx-escenario-manual-sin-terraform-ni-ansible">Guía: despliegue multitenant con nginx (escenario manual, sin Terraform ni Ansible)</h1>
+<h1 id="guia-despliegue-multitenant-con-nginx">Guía: despliegue multitenant con Nginx</h1>
 <p>En esta práctica vamos a montar el escenario:
-<strong>una sola instancia EC2</strong> con nginx sirviendo <strong>dos aplicaciones web distintas</strong>,
+<strong>una sola instancia EC2</strong> con Nginx sirviendo <strong>dos aplicaciones web distintas</strong>,
 cada una con su propio nombre de dominio:</p>
 <ul>
 <li><strong><code>planes.daw</code></strong> → RunDash (dashboard de planes de entrenamiento).</li>
@@ -3101,7 +3118,7 @@ configura nada que no entiende.</p>
 
     subgraph EC2["Instancia EC2 — Ubuntu Server 24.04, t2.small — «daw»"]
         direction TB
-        Nginx["nginx"]
+        Nginx["Nginx"]
         PlanesVH["server_name planes.daw"]
         PuertosVH["server_name puertos.daw"]
         PlanesApp["/var/www/planes (RunDash)"]
@@ -3122,24 +3139,24 @@ configura nada que no entiende.</p>
 <li><strong>Dos aplicaciones</strong> clonadas en directorios separados:</li>
 <li>RunDash en <code>/var/www/planes</code></li>
 <li>Puertos Míticos en <code>/var/www/puertos</code></li>
-<li><strong>nginx con dos <em>virtual hosts</em></strong>: uno responde a <code>planes.daw</code> y otro a
+<li><strong>Nginx con dos <em>virtual hosts</em></strong>: uno responde a <code>planes.daw</code> y otro a
   <code>puertos.daw</code>.</li>
 <li>Tu máquina local resolviendo ambos nombres hacia la IP de la instancia mediante
   el fichero <code>/etc/hosts</code>.</li>
 </ul>
-<h3 id="11-que-es-el-multitenancy-y-como-lo-consigue-nginx">1.1. ¿Qué es el multitenancy y cómo lo consigue nginx?</h3>
+<h3 id="11-que-es-el-multitenancy-y-como-lo-consigue-nginx">1.1. ¿Qué es el multitenancy y cómo lo consigue Nginx?</h3>
 <p><strong>Multitenancy</strong> significa que un mismo servidor aloja varios sitios independientes
 (cada sitio es un <em>tenant</em> o inquilino). Cada inquilino tiene su propio contenido y
 su propio nombre, y ninguno sabe que convive con los demás.</p>
-<p>La pieza clave es cómo nginx decide <strong>qué sitio servir</strong> cuando llega una petición.
+<p>La pieza clave es cómo Nginx decide <strong>qué sitio servir</strong> cuando llega una petición.
 Fíjate: ambas webs viven en la misma máquina, en el mismo puerto 80. ¿Cómo distingue
-nginx a cuál de las dos va dirigida cada petición?</p>
+Nginx a cuál de las dos va dirigida cada petición?</p>
 <p>La respuesta está en la <strong>cabecera <code>Host</code></strong> del HTTP. Cuando tu navegador pide una
 página, no solo dice «dame <code>/</code>»: también envía el nombre del sitio que quiere:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>GET / HTTP/1.1
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>Host: planes.daw
 </code></pre></div>
-<p>nginx lee esa cabecera y la compara con el <code>server_name</code> de cada uno de sus bloques
+<p>Nginx lee esa cabecera y la compara con el <code>server_name</code> de cada uno de sus bloques
 <code>server</code>. El bloque cuyo <code>server_name</code> coincida es el que sirve la petición. A cada
 uno de esos bloques se le llama <strong>virtual host</strong> (host virtual): un sitio «virtual»
 dentro de un servidor físico.</p>
@@ -3177,7 +3194,7 @@ de DNS real. Es el truco estándar para probar dominios que aún no existen.</p>
 </tr>
 <tr>
 <td><strong>Virtual host</strong></td>
-<td>Cada sitio que nginx sirve; se define con un bloque <code>server</code>.</td>
+<td>Cada sitio que Nginx sirve; se define con un bloque <code>server</code>.</td>
 </tr>
 <tr>
 <td><strong><code>server_name</code></strong></td>
@@ -3185,7 +3202,7 @@ de DNS real. Es el truco estándar para probar dominios que aún no existen.</p>
 </tr>
 <tr>
 <td><strong>Cabecera <code>Host</code></strong></td>
-<td>Cabecera HTTP con la que el cliente indica qué sitio pide. nginx la usa para elegir el virtual host.</td>
+<td>Cabecera HTTP con la que el cliente indica qué sitio pide. Nginx la usa para elegir el virtual host.</td>
 </tr>
 <tr>
 <td><strong>DNS</strong></td>
@@ -3234,7 +3251,7 @@ elegida en la esquina superior derecha de la consola antes de empezar.</p>
    <strong>Ubuntu Server 24.04 LTS (x86_64)</strong>.</p>
 </li>
 <li>Una AMI es la imagen base del disco. Elegimos Ubuntu Server porque todo el
-     software que necesitamos (nginx, git, python3) está en sus repositorios.</li>
+     software que necesitamos (Nginx, git, python3) está en sus repositorios.</li>
 <li><strong>LTS</strong> (Long Term Support): Canonical la mantiene 5 años con actualizaciones
       de seguridad.</li>
 <li><strong>x86_64/amd64</strong>: las instancias <code>t2</code> son x86_64, así que la imagen debe ser de
@@ -3245,7 +3262,7 @@ elegida en la esquina superior derecha de la consola antes de empezar.</p>
 <h3 id="33-tipo-de-instancia">3.3. Tipo de instancia</h3>
 <ol>
 <li><strong>Instance type</strong>: <code>t2.small</code> (1 vCPU, 2 GiB de RAM).
-   Para servir dos sitios estáticos con nginx sobra máquina; una más grande solo
+   Para servir dos sitios estáticos con Nginx sobra máquina; una más grande solo
    haría la práctica más cara sin aportar nada.</li>
 </ol>
 <h3 id="34-key-pair-par-de-claves">3.4. Key pair (par de claves)</h3>
@@ -3304,7 +3321,7 @@ elegida en la esquina superior derecha de la consola antes de empezar.</p>
 <h3 id="36-disco">3.6. Disco</h3>
 <ol>
 <li>En <strong>Configure storage</strong> deja el disco raíz en <strong>8 GiB</strong> (gp3). Para un Ubuntu con
-   nginx y dos sitios estáticos de unos pocos MB sobra espacio.</li>
+   Nginx y dos sitios estáticos de unos pocos MB sobra espacio.</li>
 </ol>
 <h3 id="37-user-data-cloud-init-opcional-pero-recomendado">3.7. User data (cloud-init) — opcional pero recomendado</h3>
 <ol>
@@ -3395,11 +3412,11 @@ fábrica está desactualizado.</p>
 </code></pre></div>
 <p>Instala el intérprete Python y las librerías que permiten a Python usar apt.
 <code>-y</code> responde «sí» a la confirmación.</p>
-<p>Instala ahora nginx y git:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>nginx<span class="w"> </span>git
+<p>Instala ahora Nginx y git:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>Nginx<span class="w"> </span>git
 </code></pre></div>
 <ul>
-<li><strong>nginx</strong>: el servidor web. Escuchará en el puerto 80 y servirá los dos sitios.
+<li><strong>Nginx</strong>: el servidor web. Escuchará en el puerto 80 y servirá los dos sitios.
   En Ubuntu, al instalarlo, arranca solo y se habilita para el arranque.</li>
 <li><strong>git</strong>: para clonar las dos aplicaciones desde GitHub.</li>
 </ul>
@@ -3424,28 +3441,28 @@ responderá a <code>planes.daw</code>.</p>
 <p><strong>¿Qué significa <code>git clone &lt;url&gt; &lt;directorio&gt;</code>?</strong> Descarga un repositorio completo
 (código e historial) desde GitHub al directorio indicado. Usamos <code>sudo</code> porque
 <code>/var/www</code> pertenece a root. El directorio de destino es el punto donde «se encuentran»
-el código y el servidor web: debe coincidir con el <code>root</code> de la configuración nginx.</p>
+el código y el servidor web: debe coincidir con el <code>root</code> de la configuración Nginx.</p>
 <p>Comprueba que ambos tienen su <code>index.html</code>:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>ls<span class="w"> </span>/var/www/planes/index.html<span class="w"> </span>/var/www/puertos/index.html
 </code></pre></div>
-<h3 id="53-la-anatomia-de-nginx-en-ubuntu-que-hay-y-para-que">5.3. La anatomía de nginx en Ubuntu: qué hay y para qué</h3>
-<p>Antes de escribir un solo fichero, conviene saber <strong>dónde vive todo</strong> dentro de nginx.
-En Ubuntu, al instalar nginx con <code>apt</code>, se crea esta estructura de directorios:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>/etc/nginx/                 ← raíz de la configuración
-<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>├── nginx.conf               ← fichero principal (motor + includes)
+<h3 id="53-la-anatomia-de-nginx-en-ubuntu-que-hay-y-para-que">5.3. La anatomía de Nginx en Ubuntu: qué hay y para qué</h3>
+<p>Antes de escribir un solo fichero, conviene saber <strong>dónde vive todo</strong> dentro de Nginx.
+En Ubuntu, al instalar Nginx con <code>apt</code>, se crea esta estructura de directorios:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>/etc/Nginx/                 ← raíz de la configuración
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>├── Nginx.conf               ← fichero principal (motor + includes)
 <a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>├── sites-available/         ← configs de TODOS los sitios (se escriben aquí)
-<a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a>├── sites-enabled/           ← enlaces a los sitios ACTIVOS (lo que nginx lee)
+<a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a>├── sites-enabled/           ← enlaces a los sitios ACTIVOS (lo que Nginx lee)
 <a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a>├── snippets/                ← fragmentos reutilizables
 <a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a>├── conf.d/                  ← configs extra (no son virtual hosts)
 <a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a>└── mime.types               ← tabla extensión → tipo MIME
 <a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a>
 <a id="__codelineno-11-9" name="__codelineno-11-9" href="#__codelineno-11-9"></a>/var/www/                    ← contenido web (document roots)
 <a id="__codelineno-11-10" name="__codelineno-11-10" href="#__codelineno-11-10"></a>
-<a id="__codelineno-11-11" name="__codelineno-11-11" href="#__codelineno-11-11"></a>/var/log/nginx/              ← logs
+<a id="__codelineno-11-11" name="__codelineno-11-11" href="#__codelineno-11-11"></a>/var/log/Nginx/              ← logs
 <a id="__codelineno-11-12" name="__codelineno-11-12" href="#__codelineno-11-12"></a>├── access.log               ← registro de cada petición HTTP
 <a id="__codelineno-11-13" name="__codelineno-11-13" href="#__codelineno-11-13"></a>└── error.log                ← errores y problemas
 <a id="__codelineno-11-14" name="__codelineno-11-14" href="#__codelineno-11-14"></a>
-<a id="__codelineno-11-15" name="__codelineno-11-15" href="#__codelineno-11-15"></a>/run/nginx.pid               ← PID del proceso maestro (lo crea nginx)
+<a id="__codelineno-11-15" name="__codelineno-11-15" href="#__codelineno-11-15"></a>/run/Nginx.pid               ← PID del proceso maestro (lo crea Nginx)
 </code></pre></div>
 <h4 id="531-que-hace-cada-cosa-y-por-que-esta-ahi">5.3.1. ¿Qué hace cada cosa y por qué está ahí?</h4>
 <table>
@@ -3458,91 +3475,91 @@ En Ubuntu, al instalar nginx con <code>apt</code>, se crea esta estructura de di
 </thead>
 <tbody>
 <tr>
-<td><code>/etc/nginx/nginx.conf</code></td>
+<td><code>/etc/Nginx/Nginx.conf</code></td>
 <td>El fichero principal de configuración</td>
-<td>Define el motor (procesos, eventos, conexiones, compresión, formato de logs por defecto…) y al final contiene una línea <code>include /etc/nginx/sites-enabled/*;</code> que «engancha» nuestros virtual hosts. <strong>No lo vamos a tocar</strong>: para eso están los ficheros por sitio.</td>
+<td>Define el motor (procesos, eventos, conexiones, compresión, formato de logs por defecto…) y al final contiene una línea <code>include /etc/Nginx/sites-enabled/*;</code> que «engancha» nuestros virtual hosts. <strong>No lo vamos a tocar</strong>: para eso están los ficheros por sitio.</td>
 </tr>
 <tr>
-<td><code>/etc/nginx/sites-available/</code></td>
+<td><code>/etc/Nginx/sites-available/</code></td>
 <td>Ficheros de configuración de <strong>todos</strong> los sitios que podrían existir</td>
 <td>Aquí «se escriben» las configs. Tenerlas en este directorio <strong>no</strong> significa que se sirvan: es como tener una receta guardada en una carpeta de pendientes.</td>
 </tr>
 <tr>
-<td><code>/etc/nginx/sites-enabled/</code></td>
+<td><code>/etc/Nginx/sites-enabled/</code></td>
 <td>Enlaces simbólicos a <code>sites-available/</code></td>
-<td>Lo que nginx <strong>realmente lee</strong> al arrancar. Si no hay enlace aquí, el sitio no se sirve aunque su fichero exista. Activar = crear el enlace; apagar = borrar el enlace (la receta original se queda en <code>sites-available</code>).</td>
+<td>Lo que Nginx <strong>realmente lee</strong> al arrancar. Si no hay enlace aquí, el sitio no se sirve aunque su fichero exista. Activar = crear el enlace; apagar = borrar el enlace (la receta original se queda en <code>sites-available</code>).</td>
 </tr>
 <tr>
-<td><code>/etc/nginx/snippets/</code></td>
+<td><code>/etc/Nginx/snippets/</code></td>
 <td>Trozos de configuración reutilizables</td>
 <td>Pequeños fragmentos que se incluyen desde varios sitios (por ejemplo, una cabecera de seguridad común). No lo usamos aquí, pero conviene saber que existe si más adelante ves directivas tipo <code>include snippets/security-headers.conf;</code>.</td>
 </tr>
 <tr>
-<td><code>/etc/nginx/conf.d/</code></td>
+<td><code>/etc/Nginx/conf.d/</code></td>
 <td>Configuraciones adicionales</td>
 <td>Pensado para configs que <strong>no son</strong> virtual hosts (parámetros de proxy, mapas, <em>upstreams</em>…). En Ubuntu la convención es <code>sites-available</code> para hosts y <code>conf.d</code> para el resto.</td>
 </tr>
 <tr>
-<td><code>/etc/nginx/mime.types</code></td>
+<td><code>/etc/Nginx/mime.types</code></td>
 <td>Tabla <code>extensión ↔ Content-Type</code></td>
-<td>Para que nginx responda con la cabecera <code>Content-Type</code> correcta: <code>.html</code> → <code>text/html</code>, <code>.css</code> → <code>text/css</code>, <code>.js</code> → <code>application/javascript</code>, <code>.png</code> → <code>image/png</code>… Si un fichero se descarga en vez de abrirse en el navegador, casi siempre es porque falta su tipo MIME.</td>
+<td>Para que Nginx responda con la cabecera <code>Content-Type</code> correcta: <code>.html</code> → <code>text/html</code>, <code>.css</code> → <code>text/css</code>, <code>.js</code> → <code>application/javascript</code>, <code>.png</code> → <code>image/png</code>… Si un fichero se descarga en vez de abrirse en el navegador, casi siempre es porque falta su tipo MIME.</td>
 </tr>
 <tr>
 <td><code>/var/www/</code></td>
 <td>Contenido web</td>
-<td>Por convención en Linux, los <em>document roots</em> viven aquí. Otros directorios (<code>/srv</code>, <code>/home</code>) son posibles, pero <code>/var/www</code> es lo estándar en Debian/Ubuntu y lo que nginx asume por defecto.</td>
+<td>Por convención en Linux, los <em>document roots</em> viven aquí. Otros directorios (<code>/srv</code>, <code>/home</code>) son posibles, pero <code>/var/www</code> es lo estándar en Debian/Ubuntu y lo que Nginx asume por defecto.</td>
 </tr>
 <tr>
-<td><code>/var/log/nginx/access.log</code></td>
+<td><code>/var/log/Nginx/access.log</code></td>
 <td>Una línea por cada petición HTTP recibida</td>
 <td>IP del cliente, fecha, método, ruta, código de respuesta, bytes enviados, <em>referer</em> y <em>user-agent</em>. Es lo primero que miras cuando algo «no carga».</td>
 </tr>
 <tr>
-<td><code>/var/log/nginx/error.log</code></td>
+<td><code>/var/log/Nginx/error.log</code></td>
 <td>Errores y avisos</td>
-<td>Fallos de sintaxis, 404s, problemas al abrir ficheros, <em>timeouts</em>, permisos… Cualquier cosa que nginx no haya podido hacer bien acaba aquí.</td>
+<td>Fallos de sintaxis, 404s, problemas al abrir ficheros, <em>timeouts</em>, permisos… Cualquier cosa que Nginx no haya podido hacer bien acaba aquí.</td>
 </tr>
 <tr>
-<td><code>/run/nginx.pid</code></td>
+<td><code>/run/Nginx.pid</code></td>
 <td>Un número: el PID del proceso maestro</td>
-<td>nginx lo escribe al arrancar. <code>systemctl</code> lo lee para enviarle señales (<code>reload</code>, <code>stop</code>). No lo editas a mano.</td>
+<td>Nginx lo escribe al arrancar. <code>systemctl</code> lo lee para enviarle señales (<code>reload</code>, <code>stop</code>). No lo editas a mano.</td>
 </tr>
 </tbody>
 </table>
 <h4 id="532-el-patron-sites-available-sites-enabled-con-mas-detalle">5.3.2. El patrón <code>sites-available</code> / <code>sites-enabled</code> con más detalle</h4>
-<p>¿Por qué nginx en Ubuntu se instala con <strong>dos</strong> directorios para los sitios y no con uno? Porque te interesa poder tener configs escritas pero <strong>desactivadas</strong>:</p>
+<p>¿Por qué Nginx en Ubuntu se instala con <strong>dos</strong> directorios para los sitios y no con uno? Porque te interesa poder tener configs escritas pero <strong>desactivadas</strong>:</p>
 <ul>
 <li>Escribes la config en <code>sites-available/</code> → el sitio existe en disco pero no se sirve.</li>
-<li>Creas el enlace en <code>sites-enabled/</code> → nginx lo lee en el siguiente <code>reload</code> y empieza a servirlo.</li>
-<li>Borras el enlace de <code>sites-enabled/</code> → nginx deja de servirlo en el siguiente <code>reload</code>, pero la config sigue en <code>sites-available</code> lista para reactivarla con un solo <code>ln -s</code>.</li>
+<li>Creas el enlace en <code>sites-enabled/</code> → Nginx lo lee en el siguiente <code>reload</code> y empieza a servirlo.</li>
+<li>Borras el enlace de <code>sites-enabled/</code> → Nginx deja de servirlo en el siguiente <code>reload</code>, pero la config sigue en <code>sites-available</code> lista para reactivarla con un solo <code>ln -s</code>.</li>
 </ul>
-<p>Este mecanismo se conecta con <code>nginx.conf</code> mediante una única línea al final del bloque
+<p>Este mecanismo se conecta con <code>Nginx.conf</code> mediante una única línea al final del bloque
 <code>http { ... }</code>:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="k">include</span><span class="w"> </span><span class="n">/etc/nginx/sites-enabled/*</span>;
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="k">include</span><span class="w"> </span><span class="n">/etc/Nginx/sites-enabled/*</span>;
 </code></pre></div>
-<p>Es un <strong>enganche</strong>: nginx lee su propio motor y, al final, «barra» todo lo que haya en
+<p>Es un <strong>enganche</strong>: Nginx lee su propio motor y, al final, «barra» todo lo que haya en
 <code>sites-enabled</code>. Cada fichero que encuentre se convierte en un bloque <code>server { ... }</code> más.</p>
 <blockquote>
 <p>Si alguna vez sigues un tutorial que use solo un directorio (típico en CentOS/RHEL o
-Alpine) no es un error: nginx solo entiende la directiva <code>include</code>, no los nombres.
+Alpine) no es un error: Nginx solo entiende la directiva <code>include</code>, no los nombres.
 La separación <code>available</code> / <code>enabled</code> es una <strong>convención de Debian/Ubuntu</strong>, no una
 exigencia del software.</p>
 </blockquote>
-<h4 id="533-y-que-hay-dentro-de-nginxconf">5.3.3. ¿Y qué hay dentro de <code>nginx.conf</code>?</h4>
+<h4 id="533-y-que-hay-dentro-de-nginxconf">5.3.3. ¿Y qué hay dentro de <code>Nginx.conf</code>?</h4>
 <p>Aunque no lo vamos a editar, ayuda saber qué piezas tiene cuando lo abras. Su estructura
 básica es:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="k">user</span><span class="w"> </span><span class="s">www-data</span><span class="p">;</span><span class="w">                  </span><span class="c1"># usuario con el que corren los workers</span>
 <a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="k">worker_processes</span><span class="w"> </span><span class="s">auto</span><span class="p">;</span><span class="w">          </span><span class="c1"># nº de procesos worker (auto = nº de CPUs)</span>
-<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a><span class="k">pid</span><span class="w"> </span><span class="s">/run/nginx.pid</span><span class="p">;</span><span class="w">             </span><span class="c1"># ruta del fichero PID</span>
+<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a><span class="k">pid</span><span class="w"> </span><span class="s">/run/Nginx.pid</span><span class="p">;</span><span class="w">             </span><span class="c1"># ruta del fichero PID</span>
 <a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a><span class="k">events</span><span class="w"> </span><span class="p">{</span>
 <a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a><span class="w">    </span><span class="kn">worker_connections</span><span class="w"> </span><span class="mi">768</span><span class="p">;</span><span class="w">     </span><span class="c1"># conexiones simultáneas por worker</span>
 <a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a><span class="p">}</span>
 <a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a><span class="k">http</span><span class="w"> </span><span class="p">{</span>
 <a id="__codelineno-13-8" name="__codelineno-13-8" href="#__codelineno-13-8"></a><span class="w">    </span><span class="c1"># ... configuración global: tipos MIME, formato de logs por defecto,</span>
 <a id="__codelineno-13-9" name="__codelineno-13-9" href="#__codelineno-13-9"></a><span class="w">    </span><span class="c1"># compresión, timeouts, cabeceras por defecto...</span>
-<a id="__codelineno-13-10" name="__codelineno-13-10" href="#__codelineno-13-10"></a><span class="w">    </span><span class="kn">include</span><span class="w"> </span><span class="s">/etc/nginx/mime.types</span><span class="p">;</span>
-<a id="__codelineno-13-11" name="__codelineno-13-11" href="#__codelineno-13-11"></a><span class="w">    </span><span class="kn">include</span><span class="w"> </span><span class="s">/etc/nginx/conf.d/*.conf</span><span class="p">;</span>
-<a id="__codelineno-13-12" name="__codelineno-13-12" href="#__codelineno-13-12"></a><span class="w">    </span><span class="kn">include</span><span class="w"> </span><span class="s">/etc/nginx/sites-enabled/*</span><span class="p">;</span><span class="w">   </span><span class="c1"># ← aquí se enganchan nuestros sitios</span>
+<a id="__codelineno-13-10" name="__codelineno-13-10" href="#__codelineno-13-10"></a><span class="w">    </span><span class="kn">include</span><span class="w"> </span><span class="s">/etc/Nginx/mime.types</span><span class="p">;</span>
+<a id="__codelineno-13-11" name="__codelineno-13-11" href="#__codelineno-13-11"></a><span class="w">    </span><span class="kn">include</span><span class="w"> </span><span class="s">/etc/Nginx/conf.d/*.conf</span><span class="p">;</span>
+<a id="__codelineno-13-12" name="__codelineno-13-12" href="#__codelineno-13-12"></a><span class="w">    </span><span class="kn">include</span><span class="w"> </span><span class="s">/etc/Nginx/sites-enabled/*</span><span class="p">;</span><span class="w">   </span><span class="c1"># ← aquí se enganchan nuestros sitios</span>
 <a id="__codelineno-13-13" name="__codelineno-13-13" href="#__codelineno-13-13"></a><span class="p">}</span>
 </code></pre></div>
 <p>La directiva clave es la última: el <code>include</code> que une el motor con los virtual hosts que
@@ -3550,7 +3567,7 @@ vamos a crear en los siguientes apartados. El bloque <code>http { ... }</code> s
 después, así que <strong>todo</strong> lo que metamos en <code>sites-enabled</code> queda automáticamente dentro
 de ese contexto HTTP.</p>
 <h3 id="54-configurar-los-virtual-hosts">5.4. Configurar los virtual hosts</h3>
-<p>Antes de escribir la configuración, recuerda cómo se organiza nginx en Ubuntu:</p>
+<p>Antes de escribir la configuración, recuerda cómo se organiza Nginx en Ubuntu:</p>
 <ul>
 <li><code>/etc/nginx/nginx.conf</code> es el fichero principal; al final incluye todo lo que haya
   en <code>/etc/nginx/sites-enabled/</code>.</li>
@@ -3561,7 +3578,7 @@ de ese contexto HTTP.</p>
 </ul>
 <p>Vamos a crear <strong>dos</strong> ficheros, uno por tenant.</p>
 <h4 id="541-sitio-planesdaw">5.4.1. Sitio <code>planes.daw</code></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>sudo<span class="w"> </span>nano<span class="w"> </span>/etc/nginx/sites-available/planes.daw
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>sudo<span class="w"> </span>nano<span class="w"> </span>/etc/Nginx/sites-available/planes.daw
 </code></pre></div>
 <p>Pega este contenido:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="k">server</span><span class="w"> </span><span class="p">{</span>
@@ -3588,7 +3605,7 @@ de ese contexto HTTP.</p>
 <tbody>
 <tr>
 <td><code>server { ... }</code></td>
-<td>Define un <em>virtual host</em>: un sitio completo. Un mismo nginx puede servir muchos <code>server</code> a la vez.</td>
+<td>Define un <em>virtual host</em>: un sitio completo. Un mismo Nginx puede servir muchos <code>server</code> a la vez.</td>
 </tr>
 <tr>
 <td><code>listen 80;</code></td>
@@ -3600,7 +3617,7 @@ de ese contexto HTTP.</p>
 </tr>
 <tr>
 <td><code>server_name planes.daw;</code></td>
-<td><strong>La clave del multitenancy.</strong> Este bloque solo atiende peticiones cuya cabecera <code>Host</code> sea <code>planes.daw</code>. Así nginx sabe que esta petición es para RunDash y no para la otra web.</td>
+<td><strong>La clave del multitenancy.</strong> Este bloque solo atiende peticiones cuya cabecera <code>Host</code> sea <code>planes.daw</code>. Así Nginx sabe que esta petición es para RunDash y no para la otra web.</td>
 </tr>
 <tr>
 <td><code>root /var/www/planes;</code></td>
@@ -3627,7 +3644,7 @@ como directorios con un <code>index.html</code> dentro: <code>/planes/5k/</code>
 </blockquote>
 <p>Guarda (<code>Ctrl+O</code>, <code>Enter</code>, <code>Ctrl+X</code>).</p>
 <h4 id="542-sitio-puertosdaw">5.4.2. Sitio <code>puertos.daw</code></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>sudo<span class="w"> </span>nano<span class="w"> </span>/etc/nginx/sites-available/puertos.daw
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>sudo<span class="w"> </span>nano<span class="w"> </span>/etc/Nginx/sites-available/puertos.daw
 </code></pre></div>
 <p>Pega este contenido:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="k">server</span><span class="w"> </span><span class="p">{</span>
@@ -3652,15 +3669,15 @@ llegan peticiones a ficheros reales (<code>/</code>, <code>css/…</code>, <code
 <code>try_files</code> sirve perfectamente.</p>
 </blockquote>
 <p>Guarda y sal.</p>
-<h3 id="55-activar-los-sitios-y-recargar-nginx">5.5. Activar los sitios y recargar nginx</h3>
+<h3 id="55-activar-los-sitios-y-recargar-nginx">5.5. Activar los sitios y recargar Nginx</h3>
 <p>Activa ambos sitios creando los enlaces simbólicos y desactiva el sitio de ejemplo:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>sudo<span class="w"> </span>ln<span class="w"> </span>-s<span class="w"> </span>/etc/nginx/sites-available/planes.daw<span class="w"> </span>/etc/nginx/sites-enabled/planes.daw
-<a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a>sudo<span class="w"> </span>ln<span class="w"> </span>-s<span class="w"> </span>/etc/nginx/sites-available/puertos.daw<span class="w"> </span>/etc/nginx/sites-enabled/puertos.daw
-<a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a>sudo<span class="w"> </span>rm<span class="w"> </span>/etc/nginx/sites-enabled/default
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>sudo<span class="w"> </span>ln<span class="w"> </span>-s<span class="w"> </span>/etc/Nginx/sites-available/planes.daw<span class="w"> </span>/etc/Nginx/sites-enabled/planes.daw
+<a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a>sudo<span class="w"> </span>ln<span class="w"> </span>-s<span class="w"> </span>/etc/Nginx/sites-available/puertos.daw<span class="w"> </span>/etc/Nginx/sites-enabled/puertos.daw
+<a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a>sudo<span class="w"> </span>rm<span class="w"> </span>/etc/Nginx/sites-enabled/default
 </code></pre></div>
 <ul>
 <li><code>ln -s origen destino</code> crea un enlace simbólico (un acceso directo): el fichero real
-  vive en <code>sites-available</code> y nginx lo lee a través del enlace en <code>sites-enabled</code>.</li>
+  vive en <code>sites-available</code> y Nginx lo lee a través del enlace en <code>sites-enabled</code>.</li>
 <li>Borramos <code>default</code> porque está marcado como <code>default_server</code> en el puerto 80 y sirve
   <code>/var/www/html</code>: si lo dejamos, respondería él a las peticiones que no coincidan con
   ningún <code>server_name</code>.</li>
@@ -3671,40 +3688,40 @@ llegan peticiones a ficheros reales (<code>/</code>, <code>css/…</code>, <code
 <p>Debe terminar con <code>syntax is ok</code> y <code>test is successful</code>. Se hace siempre <strong>antes</strong> de
 recargar: si recargáramos con un error, podríamos dejar el servidor caído. Si da error,
 te dirá el fichero y la línea.</p>
-<p>Recarga y habilita nginx:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>reload<span class="w"> </span>nginx
-<a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>nginx
+<p>Recarga y habilita Nginx:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>reload<span class="w"> </span>Nginx
+<a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>Nginx
 </code></pre></div>
 <ul>
-<li><code>reload</code> le dice a nginx que <strong>relea su configuración sin detenerse</strong>: los procesos
+<li><code>reload</code> le dice a Nginx que <strong>relea su configuración sin detenerse</strong>: los procesos
   antiguos terminan lo que tenían entre manos y los nuevos usan la config nueva. No
   corta las conexiones activas (a diferencia de <code>restart</code>).</li>
-<li><code>enable</code> hace que nginx arranque solo al encender la máquina.</li>
+<li><code>enable</code> hace que Nginx arranque solo al encender la máquina.</li>
 </ul>
-<p>Comprueba que nginx escucha en el 80:</p>
+<p>Comprueba que Nginx escucha en el 80:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>ss<span class="w"> </span>-tlnp<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>:80
 </code></pre></div>
 <p><code>ss</code> muestra los sockets de red (<code>-t</code> TCP, <code>-l</code> escuchando, <code>-n</code> puertos numéricos,
-<code>-p</code> proceso). Debes ver <code>nginx</code> escuchando en <code>0.0.0.0:80</code> y/o <code>[::]:80</code>.</p>
-<h4 id="551-donde-mirar-cuando-algo-falla-los-logs-de-nginx">5.5.1. Dónde mirar cuando algo falla: los logs de nginx</h4>
-<p>nginx no es muy hablador en pantalla, pero <strong>lo registra todo en disco</strong>. Estos dos
+<code>-p</code> proceso). Debes ver <code>Nginx</code> escuchando en <code>0.0.0.0:80</code> y/o <code>[::]:80</code>.</p>
+<h4 id="551-donde-mirar-cuando-algo-falla-los-logs-de-nginx">5.5.1. Dónde mirar cuando algo falla: los logs de Nginx</h4>
+<p>Nginx no es muy hablador en pantalla, pero <strong>lo registra todo en disco</strong>. Estos dos
 ficheros son tu primera parada cuando algo no va. Aprende a mirarlos antes de
 necesitarlos de verdad: cuando llegue el momento del fallo, ya sabrás dónde buscar.</p>
 <p><strong>Ver los errores en tiempo real (mientras reproduces el fallo):</strong></p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>sudo<span class="w"> </span>tail<span class="w"> </span>-f<span class="w"> </span>/var/log/nginx/error.log
+<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>sudo<span class="w"> </span>tail<span class="w"> </span>-f<span class="w"> </span>/var/log/Nginx/error.log
 </code></pre></div>
 <p><code>tail -f</code> muestra las últimas líneas del fichero y se queda «siguiendo» los cambios:
 cada nuevo error aparece en pantalla al instante. Es ideal para reproducir un fallo
 mientras lo vigilas (abres el navegador, intentas cargar la página, y ves aparecer el
 error según ocurre).</p>
 <p><strong>Ver las últimas peticiones atendidas:</strong></p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a>sudo<span class="w"> </span>tail<span class="w"> </span>-n<span class="w"> </span><span class="m">50</span><span class="w"> </span>/var/log/nginx/access.log
+<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a>sudo<span class="w"> </span>tail<span class="w"> </span>-n<span class="w"> </span><span class="m">50</span><span class="w"> </span>/var/log/Nginx/access.log
 </code></pre></div>
-<p>Las últimas 50 peticiones que ha atendido nginx. Sirve para responder preguntas como
+<p>Las últimas 50 peticiones que ha atendido Nginx. Sirve para responder preguntas como
 «¿ha llegado siquiera mi petición?», «¿con qué código ha respondido?», «¿desde qué
 IP?».</p>
 <p><strong>Cómo leer una línea de <code>access.log</code></strong></p>
-<p>Por defecto, Ubuntu configura nginx con el formato <strong>combined</strong>, y cada línea tiene
+<p>Por defecto, Ubuntu configura Nginx con el formato <strong>combined</strong>, y cada línea tiene
 este aspecto:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a>203.0.113.42 - - [18/Sep/2026:12:34:56 +0000] &quot;GET / HTTP/1.1&quot; 200 1234 &quot;-&quot; &quot;Mozilla/5.0 ...&quot;
 </code></pre></div>
@@ -3775,7 +3792,7 @@ este aspecto:</p>
 </tr>
 <tr>
 <td><code>*5</code></td>
-<td>Identificador interno de la conexión en nginx (útil para seguir un mismo cliente en varias líneas).</td>
+<td>Identificador interno de la conexión en Nginx (útil para seguir un mismo cliente en varias líneas).</td>
 </tr>
 <tr>
 <td><code>open() "..." failed (2: No such file or directory)</code></td>
@@ -3795,14 +3812,14 @@ este aspecto:</p>
 </tr>
 <tr>
 <td><code>host: "planes.daw"</code></td>
-<td>Cabecera <code>Host</code> que nginx recibió.</td>
+<td>Cabecera <code>Host</code> que Nginx recibió.</td>
 </tr>
 </tbody>
 </table>
 <blockquote>
 <p>Truco: si un sitio da 404, el error aparece en <code>error.log</code>, pero también puedes
 encontrarlo en <code>access.log</code> buscando el código 404:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a>sudo<span class="w"> </span>grep<span class="w"> </span><span class="s2">&quot; 404 &quot;</span><span class="w"> </span>/var/log/nginx/access.log
+<div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a>sudo<span class="w"> </span>grep<span class="w"> </span><span class="s2">&quot; 404 &quot;</span><span class="w"> </span>/var/log/Nginx/access.log
 </code></pre></div>
 <p>Ahí verás qué ruta exacta pidió el cliente y desde qué IP, sin tener que rebuscar
 entre los demás niveles del log de errores.</p>
@@ -3833,14 +3850,22 @@ Internet. Así el navegador podrá conectar y enviar la cabecera <code>Host</cod
 <div class="highlight"><pre><span></span><code><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a>ping<span class="w"> </span>-c<span class="w"> </span><span class="m">1</span><span class="w"> </span>planes.daw
 </code></pre></div>
 <p>Debe mostrar la IP de la instancia (pulsa <code>Ctrl+C</code> para parar si no se detiene solo).</p>
+<h3 id="opcion-con-docker">Opción con Docker</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a>docker<span class="w"> </span>run<span class="w"> </span>-d<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-30-2" name="__codelineno-30-2" href="#__codelineno-30-2"></a><span class="w">  </span>--name<span class="w"> </span>firefox<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-30-3" name="__codelineno-30-3" href="#__codelineno-30-3"></a><span class="w">  </span>--add-host<span class="w"> </span>planes.daw:<span class="o">[</span>IP<span class="o">]</span><span class="w"> </span><span class="o">]</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-30-4" name="__codelineno-30-4" href="#__codelineno-30-4"></a><span class="w">  </span>--add-host<span class="w"> </span>puertos.daw:<span class="o">[</span>IP<span class="o">]</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-30-5" name="__codelineno-30-5" href="#__codelineno-30-5"></a><span class="w">  </span>-p<span class="w"> </span><span class="m">5800</span>:5800<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-30-6" name="__codelineno-30-6" href="#__codelineno-30-6"></a><span class="w">  </span>jlesage/firefox:latest
+</code></pre></div>
 <h2 id="7-verificacion-final">7. Verificación final</h2>
 <h3 id="71-con-curl">7.1. Con <code>curl</code></h3>
 <p>Desde tu máquina local:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a>curl<span class="w"> </span>-I<span class="w"> </span>http://planes.daw
+<div class="highlight"><pre><span></span><code><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a>curl<span class="w"> </span>-I<span class="w"> </span>http://planes.daw
 </code></pre></div>
 <p><code>curl -I</code> pide solo las cabeceras (método HEAD). Debes obtener <code>HTTP/1.1 200 OK</code> y
-<code>Server: nginx</code>. Repite con el otro sitio:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a>curl<span class="w"> </span>-I<span class="w"> </span>http://puertos.daw
+<code>Server: Nginx</code>. Repite con el otro sitio:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a>curl<span class="w"> </span>-I<span class="w"> </span>http://puertos.daw
 </code></pre></div>
 <p>Ambos deben dar <code>200 OK</code>. Aunque los dos viven en la misma máquina, cada uno responde
 por su nombre.</p>
@@ -3848,47 +3873,48 @@ por su nombre.</p>
 <p>Abre <code>http://planes.daw</code>: verás el dashboard de RunDash, y cada plan debe abrir su
 página de detalle (eso demuestra que el <code>try_files</code> funciona). Abre
 <code>http://puertos.daw</code>: verás Puertos Míticos. Dos webs distintas, un solo servidor.</p>
-<h3 id="73-demostrar-que-nginx-elige-por-la-cabecera-host">7.3. Demostrar que nginx elige por la cabecera <code>Host</code></h3>
+<p>Si estás usando la opción de Docker, abre <code>http://localhost:5800</code> y verás Firefox en tu navegador. Desde ahí abre <code>http://planes.daw</code> y <code>http://puertos.daw</code> para ver que funcionan.</p>
+<h3 id="73-demostrar-que-nginx-elige-por-la-cabecera-host">7.3. Demostrar que Nginx elige por la cabecera <code>Host</code></h3>
 <p>Puedes ver el mecanismo sin depender del navegador. Pide a la IP directa, pero
 forzando la cabecera <code>Host</code>:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a>curl<span class="w"> </span>-sI<span class="w"> </span>-H<span class="w"> </span><span class="s2">&quot;Host: puertos.daw&quot;</span><span class="w"> </span>http://&lt;IP&gt;/<span class="w"> </span><span class="p">|</span><span class="w"> </span>head<span class="w"> </span>-1
-<a id="__codelineno-32-2" name="__codelineno-32-2" href="#__codelineno-32-2"></a>curl<span class="w"> </span>-sI<span class="w"> </span>-H<span class="w"> </span><span class="s2">&quot;Host: planes.daw&quot;</span><span class="w">  </span>http://&lt;IP&gt;/<span class="w"> </span><span class="p">|</span><span class="w"> </span>head<span class="w"> </span>-1
+<div class="highlight"><pre><span></span><code><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a>curl<span class="w"> </span>-sI<span class="w"> </span>-H<span class="w"> </span><span class="s2">&quot;Host: puertos.daw&quot;</span><span class="w"> </span>http://&lt;IP&gt;/<span class="w"> </span><span class="p">|</span><span class="w"> </span>head<span class="w"> </span>-1
+<a id="__codelineno-33-2" name="__codelineno-33-2" href="#__codelineno-33-2"></a>curl<span class="w"> </span>-sI<span class="w"> </span>-H<span class="w"> </span><span class="s2">&quot;Host: planes.daw&quot;</span><span class="w">  </span>http://&lt;IP&gt;/<span class="w"> </span><span class="p">|</span><span class="w"> </span>head<span class="w"> </span>-1
 </code></pre></div>
-<p><code>-H "Host: …"</code> añade esa cabecera a la petición. Aunque ambas van a la misma IP, nginx
+<p><code>-H "Host: …"</code> añade esa cabecera a la petición. Aunque ambas van a la misma IP, Nginx
 devuelve el sitio cuyo <code>server_name</code> coincide. Es la prueba definitiva de que el
 enrutado lo hace la cabecera <code>Host</code>.</p>
 <h3 id="74-que-pasa-si-entras-por-la-ip-sin-nombre">7.4. ¿Qué pasa si entras por la IP, sin nombre?</h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a>curl<span class="w"> </span>-sI<span class="w"> </span>http://&lt;IP&gt;/<span class="w"> </span><span class="p">|</span><span class="w"> </span>head<span class="w"> </span>-1
+<div class="highlight"><pre><span></span><code><a id="__codelineno-34-1" name="__codelineno-34-1" href="#__codelineno-34-1"></a>curl<span class="w"> </span>-sI<span class="w"> </span>http://&lt;IP&gt;/<span class="w"> </span><span class="p">|</span><span class="w"> </span>head<span class="w"> </span>-1
 </code></pre></div>
-<p>Ningún <code>server_name</code> coincide con una IP, así que nginx usa el <strong>servidor por defecto</strong>
+<p>Ningún <code>server_name</code> coincide con una IP, así que Nginx usa el <strong>servidor por defecto</strong>
 del puerto 80: el bloque marcado <code>default_server</code> o, si no hay ninguno, <strong>el primer
 <code>server</code> que se carga</strong>. Como <code>sites-enabled</code> se lee por orden alfabético y
 <code>planes.daw</code> va antes que <code>puertos.daw</code>, el sitio por defecto será RunDash. Es un
 comportamiento normal; por eso conviene saber qué sitio queda como «cajón de sastre».</p>
-<h3 id="75-verificar-que-nginx-registra-las-peticiones-en-accesslog">7.5. Verificar que nginx registra las peticiones en <code>access.log</code></h3>
-<p>Esta prueba cierra el círculo y te enseña a <strong>leer lo que nginx ha visto</strong>. Hay que
+<h3 id="75-verificar-que-nginx-registra-las-peticiones-en-accesslog">7.5. Verificar que Nginx registra las peticiones en <code>access.log</code></h3>
+<p>Esta prueba cierra el círculo y te enseña a <strong>leer lo que Nginx ha visto</strong>. Hay que
 hacerla en una segunda terminal SSH contra la instancia (no en tu máquina local).</p>
 <p>En la terminal SSH contra la instancia, deja el log a la vista mientras se actualiza:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-34-1" name="__codelineno-34-1" href="#__codelineno-34-1"></a>sudo<span class="w"> </span>tail<span class="w"> </span>-f<span class="w"> </span>/var/log/nginx/access.log
+<div class="highlight"><pre><span></span><code><a id="__codelineno-35-1" name="__codelineno-35-1" href="#__codelineno-35-1"></a>sudo<span class="w"> </span>tail<span class="w"> </span>-f<span class="w"> </span>/var/log/nginx/access.log
 </code></pre></div>
 <p>Pulsa <code>Enter</code> un par de veces para dejar unas líneas en blanco y que se vea mejor
 dónde empieza cada petición nueva. Ahora, en tu <strong>máquina local</strong> (no en la sesión
 SSH), lanza peticiones:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-35-1" name="__codelineno-35-1" href="#__codelineno-35-1"></a>curl<span class="w"> </span>-s<span class="w"> </span>-o<span class="w"> </span>/dev/null<span class="w"> </span>http://planes.daw/
-<a id="__codelineno-35-2" name="__codelineno-35-2" href="#__codelineno-35-2"></a>curl<span class="w"> </span>-s<span class="w"> </span>-o<span class="w"> </span>/dev/null<span class="w"> </span>http://puertos.daw/
-<a id="__codelineno-35-3" name="__codelineno-35-3" href="#__codelineno-35-3"></a>curl<span class="w"> </span>-s<span class="w"> </span>-o<span class="w"> </span>/dev/null<span class="w"> </span>http://planes.daw/planes/5k/
+<div class="highlight"><pre><span></span><code><a id="__codelineno-36-1" name="__codelineno-36-1" href="#__codelineno-36-1"></a>curl<span class="w"> </span>-s<span class="w"> </span>-o<span class="w"> </span>/dev/null<span class="w"> </span>http://planes.daw/
+<a id="__codelineno-36-2" name="__codelineno-36-2" href="#__codelineno-36-2"></a>curl<span class="w"> </span>-s<span class="w"> </span>-o<span class="w"> </span>/dev/null<span class="w"> </span>http://puertos.daw/
+<a id="__codelineno-36-3" name="__codelineno-36-3" href="#__codelineno-36-3"></a>curl<span class="w"> </span>-s<span class="w"> </span>-o<span class="w"> </span>/dev/null<span class="w"> </span>http://planes.daw/planes/5k/
 </code></pre></div>
 <p>Vuelve a la terminal SSH: deberías ver cómo han ido apareciendo, en tiempo real, tres
 líneas nuevas con este aspecto (los números varían):</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-36-1" name="__codelineno-36-1" href="#__codelineno-36-1"></a>203.0.113.42 - - [18/Sep/2026:12:40:01 +0000] &quot;GET / HTTP/1.1&quot; 200 4521 &quot;-&quot; &quot;curl/8.5.0&quot;
-<a id="__codelineno-36-2" name="__codelineno-36-2" href="#__codelineno-36-2"></a>203.0.113.42 - - [18/Sep/2026:12:40:03 +0000] &quot;GET / HTTP/1.1&quot; 200 7820 &quot;-&quot; &quot;curl/8.5.0&quot;
-<a id="__codelineno-36-3" name="__codelineno-36-3" href="#__codelineno-36-3"></a>203.0.113.42 - - [18/Sep/2026:12:40:08 +0000] &quot;GET /planes/5k/ HTTP/1.1&quot; 200 1102 &quot;-&quot; &quot;curl/8.5.0&quot;
+<div class="highlight"><pre><span></span><code><a id="__codelineno-37-1" name="__codelineno-37-1" href="#__codelineno-37-1"></a>203.0.113.42 - - [18/Sep/2026:12:40:01 +0000] &quot;GET / HTTP/1.1&quot; 200 4521 &quot;-&quot; &quot;curl/8.5.0&quot;
+<a id="__codelineno-37-2" name="__codelineno-37-2" href="#__codelineno-37-2"></a>203.0.113.42 - - [18/Sep/2026:12:40:03 +0000] &quot;GET / HTTP/1.1&quot; 200 7820 &quot;-&quot; &quot;curl/8.5.0&quot;
+<a id="__codelineno-37-3" name="__codelineno-37-3" href="#__codelineno-37-3"></a>203.0.113.42 - - [18/Sep/2026:12:40:08 +0000] &quot;GET /planes/5k/ HTTP/1.1&quot; 200 1102 &quot;-&quot; &quot;curl/8.5.0&quot;
 </code></pre></div>
 <p>Lo importante:</p>
 <ul>
 <li>La <strong>IP</strong> es la de tu máquina local (en AWS verás una IP pública; en una red de
   clase verás una IP privada <code>10.x</code> o <code>192.168.x</code>).</li>
-<li>El <strong>código 200</strong> en las tres líneas confirma que nginx resolvió cada petición al
+<li>El <strong>código 200</strong> en las tres líneas confirma que Nginx resolvió cada petición al
   virtual host correcto y encontró el fichero (incluida la ruta <code>/planes/5k/</code>, que
   gracias al <code>try_files $uri/index.html</code> se sirve desde
   <code>/var/www/planes/planes/5k/index.html</code>).</li>
@@ -3941,7 +3967,7 @@ entre clases.</p>
 <tr>
 <td>Ambos dominios muestran la misma web</td>
 <td>Un <code>server_name</code> mal escrito, un sitio sin activar (falta el enlace en <code>sites-enabled</code>) o el sitio <code>default</code> sigue activo</td>
-<td>Revisa <code>server_name</code> en cada fichero, <code>ls -l /etc/nginx/sites-enabled/</code> y que <code>default</code> esté borrado</td>
+<td>Revisa <code>server_name</code> en cada fichero, <code>ls -l /etc/Nginx/sites-enabled/</code> y que <code>default</code> esté borrado</td>
 </tr>
 <tr>
 <td><code>http://&lt;IP&gt;/</code> muestra RunDash</td>
@@ -3960,18 +3986,18 @@ entre clases.</p>
 </tr>
 <tr>
 <td><code>curl</code> devuelve <code>Connection refused</code></td>
-<td>nginx no está corriendo o no escucha en el 80</td>
-<td><code>sudo systemctl status nginx</code>; si está parado, <code>sudo nginx -t</code> para buscar errores</td>
+<td>Nginx no está corriendo o no escucha en el 80</td>
+<td><code>sudo systemctl status Nginx</code>; si está parado, <code>sudo Nginx -t</code> para buscar errores</td>
 </tr>
 <tr>
-<td>nginx da 500 o no arranca tras un cambio de configuración</td>
+<td>Nginx da 500 o no arranca tras un cambio de configuración</td>
 <td>Error de sintaxis o de permisos en el <code>root</code></td>
-<td><code>sudo tail -n 30 /var/log/nginx/error.log</code>; lo primero que aparece suele ser la causa concreta (fichero y línea del error de sintaxis, o el <code>errno</code> del fallo de <code>open()</code>). Tras corregir, valida con <code>sudo nginx -t</code> y recarga con <code>sudo systemctl reload nginx</code>.</td>
+<td><code>sudo tail -n 30 /var/log/Nginx/error.log</code>; lo primero que aparece suele ser la causa concreta (fichero y línea del error de sintaxis, o el <code>errno</code> del fallo de <code>open()</code>). Tras corregir, valida con <code>sudo nginx -t</code> y recarga con <code>sudo systemctl reload Nginx</code>.</td>
 </tr>
 <tr>
 <td>Quiero saber qué peticiones han llegado realmente al servidor</td>
-<td>Necesitas verificar que nginx recibe tráfico (y desde qué IP/ruta)</td>
-<td><code>sudo tail -f /var/log/nginx/access.log</code> mientras reproduces la petición en el navegador. Cada línea muestra IP, ruta pedida y código de respuesta. Si una ruta no aparece, es que ni siquiera ha llegado a nginx (problema de DNS, <em>hosts</em> o <em>security group</em>).</td>
+<td>Necesitas verificar que Nginx recibe tráfico (y desde qué IP/ruta)</td>
+<td><code>sudo tail -f /var/log/Nginx/access.log</code> mientras reproduces la petición en el navegador. Cada línea muestra IP, ruta pedida y código de respuesta. Si una ruta no aparece, es que ni siquiera ha llegado a Nginx (problema de DNS, <em>hosts</em> o <em>security group</em>).</td>
 </tr>
 <tr>
 <td><code>E: Could not get lock /var/lib/dpkg/lock-frontend</code></td>
