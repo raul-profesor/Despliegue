@@ -1,0 +1,3749 @@
+
+<!doctype html>
+<html lang="es" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://raul-profesor.github.io/Despliegue/P1.2.nueva/">
+      
+      
+        <link rel="prev" href="../P1.1.nueva/">
+      
+      
+        <link rel="next" href="../ServAplic/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+    
+    
+      
+        <title>Guía: proxy inverso con nginx - Despliegue de aplicaciones web</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-3NX5MD5C8H"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-3NX5MD5C8H",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-3NX5MD5C8H",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="green" data-md-color-accent="blue">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#guia-proxy-inverso-con-nginx" class="md-skip">
+          Saltar a contenido
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabecera">
+    <a href=".." title="Despliegue de aplicaciones web" class="md-header__button md-logo" aria-label="Despliegue de aplicaciones web" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Despliegue de aplicaciones web
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Guía: proxy inverso con nginx
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="green" data-md-color-accent="blue"  aria-label="Cambiar a modo oscuro"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Cambiar a modo oscuro" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6m0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4M7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="deep-orange"  aria-label="Cambiar a modo claro"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Cambiar a modo claro" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6m0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4M7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Búsqueda" placeholder="Búsqueda" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Buscar">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpiar" aria-label="Limpiar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando búsqueda
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navegación" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Despliegue de aplicaciones web" class="md-nav__button md-logo" aria-label="Despliegue de aplicaciones web" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Despliegue de aplicaciones web
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tema 1
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Tema 1
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_1" id="__nav_1_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Teoría
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Teoría
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../intro-aws/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Guía Completa de Amazon Web Services (AWS) para Principiantes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../intro-terraform/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Guía Completa de Terraform para Principiantes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tema 2
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Tema 2
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_1" id="__nav_2_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Teoría
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Teoría
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ArqWeb/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tema 2 - Arquitectura Web. Implantación y administración de servidores web
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Prácticas
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Prácticas
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../P1.1.nueva/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Guía: despliegue multitenant con Nginx
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Guía: proxy inverso con nginx
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Guía: proxy inverso con nginx
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-el-escenario-que-vamos-a-montarv" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. El escenario que vamos a montarv
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. El escenario que vamos a montarv">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-que-es-un-proxy-inverso-y-por-que-molestarse" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1. ¿Qué es un proxy inverso y por qué molestarse?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-conceptos-nuevos-que-vamos-a-usar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2. Conceptos nuevos que vamos a usar
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-requisitos-previos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Requisitos previos
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-crear-el-key-pair-y-los-dos-security-groups" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Crear el key pair y los dos security groups
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Crear el key pair y los dos security groups">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-key-pair-par-de-claves" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1. Key pair (par de claves)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-security-group-del-proxy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2. Security group del proxy
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-security-group-del-backend-la-parte-interesante" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3. Security group del backend (la parte interesante)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-lanzar-las-dos-instancias" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Lanzar las dos instancias
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Lanzar las dos instancias">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-instancia-backend-rundash-web" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1. Instancia backend (rundash-web)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-instancia-proxy-rundash-proxy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2. Instancia proxy (rundash-proxy)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43-anotar-las-direcciones" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3. Anotar las direcciones
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-configurar-el-backend-igual-que-la-practica-11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Configurar el backend (igual que la práctica 1.1)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Configurar el backend (igual que la práctica 1.1)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-comprobar-cloud-init-e-instalar-paquetes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1. Comprobar cloud-init e instalar paquetes
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-clonar-las-dos-aplicaciones" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2. Clonar las dos aplicaciones
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53-configurar-y-activar-los-dos-sitios" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.3. Configurar y activar los dos sitios
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-configurar-el-proxy-inverso" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Configurar el proxy inverso
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Configurar el proxy inverso">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61-instalar-nginx" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1. Instalar nginx
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62-configurar-el-proxy-inverso" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.2. Configurar el proxy inverso
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-verificacion-final" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Verificación final
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. Verificación final">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#71-resolver-los-dominios-hacia-el-proxy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.1. Resolver los dominios hacia el proxy
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#72-con-curl-y-en-el-navegador" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.2. Con curl y en el navegador
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#73-demostrar-que-el-backend-esta-oculto" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.3. Demostrar que el backend está oculto
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#74-ver-el-trafico-desde-dentro" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.4. Ver el tráfico desde dentro
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-limpieza-importante-evita-costes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Limpieza (importante: evita costes)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-solucion-de-problemas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. Solución de problemas
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-equivalencia-con-el-despliegue-automatizado" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. Equivalencia con el despliegue automatizado
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tema 3
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Tema 3
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_1" id="__nav_3_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Teoría
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Teoría
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ServAplic/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tema 3 - Servidores de aplicaciones
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Prácticas
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Prácticas
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../P3.1-Wildfly/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Práctica 3.1: Despliegue de una API Restful con Jakarta (Java) mediante Maven en WildFly (JBoss)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../P3.2-NodeJS-Express/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Práctica 3.2 - Despliegue de aplicaciones con Node Express
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../P3.4-Heroku/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Práctica 3.4 - Despliegue de una aplicación Node.js en Netlify (Paas) y Vercel
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../P3.5-Flask/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Práctica 3.5 - Despliegue de una aplicación Flask
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tema 4
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Tema 4
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_1" id="__nav_4_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Teoría
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Teoría
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dns/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tema 4 - Servicios de red implicados en el despliegue de aplicaciones web
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_2" id="__nav_4_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Prácticas
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Prácticas
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../P4.1-DNS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Práctica 4.1 - Configuración de un servidor DNS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../P4.2.DNS-AWS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Práctica 4.2 - Configuración de Route 53 (DNS) en AWS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tema 5
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Tema 5
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_1" id="__nav_5_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Teoría
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Teoría
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../index_git/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tema 5 - Control de versiones
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cvs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sistemas de control de versiones
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../introduccion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Introducción a git
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../git/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aspectos básicos de Git
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../usobasico/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Uso básico de Git
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../usoavanzado/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Uso avanzado de Git
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ramas/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ramas
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../github/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Github
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../github-zenodo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Citar proyectos en GitHub
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../github-flow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Flujo de trabajo en GitHub
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../github-avanzado/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Github avanzado
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../commands/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Comandos de git
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../gitflow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Flujo de trabajo con Git (git flow)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../referencias/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Referencias
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_2" id="__nav_5_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Prácticas
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Prácticas
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../P5.1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ejercicios Git y Github
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../P5.2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ejercicios Git y Github (II)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../P5.3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Git avanzado - Aprendiendo branching
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tema 6
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Tema 6
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_1" id="__nav_6_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Teoría
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Teoría
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../index_docker/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tema 6 - Contenedores
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../introduction/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Introducción
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../installation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Instalación
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../images/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Imágenes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../containers/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Contenedores
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../data/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Persistiendo datos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wordpress/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Levantar un WordPress con Docker
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../docker-compose/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Levantar un WordPress con Docker Compose
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dockerfile/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Crear imágenes propias
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tips/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Trucos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_2" id="__nav_6_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Prácticas
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Prácticas
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../P6.1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Práctica 6.1 - Dockerización del despliegue de una aplicación con Node.js
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../P6.2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Práctica 6.2 - Despliegue de una aplicación PHP con Nginx y MySQL usando Docker y docker-compose
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../P6.3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Práctica 6.3- Servidor web con usuarios autenticados mediante servicio de directorio (LDAP)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tema 7
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Tema 7
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_7_1" id="__nav_7_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Teoría
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Teoría
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cicd/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tema 7 - CI/CD (Integración y despliegue continuo)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_7_2" id="__nav_7_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Prácticas
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Prácticas
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../P7.1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Práctica 7.1- Toma de contacto con CI/CD usando Github actions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="guia-proxy-inverso-con-nginx">Guía: proxy inverso con nginx</h1>
+<p>En esta práctica vamos a montar <strong>a mano</strong> el siguiente escenario:
+una instancia EC2 que hace de <strong>proxy inverso</strong> con nginx y que reenvía las
+peticiones a una segunda instancia EC2 donde viven las aplicaciones web (las mismas
+dos de la práctica 1.1: <code>planes.daw</code> y <code>puertos.daw</code>).</p>
+<p><strong>Cómo leer esta guía:</strong> después de cada comando o bloque de configuración hay un
+apartado <em>«¿Qué significa?»</em> que explica línea a línea qué hace y por qué está ahí.
+No copies nada sin haberlo leído antes: en el examen y en la vida real nadie
+configura nada que no entiende.</p>
+<h2 id="1-el-escenario-que-vamos-a-montarv">1. El escenario que vamos a montarv</h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>                         Internet
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>                            │
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>                      HTTP (puerto 80)
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>                            │
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>                            ▼
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>   ┌────────────────────────────────────────────────────┐
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>   │  EC2 «proxy» (Ubuntu 24.04, t2.small)              │
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>   │  nginx como PROXY INVERSO                          │
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>   │  IP pública: es la única cara visible del sistema  │
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>   └───────────────────────┬────────────────────────────┘
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>                           │  HTTP (puerto 80)
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>                           │  por la IP PRIVADA
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>                           ▼
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>   ┌────────────────────────────────────────────────────┐
+<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>   │  EC2 «web» (Ubuntu 24.04, t2.small)                │
+<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>   │  nginx con 2 virtual hosts (multitenant):          │
+<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a>   │    planes.daw  ──► /var/www/planes   (RunDash)     │
+<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a>   │    puertos.daw ──► /var/www/puertos  (Puertos)     │
+<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a>   │  Solo IP privada: NO es accesible desde Internet   │
+<a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a>   └────────────────────────────────────────────────────┘
+</code></pre></div>
+<p>El resultado final será:</p>
+<ul>
+<li><strong>Dos instancias EC2</strong> con Ubuntu Server 24.04 LTS.</li>
+<li><code>rundash-proxy</code>: la puerta de entrada. Es la única que tiene el puerto 80
+    abierto a Internet.</li>
+<li><code>rundash-web</code>: la que realmente tiene las aplicaciones. Solo habla con el proxy.</li>
+<li><strong>Dos security groups</strong> distintos:</li>
+<li>Uno para el proxy (SSH 22 y HTTP 80 desde cualquier sitio).</li>
+<li>Otro para el backend (SSH 22 desde cualquier sitio y HTTP 80 <strong>solo desde el
+    security group del proxy</strong>).</li>
+<li><strong>Un único par de claves</strong> (.pem) compartido por ambas instancias.</li>
+<li>En el backend, el <strong>escenario multitenant de la práctica 1.1</strong>: las dos
+  aplicaciones clonadas en <code>/var/www/planes</code> y <code>/var/www/puertos</code>, servidas como
+  <code>planes.daw</code> y <code>puertos.daw</code>.</li>
+<li>nginx en el proxy reenviando todo lo que recibe al backend.</li>
+</ul>
+<blockquote>
+<p><strong>Importante:</strong> el proxy no hace el multitenancy; solo reenvía peticiones. El
+reparto entre <code>planes.daw</code> y <code>puertos.daw</code> lo hace el <strong>backend</strong>, que sigue siendo
+el escenario multitenant de la práctica 1.1. Como el proxy conserva la cabecera
+<code>Host</code> (<code>proxy_set_header Host $host;</code>), al backend le llega el nombre original y
+puede elegir el virtual host correcto.</p>
+</blockquote>
+<h3 id="11-que-es-un-proxy-inverso-y-por-que-molestarse">1.1. ¿Qué es un proxy inverso y por qué molestarse?</h3>
+<p>Un <strong>proxy inverso</strong> (<em>reverse proxy</em>) es un servidor que se coloca delante de uno
+o más servidores reales (los <em>backends</em>) y recibe las peticiones de los clientes en
+su nombre. El cliente cree que habla con el servidor final, pero en realidad habla
+con el proxy, que es quien decide a qué backend pasarle la petición.</p>
+<p>Es lo contrario de un proxy «normal» (proxy directo): el proxy directo trabaja para
+el <em>cliente</em> (le ayuda a salir a Internet); el proxy inverso trabaja para el
+<em>servidor</em> (le ayuda a recibir peticiones).</p>
+<p>¿Por qué no exponer directamente el backend, como en la práctica 1.1? Porque un
+proxy inverso aporta varias cosas que usaremos en las prácticas siguientes:</p>
+<table>
+<thead>
+<tr>
+<th>Ventaja</th>
+<th>Explicación</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Ocultar el backend</strong></td>
+<td>El servidor con la aplicación no necesita IP pública ni puertos abiertos a Internet. Solo el proxy está expuesto. Menos superficie de ataque.</td>
+</tr>
+<tr>
+<td><strong>Un único punto de entrada</strong></td>
+<td>Puedes cambiar, añadir o quitar backends sin que los clientes se enteren: la dirección pública siempre es la del proxy.</td>
+</tr>
+<tr>
+<td><strong>Balanceo de carga</strong></td>
+<td>Si hay varios backends, el proxy puede repartir las peticiones entre ellos (práctica 1.3).</td>
+</tr>
+<tr>
+<td><strong>Terminación TLS</strong></td>
+<td>El proxy puede encargarse del HTTPS (cifrado) y hablar en HTTP simple con los backends (práctica 1.4).</td>
+</tr>
+<tr>
+<td><strong>Caché, compresión, límites de velocidad…</strong></td>
+<td>El proxy puede añadir muchas funciones sin tocar el backend.</td>
+</tr>
+</tbody>
+</table>
+<p>En esta práctica nos quedamos con lo esencial: <strong>un proxy, un backend, reenvío
+simple</strong>. Aun así ya veremos las dos primeras ventajas (ocultar el backend y punto
+único de entrada).</p>
+<h3 id="12-conceptos-nuevos-que-vamos-a-usar">1.2. Conceptos nuevos que vamos a usar</h3>
+<table>
+<thead>
+<tr>
+<th>Concepto</th>
+<th>Qué es</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Proxy inverso</strong></td>
+<td>Servidor intermediario que recibe peticiones y las reenvía a uno o más backends.</td>
+</tr>
+<tr>
+<td><strong>Backend</strong></td>
+<td>El servidor que realmente tiene la aplicación y genera las respuestas.</td>
+</tr>
+<tr>
+<td><strong>IP pública</strong></td>
+<td>Dirección con la que una instancia es visible desde Internet. Es efímera (cambia al parar/arrancar).</td>
+</tr>
+<tr>
+<td><strong>IP privada</strong></td>
+<td>Dirección visible <strong>solo dentro de la VPC</strong> (la red virtual de AWS). No se puede llegar a ella desde Internet.</td>
+</tr>
+<tr>
+<td><strong>VPC</strong> (Virtual Private Cloud)</td>
+<td>La red virtual aislada donde viven tus instancias. Las instancias de la misma VPC se ven entre sí por su IP privada.</td>
+</tr>
+<tr>
+<td><strong><code>proxy_pass</code></strong></td>
+<td>Directiva de nginx que le dice «reenvía esta petición a esta otra dirección». Es el corazón del proxy inverso.</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>Región de trabajo: <strong>us-east-1 (N. Virginia)</strong>. Como siempre, asegúrate de tenerla
+elegida en la esquina superior derecha de la consola antes de empezar.</p>
+</blockquote>
+<h2 id="2-requisitos-previos">2. Requisitos previos</h2>
+<ul>
+<li>Cuenta de AWS con permisos para crear instancias EC2, security groups y key pairs.
+  Vale la capa gratuita (free tier).</li>
+<li>Un cliente SSH instalado (Linux/macOS lo trae de serie; en Windows usa PowerShell
+  o WSL, no PuTTY, para poder seguir los comandos tal cual).</li>
+<li>Navegador web y <code>curl</code> para comprobar el resultado.</li>
+<li>Haber hecho (o entender) la práctica 1.1: el backend se configura exactamente igual.</li>
+</ul>
+<h2 id="3-crear-el-key-pair-y-los-dos-security-groups">3. Crear el key pair y los dos security groups</h2>
+<p>A diferencia de la práctica 1.1, aquí conviene crear el key pair y los security
+groups <strong>antes</strong> de lanzar las instancias, porque los vamos a compartir/reutilizar y
+porque uno de los security groups referencia al otro.</p>
+<h3 id="31-key-pair-par-de-claves">3.1. Key pair (par de claves)</h3>
+<ol>
+<li>Consola EC2 → <strong>Network &amp; Security → Key Pairs → Create key pair</strong>.</li>
+<li>Name: <code>rundash-proxy-key</code></li>
+<li>Key pair type: <strong>RSA</strong></li>
+<li>Private key file format: <strong>.pem</strong></li>
+<li>Pulsa <strong>Create key pair</strong>. Se descarga <code>rundash-proxy-key.pem</code>.
+   <strong>Guárdalo bien: es la única vez que se puede descargar.</strong></li>
+</ol>
+<p>Usamos <strong>un solo key pair para las dos instancias</strong>. Podríamos crear uno por
+instancia, pero para un escenario de prácticas es más sencillo gestionar uno solo;
+Terraform hace exactamente esto (un único <code>tls_private_key</code> para todo el escenario).</p>
+<p>Recuerda restringir los permisos del fichero en tu máquina:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>chmod<span class="w"> </span><span class="m">600</span><span class="w"> </span>rundash-proxy-key.pem
+</code></pre></div>
+<p>(Se explicó en la práctica 1.1: SSH rechaza claves legibles por otros usuarios.)</p>
+<h3 id="32-security-group-del-proxy">3.2. Security group del proxy</h3>
+<ol>
+<li><strong>Network &amp; Security → Security Groups → Create security group</strong>:</li>
+<li>Name: <code>rundash-proxy-sg</code></li>
+<li>Description: <code>SSH y HTTP para el proxy inverso</code></li>
+<li>VPC: deja la <strong>VPC por defecto</strong>.</li>
+<li>
+<p>Reglas de entrada (<strong>Add rule</strong>):</p>
+<table>
+<thead>
+<tr>
+<th>Tipo</th>
+<th>Puerto</th>
+<th>Origen</th>
+<th>Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SSH</td>
+<td>22</td>
+<td><code>0.0.0.0/0</code></td>
+<td>SSH</td>
+</tr>
+<tr>
+<td>HTTP</td>
+<td>80</td>
+<td><code>0.0.0.0/0</code></td>
+<td>HTTP</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li>
+<p>Deja la regla de salida por defecto (permite todo).</p>
+</li>
+<li>Pulsa <strong>Create security group</strong>.</li>
+</ol>
+<p>Este grupo es idéntico al de la práctica 1.1: el proxy es la cara pública, así que
+necesita SSH (para administrarlo) y HTTP (para recibir el tráfico web).</p>
+<h3 id="33-security-group-del-backend-la-parte-interesante">3.3. Security group del backend (la parte interesante)</h3>
+<ol>
+<li><strong>Create security group</strong> otra vez:</li>
+<li>Name: <code>rundash-proxy-backend-sg</code></li>
+<li>Description: <code>SSH desde cualquier sitio y HTTP solo desde el proxy</code></li>
+<li>VPC: la misma VPC por defecto.</li>
+<li>
+<p>Reglas de entrada:</p>
+<table>
+<thead>
+<tr>
+<th>Tipo</th>
+<th>Puerto</th>
+<th>Origen</th>
+<th>Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SSH</td>
+<td>22</td>
+<td><code>0.0.0.0/0</code></td>
+<td>SSH</td>
+</tr>
+<tr>
+<td>HTTP</td>
+<td>80</td>
+<td><code>rundash-proxy-sg</code> (el grupo)</td>
+<td>HTTP solo desde el proxy</td>
+</tr>
+</tbody>
+</table>
+</li>
+</ol>
+<p>Para la segunda regla, en <strong>Source</strong> empieza a escribir <code>rundash-proxy-sg</code> y
+   selecciónalo cuando aparezca: verás que el origen se escribe como
+   <code>sg-xxxxxxxx</code> (el identificador del security group), no como una IP.</p>
+<ul>
+<li>Deja la regla de salida por defecto.</li>
+<li>Pulsa <strong>Create security group</strong>.</li>
+</ul>
+<p><strong>¿Qué significa que el origen sea otro security group?</strong></p>
+<p>Hasta ahora habíamos puesto como origen un rango de IPs (<code>0.0.0.0/0</code>). Pero AWS
+también permite poner <strong>otro security group</strong> como origen. La regla entonces
+significa: «acepta tráfico en el puerto 80 que provenga de cualquier instancia que
+tenga asignado el security group <code>rundash-proxy-sg</code>».</p>
+<p>Esto es exactamente lo que queremos:</p>
+<ul>
+<li>El proxy (que tiene <code>rundash-proxy-sg</code>) puede hablar con el backend por el
+  puerto 80. ✅</li>
+<li>Cualquier otra cosa de Internet que intente llegar al backend por el puerto 80
+  queda bloqueada, porque no viene de una instancia con ese grupo. ✅</li>
+</ul>
+<p>Así el backend <strong>no necesita</strong> (y de hecho no tiene) el puerto 80 abierto al mundo.
+Es la materialización de la ventaja «ocultar el backend». Terraform lo expresa con
+<code>security_groups = [aws_security_group.proxy.id]</code> dentro del bloque <code>ingress</code> del
+backend.</p>
+<blockquote>
+<p>Nota sobre el SSH del backend: lo dejamos abierto a <code>0.0.0.0/0</code> para poder
+administrarlo (y para que Ansible lo configure) directamente desde tu máquina.
+En un entorno real más duro se restringiría el SSH al backend para que solo se
+pudiera entrar a través del proxy (patrón <em>bastión</em>), pero eso complica la
+práctica y no aporta nada nuevo aquí.</p>
+</blockquote>
+<h2 id="4-lanzar-las-dos-instancias">4. Lanzar las dos instancias</h2>
+<p>Lanza primero el backend y luego el proxy (el orden no importa técnicamente, pero
+así tienes la IP privada del backend a mano antes de configurar el proxy).</p>
+<h3 id="41-instancia-backend-rundash-web">4.1. Instancia backend (<code>rundash-web</code>)</h3>
+<ol>
+<li><strong>Launch instance</strong>:</li>
+<li><strong>Name</strong>: <code>rundash-web</code></li>
+<li><strong>AMI</strong>: Ubuntu Server 24.04 LTS (x86_64), propietario <code>099720109477</code>.</li>
+<li><strong>Instance type</strong>: <code>t2.small</code>.</li>
+<li><strong>Key pair</strong>: <code>rundash-proxy-key</code> (el que creaste en 3.1).</li>
+<li><strong>Network settings → Edit</strong>: en <strong>Firewall (security groups)</strong> elige
+     <strong>Select existing security group</strong> y marca <code>rundash-proxy-backend-sg</code>.</li>
+<li><strong>Configure storage</strong>: 8 GiB gp3.</li>
+<li>
+<p><strong>Advanced details → User data</strong>: pega esto:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1">#cloud-config</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="nt">hostname</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">rundash-web</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="nt">package_update</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="nt">packages</span><span class="p">:</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">python3</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">python3-apt</span>
+</code></pre></div>
+<p>Es el mismo user data de la práctica 1.1, cambiando el hostname a
+ <code>rundash-web</code>. (Qué hace cada línea está explicado allí; en resumen: fija el
+ nombre de la máquina, refresca <code>apt</code> e instala lo que Ansible necesita.)
+2. <strong>Launch instance</strong>.</p>
+</li>
+</ol>
+<h3 id="42-instancia-proxy-rundash-proxy">4.2. Instancia proxy (<code>rundash-proxy</code>)</h3>
+<ol>
+<li><strong>Launch instance</strong> otra vez:</li>
+<li><strong>Name</strong>: <code>rundash-proxy</code></li>
+<li><strong>AMI</strong>: Ubuntu Server 24.04 LTS (x86_64).</li>
+<li><strong>Instance type</strong>: <code>t2.small</code>.</li>
+<li><strong>Key pair</strong>: <code>rundash-proxy-key</code>.</li>
+<li><strong>Network settings → Edit</strong>: selecciona <code>rundash-proxy-sg</code>.</li>
+<li><strong>Configure storage</strong>: 8 GiB gp3.</li>
+<li>
+<p><strong>Advanced details → User data</strong>:</p>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c1">#cloud-config</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="nt">hostname</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">rundash-proxy</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="nt">package_update</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="nt">packages</span><span class="p">:</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">python3</span>
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">python3-apt</span>
+</code></pre></div>
+4. <strong>Launch instance</strong>.</p>
+</li>
+</ol>
+<h3 id="43-anotar-las-direcciones">4.3. Anotar las direcciones</h3>
+<p>Cuando ambas estén <code>running</code> y con los <em>Status checks</em> en verde, ve a <strong>Instances</strong>
+y anota:</p>
+<ul>
+<li>La <strong>Public IPv4 address</strong> del proxy → la llamaremos <code>&lt;IP_PROXY&gt;</code>. Es la única
+  dirección pública que usará el cliente.</li>
+<li>La <strong>Private IPv4 address</strong> del backend → la llamaremos <code>&lt;IP_PRIV_WEB&gt;</code>. La
+  verás en la columna <em>Private IPv4 address</em> (quizá tengas que añadirla a las
+  columnas visibles con el icono de engranaje). Suele ser algo como <code>172.31.x.x</code>.</li>
+</ul>
+<p><strong>¿Por qué el proxy usará la IP privada del backend y no la pública?</strong> Porque la IP
+privada es estable dentro de la VPC y el tráfico entre instancias de la misma VPC no
+sale a Internet (es más rápido, gratis y no depende de que el backend tenga IP
+pública). Además, como hemos cerrado el puerto 80 del backend al mundo, <em>solo</em>
+llegando por la red interna se puede hablar con él.</p>
+<h2 id="5-configurar-el-backend-igual-que-la-practica-11">5. Configurar el backend (igual que la práctica 1.1)</h2>
+<p>El backend se configura <strong>exactamente igual</strong> que la instancia de la práctica 1.1:
+instalar nginx y git, clonar las <strong>dos</strong> aplicaciones y servir los dos sitios como
+virtual hosts (<code>planes.daw</code> y <code>puertos.daw</code>). Lo repetimos aquí para que la práctica
+sea autocontenida.</p>
+<p>Conecta por SSH al backend usando su <strong>IP pública</strong> (sí, el backend tiene IP
+pública; lo que está cerrado es su puerto 80, no el 22):</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>ssh<span class="w"> </span>-i<span class="w"> </span>rundash-proxy-key.pem<span class="w"> </span>ubuntu@&lt;IP_PUB_WEB&gt;
+</code></pre></div>
+<p>Todos los comandos siguientes se ejecutan <strong>dentro de esa sesión SSH</strong>, con <code>sudo</code>
+cuando haga falta (se explicó en la práctica 1.1).</p>
+<h3 id="51-comprobar-cloud-init-e-instalar-paquetes">5.1. Comprobar cloud-init e instalar paquetes</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>cloud-init<span class="w"> </span>status<span class="w"> </span>--wait
+</code></pre></div>
+<p>Espera a que la configuración inicial termine (debe acabar diciendo <code>done</code>). Así
+evitamos pelearnos con <code>apt</code> mientras cloud-init sigue instalando cosas.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>sudo<span class="w"> </span>apt<span class="w"> </span>update
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>nginx<span class="w"> </span>git
+</code></pre></div>
+<ul>
+<li><code>nginx</code>: el servidor web que servirá los dos sitios en el backend.</li>
+<li><code>git</code>: para clonar los repositorios.</li>
+</ul>
+<blockquote>
+<p>Si <code>apt</code> se queja de un lock (<code>Could not get lock /var/lib/dpkg/lock-frontend</code>),
+cloud-init aún está trabajando: espera un minuto y reintenta.</p>
+</blockquote>
+<h3 id="52-clonar-las-dos-aplicaciones">5.2. Clonar las dos aplicaciones</h3>
+<p>Cada inquilino tiene su propio directorio dentro de <code>/var/www</code>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>sudo<span class="w"> </span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/raul-profesor/rundash.git<span class="w"> </span>/var/www/planes
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>sudo<span class="w"> </span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/raul-profesor/puertos-tour.git<span class="w"> </span>/var/www/puertos
+</code></pre></div>
+<p><code>/var/www/planes</code> contendrá RunDash (responderá a <code>planes.daw</code>) y <code>/var/www/puertos</code>
+Puertos Míticos (responderá a <code>puertos.daw</code>). (El detalle de estos clones está en la
+guía de la práctica 1.1.)</p>
+<h3 id="53-configurar-y-activar-los-dos-sitios">5.3. Configurar y activar los dos sitios</h3>
+<p>Crea un virtual host por tenant. Primero <code>planes.daw</code>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>sudo<span class="w"> </span>nano<span class="w"> </span>/etc/nginx/sites-available/planes.daw
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="k">server</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="w">    </span><span class="kn">listen</span><span class="w"> </span><span class="mi">80</span><span class="p">;</span>
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="w">    </span><span class="kn">listen</span><span class="w"> </span><span class="s">[::]:80</span><span class="p">;</span>
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="w">    </span><span class="kn">server_name</span><span class="w"> </span><span class="s">planes.daw</span><span class="p">;</span>
+<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a>
+<a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a><span class="w">    </span><span class="kn">root</span><span class="w"> </span><span class="s">/var/www/planes</span><span class="p">;</span>
+<a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a><span class="w">    </span><span class="kn">index</span><span class="w"> </span><span class="s">index.html</span><span class="p">;</span>
+<a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a>
+<a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a><span class="w">    </span><span class="kn">location</span><span class="w"> </span><span class="s">/</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-9-10" name="__codelineno-9-10" href="#__codelineno-9-10"></a><span class="w">        </span><span class="kn">try_files</span><span class="w"> </span><span class="nv">$uri</span><span class="w"> </span><span class="nv">$uri/index.html</span><span class="w"> </span><span class="nv">$uri/</span><span class="w"> </span><span class="p">=</span><span class="mi">404</span><span class="p">;</span>
+<a id="__codelineno-9-11" name="__codelineno-9-11" href="#__codelineno-9-11"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-9-12" name="__codelineno-9-12" href="#__codelineno-9-12"></a><span class="p">}</span>
+</code></pre></div>
+<p>Y luego <code>puertos.daw</code>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>sudo<span class="w"> </span>nano<span class="w"> </span>/etc/nginx/sites-available/puertos.daw
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="k">server</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="w">    </span><span class="kn">listen</span><span class="w"> </span><span class="mi">80</span><span class="p">;</span>
+<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="w">    </span><span class="kn">listen</span><span class="w"> </span><span class="s">[::]:80</span><span class="p">;</span>
+<a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="w">    </span><span class="kn">server_name</span><span class="w"> </span><span class="s">puertos.daw</span><span class="p">;</span>
+<a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a>
+<a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a><span class="w">    </span><span class="kn">root</span><span class="w"> </span><span class="s">/var/www/puertos</span><span class="p">;</span>
+<a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a><span class="w">    </span><span class="kn">index</span><span class="w"> </span><span class="s">index.html</span><span class="p">;</span>
+<a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a>
+<a id="__codelineno-11-9" name="__codelineno-11-9" href="#__codelineno-11-9"></a><span class="w">    </span><span class="kn">location</span><span class="w"> </span><span class="s">/</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-11-10" name="__codelineno-11-10" href="#__codelineno-11-10"></a><span class="w">        </span><span class="kn">try_files</span><span class="w"> </span><span class="nv">$uri</span><span class="w"> </span><span class="nv">$uri/index.html</span><span class="w"> </span><span class="nv">$uri/</span><span class="w"> </span><span class="p">=</span><span class="mi">404</span><span class="p">;</span>
+<a id="__codelineno-11-11" name="__codelineno-11-11" href="#__codelineno-11-11"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-11-12" name="__codelineno-11-12" href="#__codelineno-11-12"></a><span class="p">}</span>
+</code></pre></div>
+<p>El significado de cada línea está en la guía de la práctica 1.1. Lo importante aquí es
+que el <code>server_name</code> de cada bloque es el nombre de su sitio (<code>planes.daw</code> /
+<code>puertos.daw</code>), para que el backend elija el virtual host correcto a partir de la
+cabecera <code>Host</code> que le reenvía el proxy.</p>
+<p>Activa ambos sitios, desactiva el de ejemplo y valida:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>sudo<span class="w"> </span>ln<span class="w"> </span>-s<span class="w"> </span>/etc/nginx/sites-available/planes.daw<span class="w"> </span>/etc/nginx/sites-enabled/planes.daw
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>sudo<span class="w"> </span>ln<span class="w"> </span>-s<span class="w"> </span>/etc/nginx/sites-available/puertos.daw<span class="w"> </span>/etc/nginx/sites-enabled/puertos.daw
+<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>sudo<span class="w"> </span>rm<span class="w"> </span>/etc/nginx/sites-enabled/default
+<a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a>sudo<span class="w"> </span>nginx<span class="w"> </span>-t
+<a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>reload<span class="w"> </span>nginx
+<a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>nginx
+</code></pre></div>
+<p>Comprueba que el backend sirve <strong>los dos</strong> sitios <strong>localmente</strong>, forzando la cabecera
+<code>Host</code> (los nombres aún no resuelven hacia el backend):</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>curl<span class="w"> </span>-s<span class="w"> </span>-H<span class="w"> </span><span class="s2">&quot;Host: planes.daw&quot;</span><span class="w">  </span>http://localhost/<span class="w"> </span><span class="p">|</span><span class="w"> </span>head<span class="w"> </span>-5
+<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>curl<span class="w"> </span>-s<span class="w"> </span>-H<span class="w"> </span><span class="s2">&quot;Host: puertos.daw&quot;</span><span class="w"> </span>http://localhost/<span class="w"> </span><span class="p">|</span><span class="w"> </span>head<span class="w"> </span>-5
+</code></pre></div>
+<p>Debes ver el HTML de RunDash con el primer comando y el de Puertos Míticos con el
+segundo. Este paso es clave: <strong>verifica el backend antes de culpar al proxy</strong>.</p>
+<h2 id="6-configurar-el-proxy-inverso">6. Configurar el proxy inverso</h2>
+<p>Sal de la sesión del backend (<code>exit</code>) y conecta al proxy por su IP pública:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>ssh<span class="w"> </span>-i<span class="w"> </span>rundash-proxy-key.pem<span class="w"> </span>ubuntu@&lt;IP_PROXY&gt;
+</code></pre></div>
+<h3 id="61-instalar-nginx">6.1. Instalar nginx</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>cloud-init<span class="w"> </span>status<span class="w"> </span>--wait
+<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>sudo<span class="w"> </span>apt<span class="w"> </span>update
+<a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>nginx
+</code></pre></div>
+<p>En el proxy <strong>solo instalamos nginx</strong>: no necesitamos git (no vamos a clonar nada)
+porque el proxy no sirve contenido propio, solo reenvía peticiones.</p>
+<h3 id="62-configurar-el-proxy-inverso">6.2. Configurar el proxy inverso</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>sudo<span class="w"> </span>nano<span class="w"> </span>/etc/nginx/sites-available/rundash-proxy
+</code></pre></div>
+<p>Pega este contenido, sustituyendo <code>&lt;IP_PRIV_WEB&gt;</code> por la IP privada del backend que
+anotaste en 4.3:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="k">server</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a><span class="w">    </span><span class="kn">listen</span><span class="w"> </span><span class="mi">80</span><span class="p">;</span>
+<a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a><span class="w">    </span><span class="kn">listen</span><span class="w"> </span><span class="s">[::]:80</span><span class="p">;</span>
+<a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a><span class="w">    </span><span class="kn">server_name</span><span class="w"> </span><span class="s">_</span><span class="p">;</span>
+<a id="__codelineno-17-5" name="__codelineno-17-5" href="#__codelineno-17-5"></a>
+<a id="__codelineno-17-6" name="__codelineno-17-6" href="#__codelineno-17-6"></a><span class="w">    </span><span class="kn">location</span><span class="w"> </span><span class="s">/</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-17-7" name="__codelineno-17-7" href="#__codelineno-17-7"></a><span class="w">        </span><span class="kn">proxy_pass</span><span class="w"> </span><span class="s">http://&lt;IP_PRIV_WEB&gt;</span><span class="p">;</span>
+<a id="__codelineno-17-8" name="__codelineno-17-8" href="#__codelineno-17-8"></a><span class="w">        </span><span class="kn">proxy_set_header</span><span class="w"> </span><span class="s">Host</span><span class="w"> </span><span class="nv">$host</span><span class="p">;</span>
+<a id="__codelineno-17-9" name="__codelineno-17-9" href="#__codelineno-17-9"></a><span class="w">        </span><span class="kn">proxy_set_header</span><span class="w"> </span><span class="s">X-Real-IP</span><span class="w"> </span><span class="nv">$remote_addr</span><span class="p">;</span>
+<a id="__codelineno-17-10" name="__codelineno-17-10" href="#__codelineno-17-10"></a><span class="w">        </span><span class="kn">proxy_set_header</span><span class="w"> </span><span class="s">X-Forwarded-For</span><span class="w"> </span><span class="nv">$proxy_add_x_forwarded_for</span><span class="p">;</span>
+<a id="__codelineno-17-11" name="__codelineno-17-11" href="#__codelineno-17-11"></a><span class="w">        </span><span class="kn">proxy_set_header</span><span class="w"> </span><span class="s">X-Forwarded-Proto</span><span class="w"> </span><span class="nv">$scheme</span><span class="p">;</span>
+<a id="__codelineno-17-12" name="__codelineno-17-12" href="#__codelineno-17-12"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-17-13" name="__codelineno-17-13" href="#__codelineno-17-13"></a><span class="p">}</span>
+</code></pre></div>
+<p><strong>¿Qué significa cada línea?</strong></p>
+<table>
+<thead>
+<tr>
+<th>Línea</th>
+<th>Significado</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>server { ... }</code></td>
+<td>Un <em>virtual host</em> de nginx, como en la práctica 1.1.</td>
+</tr>
+<tr>
+<td><code>listen 80;</code> / <code>listen [::]:80;</code></td>
+<td>El proxy atiende peticiones HTTP (IPv4 e IPv6) en el puerto 80. Es el puerto que el security group del proxy tiene abierto al mundo.</td>
+</tr>
+<tr>
+<td><code>server_name _;</code></td>
+<td>Igual que antes: sin dominio, este <code>server</code> es el cajón de sastre del puerto 80.</td>
+</tr>
+<tr>
+<td><code>location / { ... }</code></td>
+<td>Regla para todas las rutas.</td>
+</tr>
+<tr>
+<td><code>proxy_pass http://&lt;IP_PRIV_WEB&gt;;</code></td>
+<td><strong>El corazón del proxy inverso.</strong> Le dice a nginx: «todo lo que llegue a esta <code>location</code>, en vez de servirlo tú de un directorio local, <strong>reenvíalo</strong> a <code>http://&lt;IP_PRIV_WEB&gt;</code> (el backend)». nginx abre una conexión HTTP al backend, le pasa la petición del cliente, recibe su respuesta y se la devuelve al cliente. Observa que <strong>no</strong> hay barra final ni ruta: reenvía todo tal cual.</td>
+</tr>
+<tr>
+<td><code>proxy_set_header Host $host;</code></td>
+<td>Al reenviar, nginx reescribe las cabeceras HTTP. Esta línea conserva la cabecera <code>Host</code> original del cliente (<code>$host</code>), para que el backend sepa a qué sitio llamaban.</td>
+</tr>
+<tr>
+<td><code>proxy_set_header X-Real-IP $remote_addr;</code></td>
+<td>Añade una cabecera con la IP real del cliente (<code>$remote_addr</code>). Sin ella, el backend solo vería la IP del proxy y no sabría quién es el cliente de verdad.</td>
+</tr>
+<tr>
+<td><code>proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;</code></td>
+<td>Similar a la anterior pero con la lista completa de saltos. <code>$proxy_add_x_forwarded_for</code> toma la cabecera existente (si la hay) y le añade la IP del cliente. Es la convención estándar para proxies.</td>
+</tr>
+<tr>
+<td><code>proxy_set_header X-Forwarded-Proto $scheme;</code></td>
+<td>Informa al backend de si el cliente llegó por <code>http</code> o <code>https</code> (<code>$scheme</code>). Útil cuando el backend necesita saber el protocolo original (lo usaremos en la práctica 1.4).</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>¿Por qué <code>proxy_pass</code> sin barra final?</strong> Con <code>proxy_pass http://IP;</code> (sin <code>/</code>
+detrás), nginx pasa la URI del cliente <strong>sin modificar</strong>. Si escribiéramos
+<code>proxy_pass http://IP/;</code> (con <code>/</code>), nginx sustituiría la parte de la URL que
+coincide con la <code>location</code>. Para «reenviar todo tal cual», la forma sin barra es
+la correcta y la más sencilla.</p>
+</blockquote>
+<p>Guarda (<code>Ctrl+O</code>, <code>Enter</code>, <code>Ctrl+X</code>).</p>
+<p>Activa el sitio, desactiva el de ejemplo y valida:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>sudo<span class="w"> </span>ln<span class="w"> </span>-s<span class="w"> </span>/etc/nginx/sites-available/rundash-proxy<span class="w"> </span>/etc/nginx/sites-enabled/rundash-proxy
+<a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a>sudo<span class="w"> </span>rm<span class="w"> </span>/etc/nginx/sites-enabled/default
+<a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a>sudo<span class="w"> </span>nginx<span class="w"> </span>-t
+<a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>reload<span class="w"> </span>nginx
+<a id="__codelineno-18-5" name="__codelineno-18-5" href="#__codelineno-18-5"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>nginx
+</code></pre></div>
+<p><code>nginx -t</code> debe decir <code>syntax is ok</code>. Si falla, casi seguro que es un error de
+escritura en la IP privada o una llave sin cerrar: te dirá el fichero y la línea.</p>
+<h2 id="7-verificacion-final">7. Verificación final</h2>
+<h3 id="71-resolver-los-dominios-hacia-el-proxy">7.1. Resolver los dominios hacia el proxy</h3>
+<p>Como en la práctica 1.1, tu máquina local necesita resolver <code>planes.daw</code> y
+<code>puertos.daw</code>. La diferencia es que ahora <strong>apuntan al proxy</strong> (su IP pública), no al
+backend: el cliente habla con el proxy y este reenvía al backend. Añade en el
+<code>/etc/hosts</code> de tu máquina:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>&lt;IP_PROXY&gt;  planes.daw puertos.daw
+</code></pre></div>
+<p>(Recuerda: <code>/etc/hosts</code> se edita con permisos de administrador; en Linux/macOS <code>sudo
+nano /etc/hosts</code>, en Windows el Bloc de notas como administrador en
+<code>C:\Windows\System32\drivers\etc\hosts</code>.)</p>
+<h3 id="72-con-curl-y-en-el-navegador">7.2. Con curl y en el navegador</h3>
+<p>Desde tu máquina local:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>curl<span class="w"> </span>-I<span class="w"> </span>http://planes.daw
+<a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a>curl<span class="w"> </span>-I<span class="w"> </span>http://puertos.daw
+</code></pre></div>
+<p>Ambos deben dar <code>HTTP/1.1 200 OK</code> y <code>Server: nginx</code>. <strong>Estás hablando con el proxy</strong>,
+que ha ido a buscar la respuesta al backend y te la ha traído. El backend, por su
+parte, ha elegido el sitio por <code>server_name</code> según la cabecera <code>Host</code> que le pasó el
+proxy: RunDash en <code>planes.daw</code> y Puertos Míticos en <code>puertos.daw</code>.</p>
+<p>Abre en el navegador <code>http://planes.daw</code> y <code>http://puertos.daw</code>: verás dos webs
+distintas aunque todo el contenido lo genera el backend y tú solo ves la dirección del
+proxy.</p>
+<h3 id="73-demostrar-que-el-backend-esta-oculto">7.3. Demostrar que el backend está oculto</h3>
+<p>Esta es la comprobación estrella de la práctica. Intenta acceder <strong>directamente</strong> al
+backend por su IP pública, por el puerto 80:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>curl<span class="w"> </span>-I<span class="w"> </span>--max-time<span class="w"> </span><span class="m">10</span><span class="w"> </span>http://&lt;IP_PUB_WEB&gt;
+</code></pre></div>
+<p>El comando debe <strong>agotar el tiempo de espera</strong> (timeout) o fallar. ¿Por qué? Porque
+el security group del backend no tiene ninguna regla que permita el puerto 80 desde
+Internet: solo lo permite desde el security group del proxy. Tu máquina no es el
+proxy, así que el paquete se descarta.</p>
+<blockquote>
+<p>Ojo: el backend <strong>sí</strong> responde por SSH (puerto 22), porque esa regla sí está
+abierta a <code>0.0.0.0/0</code>. Lo que está cerrado es solo el tráfico web.</p>
+</blockquote>
+<h3 id="74-ver-el-trafico-desde-dentro">7.4. Ver el tráfico desde dentro</h3>
+<p>Si quieres ver el reenvío «por dentro», conecta al proxy y mira sus logs mientras
+recargas la página en el navegador:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>sudo<span class="w"> </span>tail<span class="w"> </span>-f<span class="w"> </span>/var/log/nginx/access.log
+</code></pre></div>
+<p>Verás una línea por petición. En el log del <strong>proxy</strong> aparece la IP del cliente. Si
+haces lo mismo en el backend (<code>sudo tail -f /var/log/nginx/access.log</code> dentro del
+backend), verás que ahí todas las peticiones vienen de la <strong>IP privada del proxy</strong>:
+es el proxy quien le habla, no el cliente directamente.</p>
+<h2 id="8-limpieza-importante-evita-costes">8. Limpieza (importante: evita costes)</h2>
+<p>Cuando termines, deshaz el escenario:</p>
+<ol>
+<li><strong>Instances</strong>: selecciona <code>rundash-proxy</code> y <code>rundash-web</code> → <strong>Instance state →
+   Terminate instance</strong>. Confirma.</li>
+<li><strong>Security Groups</strong>: borra <code>rundash-proxy-sg</code> y <code>rundash-proxy-backend-sg</code>.
+   <em>Nota</em>: AWS no te dejará borrar un security group mientras otro lo referencie.
+   Como <code>rundash-proxy-backend-sg</code> referencia a <code>rundash-proxy-sg</code> en su regla de HTTP,
+   puede que tengas que borrar primero el backend (o la regla) si te da error
+   <code>DependencyViolation</code>. Al terminar las instancias normalmente se puede borrar
+   cualquiera de los dos.</li>
+<li><strong>Key Pairs</strong>: opcionalmente borra <code>rundash-proxy-key</code>.</li>
+<li>Borra <code>rundash-proxy-key.pem</code> de tu máquina si ya no lo vas a usar.</li>
+</ol>
+<blockquote>
+<p>Dos instancias <code>t2.small</code> encendidas generan el doble de cargo por hora que una.
+No las dejes corriendo entre clases.</p>
+</blockquote>
+<h2 id="9-solucion-de-problemas">9. Solución de problemas</h2>
+<table>
+<thead>
+<tr>
+<th>Síntoma</th>
+<th>Causa probable</th>
+<th>Solución</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>curl http://&lt;IP_PROXY&gt;</code> devuelve <code>502 Bad Gateway</code></td>
+<td>El proxy no alcanza al backend: IP privada mal escrita, backend apagado, o la regla HTTP del backend no permite al proxy</td>
+<td>Revisa la IP privada en <code>proxy_pass</code>, que el backend esté <code>running</code> y que <code>rundash-proxy-backend-sg</code> tenga la regla HTTP con origen <code>rundash-proxy-sg</code></td>
+</tr>
+<tr>
+<td><code>curl http://&lt;IP_PROXY&gt;</code> devuelve <code>504 Gateway Timeout</code></td>
+<td>El backend no responde en el puerto 80 (nginx caído en el backend)</td>
+<td>Entra al backend y <code>sudo systemctl status nginx</code>; prueba <code>curl http://localhost/</code> allí</td>
+</tr>
+<tr>
+<td>El navegador muestra «Welcome to nginx» en el proxy</td>
+<td>El sitio <code>default</code> sigue activo en el proxy</td>
+<td><code>sudo rm /etc/nginx/sites-enabled/default &amp;&amp; sudo systemctl reload nginx</code></td>
+</tr>
+<tr>
+<td><code>curl http://&lt;IP_PUB_WEB&gt;</code> <strong>sí</strong> responde (y no debería)</td>
+<td>La regla HTTP del backend está abierta a <code>0.0.0.0/0</code> en vez de al security group del proxy</td>
+<td>Corrige el origen de la regla HTTP de <code>rundash-proxy-backend-sg</code> para que sea el security group del proxy</td>
+</tr>
+<tr>
+<td><code>nginx -t</code> falla en el proxy</td>
+<td>Error de sintaxis: IP privada mal puesta, llave sin cerrar, punto y coma olvidado</td>
+<td>Lee el fichero y la línea que indica el error y corrígelo</td>
+</tr>
+<tr>
+<td>El proxy responde pero el contenido no es RunDash</td>
+<td>El backend sirve el sitio equivocado o el <code>root</code> del backend apunta mal</td>
+<td>Verifica en el backend <code>curl http://localhost/</code> y el <code>root</code> de su nginx</td>
+</tr>
+<tr>
+<td><code>ssh</code> al backend falla con timeout</td>
+<td>El security group del backend no tiene el puerto 22 abierto, o estás usando la IP equivocada</td>
+<td>Revisa la regla SSH de <code>rundash-proxy-backend-sg</code> y la IP pública actual del backend</td>
+</tr>
+</tbody>
+</table>
+<h2 id="10-equivalencia-con-el-despliegue-automatizado">10. Equivalencia con el despliegue automatizado</h2>
+<p>Cuando pasemos a Terraform + Ansible, cada paso manual corresponde a un recurso o
+tarea concreta:</p>
+<table>
+<thead>
+<tr>
+<th>Paso manual</th>
+<th>Equivalente automatizado</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Crear key pair compartido</td>
+<td><code>tls_private_key</code>, <code>aws_key_pair</code> y <code>local_sensitive_file</code> en <code>terraform/main.tf</code></td>
+</tr>
+<tr>
+<td>Security group del proxy (22 y 80)</td>
+<td><code>aws_security_group "proxy"</code> en <code>terraform/main.tf</code></td>
+</tr>
+<tr>
+<td>Security group del backend (22 y 80 desde el proxy)</td>
+<td><code>aws_security_group "backend"</code> con <code>security_groups = [...]</code></td>
+</tr>
+<tr>
+<td>Lanzar instancia proxy con user data</td>
+<td><code>aws_instance "proxy"</code> + <code>terraform/cloud-init.yaml.tftpl</code></td>
+</tr>
+<tr>
+<td>Lanzar instancia backend con user data</td>
+<td><code>aws_instance "web"</code> + la misma plantilla de cloud-init</td>
+</tr>
+<tr>
+<td><code>apt install nginx git</code> + clonar las dos apps + configurar los dos sitios en el backend</td>
+<td>Play <em>Desplegar el escenario multitenant en el backend</em> de <code>ansible/playbook.yml</code> (bucle <code>loop</code> sobre la lista <code>sites</code>)</td>
+</tr>
+<tr>
+<td><code>apt install nginx</code> + config del proxy</td>
+<td>Play <em>Configurar el proxy inverso</em> del playbook</td>
+</tr>
+<tr>
+<td>Bloque <code>proxy_pass</code> escrito a mano</td>
+<td>Plantilla <code>ansible/templates/proxy.conf.j2</code> (variable <code>{{ backend_ip }}</code>)</td>
+</tr>
+<tr>
+<td>Los dos virtual hosts del backend escritos a mano</td>
+<td>Plantilla <code>ansible/templates/site.conf.j2</code>, aplicada una vez por sitio con <code>{{ item.name }}</code> y <code>{{ item.deploy_dir }}</code></td>
+</tr>
+<tr>
+<td>Anotar IPs y montar el inventario</td>
+<td><code>local_file "ansible_inventory"</code> genera <code>ansible/inventory.yml</code> con las IPs y la variable <code>backend_ip</code></td>
+</tr>
+<tr>
+<td>Línea en <code>/etc/hosts</code></td>
+<td>La añades en <strong>tu</strong> máquina; Terraform te da la IP del proxy en el output <code>proxy_public_ip</code></td>
+</tr>
+</tbody>
+</table>
+<p>La variable <code>backend_ip</code> que usa la plantilla del proxy sale del inventario que
+Terraform genera automáticamente: es la IP privada del backend, la misma que tú
+anotaste a mano en el paso 4.3.</p>
+<p>Si algo de la automatización no se entiende, la forma de depurarla es volver a esta
+guía y reproducir el paso a mano: lo que hace la herramienta es exactamente esto,
+solo que sin clics.</p>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Volver al principio
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.top", "toc.integrate", "search.highlight", "content.code.annotate", "content.code.copy"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>
