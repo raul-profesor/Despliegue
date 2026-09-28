@@ -682,15 +682,15 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#1-el-escenario-que-vamos-a-montarv" class="md-nav__link">
+  <a href="#1-el-escenario-que-vamos-a-montar" class="md-nav__link">
     <span class="md-ellipsis">
       
-        1. El escenario que vamos a montarv
+        1. El escenario que vamos a montar
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="1. El escenario que vamos a montarv">
+    <nav class="md-nav" aria-label="1. El escenario que vamos a montar">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -997,17 +997,6 @@
     <span class="md-ellipsis">
       
         9. Solución de problemas
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#10-equivalencia-con-el-despliegue-automatizado" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        10. Equivalencia con el despliegue automatizado
       
     </span>
   </a>
@@ -3004,28 +2993,31 @@ dos de la práctica 1.1: <code>planes.daw</code> y <code>puertos.daw</code>).</p
 apartado <em>«¿Qué significa?»</em> que explica línea a línea qué hace y por qué está ahí.
 No copies nada sin haberlo leído antes: en el examen y en la vida real nadie
 configura nada que no entiende.</p>
-<h2 id="1-el-escenario-que-vamos-a-montarv">1. El escenario que vamos a montarv</h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>                         Internet
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>                            │
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>                      HTTP (puerto 80)
-<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>                            │
-<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>                            ▼
-<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>   ┌────────────────────────────────────────────────────┐
-<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>   │  EC2 «proxy» (Ubuntu 24.04, t2.small)              │
-<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>   │  nginx como PROXY INVERSO                          │
-<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>   │  IP pública: es la única cara visible del sistema  │
-<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>   └───────────────────────┬────────────────────────────┘
-<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>                           │  HTTP (puerto 80)
-<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>                           │  por la IP PRIVADA
-<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>                           ▼
-<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>   ┌────────────────────────────────────────────────────┐
-<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>   │  EC2 «web» (Ubuntu 24.04, t2.small)                │
-<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>   │  nginx con 2 virtual hosts (multitenant):          │
-<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a>   │    planes.daw  ──► /var/www/planes   (RunDash)     │
-<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a>   │    puertos.daw ──► /var/www/puertos  (Puertos)     │
-<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a>   │  Solo IP privada: NO es accesible desde Internet   │
-<a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a>   └────────────────────────────────────────────────────┘
-</code></pre></div>
+<h2 id="1-el-escenario-que-vamos-a-montar">1. El escenario que vamos a montar</h2>
+<pre class="mermaid"><code>flowchart TB
+    Internet([Internet])
+
+    subgraph Proxy["EC2 «proxy» (Ubuntu 24.04, t2.small)"]
+        ProxyNginx["nginx como PROXY INVERSO&lt;br/&gt;(única cara visible del sistema)"]
+    end
+
+    subgraph Web["EC2 «web» (Ubuntu 24.04, t2.small)"]
+        WebNginx["nginx con 2 virtual hosts (multitenant)"]
+        Planes["planes.daw → /var/www/planes (RunDash)"]
+        Puertos["puertos.daw → /var/www/puertos (Puertos)"]
+        WebNginx --&gt; Planes
+        WebNginx --&gt; Puertos
+    end
+
+    Internet -- "HTTP (puerto 80)" --&gt; ProxyNginx
+    ProxyNginx -- "HTTP (puerto 80)&lt;br/&gt;por la IP PRIVADA" --&gt; WebNginx
+
+    classDef proxy fill:#fef3c7,stroke:#f59e0b,color:#92400e
+    classDef web fill:#dbeafe,stroke:#2563eb,color:#1e3a8a
+    classDef inet fill:#e5e7eb,stroke:#374151,color:#111827
+    class Internet inet
+    class ProxyNginx proxy
+    class WebNginx,Planes,Puertos web</code></pre>
 <p>El resultado final será:</p>
 <ul>
 <li><strong>Dos instancias EC2</strong> con Ubuntu Server 24.04 LTS.</li>
@@ -3077,11 +3069,11 @@ proxy inverso aporta varias cosas que usaremos en las prácticas siguientes:</p>
 </tr>
 <tr>
 <td><strong>Balanceo de carga</strong></td>
-<td>Si hay varios backends, el proxy puede repartir las peticiones entre ellos (práctica 1.3).</td>
+<td>Si hay varios backends, el proxy puede repartir las peticiones entre ellos.</td>
 </tr>
 <tr>
 <td><strong>Terminación TLS</strong></td>
-<td>El proxy puede encargarse del HTTPS (cifrado) y hablar en HTTP simple con los backends (práctica 1.4).</td>
+<td>El proxy puede encargarse del HTTPS (cifrado) y hablar en HTTP simple con los backends.</td>
 </tr>
 <tr>
 <td><strong>Caché, compresión, límites de velocidad…</strong></td>
@@ -3157,7 +3149,7 @@ porque uno de los security groups referencia al otro.</p>
 instancia, pero para un escenario de prácticas es más sencillo gestionar uno solo;
 Terraform hace exactamente esto (un único <code>tls_private_key</code> para todo el escenario).</p>
 <p>Recuerda restringir los permisos del fichero en tu máquina:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>chmod<span class="w"> </span><span class="m">600</span><span class="w"> </span>rundash-proxy-key.pem
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>chmod<span class="w"> </span><span class="m">600</span><span class="w"> </span>rundash-proxy-key.pem
 </code></pre></div>
 <p>(Se explicó en la práctica 1.1: SSH rechaza claves legibles por otros usuarios.)</p>
 <h3 id="32-security-group-del-proxy">3.2. Security group del proxy</h3>
@@ -3254,12 +3246,10 @@ tenga asignado el security group <code>rundash-proxy-sg</code>».</p>
   queda bloqueada, porque no viene de una instancia con ese grupo. ✅</li>
 </ul>
 <p>Así el backend <strong>no necesita</strong> (y de hecho no tiene) el puerto 80 abierto al mundo.
-Es la materialización de la ventaja «ocultar el backend». Terraform lo expresa con
-<code>security_groups = [aws_security_group.proxy.id]</code> dentro del bloque <code>ingress</code> del
-backend.</p>
+Es la materialización de la ventaja «ocultar el backend». .</p>
 <blockquote>
 <p>Nota sobre el SSH del backend: lo dejamos abierto a <code>0.0.0.0/0</code> para poder
-administrarlo (y para que Ansible lo configure) directamente desde tu máquina.
+administrarlo directamente desde tu máquina.
 En un entorno real más duro se restringiría el SSH al backend para que solo se
 pudiera entrar a través del proxy (patrón <em>bastión</em>), pero eso complica la
 práctica y no aporta nada nuevo aquí.</p>
@@ -3279,12 +3269,12 @@ así tienes la IP privada del backend a mano antes de configurar el proxy).</p>
 <li><strong>Configure storage</strong>: 8 GiB gp3.</li>
 <li>
 <p><strong>Advanced details → User data</strong>: pega esto:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1">#cloud-config</span>
-<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="nt">hostname</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">rundash-web</span>
-<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="nt">package_update</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
-<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="nt">packages</span><span class="p">:</span>
-<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">python3</span>
-<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">python3-apt</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1">#cloud-config</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="nt">hostname</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">rundash-web</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="nt">package_update</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="nt">packages</span><span class="p">:</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">python3</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">python3-apt</span>
 </code></pre></div>
 <p>Es el mismo user data de la práctica 1.1, cambiando el hostname a
  <code>rundash-web</code>. (Qué hace cada línea está explicado allí; en resumen: fija el
@@ -3303,12 +3293,12 @@ así tienes la IP privada del backend a mano antes de configurar el proxy).</p>
 <li><strong>Configure storage</strong>: 8 GiB gp3.</li>
 <li>
 <p><strong>Advanced details → User data</strong>:</p>
-<p><div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c1">#cloud-config</span>
-<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="nt">hostname</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">rundash-proxy</span>
-<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="nt">package_update</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
-<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="nt">packages</span><span class="p">:</span>
-<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">python3</span>
-<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">python3-apt</span>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1">#cloud-config</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="nt">hostname</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">rundash-proxy</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="nt">package_update</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="nt">packages</span><span class="p">:</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">python3</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">python3-apt</span>
 </code></pre></div>
 4. <strong>Launch instance</strong>.</p>
 </li>
@@ -3335,17 +3325,17 @@ virtual hosts (<code>planes.daw</code> y <code>puertos.daw</code>). Lo repetimos
 sea autocontenida.</p>
 <p>Conecta por SSH al backend usando su <strong>IP pública</strong> (sí, el backend tiene IP
 pública; lo que está cerrado es su puerto 80, no el 22):</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>ssh<span class="w"> </span>-i<span class="w"> </span>rundash-proxy-key.pem<span class="w"> </span>ubuntu@&lt;IP_PUB_WEB&gt;
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>ssh<span class="w"> </span>-i<span class="w"> </span>rundash-proxy-key.pem<span class="w"> </span>ubuntu@&lt;IP_PUB_WEB&gt;
 </code></pre></div>
 <p>Todos los comandos siguientes se ejecutan <strong>dentro de esa sesión SSH</strong>, con <code>sudo</code>
 cuando haga falta (se explicó en la práctica 1.1).</p>
 <h3 id="51-comprobar-cloud-init-e-instalar-paquetes">5.1. Comprobar cloud-init e instalar paquetes</h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>cloud-init<span class="w"> </span>status<span class="w"> </span>--wait
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>cloud-init<span class="w"> </span>status<span class="w"> </span>--wait
 </code></pre></div>
 <p>Espera a que la configuración inicial termine (debe acabar diciendo <code>done</code>). Así
 evitamos pelearnos con <code>apt</code> mientras cloud-init sigue instalando cosas.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>sudo<span class="w"> </span>apt<span class="w"> </span>update
-<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>nginx<span class="w"> </span>git
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>sudo<span class="w"> </span>apt<span class="w"> </span>update
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>nginx<span class="w"> </span>git
 </code></pre></div>
 <ul>
 <li><code>nginx</code>: el servidor web que servirá los dos sitios en el backend.</li>
@@ -3357,93 +3347,93 @@ cloud-init aún está trabajando: espera un minuto y reintenta.</p>
 </blockquote>
 <h3 id="52-clonar-las-dos-aplicaciones">5.2. Clonar las dos aplicaciones</h3>
 <p>Cada inquilino tiene su propio directorio dentro de <code>/var/www</code>:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>sudo<span class="w"> </span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/raul-profesor/rundash.git<span class="w"> </span>/var/www/planes
-<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>sudo<span class="w"> </span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/raul-profesor/puertos-tour.git<span class="w"> </span>/var/www/puertos
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>sudo<span class="w"> </span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/raul-profesor/rundash.git<span class="w"> </span>/var/www/planes
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>sudo<span class="w"> </span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/raul-profesor/puertos-tour.git<span class="w"> </span>/var/www/puertos
 </code></pre></div>
 <p><code>/var/www/planes</code> contendrá RunDash (responderá a <code>planes.daw</code>) y <code>/var/www/puertos</code>
 Puertos Míticos (responderá a <code>puertos.daw</code>). (El detalle de estos clones está en la
 guía de la práctica 1.1.)</p>
 <h3 id="53-configurar-y-activar-los-dos-sitios">5.3. Configurar y activar los dos sitios</h3>
 <p>Crea un virtual host por tenant. Primero <code>planes.daw</code>:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>sudo<span class="w"> </span>nano<span class="w"> </span>/etc/nginx/sites-available/planes.daw
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>sudo<span class="w"> </span>nano<span class="w"> </span>/etc/nginx/sites-available/planes.daw
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="k">server</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="w">    </span><span class="kn">listen</span><span class="w"> </span><span class="mi">80</span><span class="p">;</span>
-<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="w">    </span><span class="kn">listen</span><span class="w"> </span><span class="s">[::]:80</span><span class="p">;</span>
-<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="w">    </span><span class="kn">server_name</span><span class="w"> </span><span class="s">planes.daw</span><span class="p">;</span>
-<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a>
-<a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a><span class="w">    </span><span class="kn">root</span><span class="w"> </span><span class="s">/var/www/planes</span><span class="p">;</span>
-<a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a><span class="w">    </span><span class="kn">index</span><span class="w"> </span><span class="s">index.html</span><span class="p">;</span>
-<a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a>
-<a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a><span class="w">    </span><span class="kn">location</span><span class="w"> </span><span class="s">/</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-9-10" name="__codelineno-9-10" href="#__codelineno-9-10"></a><span class="w">        </span><span class="kn">try_files</span><span class="w"> </span><span class="nv">$uri</span><span class="w"> </span><span class="nv">$uri/index.html</span><span class="w"> </span><span class="nv">$uri/</span><span class="w"> </span><span class="p">=</span><span class="mi">404</span><span class="p">;</span>
-<a id="__codelineno-9-11" name="__codelineno-9-11" href="#__codelineno-9-11"></a><span class="w">    </span><span class="p">}</span>
-<a id="__codelineno-9-12" name="__codelineno-9-12" href="#__codelineno-9-12"></a><span class="p">}</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="k">server</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="w">    </span><span class="kn">listen</span><span class="w"> </span><span class="mi">80</span><span class="p">;</span>
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="w">    </span><span class="kn">listen</span><span class="w"> </span><span class="s">[::]:80</span><span class="p">;</span>
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="w">    </span><span class="kn">server_name</span><span class="w"> </span><span class="s">planes.daw</span><span class="p">;</span>
+<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>
+<a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a><span class="w">    </span><span class="kn">root</span><span class="w"> </span><span class="s">/var/www/planes</span><span class="p">;</span>
+<a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a><span class="w">    </span><span class="kn">index</span><span class="w"> </span><span class="s">index.html</span><span class="p">;</span>
+<a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a>
+<a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a><span class="w">    </span><span class="kn">location</span><span class="w"> </span><span class="s">/</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a><span class="w">        </span><span class="kn">try_files</span><span class="w"> </span><span class="nv">$uri</span><span class="w"> </span><span class="nv">$uri/index.html</span><span class="w"> </span><span class="nv">$uri/</span><span class="w"> </span><span class="p">=</span><span class="mi">404</span><span class="p">;</span>
+<a id="__codelineno-8-11" name="__codelineno-8-11" href="#__codelineno-8-11"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-8-12" name="__codelineno-8-12" href="#__codelineno-8-12"></a><span class="p">}</span>
 </code></pre></div>
 <p>Y luego <code>puertos.daw</code>:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>sudo<span class="w"> </span>nano<span class="w"> </span>/etc/nginx/sites-available/puertos.daw
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>sudo<span class="w"> </span>nano<span class="w"> </span>/etc/nginx/sites-available/puertos.daw
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="k">server</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="w">    </span><span class="kn">listen</span><span class="w"> </span><span class="mi">80</span><span class="p">;</span>
-<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="w">    </span><span class="kn">listen</span><span class="w"> </span><span class="s">[::]:80</span><span class="p">;</span>
-<a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="w">    </span><span class="kn">server_name</span><span class="w"> </span><span class="s">puertos.daw</span><span class="p">;</span>
-<a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a>
-<a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a><span class="w">    </span><span class="kn">root</span><span class="w"> </span><span class="s">/var/www/puertos</span><span class="p">;</span>
-<a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a><span class="w">    </span><span class="kn">index</span><span class="w"> </span><span class="s">index.html</span><span class="p">;</span>
-<a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a>
-<a id="__codelineno-11-9" name="__codelineno-11-9" href="#__codelineno-11-9"></a><span class="w">    </span><span class="kn">location</span><span class="w"> </span><span class="s">/</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-11-10" name="__codelineno-11-10" href="#__codelineno-11-10"></a><span class="w">        </span><span class="kn">try_files</span><span class="w"> </span><span class="nv">$uri</span><span class="w"> </span><span class="nv">$uri/index.html</span><span class="w"> </span><span class="nv">$uri/</span><span class="w"> </span><span class="p">=</span><span class="mi">404</span><span class="p">;</span>
-<a id="__codelineno-11-11" name="__codelineno-11-11" href="#__codelineno-11-11"></a><span class="w">    </span><span class="p">}</span>
-<a id="__codelineno-11-12" name="__codelineno-11-12" href="#__codelineno-11-12"></a><span class="p">}</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="k">server</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="w">    </span><span class="kn">listen</span><span class="w"> </span><span class="mi">80</span><span class="p">;</span>
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="w">    </span><span class="kn">listen</span><span class="w"> </span><span class="s">[::]:80</span><span class="p">;</span>
+<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="w">    </span><span class="kn">server_name</span><span class="w"> </span><span class="s">puertos.daw</span><span class="p">;</span>
+<a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a>
+<a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a><span class="w">    </span><span class="kn">root</span><span class="w"> </span><span class="s">/var/www/puertos</span><span class="p">;</span>
+<a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a><span class="w">    </span><span class="kn">index</span><span class="w"> </span><span class="s">index.html</span><span class="p">;</span>
+<a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a>
+<a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a><span class="w">    </span><span class="kn">location</span><span class="w"> </span><span class="s">/</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-10-10" name="__codelineno-10-10" href="#__codelineno-10-10"></a><span class="w">        </span><span class="kn">try_files</span><span class="w"> </span><span class="nv">$uri</span><span class="w"> </span><span class="nv">$uri/index.html</span><span class="w"> </span><span class="nv">$uri/</span><span class="w"> </span><span class="p">=</span><span class="mi">404</span><span class="p">;</span>
+<a id="__codelineno-10-11" name="__codelineno-10-11" href="#__codelineno-10-11"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-10-12" name="__codelineno-10-12" href="#__codelineno-10-12"></a><span class="p">}</span>
 </code></pre></div>
 <p>El significado de cada línea está en la guía de la práctica 1.1. Lo importante aquí es
 que el <code>server_name</code> de cada bloque es el nombre de su sitio (<code>planes.daw</code> /
 <code>puertos.daw</code>), para que el backend elija el virtual host correcto a partir de la
 cabecera <code>Host</code> que le reenvía el proxy.</p>
 <p>Activa ambos sitios, desactiva el de ejemplo y valida:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>sudo<span class="w"> </span>ln<span class="w"> </span>-s<span class="w"> </span>/etc/nginx/sites-available/planes.daw<span class="w"> </span>/etc/nginx/sites-enabled/planes.daw
-<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>sudo<span class="w"> </span>ln<span class="w"> </span>-s<span class="w"> </span>/etc/nginx/sites-available/puertos.daw<span class="w"> </span>/etc/nginx/sites-enabled/puertos.daw
-<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>sudo<span class="w"> </span>rm<span class="w"> </span>/etc/nginx/sites-enabled/default
-<a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a>sudo<span class="w"> </span>nginx<span class="w"> </span>-t
-<a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>reload<span class="w"> </span>nginx
-<a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>nginx
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>sudo<span class="w"> </span>ln<span class="w"> </span>-s<span class="w"> </span>/etc/nginx/sites-available/planes.daw<span class="w"> </span>/etc/nginx/sites-enabled/planes.daw
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>sudo<span class="w"> </span>ln<span class="w"> </span>-s<span class="w"> </span>/etc/nginx/sites-available/puertos.daw<span class="w"> </span>/etc/nginx/sites-enabled/puertos.daw
+<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>sudo<span class="w"> </span>rm<span class="w"> </span>/etc/nginx/sites-enabled/default
+<a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a>sudo<span class="w"> </span>nginx<span class="w"> </span>-t
+<a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>reload<span class="w"> </span>nginx
+<a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>nginx
 </code></pre></div>
 <p>Comprueba que el backend sirve <strong>los dos</strong> sitios <strong>localmente</strong>, forzando la cabecera
 <code>Host</code> (los nombres aún no resuelven hacia el backend):</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>curl<span class="w"> </span>-s<span class="w"> </span>-H<span class="w"> </span><span class="s2">&quot;Host: planes.daw&quot;</span><span class="w">  </span>http://localhost/<span class="w"> </span><span class="p">|</span><span class="w"> </span>head<span class="w"> </span>-5
-<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>curl<span class="w"> </span>-s<span class="w"> </span>-H<span class="w"> </span><span class="s2">&quot;Host: puertos.daw&quot;</span><span class="w"> </span>http://localhost/<span class="w"> </span><span class="p">|</span><span class="w"> </span>head<span class="w"> </span>-5
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>curl<span class="w"> </span>-s<span class="w"> </span>-H<span class="w"> </span><span class="s2">&quot;Host: planes.daw&quot;</span><span class="w">  </span>http://localhost/<span class="w"> </span><span class="p">|</span><span class="w"> </span>head<span class="w"> </span>-5
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>curl<span class="w"> </span>-s<span class="w"> </span>-H<span class="w"> </span><span class="s2">&quot;Host: puertos.daw&quot;</span><span class="w"> </span>http://localhost/<span class="w"> </span><span class="p">|</span><span class="w"> </span>head<span class="w"> </span>-5
 </code></pre></div>
 <p>Debes ver el HTML de RunDash con el primer comando y el de Puertos Míticos con el
 segundo. Este paso es clave: <strong>verifica el backend antes de culpar al proxy</strong>.</p>
 <h2 id="6-configurar-el-proxy-inverso">6. Configurar el proxy inverso</h2>
 <p>Sal de la sesión del backend (<code>exit</code>) y conecta al proxy por su IP pública:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>ssh<span class="w"> </span>-i<span class="w"> </span>rundash-proxy-key.pem<span class="w"> </span>ubuntu@&lt;IP_PROXY&gt;
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>ssh<span class="w"> </span>-i<span class="w"> </span>rundash-proxy-key.pem<span class="w"> </span>ubuntu@&lt;IP_PROXY&gt;
 </code></pre></div>
 <h3 id="61-instalar-nginx">6.1. Instalar nginx</h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>cloud-init<span class="w"> </span>status<span class="w"> </span>--wait
-<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>sudo<span class="w"> </span>apt<span class="w"> </span>update
-<a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>nginx
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>cloud-init<span class="w"> </span>status<span class="w"> </span>--wait
+<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>sudo<span class="w"> </span>apt<span class="w"> </span>update
+<a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>nginx
 </code></pre></div>
 <p>En el proxy <strong>solo instalamos nginx</strong>: no necesitamos git (no vamos a clonar nada)
 porque el proxy no sirve contenido propio, solo reenvía peticiones.</p>
 <h3 id="62-configurar-el-proxy-inverso">6.2. Configurar el proxy inverso</h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>sudo<span class="w"> </span>nano<span class="w"> </span>/etc/nginx/sites-available/rundash-proxy
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>sudo<span class="w"> </span>nano<span class="w"> </span>/etc/nginx/sites-available/rundash-proxy
 </code></pre></div>
 <p>Pega este contenido, sustituyendo <code>&lt;IP_PRIV_WEB&gt;</code> por la IP privada del backend que
 anotaste en 4.3:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="k">server</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a><span class="w">    </span><span class="kn">listen</span><span class="w"> </span><span class="mi">80</span><span class="p">;</span>
-<a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a><span class="w">    </span><span class="kn">listen</span><span class="w"> </span><span class="s">[::]:80</span><span class="p">;</span>
-<a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a><span class="w">    </span><span class="kn">server_name</span><span class="w"> </span><span class="s">_</span><span class="p">;</span>
-<a id="__codelineno-17-5" name="__codelineno-17-5" href="#__codelineno-17-5"></a>
-<a id="__codelineno-17-6" name="__codelineno-17-6" href="#__codelineno-17-6"></a><span class="w">    </span><span class="kn">location</span><span class="w"> </span><span class="s">/</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-17-7" name="__codelineno-17-7" href="#__codelineno-17-7"></a><span class="w">        </span><span class="kn">proxy_pass</span><span class="w"> </span><span class="s">http://&lt;IP_PRIV_WEB&gt;</span><span class="p">;</span>
-<a id="__codelineno-17-8" name="__codelineno-17-8" href="#__codelineno-17-8"></a><span class="w">        </span><span class="kn">proxy_set_header</span><span class="w"> </span><span class="s">Host</span><span class="w"> </span><span class="nv">$host</span><span class="p">;</span>
-<a id="__codelineno-17-9" name="__codelineno-17-9" href="#__codelineno-17-9"></a><span class="w">        </span><span class="kn">proxy_set_header</span><span class="w"> </span><span class="s">X-Real-IP</span><span class="w"> </span><span class="nv">$remote_addr</span><span class="p">;</span>
-<a id="__codelineno-17-10" name="__codelineno-17-10" href="#__codelineno-17-10"></a><span class="w">        </span><span class="kn">proxy_set_header</span><span class="w"> </span><span class="s">X-Forwarded-For</span><span class="w"> </span><span class="nv">$proxy_add_x_forwarded_for</span><span class="p">;</span>
-<a id="__codelineno-17-11" name="__codelineno-17-11" href="#__codelineno-17-11"></a><span class="w">        </span><span class="kn">proxy_set_header</span><span class="w"> </span><span class="s">X-Forwarded-Proto</span><span class="w"> </span><span class="nv">$scheme</span><span class="p">;</span>
-<a id="__codelineno-17-12" name="__codelineno-17-12" href="#__codelineno-17-12"></a><span class="w">    </span><span class="p">}</span>
-<a id="__codelineno-17-13" name="__codelineno-17-13" href="#__codelineno-17-13"></a><span class="p">}</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="k">server</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a><span class="w">    </span><span class="kn">listen</span><span class="w"> </span><span class="mi">80</span><span class="p">;</span>
+<a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a><span class="w">    </span><span class="kn">listen</span><span class="w"> </span><span class="s">[::]:80</span><span class="p">;</span>
+<a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a><span class="w">    </span><span class="kn">server_name</span><span class="w"> </span><span class="s">_</span><span class="p">;</span>
+<a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a>
+<a id="__codelineno-16-6" name="__codelineno-16-6" href="#__codelineno-16-6"></a><span class="w">    </span><span class="kn">location</span><span class="w"> </span><span class="s">/</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-16-7" name="__codelineno-16-7" href="#__codelineno-16-7"></a><span class="w">        </span><span class="kn">proxy_pass</span><span class="w"> </span><span class="s">http://&lt;IP_PRIV_WEB&gt;</span><span class="p">;</span>
+<a id="__codelineno-16-8" name="__codelineno-16-8" href="#__codelineno-16-8"></a><span class="w">        </span><span class="kn">proxy_set_header</span><span class="w"> </span><span class="s">Host</span><span class="w"> </span><span class="nv">$host</span><span class="p">;</span>
+<a id="__codelineno-16-9" name="__codelineno-16-9" href="#__codelineno-16-9"></a><span class="w">        </span><span class="kn">proxy_set_header</span><span class="w"> </span><span class="s">X-Real-IP</span><span class="w"> </span><span class="nv">$remote_addr</span><span class="p">;</span>
+<a id="__codelineno-16-10" name="__codelineno-16-10" href="#__codelineno-16-10"></a><span class="w">        </span><span class="kn">proxy_set_header</span><span class="w"> </span><span class="s">X-Forwarded-For</span><span class="w"> </span><span class="nv">$proxy_add_x_forwarded_for</span><span class="p">;</span>
+<a id="__codelineno-16-11" name="__codelineno-16-11" href="#__codelineno-16-11"></a><span class="w">        </span><span class="kn">proxy_set_header</span><span class="w"> </span><span class="s">X-Forwarded-Proto</span><span class="w"> </span><span class="nv">$scheme</span><span class="p">;</span>
+<a id="__codelineno-16-12" name="__codelineno-16-12" href="#__codelineno-16-12"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-16-13" name="__codelineno-16-13" href="#__codelineno-16-13"></a><span class="p">}</span>
 </code></pre></div>
 <p><strong>¿Qué significa cada línea?</strong></p>
 <table>
@@ -3488,7 +3478,7 @@ anotaste en 4.3:</p>
 </tr>
 <tr>
 <td><code>proxy_set_header X-Forwarded-Proto $scheme;</code></td>
-<td>Informa al backend de si el cliente llegó por <code>http</code> o <code>https</code> (<code>$scheme</code>). Útil cuando el backend necesita saber el protocolo original (lo usaremos en la práctica 1.4).</td>
+<td>Informa al backend de si el cliente llegó por <code>http</code> o <code>https</code> (<code>$scheme</code>). Útil cuando el backend necesita saber el protocolo original.</td>
 </tr>
 </tbody>
 </table>
@@ -3501,13 +3491,13 @@ la correcta y la más sencilla.</p>
 </blockquote>
 <p>Guarda (<code>Ctrl+O</code>, <code>Enter</code>, <code>Ctrl+X</code>).</p>
 <p>Activa el sitio, desactiva el de ejemplo y valida:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>sudo<span class="w"> </span>ln<span class="w"> </span>-s<span class="w"> </span>/etc/nginx/sites-available/rundash-proxy<span class="w"> </span>/etc/nginx/sites-enabled/rundash-proxy
-<a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a>sudo<span class="w"> </span>rm<span class="w"> </span>/etc/nginx/sites-enabled/default
-<a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a>sudo<span class="w"> </span>nginx<span class="w"> </span>-t
-<a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>reload<span class="w"> </span>nginx
-<a id="__codelineno-18-5" name="__codelineno-18-5" href="#__codelineno-18-5"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>nginx
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>sudo<span class="w"> </span>ln<span class="w"> </span>-s<span class="w"> </span>/etc/nginx/sites-available/rundash-proxy<span class="w"> </span>/etc/nginx/sites-enabled/rundash-proxy
+<a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a>sudo<span class="w"> </span>rm<span class="w"> </span>/etc/nginx/sites-enabled/default
+<a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a>sudo<span class="w"> </span>nginx<span class="w"> </span>-t
+<a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>reload<span class="w"> </span>nginx
+<a id="__codelineno-17-5" name="__codelineno-17-5" href="#__codelineno-17-5"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>nginx
 </code></pre></div>
-<p><code>nginx -t</code> debe decir <code>syntax is ok</code>. Si falla, casi seguro que es un error de
+<p><code>sudo nginx -t</code> debe decir <code>syntax is ok</code>. Si falla, casi seguro que es un error de
 escritura en la IP privada o una llave sin cerrar: te dirá el fichero y la línea.</p>
 <h2 id="7-verificacion-final">7. Verificación final</h2>
 <h3 id="71-resolver-los-dominios-hacia-el-proxy">7.1. Resolver los dominios hacia el proxy</h3>
@@ -3515,15 +3505,15 @@ escritura en la IP privada o una llave sin cerrar: te dirá el fichero y la lín
 <code>puertos.daw</code>. La diferencia es que ahora <strong>apuntan al proxy</strong> (su IP pública), no al
 backend: el cliente habla con el proxy y este reenvía al backend. Añade en el
 <code>/etc/hosts</code> de tu máquina:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>&lt;IP_PROXY&gt;  planes.daw puertos.daw
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>&lt;IP_PROXY&gt;  planes.daw puertos.daw
 </code></pre></div>
 <p>(Recuerda: <code>/etc/hosts</code> se edita con permisos de administrador; en Linux/macOS <code>sudo
 nano /etc/hosts</code>, en Windows el Bloc de notas como administrador en
 <code>C:\Windows\System32\drivers\etc\hosts</code>.)</p>
 <h3 id="72-con-curl-y-en-el-navegador">7.2. Con curl y en el navegador</h3>
 <p>Desde tu máquina local:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>curl<span class="w"> </span>-I<span class="w"> </span>http://planes.daw
-<a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a>curl<span class="w"> </span>-I<span class="w"> </span>http://puertos.daw
+<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>curl<span class="w"> </span>-I<span class="w"> </span>http://planes.daw
+<a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a>curl<span class="w"> </span>-I<span class="w"> </span>http://puertos.daw
 </code></pre></div>
 <p>Ambos deben dar <code>HTTP/1.1 200 OK</code> y <code>Server: nginx</code>. <strong>Estás hablando con el proxy</strong>,
 que ha ido a buscar la respuesta al backend y te la ha traído. El backend, por su
@@ -3535,7 +3525,7 @@ proxy.</p>
 <h3 id="73-demostrar-que-el-backend-esta-oculto">7.3. Demostrar que el backend está oculto</h3>
 <p>Esta es la comprobación estrella de la práctica. Intenta acceder <strong>directamente</strong> al
 backend por su IP pública, por el puerto 80:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>curl<span class="w"> </span>-I<span class="w"> </span>--max-time<span class="w"> </span><span class="m">10</span><span class="w"> </span>http://&lt;IP_PUB_WEB&gt;
+<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>curl<span class="w"> </span>-I<span class="w"> </span>--max-time<span class="w"> </span><span class="m">10</span><span class="w"> </span>http://&lt;IP_PUB_WEB&gt;
 </code></pre></div>
 <p>El comando debe <strong>agotar el tiempo de espera</strong> (timeout) o fallar. ¿Por qué? Porque
 el security group del backend no tiene ninguna regla que permita el puerto 80 desde
@@ -3548,7 +3538,7 @@ abierta a <code>0.0.0.0/0</code>. Lo que está cerrado es solo el tráfico web.<
 <h3 id="74-ver-el-trafico-desde-dentro">7.4. Ver el tráfico desde dentro</h3>
 <p>Si quieres ver el reenvío «por dentro», conecta al proxy y mira sus logs mientras
 recargas la página en el navegador:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>sudo<span class="w"> </span>tail<span class="w"> </span>-f<span class="w"> </span>/var/log/nginx/access.log
+<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>sudo<span class="w"> </span>tail<span class="w"> </span>-f<span class="w"> </span>/var/log/nginx/access.log
 </code></pre></div>
 <p>Verás una línea por petición. En el log del <strong>proxy</strong> aparece la IP del cliente. Si
 haces lo mismo en el backend (<code>sudo tail -f /var/log/nginx/access.log</code> dentro del
@@ -3619,69 +3609,6 @@ No las dejes corriendo entre clases.</p>
 </tr>
 </tbody>
 </table>
-<h2 id="10-equivalencia-con-el-despliegue-automatizado">10. Equivalencia con el despliegue automatizado</h2>
-<p>Cuando pasemos a Terraform + Ansible, cada paso manual corresponde a un recurso o
-tarea concreta:</p>
-<table>
-<thead>
-<tr>
-<th>Paso manual</th>
-<th>Equivalente automatizado</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Crear key pair compartido</td>
-<td><code>tls_private_key</code>, <code>aws_key_pair</code> y <code>local_sensitive_file</code> en <code>terraform/main.tf</code></td>
-</tr>
-<tr>
-<td>Security group del proxy (22 y 80)</td>
-<td><code>aws_security_group "proxy"</code> en <code>terraform/main.tf</code></td>
-</tr>
-<tr>
-<td>Security group del backend (22 y 80 desde el proxy)</td>
-<td><code>aws_security_group "backend"</code> con <code>security_groups = [...]</code></td>
-</tr>
-<tr>
-<td>Lanzar instancia proxy con user data</td>
-<td><code>aws_instance "proxy"</code> + <code>terraform/cloud-init.yaml.tftpl</code></td>
-</tr>
-<tr>
-<td>Lanzar instancia backend con user data</td>
-<td><code>aws_instance "web"</code> + la misma plantilla de cloud-init</td>
-</tr>
-<tr>
-<td><code>apt install nginx git</code> + clonar las dos apps + configurar los dos sitios en el backend</td>
-<td>Play <em>Desplegar el escenario multitenant en el backend</em> de <code>ansible/playbook.yml</code> (bucle <code>loop</code> sobre la lista <code>sites</code>)</td>
-</tr>
-<tr>
-<td><code>apt install nginx</code> + config del proxy</td>
-<td>Play <em>Configurar el proxy inverso</em> del playbook</td>
-</tr>
-<tr>
-<td>Bloque <code>proxy_pass</code> escrito a mano</td>
-<td>Plantilla <code>ansible/templates/proxy.conf.j2</code> (variable <code>{{ backend_ip }}</code>)</td>
-</tr>
-<tr>
-<td>Los dos virtual hosts del backend escritos a mano</td>
-<td>Plantilla <code>ansible/templates/site.conf.j2</code>, aplicada una vez por sitio con <code>{{ item.name }}</code> y <code>{{ item.deploy_dir }}</code></td>
-</tr>
-<tr>
-<td>Anotar IPs y montar el inventario</td>
-<td><code>local_file "ansible_inventory"</code> genera <code>ansible/inventory.yml</code> con las IPs y la variable <code>backend_ip</code></td>
-</tr>
-<tr>
-<td>Línea en <code>/etc/hosts</code></td>
-<td>La añades en <strong>tu</strong> máquina; Terraform te da la IP del proxy en el output <code>proxy_public_ip</code></td>
-</tr>
-</tbody>
-</table>
-<p>La variable <code>backend_ip</code> que usa la plantilla del proxy sale del inventario que
-Terraform genera automáticamente: es la IP privada del backend, la misma que tú
-anotaste a mano en el paso 4.3.</p>
-<p>Si algo de la automatización no se entiende, la forma de depurarla es volver a esta
-guía y reproducir el paso a mano: lo que hace la herramienta es exactamente esto,
-solo que sin clics.</p>
 
 
 
