@@ -21,7 +21,7 @@
       
       
       <link rel="icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
     
     
       
@@ -29,7 +29,7 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
       
         
         <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
@@ -2754,7 +2754,7 @@
 <p>Creamos nuestro <em>build context</em></p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>mkdir<span class="w"> </span>-p<span class="w">  </span>~/Sites/hello-world
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="nb">cd</span><span class="w"> </span>~/Sites/hello-world
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;hello&quot;</span><span class="w"> </span>&gt;<span class="w"> </span>hello
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">"hello"</span><span class="w"> </span>&gt;<span class="w"> </span>hello
 </code></pre></div>
 <p>Dentro de este directorio crearemos un archivo llamado <em>Dockerfile</em> con este contenido:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>FROM busybox
@@ -2823,24 +2823,24 @@
 <a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="kn">import</span><span class="w"> </span><span class="nn">socket</span>
 <a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>
 <a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="c1"># Connect to Redis</span>
-<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="n">redis</span> <span class="o">=</span> <span class="n">Redis</span><span class="p">(</span><span class="n">host</span><span class="o">=</span><span class="s2">&quot;redis&quot;</span><span class="p">,</span> <span class="n">db</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">socket_connect_timeout</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">socket_timeout</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="n">redis</span> <span class="o">=</span> <span class="n">Redis</span><span class="p">(</span><span class="n">host</span><span class="o">=</span><span class="s2">"redis"</span><span class="p">,</span> <span class="n">db</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">socket_connect_timeout</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">socket_timeout</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
 <a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a>
 <a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a><span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
 <a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a>
-<a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a><span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">)</span>
+<a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a><span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s2">"/"</span><span class="p">)</span>
 <a id="__codelineno-6-12" name="__codelineno-6-12" href="#__codelineno-6-12"></a><span class="k">def</span><span class="w"> </span><span class="nf">hello</span><span class="p">():</span>
 <a id="__codelineno-6-13" name="__codelineno-6-13" href="#__codelineno-6-13"></a>    <span class="k">try</span><span class="p">:</span>
-<a id="__codelineno-6-14" name="__codelineno-6-14" href="#__codelineno-6-14"></a>        <span class="n">visits</span> <span class="o">=</span> <span class="n">redis</span><span class="o">.</span><span class="n">incr</span><span class="p">(</span><span class="s2">&quot;counter&quot;</span><span class="p">)</span>
+<a id="__codelineno-6-14" name="__codelineno-6-14" href="#__codelineno-6-14"></a>        <span class="n">visits</span> <span class="o">=</span> <span class="n">redis</span><span class="o">.</span><span class="n">incr</span><span class="p">(</span><span class="s2">"counter"</span><span class="p">)</span>
 <a id="__codelineno-6-15" name="__codelineno-6-15" href="#__codelineno-6-15"></a>    <span class="k">except</span> <span class="n">RedisError</span><span class="p">:</span>
-<a id="__codelineno-6-16" name="__codelineno-6-16" href="#__codelineno-6-16"></a>        <span class="n">visits</span> <span class="o">=</span> <span class="s2">&quot;&lt;i&gt;cannot connect to Redis, counter disabled&lt;/i&gt;&quot;</span>
+<a id="__codelineno-6-16" name="__codelineno-6-16" href="#__codelineno-6-16"></a>        <span class="n">visits</span> <span class="o">=</span> <span class="s2">"&lt;i&gt;cannot connect to Redis, counter disabled&lt;/i&gt;"</span>
 <a id="__codelineno-6-17" name="__codelineno-6-17" href="#__codelineno-6-17"></a>
-<a id="__codelineno-6-18" name="__codelineno-6-18" href="#__codelineno-6-18"></a>    <span class="n">html</span> <span class="o">=</span> <span class="s2">&quot;&lt;h3&gt;Hello </span><span class="si">{name}</span><span class="s2">!&lt;/h3&gt;&quot;</span> \
-<a id="__codelineno-6-19" name="__codelineno-6-19" href="#__codelineno-6-19"></a>            <span class="s2">&quot;&lt;b&gt;Hostname:&lt;/b&gt; </span><span class="si">{hostname}</span><span class="s2">&lt;br/&gt;&quot;</span> \
-<a id="__codelineno-6-20" name="__codelineno-6-20" href="#__codelineno-6-20"></a>            <span class="s2">&quot;&lt;b&gt;Visits:&lt;/b&gt; </span><span class="si">{visits}</span><span class="s2">&quot;</span>
-<a id="__codelineno-6-21" name="__codelineno-6-21" href="#__codelineno-6-21"></a>    <span class="k">return</span> <span class="n">html</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;NAME&quot;</span><span class="p">,</span> <span class="s2">&quot;world&quot;</span><span class="p">),</span> <span class="n">hostname</span><span class="o">=</span><span class="n">socket</span><span class="o">.</span><span class="n">gethostname</span><span class="p">(),</span>  <span class="n">visits</span><span class="o">=</span><span class="n">visits</span><span class="p">)</span>
+<a id="__codelineno-6-18" name="__codelineno-6-18" href="#__codelineno-6-18"></a>    <span class="n">html</span> <span class="o">=</span> <span class="s2">"&lt;h3&gt;Hello </span><span class="si">{name}</span><span class="s2">!&lt;/h3&gt;"</span> \
+<a id="__codelineno-6-19" name="__codelineno-6-19" href="#__codelineno-6-19"></a>            <span class="s2">"&lt;b&gt;Hostname:&lt;/b&gt; </span><span class="si">{hostname}</span><span class="s2">&lt;br/&gt;"</span> \
+<a id="__codelineno-6-20" name="__codelineno-6-20" href="#__codelineno-6-20"></a>            <span class="s2">"&lt;b&gt;Visits:&lt;/b&gt; </span><span class="si">{visits}</span><span class="s2">"</span>
+<a id="__codelineno-6-21" name="__codelineno-6-21" href="#__codelineno-6-21"></a>    <span class="k">return</span> <span class="n">html</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">"NAME"</span><span class="p">,</span> <span class="s2">"world"</span><span class="p">),</span> <span class="n">hostname</span><span class="o">=</span><span class="n">socket</span><span class="o">.</span><span class="n">gethostname</span><span class="p">(),</span>  <span class="n">visits</span><span class="o">=</span><span class="n">visits</span><span class="p">)</span>
 <a id="__codelineno-6-22" name="__codelineno-6-22" href="#__codelineno-6-22"></a>
-<a id="__codelineno-6-23" name="__codelineno-6-23" href="#__codelineno-6-23"></a><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
-<a id="__codelineno-6-24" name="__codelineno-6-24" href="#__codelineno-6-24"></a>    <span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">host</span><span class="o">=</span><span class="s1">&#39;0.0.0.0&#39;</span><span class="p">,</span> <span class="n">port</span><span class="o">=</span><span class="mi">80</span><span class="p">)</span>
+<a id="__codelineno-6-23" name="__codelineno-6-23" href="#__codelineno-6-23"></a><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">"__main__"</span><span class="p">:</span>
+<a id="__codelineno-6-24" name="__codelineno-6-24" href="#__codelineno-6-24"></a>    <span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">host</span><span class="o">=</span><span class="s1">'0.0.0.0'</span><span class="p">,</span> <span class="n">port</span><span class="o">=</span><span class="mi">80</span><span class="p">)</span>
 <a id="__codelineno-6-25" name="__codelineno-6-25" href="#__codelineno-6-25"></a>
 <a id="__codelineno-6-26" name="__codelineno-6-26" href="#__codelineno-6-26"></a><span class="n">Nuestra</span> <span class="n">aplicación</span> <span class="n">tiene</span> <span class="n">una</span> <span class="n">serie</span> <span class="n">de</span> <span class="n">dependencias</span> <span class="p">(</span><span class="n">librerías</span> <span class="n">de</span> <span class="n">terceros</span><span class="p">)</span> <span class="n">que</span> <span class="n">guardaremos</span> <span class="n">en</span> <span class="n">el</span> <span class="n">archivo</span> <span class="n">_requirements</span><span class="o">.</span><span class="n">txt_</span><span class="p">:</span>
 <a id="__codelineno-6-27" name="__codelineno-6-27" href="#__codelineno-6-27"></a>
@@ -2867,7 +2867,7 @@
 <a id="__codelineno-7-17" name="__codelineno-7-17" href="#__codelineno-7-17"></a><span class="k">ENV</span><span class="w"> </span>NAME<span class="w"> </span>World
 <a id="__codelineno-7-18" name="__codelineno-7-18" href="#__codelineno-7-18"></a>
 <a id="__codelineno-7-19" name="__codelineno-7-19" href="#__codelineno-7-19"></a><span class="c"># Ejecuta nuestra aplicación cuando se inicia el contenedor</span>
-<a id="__codelineno-7-20" name="__codelineno-7-20" href="#__codelineno-7-20"></a><span class="k">CMD</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;python&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;app.py&quot;</span><span class="p">]</span>
+<a id="__codelineno-7-20" name="__codelineno-7-20" href="#__codelineno-7-20"></a><span class="k">CMD</span><span class="w"> </span><span class="p">[</span><span class="s2">"python"</span><span class="p">,</span><span class="w"> </span><span class="s2">"app.py"</span><span class="p">]</span>
 </code></pre></div>
 <p>Para conocer todas las directivas visita la <a href="https://docs.docker.com/engine/reference/builder/">documentación oficial de Dockerfile</a>.</p>
 <p>En total debemos tener 3 archivos:</p>
@@ -2892,7 +2892,7 @@
 </div>
 <p>Lo que arranca la aplicación Flask:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="gp">$ </span>docker<span class="w"> </span>run<span class="w"> </span>--rm<span class="w"> </span>-p<span class="w"> </span><span class="m">4000</span>:80<span class="w"> </span>friendlyhello
-<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="go">    * Serving Flask app &quot;app&quot; (lazy loading)</span>
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="go">    * Serving Flask app "app" (lazy loading)</span>
 <a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="go">    * Environment: production</span>
 <a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a><span class="go">    WARNING: Do not use the development server in a production environment.</span>
 <a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a><span class="go">    Use a production WSGI server instead.</span>
@@ -2911,32 +2911,32 @@ Visits: cannot connect to Redis, counter disabled
 <p>En este caso nuestro contenedor no funciona por sí mismo. Es muy habitual que dependamos de servicios para poder iniciar la aplicación, habitualmente bases de datos. En este caso necesitamos una base de datos <em>Redis</em> que no tenemos.</p>
 <p>Como vimos en el apartado anterior, vamos a aprovechar las características de <em>Compose</em> para levantar nuestra aplicación.</p>
 <p>Vamos a crear el siguiente archivo <em>docker-compose.yaml</em>:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;3&quot;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s">"3"</span>
 <a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="nt">services</span><span class="p">:</span>
 <a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a><span class="w">    </span><span class="nt">web</span><span class="p">:</span>
 <a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a><span class="w">        </span><span class="nt">build</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">.</span>
 <a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a><span class="w">        </span><span class="nt">ports</span><span class="p">:</span>
-<a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a><span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;4000:80&quot;</span>
+<a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a><span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">"4000:80"</span>
 <a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a><span class="w">    </span><span class="nt">redis</span><span class="p">:</span>
 <a id="__codelineno-13-8" name="__codelineno-13-8" href="#__codelineno-13-8"></a><span class="w">        </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">redis</span>
 <a id="__codelineno-13-9" name="__codelineno-13-9" href="#__codelineno-13-9"></a><span class="w">        </span><span class="nt">ports</span><span class="p">:</span>
-<a id="__codelineno-13-10" name="__codelineno-13-10" href="#__codelineno-13-10"></a><span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;6379:6379&quot;</span>
+<a id="__codelineno-13-10" name="__codelineno-13-10" href="#__codelineno-13-10"></a><span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">"6379:6379"</span>
 <a id="__codelineno-13-11" name="__codelineno-13-11" href="#__codelineno-13-11"></a><span class="w">        </span><span class="nt">volumes</span><span class="p">:</span>
-<a id="__codelineno-13-12" name="__codelineno-13-12" href="#__codelineno-13-12"></a><span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;./data:/data&quot;</span>
+<a id="__codelineno-13-12" name="__codelineno-13-12" href="#__codelineno-13-12"></a><span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">"./data:/data"</span>
 <a id="__codelineno-13-13" name="__codelineno-13-13" href="#__codelineno-13-13"></a><span class="w">        </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">redis-server --appendonly yes</span>
 </code></pre></div>
 <p>La principal diferencia con respecto al capítulo anterior, es que en un servicio podemos indicar una imagen (parámetro <code>imagen</code>) o un <em>build context</em> (parámetro <code>build</code>). </p>
 <p>Esta es una manera de integrar las dos herramientas que nos proporciona <em>Docker</em>: la creación de imágenes y la composición de aplicaciones con servicios.</p>
 <h3 id="balanceo-de-carga">Balanceo de carga</h3>
 <p>Vamos a modificar nuestro <em>docker-compose.yaml</em>:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;3&quot;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s">"3"</span>
 <a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="nt">services</span><span class="p">:</span>
 <a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a><span class="w">    </span><span class="nt">web</span><span class="p">:</span>
 <a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a><span class="w">        </span><span class="nt">build</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">.</span>
 <a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a><span class="w">    </span><span class="nt">redis</span><span class="p">:</span>
 <a id="__codelineno-14-6" name="__codelineno-14-6" href="#__codelineno-14-6"></a><span class="w">        </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">redis</span>
 <a id="__codelineno-14-7" name="__codelineno-14-7" href="#__codelineno-14-7"></a><span class="w">        </span><span class="nt">volumes</span><span class="p">:</span>
-<a id="__codelineno-14-8" name="__codelineno-14-8" href="#__codelineno-14-8"></a><span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;./data:/data&quot;</span>
+<a id="__codelineno-14-8" name="__codelineno-14-8" href="#__codelineno-14-8"></a><span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">"./data:/data"</span>
 <a id="__codelineno-14-9" name="__codelineno-14-9" href="#__codelineno-14-9"></a><span class="w">        </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">redis-server --appendonly yes</span>
 <a id="__codelineno-14-10" name="__codelineno-14-10" href="#__codelineno-14-10"></a><span class="w">    </span><span class="nt">lb</span><span class="p">:</span>
 <a id="__codelineno-14-11" name="__codelineno-14-11" href="#__codelineno-14-11"></a><span class="w">        </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dockercloud/haproxy</span>
@@ -2953,7 +2953,7 @@ Visits: cannot connect to Redis, counter disabled
 </code></pre></div>
 <p>Esperamos a que terminen de iniciar los servicios:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="gp">$ </span>docker-compose<span class="w"> </span>up<span class="w"> </span>-d<span class="w"> </span>--scale<span class="w"> </span><span class="nv">web</span><span class="o">=</span><span class="m">5</span>
-<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="go">Creating network &quot;friendlyhello_default&quot; with the default driver</span>
+<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="go">Creating network "friendlyhello_default" with the default driver</span>
 <a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a><span class="go">Creating friendlyhello_redis_1 ... done</span>
 <a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a><span class="go">Creating friendlyhello_web_1   ... done</span>
 <a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a><span class="go">Creating friendlyhello_web_2   ... done</span>
@@ -2992,7 +2992,7 @@ Visits: cannot connect to Redis, counter disabled
 <li>
 <p>Ahora tenemos que conectar nuestro cliente de <em>Docker</em> con nuestra cuenta en el <em>Hub</em>. Usamos el comando <code>docker login</code>.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="gp">$ </span>docker<span class="w"> </span>login
-<a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a><span class="go">Login with your Docker ID to push and pull images from Docker Hub. If you don&#39;t have a Docker ID, head over to https://hub.docker.com to create one.</span>
+<a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a><span class="go">Login with your Docker ID to push and pull images from Docker Hub. If you don't have a Docker ID, head over to https://hub.docker.com to create one.</span>
 <a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a><span class="go">Username: username</span>
 <a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a><span class="go">Password: ********</span>
 <a id="__codelineno-17-5" name="__codelineno-17-5" href="#__codelineno-17-5"></a><span class="go">WARNING! Your password will be stored unencrypted in /home/sergio/.docker/config.json.</span>
@@ -3091,7 +3091,7 @@ Visits: cannot connect to Redis, counter disabled
       <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.top", "toc.integrate", "search.highlight", "content.code.annotate", "content.code.copy"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}, "version": null}</script>
     
     
-      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
       
     
   </body>

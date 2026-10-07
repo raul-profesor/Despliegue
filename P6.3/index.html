@@ -21,7 +21,7 @@
       
       
       <link rel="icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
     
     
       
@@ -29,7 +29,7 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
       
         
         <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
@@ -2944,16 +2944,16 @@
 <a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a><span class="s">         proxy_pass http://nginx-ldap:8888;</span>
 <a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a>
 <a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a><span class="s">         # URL y puerto para conectarse al servidor LDAP</span>
-<a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a><span class="s">         proxy_set_header X-Ldap-URL &quot;ldap://openldap:1389&quot;;</span>
+<a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a><span class="s">         proxy_set_header X-Ldap-URL "ldap://openldap:1389";</span>
 <a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a>
 <a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a><span class="s">         # Base DN</span>
-<a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a><span class="s">         proxy_set_header X-Ldap-BaseDN &quot;dc=example,dc=org&quot;;</span>
+<a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a><span class="s">         proxy_set_header X-Ldap-BaseDN "dc=example,dc=org";</span>
 <a id="__codelineno-1-21" name="__codelineno-1-21" href="#__codelineno-1-21"></a>
 <a id="__codelineno-1-22" name="__codelineno-1-22" href="#__codelineno-1-22"></a><span class="s">         # Bind DN</span>
-<a id="__codelineno-1-23" name="__codelineno-1-23" href="#__codelineno-1-23"></a><span class="s">         proxy_set_header X-Ldap-BindDN &quot;cn=admin,dc=example,dc=org&quot;;</span>
+<a id="__codelineno-1-23" name="__codelineno-1-23" href="#__codelineno-1-23"></a><span class="s">         proxy_set_header X-Ldap-BindDN "cn=admin,dc=example,dc=org";</span>
 <a id="__codelineno-1-24" name="__codelineno-1-24" href="#__codelineno-1-24"></a>
 <a id="__codelineno-1-25" name="__codelineno-1-25" href="#__codelineno-1-25"></a><span class="s">         # Bind password</span>
-<a id="__codelineno-1-26" name="__codelineno-1-26" href="#__codelineno-1-26"></a><span class="s">         proxy_set_header X-Ldap-BindPass &quot;adminpassword&quot;;</span>
+<a id="__codelineno-1-26" name="__codelineno-1-26" href="#__codelineno-1-26"></a><span class="s">         proxy_set_header X-Ldap-BindPass "adminpassword";</span>
 <a id="__codelineno-1-27" name="__codelineno-1-27" href="#__codelineno-1-27"></a><span class="s">      }</span>
 <a id="__codelineno-1-28" name="__codelineno-1-28" href="#__codelineno-1-28"></a><span class="s">   }</span>
 <a id="__codelineno-1-29" name="__codelineno-1-29" href="#__codelineno-1-29"></a><span class="s">EOF</span>
@@ -2968,7 +2968,7 @@ En esta configuración le decimos a Nginx:</p>
 <li>El usuario y contraseña con el que nos conectaremos al openldap para realizar las consultas</li>
 </ul>
 <p>Y ahora, procedemos con el siguiente <code>docker-compose.yml</code>:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;2&#39;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s">'2'</span>
 <a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>
 <a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="nt">services</span><span class="p">:</span>
 <a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">  </span><span class="nt">nginx-ldap</span><span class="p">:</span><span class="w">  </span><span class="c1"># (1)</span>
@@ -2985,7 +2985,7 @@ En esta configuración le decimos a Nginx:</p>
 <a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a><span class="w">  </span><span class="nt">openldap</span><span class="p">:</span><span class="w"> </span><span class="c1"># (6)</span>
 <a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a><span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bitnami/openldap</span>
 <a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a><span class="w">    </span><span class="nt">ports</span><span class="p">:</span>
-<a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&#39;1389:1389&#39;</span><span class="w">    </span>
+<a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">'1389:1389'</span><span class="w">    </span>
 <a id="__codelineno-2-19" name="__codelineno-2-19" href="#__codelineno-2-19"></a><span class="w">    </span><span class="nt">environment</span><span class="p">:</span><span class="w"> </span><span class="c1"># (7)</span>
 <a id="__codelineno-2-20" name="__codelineno-2-20" href="#__codelineno-2-20"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">LDAP_ADMIN_USERNAME=admin</span>
 <a id="__codelineno-2-21" name="__codelineno-2-21" href="#__codelineno-2-21"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">LDAP_ADMIN_PASSWORD=adminpassword</span>
@@ -3016,7 +3016,7 @@ En esta configuración le decimos a Nginx:</p>
 <li>
 <p>En primer lugar, como es obvio, dentro del directorio creado debemos crear el <code>index.php</code> de nuestra aplicación:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="x">    </span><span class="cp">&lt;?php</span>
-<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>    <span class="k">echo</span> <span class="s1">&#39;Ey, hola usuario autenticado por LDAP!&#39;</span><span class="p">;</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>    <span class="k">echo</span> <span class="s1">'Ey, hola usuario autenticado por LDAP!'</span><span class="p">;</span>
 </code></pre></div>
 </li>
 <li>
@@ -3041,7 +3041,7 @@ En esta configuración le decimos a Nginx:</p>
 <a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a>
 <a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a><span class="c"># Añadimos ayuda de depuración (debugging) en la configuración de apache</span>
 <a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a><span class="c"># En caso de necesitarlo, lo descomentamos para ejecutar el siguiente comando</span>
-<a id="__codelineno-5-15" name="__codelineno-5-15" href="#__codelineno-5-15"></a><span class="c"># ____ echo &quot;LogLevel debug&quot; &gt;&gt; apache2.conf</span>
+<a id="__codelineno-5-15" name="__codelineno-5-15" href="#__codelineno-5-15"></a><span class="c"># ____ echo "LogLevel debug" &gt;&gt; apache2.conf</span>
 <a id="__codelineno-5-16" name="__codelineno-5-16" href="#__codelineno-5-16"></a>
 <a id="__codelineno-5-17" name="__codelineno-5-17" href="#__codelineno-5-17"></a><span class="c"># Establecemos el directorio de trabajo adecuado</span>
 <a id="__codelineno-5-18" name="__codelineno-5-18" href="#__codelineno-5-18"></a>____<span class="w"> </span>/var/www/html/demo
@@ -3078,7 +3078,7 @@ En esta configuración le decimos a Nginx:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="c"># .Docker/.htaccess</span>
 <a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="nb">AuthBasicProvider</span><span class="w"> </span>demo
 <a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="nb">AuthType</span><span class="w"> </span>Basic
-<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="nb">AuthName</span><span class="w"> </span><span class="s2">&quot;Protected Area&quot;</span>
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="nb">AuthName</span><span class="w"> </span><span class="s2">"Protected Area"</span>
 <a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="nb">Require</span><span class="w"> </span>valid-user
 </code></pre></div>
 </li>
@@ -3095,9 +3095,9 @@ En esta configuración le decimos a Nginx:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>docker<span class="w"> </span>run<span class="w"> </span><span class="se">\</span>
 <a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="w">    </span>-p<span class="w"> </span><span class="m">3000</span>:80<span class="w"> </span><span class="se">\</span>
 <a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="w">    </span>--name<span class="w"> </span>ldap_demo<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="w">    </span>-e<span class="w"> </span><span class="nv">LDAP_BIND_ON</span><span class="o">=</span><span class="s1">&#39;uid=admin,cn=users,cn=accounts,dc=demo1,dc=freeipa,dc=org&#39;</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="w">    </span>-e<span class="w"> </span><span class="nv">LDAP_PASSWORD</span><span class="o">=</span><span class="s1">&#39;Secret123&#39;</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a><span class="w">    </span>-e<span class="w"> </span><span class="nv">LDAP_URL</span><span class="o">=</span><span class="s1">&#39;LDAP://ipa.demo1.freeipa.org&#39;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="w">    </span>-e<span class="w"> </span><span class="nv">LDAP_BIND_ON</span><span class="o">=</span><span class="s1">'uid=admin,cn=users,cn=accounts,dc=demo1,dc=freeipa,dc=org'</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="w">    </span>-e<span class="w"> </span><span class="nv">LDAP_PASSWORD</span><span class="o">=</span><span class="s1">'Secret123'</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a><span class="w">    </span>-e<span class="w"> </span><span class="nv">LDAP_URL</span><span class="o">=</span><span class="s1">'LDAP://ipa.demo1.freeipa.org'</span><span class="w"> </span><span class="se">\</span>
 <a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a><span class="w">    </span>docker-ldap
 </code></pre></div>
 </li>
@@ -3181,7 +3181,7 @@ En esta configuración le decimos a Nginx:</p>
       <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.top", "toc.integrate", "search.highlight", "content.code.annotate", "content.code.copy"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}, "version": null}</script>
     
     
-      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
       
     
   </body>

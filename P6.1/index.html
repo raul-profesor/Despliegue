@@ -21,7 +21,7 @@
       
       
       <link rel="icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
     
     
       
@@ -29,7 +29,7 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
       
         
         <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
@@ -2765,7 +2765,7 @@ Ahora, puesto que la aplicación ya viene con el <code>Dockerfile</code> necesar
 <a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a>
 <a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="l l-Scalar l-Scalar-Plain">_____ 3000</span><span class="w"> </span><span class="c1">#(8)</span>
 <a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a>
-<a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a><span class="l l-Scalar l-Scalar-Plain">_____ [&quot;npm&quot;, &quot;run&quot;, &quot;start:dev&quot;]</span><span class="w"> </span><span class="c1">#(9)</span>
+<a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a><span class="l l-Scalar l-Scalar-Plain">_____ ["npm", "run", "start:dev"]</span><span class="w"> </span><span class="c1">#(9)</span>
 </code></pre></div>
 <ol>
 <li>Con <code>_____</code> indicamos que vamos a utilizar la imagen de Docker Hub oficial de Node, en su versión 18.16.0 junto con Alpine, una diminuta distribución Linux   </li>
@@ -2815,7 +2815,7 @@ Ahora, puesto que la aplicación ya viene con el <code>Dockerfile</code> necesar
 <li>Construir o descargar imágenes de contenedores según sea necesario.</li>
 </ul>
 <p>Docker Compose utiliza un archivo de definición YAML para describir toda la aplicación. En nuestro caso:</p>
-<div class="highlight"><span class="filename">docker-compose.yml</span><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;3.9&quot;</span>
+<div class="highlight"><span class="filename">docker-compose.yml</span><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s">"3.9"</span>
 <a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="nt">services</span><span class="p">:</span>
 <a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="w">  </span><span class="nt">postgres</span><span class="p">:</span>
 <a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">postgres:latest</span>
@@ -2823,7 +2823,7 @@ Ahora, puesto que la aplicación ya viene con el <code>Dockerfile</code> necesar
 <a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="w">      </span><span class="nt">POSTGRES_USER</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">postgres</span>
 <a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="w">      </span><span class="nt">POSTGRES_PASSWORD</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">postgres</span>
 <a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="w">    </span><span class="nt">ports</span><span class="p">:</span><span class="w"> </span>
-<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&#39;5432:5432&#39;</span>
+<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">'5432:5432'</span>
 <a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="w">    </span><span class="nt">volumes</span><span class="p">:</span>
 <a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">addressbook-db:/var/lib/postgresql/data</span>
 <a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a>
@@ -2838,7 +2838,7 @@ Ahora, puesto que la aplicación ya viene con el <code>Dockerfile</code> necesar
 <a id="__codelineno-4-21" name="__codelineno-4-21" href="#__codelineno-4-21"></a><span class="w">    </span><span class="nt">depends_on</span><span class="p">:</span>
 <a id="__codelineno-4-22" name="__codelineno-4-22" href="#__codelineno-4-22"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">postgres</span>
 <a id="__codelineno-4-23" name="__codelineno-4-23" href="#__codelineno-4-23"></a><span class="w">    </span><span class="nt">ports</span><span class="p">:</span>
-<a id="__codelineno-4-24" name="__codelineno-4-24" href="#__codelineno-4-24"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&#39;3000:3000&#39;</span>
+<a id="__codelineno-4-24" name="__codelineno-4-24" href="#__codelineno-4-24"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">'3000:3000'</span>
 <a id="__codelineno-4-25" name="__codelineno-4-25" href="#__codelineno-4-25"></a>
 <a id="__codelineno-4-26" name="__codelineno-4-26" href="#__codelineno-4-26"></a><span class="nt">volumes</span><span class="p">:</span>
 <a id="__codelineno-4-27" name="__codelineno-4-27" href="#__codelineno-4-27"></a><span class="w">  </span><span class="nt">addressbook-db</span><span class="p">:</span>
@@ -2864,9 +2864,9 @@ Ahora, puesto que la aplicación ya viene con el <code>Dockerfile</code> necesar
 <li><code>DELETE /persons/1</code> elimina a la persona con el id 1</li>
 </ul>
 <p>Ejemplos:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="w"> </span>curl<span class="w"> </span>-X<span class="w"> </span>PUT<span class="w"> </span>http://IP_APLICACION:3000/persons<span class="w"> </span>-H<span class="w"> </span><span class="s1">&#39;Content-Type: application/json&#39;</span><span class="w"> </span>-d<span class="w"> </span><span class="s1">&#39;{&quot;id&quot;: 1, &quot;firstName&quot;: &quot;Raúl&quot;, &quot;lastName&quot;: &quot;Profesor&quot;}&#39;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="w"> </span>curl<span class="w"> </span>-X<span class="w"> </span>PUT<span class="w"> </span>http://IP_APLICACION:3000/persons<span class="w"> </span>-H<span class="w"> </span><span class="s1">'Content-Type: application/json'</span><span class="w"> </span>-d<span class="w"> </span><span class="s1">'{"id": 1, "firstName": "Raúl", "lastName": "Profesor"}'</span>
 <a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>
-<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="w"> </span>curl<span class="w"> </span>-X<span class="w"> </span>GET<span class="w"> </span>http://localhost:3000/persons<span class="w"> </span>-H<span class="w"> </span><span class="s1">&#39;Content-Type: application/json&#39;</span>
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="w"> </span>curl<span class="w"> </span>-X<span class="w"> </span>GET<span class="w"> </span>http://localhost:3000/persons<span class="w"> </span>-H<span class="w"> </span><span class="s1">'Content-Type: application/json'</span>
 </code></pre></div>
 </div>
 <div class="admonition warning">
@@ -2941,7 +2941,7 @@ Ahora, puesto que la aplicación ya viene con el <code>Dockerfile</code> necesar
       <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.top", "toc.integrate", "search.highlight", "content.code.annotate", "content.code.copy"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}, "version": null}</script>
     
     
-      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
       
     
   </body>

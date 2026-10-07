@@ -21,7 +21,7 @@
       
       
       <link rel="icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
     
     
       
@@ -29,7 +29,7 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
       
         
         <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
@@ -2786,9 +2786,9 @@ $ php console create-schema
   Remote branches:
     develop tracked
     master  tracked
-  Local branch configured for &#39;git pull&#39;:
+  Local branch configured for 'git pull':
     master merges with remote master
-  Local ref configured for &#39;git push&#39;:
+  Local ref configured for 'git push':
     master pushes to master (up to date)
 </code></pre></div>
 <p>También por convenio, la rama remota que hace referencia al repositorio original se llama <em>upstream</em> y se crea de la siguiente manera:</p>
@@ -2801,7 +2801,7 @@ $ git remote show upstream
   Remote branches:
     develop new (next fetch will store in remotes/upstream)
     master  new (next fetch will store in remotes/upstream)
-  Local ref configured for &#39;git push&#39;:
+  Local ref configured for 'git push':
     master pushes to master (local out of date)
 </code></pre></div>
 <p>En este caso, la URI debe ser siempre la del proyecto original. Y ahora para incorporar actualizaciones, usaremos el merge en dos pasos:</p>
@@ -2812,10 +2812,10 @@ $ git merge upstream/master
 <h3 id="creando-nuevas-funcionalidades">Creando nuevas funcionalidades</h3>
 <p>Vamos a crear una nueva funcionalidad: vamos a añadir una licencia de uso. Para ello preferentemente crearemos una nueva rama.</p>
 <div class="highlight"><pre><span></span><code>$ git checkout -b add-license
-$ echo &quot;LICENCIA MIT&quot; &gt; LICESE
+$ echo "LICENCIA MIT" &gt; LICESE
 # el error es intencionado
 $ git add LICESE
-$ git commit -m &quot;Archivo de licencia de uso&quot;
+$ git commit -m "Archivo de licencia de uso"
 </code></pre></div>
 <p>En principio habría que probar que todo funciona bien y entonces integraremos en la rama <em>master</em> de nuestro repositorio y enviamos los cambios a Github:</p>
 <div class="highlight"><pre><span></span><code>$ git checkout master
@@ -2833,7 +2833,7 @@ $ git push --set-upstream origin add-license
 <p><img alt="Gestión de un _Pull Request_" src="../img/github-pullrequest.png" /></p>
 <p>Sin embargo, para esta prueba, no vamos a cambiar el nombre del archivo y dejaremos el error como está. Así de esta manera al administrador del proyecto le llegará el <em>Pull Request</em> y la lista de cambios. Ahora en principio, cabría esperar que el administrador aprobara los cambios, pero podría pasar que nos indicara que cambiemos algo. En ese caso solo habría que modificar la rama y volverla a enviar.</p>
 <div class="highlight"><pre><span></span><code>$ git mv LICESE LICENSE
-$ git commit -m &quot;Fix: Nombre de archivo LICENSE&quot;
+$ git commit -m "Fix: Nombre de archivo LICENSE"
 $ git push
 </code></pre></div>
 <p>Ahora sí, el administrador puede aprobar la fusión y borrar la rama del repositorio. El panel de Github permite aceptar los cambios directamente o informa de como hacer una copia de la rama ofrecida por el usuario para hacer cambios, como puede verse en la siguiente imagen.</p>
@@ -2922,7 +2922,7 @@ $ git push origin --delete add-license
       <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.top", "toc.integrate", "search.highlight", "content.code.annotate", "content.code.copy"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}, "version": null}</script>
     
     
-      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
       
     
   </body>

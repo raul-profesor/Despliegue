@@ -21,7 +21,7 @@
       
       
       <link rel="icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
     
     
       
@@ -29,7 +29,7 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
       
         
         <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
@@ -2881,7 +2881,7 @@ $ cd curso-de-git
 </code></pre></div>
 <p>Creamos un fichero <code>hola.php</code> que muestre Hola Mundo.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="cp">&lt;?php</span>
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="k">echo</span> <span class="s2">&quot;Hola Mundo</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="k">echo</span> <span class="s2">"Hola Mundo</span><span class="se">\n</span><span class="s2">"</span><span class="p">;</span>
 </code></pre></div>
 <h3 id="crear-el-repositorio">Crear el repositorio</h3>
 <p>Para crear un nuevo repositorio se usa la orden <code>git init</code></p>
@@ -2891,7 +2891,7 @@ Initialized empty Git repository in /home/cc0gobas/git/curso-de-git/.git/
 <h3 id="anadir-la-aplicacion">Añadir la aplicación</h3>
 <p>Vamos a almacenar el archivo que hemos creado en el repositorio para poder trabajar, después explicaremos para qué sirve cada orden.</p>
 <div class="highlight"><pre><span></span><code>$ git add hola.php
-$ git commit -m &quot;Creación del proyecto&quot;
+$ git commit -m "Creación del proyecto"
 [master (root-commit) e19f2c1] Creación del proyecto
  1 file changed, 2 insertions(+)
  create mode 100644 hola.php
@@ -2904,18 +2904,18 @@ nothing to commit (working directory clean)
 </code></pre></div>
 <p>Si modificamos el archivo <code>hola.php</code>:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="cp">&lt;?php</span>
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="o">@</span><span class="k">print</span> <span class="s2">&quot;Hola </span><span class="si">{</span><span class="nv">$argv</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="o">@</span><span class="k">print</span> <span class="s2">"Hola </span><span class="si">{</span><span class="nv">$argv</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="se">\n</span><span class="s2">"</span><span class="p">;</span>
 </code></pre></div>
 <p>Y volvemos a comprobar el estado del repositorio:</p>
 <div class="highlight"><pre><span></span><code>$ git status
 # On branch master
 # Changes not staged for commit:
-#   (use &quot;git add &lt;file&gt;...&quot; to update what will be committed)
-#   (use &quot;git checkout -- &lt;file&gt;...&quot; to discard changes in working directory)
+#   (use "git add &lt;file&gt;..." to update what will be committed)
+#   (use "git checkout -- &lt;file&gt;..." to discard changes in working directory)
 #
 #   modified:   hola.php
 #
-no changes added to commit (use &quot;git add&quot; and/or &quot;git commit -a&quot;)
+no changes added to commit (use "git add" and/or "git commit -a")
 </code></pre></div>
 <h3 id="anadir-cambios">Añadir cambios</h3>
 <p>Con la orden <code>git add</code> indicamos a git que prepare los cambios para que sean almacenados.</p>
@@ -2923,14 +2923,14 @@ no changes added to commit (use &quot;git add&quot; and/or &quot;git commit -a&q
 $ git status
 # On branch master
 # Changes to be committed:
-#   (use &quot;git reset HEAD &lt;file&gt;...&quot; to unstage)
+#   (use "git reset HEAD &lt;file&gt;..." to unstage)
 #
 #   modified:   hola.php
 #
 </code></pre></div>
 <h3 id="confirmar-los-cambios">Confirmar los cambios</h3>
 <p>Con la orden <code>git commit</code> confirmamos los cambios definitivamente, lo que hace que se guarden permanentemente en nuestro repositorio.</p>
-<div class="highlight"><pre><span></span><code>$ git commit -m &quot;Parametrización del programa&quot;
+<div class="highlight"><pre><span></span><code>$ git commit -m "Parametrización del programa"
 [master efc252e] Parametrización del programa
  1 file changed, 1 insertion(+), 1 deletion(-)
 $ git status
@@ -2940,8 +2940,8 @@ nothing to commit (working directory clean)
 <h3 id="diferencias-entre-workdir-y-staging">Diferencias entre <em>workdir</em> y <em>staging</em>.</h3>
 <p>Modificamos nuestra aplicación para que soporte un parámetro por defecto y añadimos los cambios.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="cp">&lt;?php</span>
-<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="nv">$nombre</span> <span class="o">=</span> <span class="nb">isset</span><span class="p">(</span><span class="nv">$argv</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="o">?</span> <span class="nv">$argv</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">:</span> <span class="s2">&quot;Mundo&quot;</span><span class="p">;</span>
-<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="o">@</span><span class="k">print</span> <span class="s2">&quot;Hola, </span><span class="si">{</span><span class="nv">$nombre</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="nv">$nombre</span> <span class="o">=</span> <span class="nb">isset</span><span class="p">(</span><span class="nv">$argv</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="o">?</span> <span class="nv">$argv</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">:</span> <span class="s2">"Mundo"</span><span class="p">;</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="o">@</span><span class="k">print</span> <span class="s2">"Hola, </span><span class="si">{</span><span class="nv">$nombre</span><span class="si">}</span><span class="se">\n</span><span class="s2">"</span><span class="p">;</span>
 </code></pre></div>
 <p>Este vez añadimos los cambios a la fase de <em>staging</em> pero sin confirmarlos (<em>commit</em>).</p>
 <div class="highlight"><pre><span></span><code>git add hola.php
@@ -2949,20 +2949,20 @@ nothing to commit (working directory clean)
 <p>Volvemos a modificar el programa para indicar con un comentario lo que hemos hecho.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="cp">&lt;?php</span>
 <a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="c1">// El nombre por defecto es Mundo</span>
-<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="nv">$nombre</span> <span class="o">=</span> <span class="nb">isset</span><span class="p">(</span><span class="nv">$argv</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="o">?</span> <span class="nv">$argv</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">:</span> <span class="s2">&quot;Mundo&quot;</span><span class="p">;</span>
-<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="o">@</span><span class="k">print</span> <span class="s2">&quot;Hola, </span><span class="si">{</span><span class="nv">$nombre</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="nv">$nombre</span> <span class="o">=</span> <span class="nb">isset</span><span class="p">(</span><span class="nv">$argv</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="o">?</span> <span class="nv">$argv</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">:</span> <span class="s2">"Mundo"</span><span class="p">;</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="o">@</span><span class="k">print</span> <span class="s2">"Hola, </span><span class="si">{</span><span class="nv">$nombre</span><span class="si">}</span><span class="se">\n</span><span class="s2">"</span><span class="p">;</span>
 </code></pre></div>
 <p>Y vemos el estado en el que está el repositorio</p>
 <div class="highlight"><pre><span></span><code>$ git status
 # On branch master
 # Changes to be committed:
-#   (use &quot;git reset HEAD &lt;file&gt;...&quot; to unstage)
+#   (use "git reset HEAD &lt;file&gt;..." to unstage)
 #
 #   modified:   hola.php
 #
 # Changes not staged for commit:
-#   (use &quot;git add &lt;file&gt;...&quot; to update what will be committed)
-#   (use &quot;git checkout -- &lt;file&gt;...&quot; to discard changes in working directory)
+#   (use "git add &lt;file&gt;..." to update what will be committed)
+#   (use "git checkout -- &lt;file&gt;..." to discard changes in working directory)
 #
 #   modified:   hola.php
 #
@@ -2976,27 +2976,27 @@ que el directorio hola.php está modificado otra vez en la zona de trabajo (<em>
 que había en la zona de <em>staging</em>.</p>
 </div>
 <p>Almacenamos los cambios por separado:</p>
-<div class="highlight"><pre><span></span><code>$ git commit -m &quot;Se añade un parámetro por defecto&quot;
+<div class="highlight"><pre><span></span><code>$ git commit -m "Se añade un parámetro por defecto"
 [master 3283e0d] Se añade un parámetro por defecto
  1 file changed, 2 insertions(+), 1 deletion(-)
 $ git status
 # On branch master
 # Changes not staged for commit:
-#   (use &quot;git add &lt;file&gt;...&quot; to update what will be committed)
-#   (use &quot;git checkout -- &lt;file&gt;...&quot; to discard changes in working directory)
+#   (use "git add &lt;file&gt;..." to update what will be committed)
+#   (use "git checkout -- &lt;file&gt;..." to discard changes in working directory)
 #
 #   modified:   hola.php
 #
-no changes added to commit (use &quot;git add&quot; and/or &quot;git commit -a&quot;)
+no changes added to commit (use "git add" and/or "git commit -a")
 $ git add .
 $ git status
 # On branch master
 # Changes to be committed:
-#   (use &quot;git reset HEAD &lt;file&gt;...&quot; to unstage)
+#   (use "git reset HEAD &lt;file&gt;..." to unstage)
 #
 #   modified:   hola.php
 #
-$ git commit -m &quot;Se añade un comentario al cambio del valor por defecto&quot;
+$ git commit -m "Se añade un comentario al cambio del valor por defecto"
 [master fd4da94] Se añade un comentario al cambio del valor por defecto
  1 file changed, 1 insertion(+)
 </code></pre></div>
@@ -3037,7 +3037,7 @@ $ git commit -m &quot;Se añade un comentario al cambio del valor por defecto&qu
 <a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a>
 <a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a># Packages #
 <a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a>############
-<a id="__codelineno-6-12" name="__codelineno-6-12" href="#__codelineno-6-12"></a># it&#39;s better to unpack these files and commit the raw source
+<a id="__codelineno-6-12" name="__codelineno-6-12" href="#__codelineno-6-12"></a># it's better to unpack these files and commit the raw source
 <a id="__codelineno-6-13" name="__codelineno-6-13" href="#__codelineno-6-13"></a># git has its own built in compression methods
 <a id="__codelineno-6-14" name="__codelineno-6-14" href="#__codelineno-6-14"></a>*.7z
 <a id="__codelineno-6-15" name="__codelineno-6-15" href="#__codelineno-6-15"></a>*.dmg
@@ -3108,13 +3108,13 @@ fd4da94 Se añade un comentario al cambio del valor por defecto
 efc252e Parametrización del programa
 e19f2c1 Creación del proyecto
 git log --oneline --max-count=2
-git log --oneline --since=&#39;5 minutes ago&#39;
-git log --oneline --until=&#39;5 minutes ago&#39;
+git log --oneline --since='5 minutes ago'
+git log --oneline --until='5 minutes ago'
 git log --oneline --author=sergio
 git log --oneline --all
 </code></pre></div>
 <p>Una versión muy útil de <code>git log</code> es la siguiente, pues nos permite ver en que lugares está master y HEAD, entre otras cosas:</p>
-<div class="highlight"><pre><span></span><code>$ git log --pretty=format:&#39;%h %ad | %s%d [%an]&#39; --graph --date=short
+<div class="highlight"><pre><span></span><code>$ git log --pretty=format:'%h %ad | %s%d [%an]' --graph --date=short
 * fd4da94 2013-06-16 | Se añade un comentario al cambio del valor por defecto (HEAD, master) [Sergio Gómez]
 * 3283e0d 2013-06-16 | Se añade un parámetro por defecto [Sergio Gómez]
 * efc252e 2013-06-16 | Parametrización del programa [Sergio Gómez]
@@ -3122,7 +3122,7 @@ git log --oneline --all
 </code></pre></div>
 <h3 id="crear-alias">Crear alias</h3>
 <p>Como estas órdenes son demasiado largas, Git nos permite crear alias para crear nuevas órdenes parametrizadas. Para ello podemos configurar nuestro entorno con la orden <code>git config</code> de la siguiente manera:</p>
-<div class="highlight"><pre><span></span><code>git config --global alias.hist &quot;log --pretty=format:&#39;%h %ad | %s%d [%an]&#39; --graph --date=short&quot;
+<div class="highlight"><pre><span></span><code>git config --global alias.hist "log --pretty=format:'%h %ad | %s%d [%an]' --graph --date=short"
 </code></pre></div>
 <div class="admonition example">
 <p class="admonition-title">Example</p>
@@ -3130,16 +3130,16 @@ git log --oneline --all
 <div class="highlight"><pre><span></span><code>git config --global alias.br branch
 git config --global alias.co checkout
 git config --global alias.ci commit
-git config --global alias.st &quot;status -u&quot;
-git config --global alias.cane &quot;commit --amend --no-edit&quot;
+git config --global alias.st "status -u"
+git config --global alias.cane "commit --amend --no-edit"
 </code></pre></div>
 </div>
 <h3 id="recuperando-versiones-anteriores">Recuperando versiones anteriores</h3>
 <p>Cada cambio es etiquetado por un hash, para poder regresar a ese momento del estado del proyecto se usa la orden <code>git checkout</code>.</p>
 <div class="highlight"><pre><span></span><code>$ git checkout e19f2c1
-Note: checking out &#39;e19f2c1&#39;.
+Note: checking out 'e19f2c1'.
 
-You are in &#39;detached HEAD&#39; state. You can look around, make experimental
+You are in 'detached HEAD' state. You can look around, make experimental
 changes and commit them, and you can discard any commits you make in this
 state without impacting any branches by performing another checkout.
 
@@ -3151,7 +3151,7 @@ do so (now or later) by using -b with the checkout command again. Example:
 HEAD is now at e19f2c1... Creación del proyecto
 $ cat hola.php
 &lt;?php
-echo &quot;Hello, World\n&quot;;
+echo "Hello, World\n";
 </code></pre></div>
 <p>El aviso que nos sale nos indica que estamos en un estado donde no trabajamos en ninguna rama concreta. Eso significa que los cambios que hagamos podrían "perderse" porque si no son guardados en una nueva rama, en principio no podríamos volver a recuperarlos. Hay que pensar que Git es como un árbol donde un nodo tiene información de su nodo padre, no de sus nodos hijos, con lo que siempre necesitaríamos información de dónde se encuentran los nodos finales o de otra manera no podríamos acceder a ellos.</p>
 <h3 id="volver-a-la-ultima-version-de-la-rama-master">Volver a la última versión de la rama master.</h3>
@@ -3194,8 +3194,8 @@ index a31e01f..25a35c0 100644
 @@ -1,3 +1,4 @@
  &lt;?php
 +// El nombre por defecto es Mundo
- $nombre = isset($argv[1]) ? $argv[1] : &quot;Mundo&quot;;
- @print &quot;Hola, {$nombre}\n&quot;;
+ $nombre = isset($argv[1]) ? $argv[1] : "Mundo";
+ @print "Hola, {$nombre}\n";
 </code></pre></div>
 
 
@@ -3257,7 +3257,7 @@ index a31e01f..25a35c0 100644
       <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.top", "toc.integrate", "search.highlight", "content.code.annotate", "content.code.copy"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}, "version": null}</script>
     
     
-      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
       
     
   </body>

@@ -21,7 +21,7 @@
       
       
       <link rel="icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
     
     
       
@@ -29,7 +29,7 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
       
         
         <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
@@ -2706,7 +2706,7 @@
 </span><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="hll"><span class="w">    </span>-e<span class="w"> </span><span class="nv">MYSQL_DATABASE</span><span class="o">=</span>wordpress<span class="w"> </span><span class="se">\</span>
 </span><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="hll"><span class="w">    </span>-e<span class="w"> </span><span class="nv">MYSQL_USER</span><span class="o">=</span>manager<span class="w"> </span><span class="se">\</span>
 </span><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="hll"><span class="w">    </span>-e<span class="w"> </span><span class="nv">MYSQL_PASSWORD</span><span class="o">=</span>secret<span class="w"> </span>mariadb:10.3.9
-</span><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="go">Unable to find image &#39;mariadb:10.3.9&#39; locally</span>
+</span><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="go">Unable to find image 'mariadb:10.3.9' locally</span>
 <a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="go">10.3.9: Pulling from library/mariadb</span>
 <a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="go">124c757242f8: Pull complete </span>
 <a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="go">9d866f8bde2a: Pull complete </span>
@@ -2729,7 +2729,7 @@
 <a id="__codelineno-1-27" name="__codelineno-1-27" href="#__codelineno-1-27"></a>
 <a id="__codelineno-1-28" name="__codelineno-1-28" href="#__codelineno-1-28"></a><span class="gp">$ </span>docker<span class="w"> </span>ps
 <a id="__codelineno-1-29" name="__codelineno-1-29" href="#__codelineno-1-29"></a><span class="go">CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS               NAMES</span>
-<a id="__codelineno-1-30" name="__codelineno-1-30" href="#__codelineno-1-30"></a><span class="go">30634831d171        mariadb:10.3.9      &quot;docker-entrypoint.s…&quot;   20 seconds ago      Up 16 seconds       3306/tcp            wordpress-db</span>
+<a id="__codelineno-1-30" name="__codelineno-1-30" href="#__codelineno-1-30"></a><span class="go">30634831d171        mariadb:10.3.9      "docker-entrypoint.s…"   20 seconds ago      Up 16 seconds       3306/tcp            wordpress-db</span>
 </code></pre></div>
 El principal cambio en <code>docker run</code> con respecto a la última vez es que no hemos usado
 <code>-p</code> (el parámetro para publicar puertos) y hemos añadido el parámetro <code>-d</code>.</p>
@@ -2764,7 +2764,7 @@ El principal cambio en <code>docker run</code> con respecto a la última vez es 
 <p>Y dentro de este directorio arrancamos el contenedor:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>docker<span class="w"> </span>run<span class="w"> </span>-d<span class="w"> </span>--name<span class="w"> </span>wordpress<span class="w"> </span><span class="se">\</span>
 <a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">    </span>--link<span class="w"> </span>wordpress-db:mysql<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">    </span>--mount<span class="w"> </span><span class="nv">type</span><span class="o">=</span>bind,source<span class="o">=</span><span class="s2">&quot;</span><span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span><span class="s2">&quot;</span>/target,target<span class="o">=</span>/var/www/html<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">    </span>--mount<span class="w"> </span><span class="nv">type</span><span class="o">=</span>bind,source<span class="o">=</span><span class="s2">"</span><span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span><span class="s2">"</span>/target,target<span class="o">=</span>/var/www/html<span class="w"> </span><span class="se">\</span>
 <a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">    </span>-e<span class="w"> </span><span class="nv">WORDPRESS_DB_USER</span><span class="o">=</span>manager<span class="w"> </span><span class="se">\</span>
 <a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="w">    </span>-e<span class="w"> </span><span class="nv">WORDPRESS_DB_PASSWORD</span><span class="o">=</span>secret<span class="w"> </span><span class="se">\</span>
 <a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="w">    </span>-p<span class="w"> </span><span class="m">8080</span>:80<span class="w"> </span><span class="se">\</span>
@@ -2843,7 +2843,7 @@ El principal cambio en <code>docker run</code> con respecto a la última vez es 
       <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.top", "toc.integrate", "search.highlight", "content.code.annotate", "content.code.copy"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}, "version": null}</script>
     
     
-      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
       
     
   </body>

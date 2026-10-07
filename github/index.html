@@ -21,7 +21,7 @@
       
       
       <link rel="icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
     
     
       
@@ -29,7 +29,7 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
       
         
         <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
@@ -2803,7 +2803,7 @@
 <h2 id="tu-clave-publicaprivada">Tu clave pública/privada</h2>
 <p>Muchos servidores Git utilizan la autentificación a través de claves públicas SSH. Y, para ello, cada usuario del sistema ha de generarse una, si es que no la tiene ya. El proceso para hacerlo es similar en casi cualquier sistema operativo. Ante todo, asegurarte que no tengas ya una clave. (comprueba que el directorio <code>$HOME/usuario/.ssh</code> no tiene un archivo id_dsa.pub o id_rsa.pub).</p>
 <p>Para crear una nueva clave usamos la siguiente orden:</p>
-<div class="highlight"><pre><span></span><code>$ ssh-keygen -t rsa -C &quot;Cuenta Thinstation&quot;
+<div class="highlight"><pre><span></span><code>$ ssh-keygen -t rsa -C "Cuenta Thinstation"
 </code></pre></div>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
@@ -2903,7 +2903,7 @@ sincronizamos nuestro repositorio.</p>
   HEAD branch: master
   Remote branch:
     master tracked
-  Local ref configured for &#39;git push&#39;:
+  Local ref configured for 'git push':
     master pushes to master (up to date)
 </code></pre></div>
 <p>De la respuesta tenemos que fijarnos en las líneas que indican <em>fetch</em> y <em>push</em>
@@ -2917,7 +2917,7 @@ al nuestro, <em>push</em> los envía.</p>
 <a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>Copyright (c) [year] [fullname]
 <a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>
 <a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>Permission is hereby granted, free of charge, to any person obtaining a copy
-<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>of this software and associated documentation files (the &quot;Software&quot;), to deal
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>of this software and associated documentation files (the "Software"), to deal
 <a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>in the Software without restriction, including without limitation the rights
 <a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
 <a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>copies of the Software, and to permit persons to whom the Software is
@@ -2926,7 +2926,7 @@ al nuestro, <em>push</em> los envía.</p>
 <a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a>The above copyright notice and this permission notice shall be included in all
 <a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a>copies or substantial portions of the Software.
 <a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a>
-<a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a>THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+<a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a>THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 <a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a>IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
 <a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a>FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
 <a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a>AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
@@ -2936,7 +2936,7 @@ al nuestro, <em>push</em> los envía.</p>
 </code></pre></div>
 <p>Y añadidos y confirmamos los cambios:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>$ git add LICENSE
-<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>$ git commit -m &quot;Añadida licencia&quot;
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>$ git commit -m "Añadida licencia"
 <a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>[master 3f5cb1c] Añadida licencia
 <a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a> 1 file changed, 21 insertions(+)
 <a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a> create mode 100644 LICENSE
@@ -3101,12 +3101,12 @@ sincronizadas.</p>
 <a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>git push
 <a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>To git@github.com:sgomez/taller-de-git.git
 <a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a> ! [rejected]        master -&gt; master (fetch first)
-<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>error: failed to push some refs to &#39;git@github.com:sgomez/taller-de-git.git&#39;
+<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>error: failed to push some refs to 'git@github.com:sgomez/taller-de-git.git'
 <a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a>hint: Updates were rejected because the remote contains work that you do
 <a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a>hint: not have locally. This is usually caused by another repository pushing
 <a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a>hint: to the same ref. You may want to first integrate the remote changes
-<a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a>hint: (e.g., &#39;git pull ...&#39;) before pushing again.
-<a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a>hint: See the &#39;Note about fast-forwards&#39; in &#39;git push --help&#39; for details.
+<a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a>hint: (e.g., 'git pull ...') before pushing again.
+<a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a>hint: See the 'Note about fast-forwards' in 'git push --help' for details.
 </code></pre></div>
 <p>La causa es que el repositorio remoto también se ha actualizado y nosotros aún
 no hemos recibido esos cambios. Es decir, ambos repositorios se han actualizado
@@ -3127,7 +3127,7 @@ archivo <code>README.md</code> tanto en local como en remoto a través del inter
 <details class="example">
 <summary>Respuesta al ejercicio anterior</summary>
 <p>Añadimos el fichero actualizado:</p>
-<div class="highlight"><pre><span></span><code>$ git commit -am &quot;Añadido el mes al README&quot;
+<div class="highlight"><pre><span></span><code>$ git commit -am "Añadido el mes al README"
 [master 1e8c0b7] Añadido el mes al README
 1 file changed, 1 insertion(+), 1 deletion(-)
 </code></pre></div>
@@ -3153,12 +3153,12 @@ Auto-merging README.md
 CONFLICT (content): Merge conflict in README.md
 error: Failed to merge in the changes.
 Patch failed at 0001 Añadido el mes al README
-hint: Use &#39;git am --show-current-patch&#39; to see the failed patch
+hint: Use 'git am --show-current-patch' to see the failed patch
 
 Resolve all conflicts manually, mark them as resolved with
-&quot;git add/rm &lt;conflicted_files&gt;&quot;, then run &quot;git rebase --continue&quot;.
-You can instead skip this commit: run &quot;git rebase --skip&quot;.
-To abort and get back to the state before &quot;git rebase&quot;, run &quot;git rebase --abort&quot;.
+"git add/rm &lt;conflicted_files&gt;", then run "git rebase --continue".
+You can instead skip this commit: run "git rebase --skip".
+To abort and get back to the state before "git rebase", run "git rebase --abort".
 </code></pre></div>
 <p>Evidentemente hay un conflicto porque hemos tocado el mismo archivo. Se deja como ejercicio resolverlo.</p>
 <details class="example">
@@ -3285,7 +3285,7 @@ conflicto. En ese caso actuamos como con el caso de <em>merge</em> o <em>rebase<
       <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.top", "toc.integrate", "search.highlight", "content.code.annotate", "content.code.copy"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}, "version": null}</script>
     
     
-      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
       
     
   </body>

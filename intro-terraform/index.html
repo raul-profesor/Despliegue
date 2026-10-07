@@ -21,7 +21,7 @@
       
       
       <link rel="icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
     
     
       
@@ -29,7 +29,7 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
       
         
         <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
@@ -3992,18 +3992,18 @@
 <p>HCL usa bloques para definir diferentes elementos de configuración. Cada bloque tiene un tipo, un nombre opcional entre paréntesis, y un cuerpo entre llaves que contiene argumentos.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># Esto es un comentario</span>
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="c1"># Bloque de tipo &quot;resource&quot; llamado &quot;ejemplo&quot;</span>
-<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;tipo_recurso&quot;</span><span class="w"> </span><span class="nv">&quot;nombre_local&quot;</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="c1"># Bloque de tipo "resource" llamado "ejemplo"</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="kr">resource</span><span class="w"> </span><span class="nc">"tipo_recurso"</span><span class="w"> </span><span class="nv">"nombre_local"</span><span class="w"> </span><span class="p">{</span>
 <a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="c1">  # Argumentos</span>
-<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">  </span><span class="na">argumento1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;valor1&quot;</span>
-<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">  </span><span class="na">argumento2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;valor2&quot;</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">  </span><span class="na">argumento1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"valor1"</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">  </span><span class="na">argumento2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"valor2"</span>
 <a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="p">}</span>
 </code></pre></div>
 <h3 id="tipos-de-datos">Tipos de datos</h3>
 <p>HCL soporta varios tipos de datos:</p>
 <p><strong>Strings</strong>: Secuencias de caracteres entre comillas dobles.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="na">nombre</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;mi-servidor&quot;</span>
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="na">region</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;us-east-1&quot;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="na">nombre</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"mi-servidor"</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="na">region</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"us-east-1"</span>
 </code></pre></div>
 <p><strong>Números</strong>: Pueden ser enteros o decimales.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="na">conteo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">3</span>
@@ -4014,7 +4014,7 @@
 </code></pre></div>
 <p><strong>Listas (arrays)</strong>: Colecciones ordenadas de valores.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="c1"># Lista de strings</span>
-<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="na">zonas</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;us-east-1a&quot;, &quot;us-east-1b&quot;, &quot;us-east-1c&quot;</span><span class="p">]</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="na">zonas</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">"us-east-1a", "us-east-1b", "us-east-1c"</span><span class="p">]</span>
 <a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>
 <a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="c1"># Lista de números</span>
 <a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="na">puertos</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="m">80</span><span class="p">,</span><span class="w"> </span><span class="m">443</span><span class="p">,</span><span class="w"> </span><span class="m">8080</span><span class="p">]</span>
@@ -4022,26 +4022,26 @@
 <p><strong>Maps (objetos/diccionarios)</strong>: Colecciones de pares clave-valor.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="c1"># Map literal</span>
 <a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="nb">configuracion</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="w">  </span><span class="na">entorno</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;produccion&quot;</span>
-<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="w">  </span><span class="na">rol</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;webserver&quot;</span>
-<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="w">  </span><span class="na">criticidad</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;alta&quot;</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="w">  </span><span class="na">entorno</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="s2">"produccion"</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="w">  </span><span class="na">rol</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="s2">"webserver"</span>
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="w">  </span><span class="na">criticidad</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"alta"</span>
 <a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="p">}</span>
 </code></pre></div>
 <p><strong>Referencias a variables</strong>: Puedes referenciar otras partes de tu configuración usando expresiones.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="na">nombre_completo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;${var.prefijo}-${var.nombre}&quot;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="na">nombre_completo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"${var.prefijo}-${var.nombre}"</span>
 </code></pre></div>
 <h3 id="interpolacion-de-cadenas">Interpolación de cadenas</h3>
 <p>Las cadenas en HCL pueden incluir expresiones interpoladas usando <code>${expresión}</code>. Esto permite concatenar valores, usar variables, y realizar operaciones.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;aws_instance&quot;</span><span class="w"> </span><span class="nv">&quot;ejemplo&quot;</span><span class="w"> </span><span class="p">{</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="kr">resource</span><span class="w"> </span><span class="nc">"aws_instance"</span><span class="w"> </span><span class="nv">"ejemplo"</span><span class="w"> </span><span class="p">{</span>
 <a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="w">  </span><span class="nb">tags</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="w">    </span><span class="na">Nombre</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Servidor-${var.entorno}&quot;</span>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="w">    </span><span class="na">Nombre</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Servidor-${var.entorno}"</span>
 <a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="w">    </span><span class="na">ID</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="nv">aws_instance.ejemplo.id</span><span class="c1">  # Referencia al ID del recurso</span>
 <a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="w">  </span><span class="p">}</span>
 <a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="p">}</span>
 </code></pre></div>
 <h3 id="asignacion-condicional">Asignación condicional</h3>
 <p>Puedes usar condicionales dentro de interpolaciones:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="na">nombre_instancia</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">var.entorno</span><span class="w"> </span><span class="p">==</span><span class="w"> </span><span class="s2">&quot;produccion&quot; ? &quot;prod-server&quot; : &quot;dev-server&quot;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="na">nombre_instancia</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">var.entorno</span><span class="w"> </span><span class="p">==</span><span class="w"> </span><span class="s2">"produccion" ? "prod-server" : "dev-server"</span>
 </code></pre></div>
 <h3 id="expresiones-aritmeticas">Expresiones aritméticas</h3>
 <p>Terraform soporta operaciones aritméticas básicas:</p>
@@ -4065,8 +4065,8 @@
 <p><strong>Docker</strong>: Para gestionar contenedores y servicios Docker.</p>
 <h3 id="configuracion-de-un-provider">Configuración de un provider</h3>
 <p>Para usar un provider, primero debes declararlo en tu configuración:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="kr">provider</span><span class="w"> </span><span class="nv">&quot;aws&quot;</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="w">  </span><span class="na">region</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;us-east-1&quot;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="kr">provider</span><span class="w"> </span><span class="nv">"aws"</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="w">  </span><span class="na">region</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"us-east-1"</span>
 <a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="p">}</span>
 </code></pre></div>
 <p>Esto le dice a Terraform que vas a usar el provider de AWS y que todas las operaciones se realizarán en la región us-east-1.</p>
@@ -4081,9 +4081,9 @@
 </ol>
 <p><strong>Nunca hardcodees credenciales en tus archivos .tf</strong>. Usa variables de entorno o mecanismos de autenticación segura. Los archivos .tf se guardan en repositorios Git, y si alguien se descarga el repositorio, tendría tus credenciales.</p>
 <p>La forma recomendada para desarrollo local es usar <code>aws configure</code> para guardar tus credenciales en ~/.aws/credentials, o configurar un profile con nombre.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="kr">provider</span><span class="w"> </span><span class="nv">&quot;aws&quot;</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="w">  </span><span class="na">region</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;us-east-1&quot;</span>
-<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="w">  </span><span class="na">profile</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;mi-profile&quot;</span><span class="c1">  # Nombre del profile en ~/.aws/credentials</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="kr">provider</span><span class="w"> </span><span class="nv">"aws"</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="w">  </span><span class="na">region</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="s2">"us-east-1"</span>
+<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="w">  </span><span class="na">profile</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"mi-profile"</span><span class="c1">  # Nombre del profile en ~/.aws/credentials</span>
 <a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="p">}</span>
 </code></pre></div>
 <p>O simplemente no especificar nada, y AWS usará el profile default.</p>
@@ -4092,8 +4092,8 @@
 <div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="nb">terraform</span><span class="w"> </span><span class="p">{</span>
 <a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="w">  </span><span class="nb">required_providers</span><span class="w"> </span><span class="p">{</span>
 <a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="w">    </span><span class="nb">aws</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a><span class="w">      </span><span class="na">source</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;hashicorp/aws&quot;</span>
-<a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a><span class="w">      </span><span class="na">version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;~&gt; 5.0&quot;</span>
+<a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a><span class="w">      </span><span class="na">source</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="s2">"hashicorp/aws"</span>
+<a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a><span class="w">      </span><span class="na">version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"~&gt; 5.0"</span>
 <a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a><span class="w">    </span><span class="p">}</span>
 <a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a><span class="w">  </span><span class="p">}</span>
 <a id="__codelineno-12-8" name="__codelineno-12-8" href="#__codelineno-12-8"></a><span class="p">}</span>
@@ -4103,10 +4103,10 @@
 <h2 id="resources-los-bloques-de-construccion">Resources: los bloques de construcción</h2>
 <p>Los recursos son el elemento más importante en Terraform. Un recurso representa un componente de infraestructura que quieres crear y gestionar: una máquina virtual, una base de datos, un bucket de almacenamiento, una regla de firewall, un certificado SSL, una entrada DNS, etc.</p>
 <h3 id="sintaxis-de-un-recurso">Sintaxis de un recurso</h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;tipo_recurso&quot;</span><span class="w"> </span><span class="nv">&quot;nombre_local&quot;</span><span class="w"> </span><span class="p">{</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="kr">resource</span><span class="w"> </span><span class="nc">"tipo_recurso"</span><span class="w"> </span><span class="nv">"nombre_local"</span><span class="w"> </span><span class="p">{</span>
 <a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="c1">  # Argumentos específicos del tipo de recurso</span>
-<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a><span class="w">  </span><span class="na">argumento1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;valor1&quot;</span>
-<a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a><span class="w">  </span><span class="na">argumento2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;valor2&quot;</span>
+<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a><span class="w">  </span><span class="na">argumento1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"valor1"</span>
+<a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a><span class="w">  </span><span class="na">argumento2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"valor2"</span>
 <a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a><span class="p">}</span>
 </code></pre></div>
 <ul>
@@ -4115,42 +4115,42 @@
 <li><strong>argumentos</strong>: Parámetros que varían según el tipo de recurso. Algunos son obligatorios, otros opcionales.</li>
 </ul>
 <h3 id="ejemplo-creando-una-maquina-virtual-en-aws">Ejemplo: creando una máquina virtual en AWS</h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;aws_instance&quot;</span><span class="w"> </span><span class="nv">&quot;servidor_web&quot;</span><span class="w"> </span><span class="p">{</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="kr">resource</span><span class="w"> </span><span class="nc">"aws_instance"</span><span class="w"> </span><span class="nv">"servidor_web"</span><span class="w"> </span><span class="p">{</span>
 <a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="c1">  # Imagen de máquina (AMI) - Ubuntu 22.04 LTS</span>
-<a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a><span class="w">  </span><span class="na">ami</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;ami-0c55b159cbfafe1f0&quot;</span>
+<a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a><span class="w">  </span><span class="na">ami</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"ami-0c55b159cbfafe1f0"</span>
 <a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a>
 <a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a><span class="c1">  # Tipo de instancia - define CPU y RAM</span>
-<a id="__codelineno-14-6" name="__codelineno-14-6" href="#__codelineno-14-6"></a><span class="w">  </span><span class="na">instance_type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;t3.micro&quot;</span>
+<a id="__codelineno-14-6" name="__codelineno-14-6" href="#__codelineno-14-6"></a><span class="w">  </span><span class="na">instance_type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"t3.micro"</span>
 <a id="__codelineno-14-7" name="__codelineno-14-7" href="#__codelineno-14-7"></a>
 <a id="__codelineno-14-8" name="__codelineno-14-8" href="#__codelineno-14-8"></a><span class="c1">  # Nombre de la clave SSH para acceso</span>
-<a id="__codelineno-14-9" name="__codelineno-14-9" href="#__codelineno-14-9"></a><span class="w">  </span><span class="na">key_name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;mi-clave-ssh&quot;</span>
+<a id="__codelineno-14-9" name="__codelineno-14-9" href="#__codelineno-14-9"></a><span class="w">  </span><span class="na">key_name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"mi-clave-ssh"</span>
 <a id="__codelineno-14-10" name="__codelineno-14-10" href="#__codelineno-14-10"></a>
 <a id="__codelineno-14-11" name="__codelineno-14-11" href="#__codelineno-14-11"></a><span class="c1">  # Etiquetas para identificación y organización</span>
 <a id="__codelineno-14-12" name="__codelineno-14-12" href="#__codelineno-14-12"></a><span class="w">  </span><span class="nb">tags</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-14-13" name="__codelineno-14-13" href="#__codelineno-14-13"></a><span class="w">    </span><span class="na">Name</span><span class="w">        </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;ServidorWeb-Produccion&quot;</span>
-<a id="__codelineno-14-14" name="__codelineno-14-14" href="#__codelineno-14-14"></a><span class="w">    </span><span class="na">Environment</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;produccion&quot;</span>
-<a id="__codelineno-14-15" name="__codelineno-14-15" href="#__codelineno-14-15"></a><span class="w">    </span><span class="na">Project</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;MiAplicacion&quot;</span>
-<a id="__codelineno-14-16" name="__codelineno-14-16" href="#__codelineno-14-16"></a><span class="w">    </span><span class="na">ManagedBy</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;terraform&quot;</span>
+<a id="__codelineno-14-13" name="__codelineno-14-13" href="#__codelineno-14-13"></a><span class="w">    </span><span class="na">Name</span><span class="w">        </span><span class="o">=</span><span class="w"> </span><span class="s2">"ServidorWeb-Produccion"</span>
+<a id="__codelineno-14-14" name="__codelineno-14-14" href="#__codelineno-14-14"></a><span class="w">    </span><span class="na">Environment</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"produccion"</span>
+<a id="__codelineno-14-15" name="__codelineno-14-15" href="#__codelineno-14-15"></a><span class="w">    </span><span class="na">Project</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="s2">"MiAplicacion"</span>
+<a id="__codelineno-14-16" name="__codelineno-14-16" href="#__codelineno-14-16"></a><span class="w">    </span><span class="na">ManagedBy</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="s2">"terraform"</span>
 <a id="__codelineno-14-17" name="__codelineno-14-17" href="#__codelineno-14-17"></a><span class="w">  </span><span class="p">}</span>
 <a id="__codelineno-14-18" name="__codelineno-14-18" href="#__codelineno-14-18"></a><span class="p">}</span>
 </code></pre></div>
 <h3 id="dependencias-implicitas-entre-recursos">Dependencias implícitas entre recursos</h3>
 <p>Terraform deduce automáticamente las dependencias entre recursos. Por ejemplo:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;aws_vpc&quot;</span><span class="w"> </span><span class="nv">&quot;mi_vpc&quot;</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="w">  </span><span class="na">cidr_block</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;10.0.0.0/16&quot;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="kr">resource</span><span class="w"> </span><span class="nc">"aws_vpc"</span><span class="w"> </span><span class="nv">"mi_vpc"</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="w">  </span><span class="na">cidr_block</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"10.0.0.0/16"</span>
 <a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a><span class="p">}</span>
 <a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a>
-<a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a><span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;aws_subnet&quot;</span><span class="w"> </span><span class="nv">&quot;subred&quot;</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a><span class="kr">resource</span><span class="w"> </span><span class="nc">"aws_subnet"</span><span class="w"> </span><span class="nv">"subred"</span><span class="w"> </span><span class="p">{</span>
 <a id="__codelineno-15-6" name="__codelineno-15-6" href="#__codelineno-15-6"></a><span class="w">  </span><span class="na">vpc_id</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="nv">aws_vpc.mi_vpc.id</span><span class="c1">  # Terraform sabe que esta subred depende de la VPC</span>
-<a id="__codelineno-15-7" name="__codelineno-15-7" href="#__codelineno-15-7"></a><span class="w">  </span><span class="na">cidr_block</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;10.0.1.0/24&quot;</span>
+<a id="__codelineno-15-7" name="__codelineno-15-7" href="#__codelineno-15-7"></a><span class="w">  </span><span class="na">cidr_block</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"10.0.1.0/24"</span>
 <a id="__codelineno-15-8" name="__codelineno-15-8" href="#__codelineno-15-8"></a><span class="p">}</span>
 </code></pre></div>
 <p>En este caso, Terraform sabe que la subred necesita que la VPC exista primero, así que siempre creará la VPC antes que la subred, incluso si en el archivo el recurso de la subred aparece antes.</p>
 <h3 id="dependencias-explicitas">Dependencias explícitas</h3>
 <p>A veces necesitas indicar una dependencia que Terraform no puede deducir automáticamente:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;aws_instance&quot;</span><span class="w"> </span><span class="nv">&quot;servidor&quot;</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a><span class="w">  </span><span class="na">ami</span><span class="w">           </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;ami-0c55b159cbfafe1f0&quot;</span>
-<a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a><span class="w">  </span><span class="na">instance_type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;t3.micro&quot;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="kr">resource</span><span class="w"> </span><span class="nc">"aws_instance"</span><span class="w"> </span><span class="nv">"servidor"</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a><span class="w">  </span><span class="na">ami</span><span class="w">           </span><span class="o">=</span><span class="w"> </span><span class="s2">"ami-0c55b159cbfafe1f0"</span>
+<a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a><span class="w">  </span><span class="na">instance_type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"t3.micro"</span>
 <a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a>
 <a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a><span class="c1">  # Dependencia explícita - Terraform esperará a que eks_cluster esté creado</span>
 <a id="__codelineno-16-6" name="__codelineno-16-6" href="#__codelineno-16-6"></a><span class="c1">  # incluso si no hay referencia directa</span>
@@ -4176,7 +4176,7 @@
 <li><strong>Update (Actualizar)</strong>: Cuando existen diferencias entre la configuración y el estado actual. Algunos cambios pueden requerir destrucción y recreacion del recurso</li>
 <li><strong>Delete (Eliminar)</strong>: Cuando ejecutas terraform destroy o cuando eliminas el bloque de recurso de tu configuración</li>
 </ol>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;aws_instance&quot;</span><span class="w"> </span><span class="nv">&quot;ejemplo&quot;</span><span class="w"> </span><span class="p">{</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="kr">resource</span><span class="w"> </span><span class="nc">"aws_instance"</span><span class="w"> </span><span class="nv">"ejemplo"</span><span class="w"> </span><span class="p">{</span>
 <a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a><span class="c1">  # Lifecycle block para controlar el comportamiento</span>
 <a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a><span class="w">  </span><span class="nb">lifecycle</span><span class="w"> </span><span class="p">{</span>
 <a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a><span class="c1">    # Forzar recreacion del recurso en cada apply</span>
@@ -4254,10 +4254,10 @@
 <h2 id="variables-parametrizando-configuraciones">Variables: parametrizando configuraciones</h2>
 <p>Las variables permiten que tu configuración de Terraform sea flexible y reutilizable. En lugar de hardcodear valores específicos, puedes definir parámetros que se establecen cuando se ejecuta Terraform.</p>
 <h3 id="definiendo-variables">Definiendo variables</h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="kr">variable</span><span class="w"> </span><span class="nv">&quot;region&quot;</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a><span class="w">  </span><span class="na">description</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;La región de AWS donde se crearán los recursos&quot;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="kr">variable</span><span class="w"> </span><span class="nv">"region"</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a><span class="w">  </span><span class="na">description</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"La región de AWS donde se crearán los recursos"</span>
 <a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a><span class="w">  </span><span class="na">type</span><span class="w">        </span><span class="o">=</span><span class="w"> </span><span class="kt">string</span>
-<a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a><span class="w">  </span><span class="na">default</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;us-east-1&quot;</span>
+<a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a><span class="w">  </span><span class="na">default</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="s2">"us-east-1"</span>
 <a id="__codelineno-18-5" name="__codelineno-18-5" href="#__codelineno-18-5"></a><span class="p">}</span>
 </code></pre></div>
 <p>Cada variable tiene:</p>
@@ -4269,46 +4269,46 @@
 </ul>
 <h3 id="tipos-de-variables">Tipos de variables</h3>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="c1"># String - texto</span>
-<a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a><span class="kr">variable</span><span class="w"> </span><span class="nv">&quot;nombre&quot;</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a><span class="kr">variable</span><span class="w"> </span><span class="nv">"nombre"</span><span class="w"> </span><span class="p">{</span>
 <a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a><span class="w">  </span><span class="na">type</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="kt">string</span>
-<a id="__codelineno-19-4" name="__codelineno-19-4" href="#__codelineno-19-4"></a><span class="w">  </span><span class="na">default</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;mi-servidor&quot;</span>
+<a id="__codelineno-19-4" name="__codelineno-19-4" href="#__codelineno-19-4"></a><span class="w">  </span><span class="na">default</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"mi-servidor"</span>
 <a id="__codelineno-19-5" name="__codelineno-19-5" href="#__codelineno-19-5"></a><span class="p">}</span>
 <a id="__codelineno-19-6" name="__codelineno-19-6" href="#__codelineno-19-6"></a>
 <a id="__codelineno-19-7" name="__codelineno-19-7" href="#__codelineno-19-7"></a><span class="c1"># Number - números</span>
-<a id="__codelineno-19-8" name="__codelineno-19-8" href="#__codelineno-19-8"></a><span class="kr">variable</span><span class="w"> </span><span class="nv">&quot;conteo&quot;</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-19-8" name="__codelineno-19-8" href="#__codelineno-19-8"></a><span class="kr">variable</span><span class="w"> </span><span class="nv">"conteo"</span><span class="w"> </span><span class="p">{</span>
 <a id="__codelineno-19-9" name="__codelineno-19-9" href="#__codelineno-19-9"></a><span class="w">  </span><span class="na">type</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="kt">number</span>
 <a id="__codelineno-19-10" name="__codelineno-19-10" href="#__codelineno-19-10"></a><span class="w">  </span><span class="na">default</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">3</span>
 <a id="__codelineno-19-11" name="__codelineno-19-11" href="#__codelineno-19-11"></a><span class="p">}</span>
 <a id="__codelineno-19-12" name="__codelineno-19-12" href="#__codelineno-19-12"></a>
 <a id="__codelineno-19-13" name="__codelineno-19-13" href="#__codelineno-19-13"></a><span class="c1"># Boolean - true o false</span>
-<a id="__codelineno-19-14" name="__codelineno-19-14" href="#__codelineno-19-14"></a><span class="kr">variable</span><span class="w"> </span><span class="nv">&quot;habilitar_logs&quot;</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-19-14" name="__codelineno-19-14" href="#__codelineno-19-14"></a><span class="kr">variable</span><span class="w"> </span><span class="nv">"habilitar_logs"</span><span class="w"> </span><span class="p">{</span>
 <a id="__codelineno-19-15" name="__codelineno-19-15" href="#__codelineno-19-15"></a><span class="w">  </span><span class="na">type</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="kt">bool</span>
 <a id="__codelineno-19-16" name="__codelineno-19-16" href="#__codelineno-19-16"></a><span class="w">  </span><span class="na">default</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">true</span>
 <a id="__codelineno-19-17" name="__codelineno-19-17" href="#__codelineno-19-17"></a><span class="p">}</span>
 <a id="__codelineno-19-18" name="__codelineno-19-18" href="#__codelineno-19-18"></a>
 <a id="__codelineno-19-19" name="__codelineno-19-19" href="#__codelineno-19-19"></a><span class="c1"># List - arrays ordenados</span>
-<a id="__codelineno-19-20" name="__codelineno-19-20" href="#__codelineno-19-20"></a><span class="kr">variable</span><span class="w"> </span><span class="nv">&quot;zonas&quot;</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-19-20" name="__codelineno-19-20" href="#__codelineno-19-20"></a><span class="kr">variable</span><span class="w"> </span><span class="nv">"zonas"</span><span class="w"> </span><span class="p">{</span>
 <a id="__codelineno-19-21" name="__codelineno-19-21" href="#__codelineno-19-21"></a><span class="w">  </span><span class="na">type</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="nf">list</span><span class="p">(</span><span class="kt">string</span><span class="p">)</span>
-<a id="__codelineno-19-22" name="__codelineno-19-22" href="#__codelineno-19-22"></a><span class="w">  </span><span class="na">default</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;us-east-1a&quot;, &quot;us-east-1b&quot;, &quot;us-east-1c&quot;</span><span class="p">]</span>
+<a id="__codelineno-19-22" name="__codelineno-19-22" href="#__codelineno-19-22"></a><span class="w">  </span><span class="na">default</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">"us-east-1a", "us-east-1b", "us-east-1c"</span><span class="p">]</span>
 <a id="__codelineno-19-23" name="__codelineno-19-23" href="#__codelineno-19-23"></a><span class="p">}</span>
 <a id="__codelineno-19-24" name="__codelineno-19-24" href="#__codelineno-19-24"></a>
 <a id="__codelineno-19-25" name="__codelineno-19-25" href="#__codelineno-19-25"></a><span class="c1"># Map - objetos clave-valor</span>
-<a id="__codelineno-19-26" name="__codelineno-19-26" href="#__codelineno-19-26"></a><span class="kr">variable</span><span class="w"> </span><span class="nv">&quot;configuracion&quot;</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-19-26" name="__codelineno-19-26" href="#__codelineno-19-26"></a><span class="kr">variable</span><span class="w"> </span><span class="nv">"configuracion"</span><span class="w"> </span><span class="p">{</span>
 <a id="__codelineno-19-27" name="__codelineno-19-27" href="#__codelineno-19-27"></a><span class="w">  </span><span class="na">type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">map</span><span class="p">(</span><span class="kt">string</span><span class="p">)</span>
 <a id="__codelineno-19-28" name="__codelineno-19-28" href="#__codelineno-19-28"></a><span class="w">  </span><span class="nb">default</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-19-29" name="__codelineno-19-29" href="#__codelineno-19-29"></a><span class="w">    </span><span class="na">entorno</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;produccion&quot;</span>
-<a id="__codelineno-19-30" name="__codelineno-19-30" href="#__codelineno-19-30"></a><span class="w">    </span><span class="na">tier</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;application&quot;</span>
+<a id="__codelineno-19-29" name="__codelineno-19-29" href="#__codelineno-19-29"></a><span class="w">    </span><span class="na">entorno</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"produccion"</span>
+<a id="__codelineno-19-30" name="__codelineno-19-30" href="#__codelineno-19-30"></a><span class="w">    </span><span class="na">tier</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="s2">"application"</span>
 <a id="__codelineno-19-31" name="__codelineno-19-31" href="#__codelineno-19-31"></a><span class="w">  </span><span class="p">}</span>
 <a id="__codelineno-19-32" name="__codelineno-19-32" href="#__codelineno-19-32"></a><span class="p">}</span>
 <a id="__codelineno-19-33" name="__codelineno-19-33" href="#__codelineno-19-33"></a>
 <a id="__codelineno-19-34" name="__codelineno-19-34" href="#__codelineno-19-34"></a><span class="c1"># Set - colección sin duplicados</span>
-<a id="__codelineno-19-35" name="__codelineno-19-35" href="#__codelineno-19-35"></a><span class="kr">variable</span><span class="w"> </span><span class="nv">&quot;puertos&quot;</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-19-35" name="__codelineno-19-35" href="#__codelineno-19-35"></a><span class="kr">variable</span><span class="w"> </span><span class="nv">"puertos"</span><span class="w"> </span><span class="p">{</span>
 <a id="__codelineno-19-36" name="__codelineno-19-36" href="#__codelineno-19-36"></a><span class="w">  </span><span class="na">type</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="kt">set</span><span class="p">(</span><span class="kt">number</span><span class="p">)</span>
 <a id="__codelineno-19-37" name="__codelineno-19-37" href="#__codelineno-19-37"></a><span class="w">  </span><span class="na">default</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="m">80</span><span class="p">,</span><span class="w"> </span><span class="m">443</span><span class="p">,</span><span class="w"> </span><span class="m">8080</span><span class="p">]</span>
 <a id="__codelineno-19-38" name="__codelineno-19-38" href="#__codelineno-19-38"></a><span class="p">}</span>
 <a id="__codelineno-19-39" name="__codelineno-19-39" href="#__codelineno-19-39"></a>
 <a id="__codelineno-19-40" name="__codelineno-19-40" href="#__codelineno-19-40"></a><span class="c1"># Object - estructura compleja</span>
-<a id="__codelineno-19-41" name="__codelineno-19-41" href="#__codelineno-19-41"></a><span class="kr">variable</span><span class="w"> </span><span class="nv">&quot;servidor&quot;</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-19-41" name="__codelineno-19-41" href="#__codelineno-19-41"></a><span class="kr">variable</span><span class="w"> </span><span class="nv">"servidor"</span><span class="w"> </span><span class="p">{</span>
 <a id="__codelineno-19-42" name="__codelineno-19-42" href="#__codelineno-19-42"></a><span class="w">  </span><span class="na">type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kt">object</span><span class="p">({</span>
 <a id="__codelineno-19-43" name="__codelineno-19-43" href="#__codelineno-19-43"></a><span class="w">    </span><span class="na">cpu</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="kt">number</span>
 <a id="__codelineno-19-44" name="__codelineno-19-44" href="#__codelineno-19-44"></a><span class="w">    </span><span class="na">ram</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="kt">number</span>
@@ -4323,47 +4323,47 @@
 </code></pre></div>
 <h3 id="validacion-de-variables">Validación de variables</h3>
 <p>Puedes añadir reglas de validación para asegurar que los valores son correctos:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="kr">variable</span><span class="w"> </span><span class="nv">&quot;entorno&quot;</span><span class="w"> </span><span class="p">{</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="kr">variable</span><span class="w"> </span><span class="nv">"entorno"</span><span class="w"> </span><span class="p">{</span>
 <a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a><span class="w">  </span><span class="na">type</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="kt">string</span>
-<a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a><span class="w">  </span><span class="na">default</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;desarrollo&quot;</span>
+<a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a><span class="w">  </span><span class="na">default</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"desarrollo"</span>
 <a id="__codelineno-20-4" name="__codelineno-20-4" href="#__codelineno-20-4"></a>
 <a id="__codelineno-20-5" name="__codelineno-20-5" href="#__codelineno-20-5"></a><span class="w">  </span><span class="nb">validation</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-20-6" name="__codelineno-20-6" href="#__codelineno-20-6"></a><span class="w">    </span><span class="na">condition</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="nf">contains</span><span class="p">([</span><span class="s2">&quot;desarrollo&quot;, &quot;staging&quot;, &quot;produccion&quot;</span><span class="p">],</span><span class="w"> </span><span class="nv">var.entorno</span><span class="p">)</span>
-<a id="__codelineno-20-7" name="__codelineno-20-7" href="#__codelineno-20-7"></a><span class="w">    </span><span class="na">error_message</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;El entorno debe ser: desarrollo, staging, o produccion.&quot;</span>
+<a id="__codelineno-20-6" name="__codelineno-20-6" href="#__codelineno-20-6"></a><span class="w">    </span><span class="na">condition</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="nf">contains</span><span class="p">([</span><span class="s2">"desarrollo", "staging", "produccion"</span><span class="p">],</span><span class="w"> </span><span class="nv">var.entorno</span><span class="p">)</span>
+<a id="__codelineno-20-7" name="__codelineno-20-7" href="#__codelineno-20-7"></a><span class="w">    </span><span class="na">error_message</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"El entorno debe ser: desarrollo, staging, o produccion."</span>
 <a id="__codelineno-20-8" name="__codelineno-20-8" href="#__codelineno-20-8"></a><span class="w">  </span><span class="p">}</span>
 <a id="__codelineno-20-9" name="__codelineno-20-9" href="#__codelineno-20-9"></a><span class="p">}</span>
 <a id="__codelineno-20-10" name="__codelineno-20-10" href="#__codelineno-20-10"></a>
-<a id="__codelineno-20-11" name="__codelineno-20-11" href="#__codelineno-20-11"></a><span class="kr">variable</span><span class="w"> </span><span class="nv">&quot;tipo_instancia&quot;</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-20-11" name="__codelineno-20-11" href="#__codelineno-20-11"></a><span class="kr">variable</span><span class="w"> </span><span class="nv">"tipo_instancia"</span><span class="w"> </span><span class="p">{</span>
 <a id="__codelineno-20-12" name="__codelineno-20-12" href="#__codelineno-20-12"></a><span class="w">  </span><span class="na">type</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="kt">string</span>
-<a id="__codelineno-20-13" name="__codelineno-20-13" href="#__codelineno-20-13"></a><span class="w">  </span><span class="na">default</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;t3.micro&quot;</span>
+<a id="__codelineno-20-13" name="__codelineno-20-13" href="#__codelineno-20-13"></a><span class="w">  </span><span class="na">default</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"t3.micro"</span>
 <a id="__codelineno-20-14" name="__codelineno-20-14" href="#__codelineno-20-14"></a>
 <a id="__codelineno-20-15" name="__codelineno-20-15" href="#__codelineno-20-15"></a><span class="w">  </span><span class="nb">validation</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-20-16" name="__codelineno-20-16" href="#__codelineno-20-16"></a><span class="w">    </span><span class="na">condition</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="nf">can</span><span class="p">(</span><span class="nf">regex</span><span class="p">(</span><span class="s2">&quot;^t[23]\\.(micro|small|medium|large)$&quot;</span><span class="p">,</span><span class="w"> </span><span class="nv">var.tipo_instancia</span><span class="p">))</span>
-<a id="__codelineno-20-17" name="__codelineno-20-17" href="#__codelineno-20-17"></a><span class="w">    </span><span class="na">error_message</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Tipo de instancia inválido. Usa formatos como t3.micro, t3.small, etc.&quot;</span>
+<a id="__codelineno-20-16" name="__codelineno-20-16" href="#__codelineno-20-16"></a><span class="w">    </span><span class="na">condition</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="nf">can</span><span class="p">(</span><span class="nf">regex</span><span class="p">(</span><span class="s2">"^t[23]\\.(micro|small|medium|large)$"</span><span class="p">,</span><span class="w"> </span><span class="nv">var.tipo_instancia</span><span class="p">))</span>
+<a id="__codelineno-20-17" name="__codelineno-20-17" href="#__codelineno-20-17"></a><span class="w">    </span><span class="na">error_message</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Tipo de instancia inválido. Usa formatos como t3.micro, t3.small, etc."</span>
 <a id="__codelineno-20-18" name="__codelineno-20-18" href="#__codelineno-20-18"></a><span class="w">  </span><span class="p">}</span>
 <a id="__codelineno-20-19" name="__codelineno-20-19" href="#__codelineno-20-19"></a><span class="p">}</span>
 </code></pre></div>
 <h3 id="usando-variables-en-recursos">Usando variables en recursos</h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="kr">variable</span><span class="w"> </span><span class="nv">&quot;nombre_entorno&quot;</span><span class="w"> </span><span class="p">{</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="kr">variable</span><span class="w"> </span><span class="nv">"nombre_entorno"</span><span class="w"> </span><span class="p">{</span>
 <a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a><span class="w">  </span><span class="na">type</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="kt">string</span>
-<a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a><span class="w">  </span><span class="na">default</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;produccion&quot;</span>
+<a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a><span class="w">  </span><span class="na">default</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"produccion"</span>
 <a id="__codelineno-21-4" name="__codelineno-21-4" href="#__codelineno-21-4"></a><span class="p">}</span>
 <a id="__codelineno-21-5" name="__codelineno-21-5" href="#__codelineno-21-5"></a>
-<a id="__codelineno-21-6" name="__codelineno-21-6" href="#__codelineno-21-6"></a><span class="kr">variable</span><span class="w"> </span><span class="nv">&quot;configuracion_servidor&quot;</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-21-6" name="__codelineno-21-6" href="#__codelineno-21-6"></a><span class="kr">variable</span><span class="w"> </span><span class="nv">"configuracion_servidor"</span><span class="w"> </span><span class="p">{</span>
 <a id="__codelineno-21-7" name="__codelineno-21-7" href="#__codelineno-21-7"></a><span class="w">  </span><span class="na">type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kt">object</span><span class="p">({</span>
 <a id="__codelineno-21-8" name="__codelineno-21-8" href="#__codelineno-21-8"></a><span class="w">    </span><span class="na">tipo_instancia</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kt">string</span>
 <a id="__codelineno-21-9" name="__codelineno-21-9" href="#__codelineno-21-9"></a><span class="w">    </span><span class="na">cpu</span><span class="w">            </span><span class="o">=</span><span class="w"> </span><span class="kt">number</span>
 <a id="__codelineno-21-10" name="__codelineno-21-10" href="#__codelineno-21-10"></a><span class="w">    </span><span class="na">ram_gb</span><span class="w">         </span><span class="o">=</span><span class="w"> </span><span class="kt">number</span>
 <a id="__codelineno-21-11" name="__codelineno-21-11" href="#__codelineno-21-11"></a><span class="w">  </span><span class="p">})</span>
 <a id="__codelineno-21-12" name="__codelineno-21-12" href="#__codelineno-21-12"></a><span class="w">  </span><span class="nb">default</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-21-13" name="__codelineno-21-13" href="#__codelineno-21-13"></a><span class="w">    </span><span class="na">tipo_instancia</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;t3.micro&quot;</span>
+<a id="__codelineno-21-13" name="__codelineno-21-13" href="#__codelineno-21-13"></a><span class="w">    </span><span class="na">tipo_instancia</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"t3.micro"</span>
 <a id="__codelineno-21-14" name="__codelineno-21-14" href="#__codelineno-21-14"></a><span class="w">    </span><span class="na">cpu</span><span class="w">            </span><span class="o">=</span><span class="w"> </span><span class="m">2</span>
 <a id="__codelineno-21-15" name="__codelineno-21-15" href="#__codelineno-21-15"></a><span class="w">    </span><span class="na">ram_gb</span><span class="w">         </span><span class="o">=</span><span class="w"> </span><span class="m">1</span>
 <a id="__codelineno-21-16" name="__codelineno-21-16" href="#__codelineno-21-16"></a><span class="w">  </span><span class="p">}</span>
 <a id="__codelineno-21-17" name="__codelineno-21-17" href="#__codelineno-21-17"></a><span class="p">}</span>
 <a id="__codelineno-21-18" name="__codelineno-21-18" href="#__codelineno-21-18"></a>
-<a id="__codelineno-21-19" name="__codelineno-21-19" href="#__codelineno-21-19"></a><span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;aws_instance&quot;</span><span class="w"> </span><span class="nv">&quot;servidor&quot;</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-21-20" name="__codelineno-21-20" href="#__codelineno-21-20"></a><span class="w">  </span><span class="na">ami</span><span class="w">           </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;ami-0c55b159cbfafe1f0&quot;</span>
+<a id="__codelineno-21-19" name="__codelineno-21-19" href="#__codelineno-21-19"></a><span class="kr">resource</span><span class="w"> </span><span class="nc">"aws_instance"</span><span class="w"> </span><span class="nv">"servidor"</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-21-20" name="__codelineno-21-20" href="#__codelineno-21-20"></a><span class="w">  </span><span class="na">ami</span><span class="w">           </span><span class="o">=</span><span class="w"> </span><span class="s2">"ami-0c55b159cbfafe1f0"</span>
 <a id="__codelineno-21-21" name="__codelineno-21-21" href="#__codelineno-21-21"></a><span class="w">  </span><span class="na">instance_type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">var.configuracion_servidor.tipo_instancia</span>
 <a id="__codelineno-21-22" name="__codelineno-21-22" href="#__codelineno-21-22"></a>
 <a id="__codelineno-21-23" name="__codelineno-21-23" href="#__codelineno-21-23"></a><span class="w">  </span><span class="nb">tags</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
@@ -4375,19 +4375,19 @@
 <p>Hay varias formas de proporcionar valores para las variables:</p>
 <p><strong>1. Archivo de variables por defecto (no recomendado para valores sensibles):</strong></p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a><span class="c1"># terraform.tfvars (o .auto.tfvars)</span>
-<a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a><span class="na">region</span><span class="w">        </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;us-west-2&quot;</span>
-<a id="__codelineno-22-3" name="__codelineno-22-3" href="#__codelineno-22-3"></a><span class="na">nombre_entorno</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;produccion&quot;</span>
+<a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a><span class="na">region</span><span class="w">        </span><span class="o">=</span><span class="w"> </span><span class="s2">"us-west-2"</span>
+<a id="__codelineno-22-3" name="__codelineno-22-3" href="#__codelineno-22-3"></a><span class="na">nombre_entorno</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"produccion"</span>
 </code></pre></div>
 <p><strong>2. En línea de comandos:</strong></p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a>terraform<span class="w"> </span>plan<span class="w"> </span>-var<span class="o">=</span><span class="s2">&quot;region=us-west-2&quot;</span><span class="w"> </span>-var<span class="o">=</span><span class="s2">&quot;nombre_entorno=produccion&quot;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a>terraform<span class="w"> </span>plan<span class="w"> </span>-var<span class="o">=</span><span class="s2">"region=us-west-2"</span><span class="w"> </span>-var<span class="o">=</span><span class="s2">"nombre_entorno=produccion"</span>
 </code></pre></div>
 <p><strong>3. Variables de entorno (muy útil para CI/CD):</strong></p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a><span class="nb">export</span><span class="w"> </span><span class="nv">TF_VAR_region</span><span class="o">=</span><span class="s2">&quot;us-west-2&quot;</span>
-<a id="__codelineno-24-2" name="__codelineno-24-2" href="#__codelineno-24-2"></a><span class="nb">export</span><span class="w"> </span><span class="nv">TF_VAR_nombre_entorno</span><span class="o">=</span><span class="s2">&quot;produccion&quot;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a><span class="nb">export</span><span class="w"> </span><span class="nv">TF_VAR_region</span><span class="o">=</span><span class="s2">"us-west-2"</span>
+<a id="__codelineno-24-2" name="__codelineno-24-2" href="#__codelineno-24-2"></a><span class="nb">export</span><span class="w"> </span><span class="nv">TF_VAR_nombre_entorno</span><span class="o">=</span><span class="s2">"produccion"</span>
 <a id="__codelineno-24-3" name="__codelineno-24-3" href="#__codelineno-24-3"></a>terraform<span class="w"> </span>plan
 </code></pre></div>
 <p><strong>4. Archivos de variables específicos:</strong></p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a>terraform<span class="w"> </span>plan<span class="w"> </span>-var-file<span class="o">=</span><span class="s2">&quot;env/produccion.tfvars&quot;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a>terraform<span class="w"> </span>plan<span class="w"> </span>-var-file<span class="o">=</span><span class="s2">"env/produccion.tfvars"</span>
 </code></pre></div>
 <hr />
 <h2 id="outputs-exponiendo-informacion">Outputs: exponiendo información</h2>
@@ -4398,26 +4398,26 @@
 <li>Facilitar la integración con otras herramientas</li>
 </ul>
 <h3 id="definiendo-outputs">Definiendo outputs</h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a><span class="kr">output</span><span class="w"> </span><span class="nv">&quot;ip_publica&quot;</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-26-2" name="__codelineno-26-2" href="#__codelineno-26-2"></a><span class="w">  </span><span class="na">description</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Dirección IP pública del servidor&quot;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a><span class="kr">output</span><span class="w"> </span><span class="nv">"ip_publica"</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-26-2" name="__codelineno-26-2" href="#__codelineno-26-2"></a><span class="w">  </span><span class="na">description</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Dirección IP pública del servidor"</span>
 <a id="__codelineno-26-3" name="__codelineno-26-3" href="#__codelineno-26-3"></a><span class="w">  </span><span class="na">value</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="nv">aws_instance.servidor.public_ip</span>
 <a id="__codelineno-26-4" name="__codelineno-26-4" href="#__codelineno-26-4"></a><span class="p">}</span>
 </code></pre></div>
 <h3 id="tipos-de-outputs">Tipos de outputs</h3>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a><span class="c1"># Output simple</span>
-<a id="__codelineno-27-2" name="__codelineno-27-2" href="#__codelineno-27-2"></a><span class="kr">output</span><span class="w"> </span><span class="nv">&quot;id_servidor&quot;</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-27-2" name="__codelineno-27-2" href="#__codelineno-27-2"></a><span class="kr">output</span><span class="w"> </span><span class="nv">"id_servidor"</span><span class="w"> </span><span class="p">{</span>
 <a id="__codelineno-27-3" name="__codelineno-27-3" href="#__codelineno-27-3"></a><span class="w">  </span><span class="na">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">aws_instance.servidor.id</span>
 <a id="__codelineno-27-4" name="__codelineno-27-4" href="#__codelineno-27-4"></a><span class="p">}</span>
 <a id="__codelineno-27-5" name="__codelineno-27-5" href="#__codelineno-27-5"></a>
 <a id="__codelineno-27-6" name="__codelineno-27-6" href="#__codelineno-27-6"></a><span class="c1"># Output con descripción sensible</span>
-<a id="__codelineno-27-7" name="__codelineno-27-7" href="#__codelineno-27-7"></a><span class="kr">output</span><span class="w"> </span><span class="nv">&quot;password_bd&quot;</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-27-8" name="__codelineno-27-8" href="#__codelineno-27-8"></a><span class="w">  </span><span class="na">description</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Contraseña de la base de datos (sensible)&quot;</span>
+<a id="__codelineno-27-7" name="__codelineno-27-7" href="#__codelineno-27-7"></a><span class="kr">output</span><span class="w"> </span><span class="nv">"password_bd"</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-27-8" name="__codelineno-27-8" href="#__codelineno-27-8"></a><span class="w">  </span><span class="na">description</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Contraseña de la base de datos (sensible)"</span>
 <a id="__codelineno-27-9" name="__codelineno-27-9" href="#__codelineno-27-9"></a><span class="w">  </span><span class="na">value</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="nv">aws_db_instance.bd.password</span>
 <a id="__codelineno-27-10" name="__codelineno-27-10" href="#__codelineno-27-10"></a><span class="w">  </span><span class="na">sensitive</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="no">true</span>
 <a id="__codelineno-27-11" name="__codelineno-27-11" href="#__codelineno-27-11"></a><span class="p">}</span>
 <a id="__codelineno-27-12" name="__codelineno-27-12" href="#__codelineno-27-12"></a>
 <a id="__codelineno-27-13" name="__codelineno-27-13" href="#__codelineno-27-13"></a><span class="c1"># Output estructurado (map u object)</span>
-<a id="__codelineno-27-14" name="__codelineno-27-14" href="#__codelineno-27-14"></a><span class="kr">output</span><span class="w"> </span><span class="nv">&quot;informacion_servidor&quot;</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-27-14" name="__codelineno-27-14" href="#__codelineno-27-14"></a><span class="kr">output</span><span class="w"> </span><span class="nv">"informacion_servidor"</span><span class="w"> </span><span class="p">{</span>
 <a id="__codelineno-27-15" name="__codelineno-27-15" href="#__codelineno-27-15"></a><span class="w">  </span><span class="nb">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
 <a id="__codelineno-27-16" name="__codelineno-27-16" href="#__codelineno-27-16"></a><span class="w">    </span><span class="na">id</span><span class="w">          </span><span class="o">=</span><span class="w"> </span><span class="nv">aws_instance.servidor.id</span>
 <a id="__codelineno-27-17" name="__codelineno-27-17" href="#__codelineno-27-17"></a><span class="w">    </span><span class="na">ip_publica</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="nv">aws_instance.servidor.public_ip</span>
@@ -4428,7 +4428,7 @@
 <a id="__codelineno-27-22" name="__codelineno-27-22" href="#__codelineno-27-22"></a><span class="p">}</span>
 <a id="__codelineno-27-23" name="__codelineno-27-23" href="#__codelineno-27-23"></a>
 <a id="__codelineno-27-24" name="__codelineno-27-24" href="#__codelineno-27-24"></a><span class="c1"># Output de tipo list</span>
-<a id="__codelineno-27-25" name="__codelineno-27-25" href="#__codelineno-27-25"></a><span class="kr">output</span><span class="w"> </span><span class="nv">&quot;subredes&quot;</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-27-25" name="__codelineno-27-25" href="#__codelineno-27-25"></a><span class="kr">output</span><span class="w"> </span><span class="nv">"subredes"</span><span class="w"> </span><span class="p">{</span>
 <a id="__codelineno-27-26" name="__codelineno-27-26" href="#__codelineno-27-26"></a><span class="w">  </span><span class="na">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">aws_subnet.privada</span><span class="p">[</span><span class="err">*</span><span class="p">].</span><span class="err">id</span>
 <a id="__codelineno-27-27" name="__codelineno-27-27" href="#__codelineno-27-27"></a><span class="p">}</span>
 </code></pre></div>
@@ -4438,8 +4438,8 @@
 <a id="__codelineno-28-2" name="__codelineno-28-2" href="#__codelineno-28-2"></a>
 <a id="__codelineno-28-3" name="__codelineno-28-3" href="#__codelineno-28-3"></a>Outputs:
 <a id="__codelineno-28-4" name="__codelineno-28-4" href="#__codelineno-28-4"></a>
-<a id="__codelineno-28-5" name="__codelineno-28-5" href="#__codelineno-28-5"></a>direccion_ip = &quot;54.123.456.789&quot;
-<a id="__codelineno-28-6" name="__codelineno-28-6" href="#__codelineno-28-6"></a>id_servidor = &quot;i-0abc123def456789&quot;
+<a id="__codelineno-28-5" name="__codelineno-28-5" href="#__codelineno-28-5"></a>direccion_ip = "54.123.456.789"
+<a id="__codelineno-28-6" name="__codelineno-28-6" href="#__codelineno-28-6"></a>id_servidor = "i-0abc123def456789"
 </code></pre></div>
 <p>Puedes ver los outputs en cualquier momento con:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a>terraform<span class="w"> </span>output
@@ -4452,7 +4452,7 @@
 <p><strong>Chain de módulos</strong>: Pasar información de un módulo a otro sin acoplamiento directo.</p>
 <p><strong>Pipeline de CI/CD</strong>: Extraer valores para usar en siguientes pasos del pipeline.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a><span class="c1"># Ejemplo: generar inventory de Ansible</span>
-<a id="__codelineno-30-2" name="__codelineno-30-2" href="#__codelineno-30-2"></a><span class="kr">output</span><span class="w"> </span><span class="nv">&quot;ansible_inventory&quot;</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-30-2" name="__codelineno-30-2" href="#__codelineno-30-2"></a><span class="kr">output</span><span class="w"> </span><span class="nv">"ansible_inventory"</span><span class="w"> </span><span class="p">{</span>
 <a id="__codelineno-30-3" name="__codelineno-30-3" href="#__codelineno-30-3"></a><span class="w">  </span><span class="na">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&lt;&lt;-</span><span class="dl">EOT</span>
 <a id="__codelineno-30-4" name="__codelineno-30-4" href="#__codelineno-30-4"></a><span class="sh">    [servidores]</span>
 <a id="__codelineno-30-5" name="__codelineno-30-5" href="#__codelineno-30-5"></a><span class="sh">    ${aws_instance.servidor[0].public_ip}</span>
@@ -4465,23 +4465,23 @@
 <p>Los Data Sources permiten obtener información sobre recursos que YA existen, ya sea porque fueron creados fuera de Terraform, por otro equipo, o en otra cuenta de AWS. Es una forma de "consultar" datos sin crear nada.</p>
 <h3 id="usando-un-data-source">Usando un Data Source</h3>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a><span class="c1"># Buscar la AMI más reciente de Ubuntu 22.04 LTS</span>
-<a id="__codelineno-31-2" name="__codelineno-31-2" href="#__codelineno-31-2"></a><span class="kr">data</span><span class="w"> </span><span class="nc">&quot;aws_ami&quot;</span><span class="w"> </span><span class="nv">&quot;ubuntu&quot;</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-31-2" name="__codelineno-31-2" href="#__codelineno-31-2"></a><span class="kr">data</span><span class="w"> </span><span class="nc">"aws_ami"</span><span class="w"> </span><span class="nv">"ubuntu"</span><span class="w"> </span><span class="p">{</span>
 <a id="__codelineno-31-3" name="__codelineno-31-3" href="#__codelineno-31-3"></a><span class="w">  </span><span class="na">most_recent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">true</span>
-<a id="__codelineno-31-4" name="__codelineno-31-4" href="#__codelineno-31-4"></a><span class="w">  </span><span class="na">owners</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;099720109477&quot;</span><span class="p">]</span><span class="c1">  # Canonical (proveedor oficial de Ubuntu)</span>
+<a id="__codelineno-31-4" name="__codelineno-31-4" href="#__codelineno-31-4"></a><span class="w">  </span><span class="na">owners</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">"099720109477"</span><span class="p">]</span><span class="c1">  # Canonical (proveedor oficial de Ubuntu)</span>
 <a id="__codelineno-31-5" name="__codelineno-31-5" href="#__codelineno-31-5"></a>
 <a id="__codelineno-31-6" name="__codelineno-31-6" href="#__codelineno-31-6"></a><span class="w">  </span><span class="nb">filter</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-31-7" name="__codelineno-31-7" href="#__codelineno-31-7"></a><span class="w">    </span><span class="na">name</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;name&quot;</span>
-<a id="__codelineno-31-8" name="__codelineno-31-8" href="#__codelineno-31-8"></a><span class="w">    </span><span class="na">values</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;ubuntu/images/hvm-ssd/ubuntu-22.04 LTS-amd64-server-*&quot;</span><span class="p">]</span>
+<a id="__codelineno-31-7" name="__codelineno-31-7" href="#__codelineno-31-7"></a><span class="w">    </span><span class="na">name</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="s2">"name"</span>
+<a id="__codelineno-31-8" name="__codelineno-31-8" href="#__codelineno-31-8"></a><span class="w">    </span><span class="na">values</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">"ubuntu/images/hvm-ssd/ubuntu-22.04 LTS-amd64-server-*"</span><span class="p">]</span>
 <a id="__codelineno-31-9" name="__codelineno-31-9" href="#__codelineno-31-9"></a><span class="w">  </span><span class="p">}</span>
 <a id="__codelineno-31-10" name="__codelineno-31-10" href="#__codelineno-31-10"></a>
 <a id="__codelineno-31-11" name="__codelineno-31-11" href="#__codelineno-31-11"></a><span class="w">  </span><span class="nb">filter</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-31-12" name="__codelineno-31-12" href="#__codelineno-31-12"></a><span class="w">    </span><span class="na">name</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;virtualization-type&quot;</span>
-<a id="__codelineno-31-13" name="__codelineno-31-13" href="#__codelineno-31-13"></a><span class="w">    </span><span class="na">values</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;hvm&quot;</span><span class="p">]</span>
+<a id="__codelineno-31-12" name="__codelineno-31-12" href="#__codelineno-31-12"></a><span class="w">    </span><span class="na">name</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="s2">"virtualization-type"</span>
+<a id="__codelineno-31-13" name="__codelineno-31-13" href="#__codelineno-31-13"></a><span class="w">    </span><span class="na">values</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">"hvm"</span><span class="p">]</span>
 <a id="__codelineno-31-14" name="__codelineno-31-14" href="#__codelineno-31-14"></a><span class="w">  </span><span class="p">}</span>
 <a id="__codelineno-31-15" name="__codelineno-31-15" href="#__codelineno-31-15"></a><span class="p">}</span>
 <a id="__codelineno-31-16" name="__codelineno-31-16" href="#__codelineno-31-16"></a>
 <a id="__codelineno-31-17" name="__codelineno-31-17" href="#__codelineno-31-17"></a><span class="c1"># Usar el resultado en un recurso</span>
-<a id="__codelineno-31-18" name="__codelineno-31-18" href="#__codelineno-31-18"></a><span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;aws_instance&quot;</span><span class="w"> </span><span class="nv">&quot;servidor&quot;</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-31-18" name="__codelineno-31-18" href="#__codelineno-31-18"></a><span class="kr">resource</span><span class="w"> </span><span class="nc">"aws_instance"</span><span class="w"> </span><span class="nv">"servidor"</span><span class="w"> </span><span class="p">{</span>
 <a id="__codelineno-31-19" name="__codelineno-31-19" href="#__codelineno-31-19"></a><span class="w">  </span><span class="na">ami</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">data.aws_ami.ubuntu.id</span>
 <a id="__codelineno-31-20" name="__codelineno-31-20" href="#__codelineno-31-20"></a><span class="p">}</span>
 </code></pre></div>
@@ -4535,38 +4535,38 @@
 <h3 id="ejemplo-practico-shared-networking">Ejemplo práctico: shared networking</h3>
 <p>Imagina que tienes una VPC de red compartida que fue creada por otro equipo:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a><span class="c1"># Obtener la VPC compartida (sin crear una nueva)</span>
-<a id="__codelineno-32-2" name="__codelineno-32-2" href="#__codelineno-32-2"></a><span class="kr">data</span><span class="w"> </span><span class="nc">&quot;aws_vpc&quot;</span><span class="w"> </span><span class="nv">&quot;compartida&quot;</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-32-2" name="__codelineno-32-2" href="#__codelineno-32-2"></a><span class="kr">data</span><span class="w"> </span><span class="nc">"aws_vpc"</span><span class="w"> </span><span class="nv">"compartida"</span><span class="w"> </span><span class="p">{</span>
 <a id="__codelineno-32-3" name="__codelineno-32-3" href="#__codelineno-32-3"></a><span class="w">  </span><span class="na">default</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">true</span><span class="c1">  # Busca la VPC por defecto de la cuenta</span>
 <a id="__codelineno-32-4" name="__codelineno-32-4" href="#__codelineno-32-4"></a><span class="p">}</span>
 <a id="__codelineno-32-5" name="__codelineno-32-5" href="#__codelineno-32-5"></a>
 <a id="__codelineno-32-6" name="__codelineno-32-6" href="#__codelineno-32-6"></a><span class="c1"># Obtener las subredes públicas de esa VPC</span>
-<a id="__codelineno-32-7" name="__codelineno-32-7" href="#__codelineno-32-7"></a><span class="kr">data</span><span class="w"> </span><span class="nc">&quot;aws_subnet_ids&quot;</span><span class="w"> </span><span class="nv">&quot;publicas&quot;</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-32-7" name="__codelineno-32-7" href="#__codelineno-32-7"></a><span class="kr">data</span><span class="w"> </span><span class="nc">"aws_subnet_ids"</span><span class="w"> </span><span class="nv">"publicas"</span><span class="w"> </span><span class="p">{</span>
 <a id="__codelineno-32-8" name="__codelineno-32-8" href="#__codelineno-32-8"></a><span class="w">  </span><span class="na">vpc_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">data.aws_vpc.compartida.id</span>
 <a id="__codelineno-32-9" name="__codelineno-32-9" href="#__codelineno-32-9"></a><span class="w">  </span><span class="nb">tags</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-32-10" name="__codelineno-32-10" href="#__codelineno-32-10"></a><span class="w">    </span><span class="na">Type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;public&quot;</span>
+<a id="__codelineno-32-10" name="__codelineno-32-10" href="#__codelineno-32-10"></a><span class="w">    </span><span class="na">Type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"public"</span>
 <a id="__codelineno-32-11" name="__codelineno-32-11" href="#__codelineno-32-11"></a><span class="w">  </span><span class="p">}</span>
 <a id="__codelineno-32-12" name="__codelineno-32-12" href="#__codelineno-32-12"></a><span class="p">}</span>
 <a id="__codelineno-32-13" name="__codelineno-32-13" href="#__codelineno-32-13"></a>
 <a id="__codelineno-32-14" name="__codelineno-32-14" href="#__codelineno-32-14"></a><span class="c1"># Ahora podemos crear recursos en esa VPC existente</span>
-<a id="__codelineno-32-15" name="__codelineno-32-15" href="#__codelineno-32-15"></a><span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;aws_instance&quot;</span><span class="w"> </span><span class="nv">&quot;servidor&quot;</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-32-16" name="__codelineno-32-16" href="#__codelineno-32-16"></a><span class="w">  </span><span class="na">ami</span><span class="w">           </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;ami-0c55b159cbfafe1f0&quot;</span>
-<a id="__codelineno-32-17" name="__codelineno-32-17" href="#__codelineno-32-17"></a><span class="w">  </span><span class="na">instance_type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;t3.micro&quot;</span>
+<a id="__codelineno-32-15" name="__codelineno-32-15" href="#__codelineno-32-15"></a><span class="kr">resource</span><span class="w"> </span><span class="nc">"aws_instance"</span><span class="w"> </span><span class="nv">"servidor"</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-32-16" name="__codelineno-32-16" href="#__codelineno-32-16"></a><span class="w">  </span><span class="na">ami</span><span class="w">           </span><span class="o">=</span><span class="w"> </span><span class="s2">"ami-0c55b159cbfafe1f0"</span>
+<a id="__codelineno-32-17" name="__codelineno-32-17" href="#__codelineno-32-17"></a><span class="w">  </span><span class="na">instance_type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"t3.micro"</span>
 <a id="__codelineno-32-18" name="__codelineno-32-18" href="#__codelineno-32-18"></a><span class="w">  </span><span class="na">subnet_id</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="nv">data.aws_subnet_ids.publicas.ids[0</span><span class="p">]</span>
 <a id="__codelineno-32-19" name="__codelineno-32-19" href="#__codelineno-32-19"></a><span class="p">}</span>
 </code></pre></div>
 <h3 id="leyendo-estado-de-otro-workspace">Leyendo estado de otro workspace</h3>
 <p>El data source <code>terraform_remote_state</code> permite acceder al estado de otro proyecto Terraform:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a><span class="kr">data</span><span class="w"> </span><span class="nc">&quot;terraform_remote_state&quot;</span><span class="w"> </span><span class="nv">&quot;networking&quot;</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-33-2" name="__codelineno-33-2" href="#__codelineno-33-2"></a><span class="w">  </span><span class="na">backend</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;s3&quot;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a><span class="kr">data</span><span class="w"> </span><span class="nc">"terraform_remote_state"</span><span class="w"> </span><span class="nv">"networking"</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-33-2" name="__codelineno-33-2" href="#__codelineno-33-2"></a><span class="w">  </span><span class="na">backend</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"s3"</span>
 <a id="__codelineno-33-3" name="__codelineno-33-3" href="#__codelineno-33-3"></a><span class="w">  </span><span class="nb">config</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-33-4" name="__codelineno-33-4" href="#__codelineno-33-4"></a><span class="w">    </span><span class="na">bucket</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;mi-terraform-state&quot;</span>
-<a id="__codelineno-33-5" name="__codelineno-33-5" href="#__codelineno-33-5"></a><span class="w">    </span><span class="na">key</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;networking/terraform.tfstate&quot;</span>
-<a id="__codelineno-33-6" name="__codelineno-33-6" href="#__codelineno-33-6"></a><span class="w">    </span><span class="na">region</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;us-east-1&quot;</span>
+<a id="__codelineno-33-4" name="__codelineno-33-4" href="#__codelineno-33-4"></a><span class="w">    </span><span class="na">bucket</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"mi-terraform-state"</span>
+<a id="__codelineno-33-5" name="__codelineno-33-5" href="#__codelineno-33-5"></a><span class="w">    </span><span class="na">key</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="s2">"networking/terraform.tfstate"</span>
+<a id="__codelineno-33-6" name="__codelineno-33-6" href="#__codelineno-33-6"></a><span class="w">    </span><span class="na">region</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"us-east-1"</span>
 <a id="__codelineno-33-7" name="__codelineno-33-7" href="#__codelineno-33-7"></a><span class="w">  </span><span class="p">}</span>
 <a id="__codelineno-33-8" name="__codelineno-33-8" href="#__codelineno-33-8"></a><span class="p">}</span>
 <a id="__codelineno-33-9" name="__codelineno-33-9" href="#__codelineno-33-9"></a>
 <a id="__codelineno-33-10" name="__codelineno-33-10" href="#__codelineno-33-10"></a><span class="c1"># Ahora podemos usar las outputs del proyecto de networking</span>
-<a id="__codelineno-33-11" name="__codelineno-33-11" href="#__codelineno-33-11"></a><span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;aws_instance&quot;</span><span class="w"> </span><span class="nv">&quot;servidor&quot;</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-33-11" name="__codelineno-33-11" href="#__codelineno-33-11"></a><span class="kr">resource</span><span class="w"> </span><span class="nc">"aws_instance"</span><span class="w"> </span><span class="nv">"servidor"</span><span class="w"> </span><span class="p">{</span>
 <a id="__codelineno-33-12" name="__codelineno-33-12" href="#__codelineno-33-12"></a><span class="c1">  # ...</span>
 <a id="__codelineno-33-13" name="__codelineno-33-13" href="#__codelineno-33-13"></a><span class="w">  </span><span class="na">subnet_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">data.terraform_remote_state.networking.outputs.subnet_id</span>
 <a id="__codelineno-33-14" name="__codelineno-33-14" href="#__codelineno-33-14"></a><span class="w">  </span><span class="na">vpc_id</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="nv">data.terraform_remote_state.networking.outputs.vpc_id</span>
@@ -4584,34 +4584,34 @@
 <li><strong>Recursos</strong>: Un mapeo completo de cada recurso definido en tu configuración con el ID real del recurso en el proveedor de nube</li>
 </ol>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-34-1" name="__codelineno-34-1" href="#__codelineno-34-1"></a><span class="p">{</span>
-<a id="__codelineno-34-2" name="__codelineno-34-2" href="#__codelineno-34-2"></a><span class="w">  </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span>
-<a id="__codelineno-34-3" name="__codelineno-34-3" href="#__codelineno-34-3"></a><span class="w">  </span><span class="nt">&quot;terraform_version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1.5.0&quot;</span><span class="p">,</span>
-<a id="__codelineno-34-4" name="__codelineno-34-4" href="#__codelineno-34-4"></a><span class="w">  </span><span class="nt">&quot;serial&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
-<a id="__codelineno-34-5" name="__codelineno-34-5" href="#__codelineno-34-5"></a><span class="w">  </span><span class="nt">&quot;lineage&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;abc-123-def-456&quot;</span><span class="p">,</span>
-<a id="__codelineno-34-6" name="__codelineno-34-6" href="#__codelineno-34-6"></a><span class="w">  </span><span class="nt">&quot;outputs&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-34-7" name="__codelineno-34-7" href="#__codelineno-34-7"></a><span class="w">    </span><span class="nt">&quot;ip_publica&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-34-8" name="__codelineno-34-8" href="#__codelineno-34-8"></a><span class="w">      </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;54.123.456.789&quot;</span><span class="p">,</span>
-<a id="__codelineno-34-9" name="__codelineno-34-9" href="#__codelineno-34-9"></a><span class="w">      </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;string&quot;</span>
+<a id="__codelineno-34-2" name="__codelineno-34-2" href="#__codelineno-34-2"></a><span class="w">  </span><span class="nt">"version"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span>
+<a id="__codelineno-34-3" name="__codelineno-34-3" href="#__codelineno-34-3"></a><span class="w">  </span><span class="nt">"terraform_version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.5.0"</span><span class="p">,</span>
+<a id="__codelineno-34-4" name="__codelineno-34-4" href="#__codelineno-34-4"></a><span class="w">  </span><span class="nt">"serial"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<a id="__codelineno-34-5" name="__codelineno-34-5" href="#__codelineno-34-5"></a><span class="w">  </span><span class="nt">"lineage"</span><span class="p">:</span><span class="w"> </span><span class="s2">"abc-123-def-456"</span><span class="p">,</span>
+<a id="__codelineno-34-6" name="__codelineno-34-6" href="#__codelineno-34-6"></a><span class="w">  </span><span class="nt">"outputs"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-34-7" name="__codelineno-34-7" href="#__codelineno-34-7"></a><span class="w">    </span><span class="nt">"ip_publica"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-34-8" name="__codelineno-34-8" href="#__codelineno-34-8"></a><span class="w">      </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"54.123.456.789"</span><span class="p">,</span>
+<a id="__codelineno-34-9" name="__codelineno-34-9" href="#__codelineno-34-9"></a><span class="w">      </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span>
 <a id="__codelineno-34-10" name="__codelineno-34-10" href="#__codelineno-34-10"></a><span class="w">    </span><span class="p">}</span>
 <a id="__codelineno-34-11" name="__codelineno-34-11" href="#__codelineno-34-11"></a><span class="w">  </span><span class="p">},</span>
-<a id="__codelineno-34-12" name="__codelineno-34-12" href="#__codelineno-34-12"></a><span class="w">  </span><span class="nt">&quot;resources&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<a id="__codelineno-34-12" name="__codelineno-34-12" href="#__codelineno-34-12"></a><span class="w">  </span><span class="nt">"resources"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <a id="__codelineno-34-13" name="__codelineno-34-13" href="#__codelineno-34-13"></a><span class="w">    </span><span class="p">{</span>
-<a id="__codelineno-34-14" name="__codelineno-34-14" href="#__codelineno-34-14"></a><span class="w">      </span><span class="nt">&quot;mode&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;managed&quot;</span><span class="p">,</span>
-<a id="__codelineno-34-15" name="__codelineno-34-15" href="#__codelineno-34-15"></a><span class="w">      </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;aws_instance&quot;</span><span class="p">,</span>
-<a id="__codelineno-34-16" name="__codelineno-34-16" href="#__codelineno-34-16"></a><span class="w">      </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;servidor&quot;</span><span class="p">,</span>
-<a id="__codelineno-34-17" name="__codelineno-34-17" href="#__codelineno-34-17"></a><span class="w">      </span><span class="nt">&quot;provider&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;provider[\&quot;registry.terraform.io/hashicorp/aws\&quot;]&quot;</span><span class="p">,</span>
-<a id="__codelineno-34-18" name="__codelineno-34-18" href="#__codelineno-34-18"></a><span class="w">      </span><span class="nt">&quot;instances&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<a id="__codelineno-34-14" name="__codelineno-34-14" href="#__codelineno-34-14"></a><span class="w">      </span><span class="nt">"mode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"managed"</span><span class="p">,</span>
+<a id="__codelineno-34-15" name="__codelineno-34-15" href="#__codelineno-34-15"></a><span class="w">      </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"aws_instance"</span><span class="p">,</span>
+<a id="__codelineno-34-16" name="__codelineno-34-16" href="#__codelineno-34-16"></a><span class="w">      </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"servidor"</span><span class="p">,</span>
+<a id="__codelineno-34-17" name="__codelineno-34-17" href="#__codelineno-34-17"></a><span class="w">      </span><span class="nt">"provider"</span><span class="p">:</span><span class="w"> </span><span class="s2">"provider[\"registry.terraform.io/hashicorp/aws\"]"</span><span class="p">,</span>
+<a id="__codelineno-34-18" name="__codelineno-34-18" href="#__codelineno-34-18"></a><span class="w">      </span><span class="nt">"instances"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <a id="__codelineno-34-19" name="__codelineno-34-19" href="#__codelineno-34-19"></a><span class="w">        </span><span class="p">{</span>
-<a id="__codelineno-34-20" name="__codelineno-34-20" href="#__codelineno-34-20"></a><span class="w">          </span><span class="nt">&quot;schema_version&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
-<a id="__codelineno-34-21" name="__codelineno-34-21" href="#__codelineno-34-21"></a><span class="w">          </span><span class="nt">&quot;attributes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-34-22" name="__codelineno-34-22" href="#__codelineno-34-22"></a><span class="w">            </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;i-0abc123def456789&quot;</span><span class="p">,</span>
-<a id="__codelineno-34-23" name="__codelineno-34-23" href="#__codelineno-34-23"></a><span class="w">            </span><span class="nt">&quot;ami&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ami-0c55b159cbfafe1f0&quot;</span><span class="p">,</span>
-<a id="__codelineno-34-24" name="__codelineno-34-24" href="#__codelineno-34-24"></a><span class="w">            </span><span class="nt">&quot;instance_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;t3.micro&quot;</span><span class="p">,</span>
-<a id="__codelineno-34-25" name="__codelineno-34-25" href="#__codelineno-34-25"></a><span class="w">            </span><span class="nt">&quot;public_ip&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;54.123.456.789&quot;</span><span class="p">,</span>
-<a id="__codelineno-34-26" name="__codelineno-34-26" href="#__codelineno-34-26"></a><span class="w">            </span><span class="nt">&quot;private_ip&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;10.0.1.100&quot;</span><span class="p">,</span>
+<a id="__codelineno-34-20" name="__codelineno-34-20" href="#__codelineno-34-20"></a><span class="w">          </span><span class="nt">"schema_version"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<a id="__codelineno-34-21" name="__codelineno-34-21" href="#__codelineno-34-21"></a><span class="w">          </span><span class="nt">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-34-22" name="__codelineno-34-22" href="#__codelineno-34-22"></a><span class="w">            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"i-0abc123def456789"</span><span class="p">,</span>
+<a id="__codelineno-34-23" name="__codelineno-34-23" href="#__codelineno-34-23"></a><span class="w">            </span><span class="nt">"ami"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ami-0c55b159cbfafe1f0"</span><span class="p">,</span>
+<a id="__codelineno-34-24" name="__codelineno-34-24" href="#__codelineno-34-24"></a><span class="w">            </span><span class="nt">"instance_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"t3.micro"</span><span class="p">,</span>
+<a id="__codelineno-34-25" name="__codelineno-34-25" href="#__codelineno-34-25"></a><span class="w">            </span><span class="nt">"public_ip"</span><span class="p">:</span><span class="w"> </span><span class="s2">"54.123.456.789"</span><span class="p">,</span>
+<a id="__codelineno-34-26" name="__codelineno-34-26" href="#__codelineno-34-26"></a><span class="w">            </span><span class="nt">"private_ip"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10.0.1.100"</span><span class="p">,</span>
 <a id="__codelineno-34-27" name="__codelineno-34-27" href="#__codelineno-34-27"></a><span class="w">            </span><span class="err">...</span>
 <a id="__codelineno-34-28" name="__codelineno-34-28" href="#__codelineno-34-28"></a><span class="w">          </span><span class="p">},</span>
-<a id="__codelineno-34-29" name="__codelineno-34-29" href="#__codelineno-34-29"></a><span class="w">          </span><span class="nt">&quot;dependencies&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;aws_vpc.mi_vpc&quot;</span><span class="p">]</span>
+<a id="__codelineno-34-29" name="__codelineno-34-29" href="#__codelineno-34-29"></a><span class="w">          </span><span class="nt">"dependencies"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"aws_vpc.mi_vpc"</span><span class="p">]</span>
 <a id="__codelineno-34-30" name="__codelineno-34-30" href="#__codelineno-34-30"></a><span class="w">        </span><span class="p">}</span>
 <a id="__codelineno-34-31" name="__codelineno-34-31" href="#__codelineno-34-31"></a><span class="w">      </span><span class="p">]</span>
 <a id="__codelineno-34-32" name="__codelineno-34-32" href="#__codelineno-34-32"></a><span class="w">    </span><span class="p">}</span>
@@ -4639,12 +4639,12 @@
 <p>La solución es usar un backend remoto que permita compartir el estado entre el equipo y prevenga accesos concurrentes.</p>
 <p><strong>Backend S3 con DynamoDB para locking:</strong></p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-35-1" name="__codelineno-35-1" href="#__codelineno-35-1"></a><span class="nb">terraform</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-35-2" name="__codelineno-35-2" href="#__codelineno-35-2"></a><span class="w">  </span><span class="kr">backend</span><span class="w"> </span><span class="nv">&quot;s3&quot;</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-35-3" name="__codelineno-35-3" href="#__codelineno-35-3"></a><span class="w">    </span><span class="na">bucket</span><span class="w">         </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;empresa-terraform-state&quot;</span><span class="c1">      # Bucket S3 para guardar el state</span>
-<a id="__codelineno-35-4" name="__codelineno-35-4" href="#__codelineno-35-4"></a><span class="w">    </span><span class="na">key</span><span class="w">            </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;proyecto/entorno/terraform.tfstate&quot;</span><span class="c1">  # Path dentro del bucket</span>
-<a id="__codelineno-35-5" name="__codelineno-35-5" href="#__codelineno-35-5"></a><span class="w">    </span><span class="na">region</span><span class="w">         </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;us-east-1&quot;</span>
+<a id="__codelineno-35-2" name="__codelineno-35-2" href="#__codelineno-35-2"></a><span class="w">  </span><span class="kr">backend</span><span class="w"> </span><span class="nv">"s3"</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-35-3" name="__codelineno-35-3" href="#__codelineno-35-3"></a><span class="w">    </span><span class="na">bucket</span><span class="w">         </span><span class="o">=</span><span class="w"> </span><span class="s2">"empresa-terraform-state"</span><span class="c1">      # Bucket S3 para guardar el state</span>
+<a id="__codelineno-35-4" name="__codelineno-35-4" href="#__codelineno-35-4"></a><span class="w">    </span><span class="na">key</span><span class="w">            </span><span class="o">=</span><span class="w"> </span><span class="s2">"proyecto/entorno/terraform.tfstate"</span><span class="c1">  # Path dentro del bucket</span>
+<a id="__codelineno-35-5" name="__codelineno-35-5" href="#__codelineno-35-5"></a><span class="w">    </span><span class="na">region</span><span class="w">         </span><span class="o">=</span><span class="w"> </span><span class="s2">"us-east-1"</span>
 <a id="__codelineno-35-6" name="__codelineno-35-6" href="#__codelineno-35-6"></a><span class="w">    </span><span class="na">encrypt</span><span class="w">        </span><span class="o">=</span><span class="w"> </span><span class="no">true</span><span class="c1">                            # Cifrado en reposo</span>
-<a id="__codelineno-35-7" name="__codelineno-35-7" href="#__codelineno-35-7"></a><span class="w">    </span><span class="na">dynamodb_table</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;terraform-locks&quot;</span><span class="c1">              # Tabla para bloquear cambios</span>
+<a id="__codelineno-35-7" name="__codelineno-35-7" href="#__codelineno-35-7"></a><span class="w">    </span><span class="na">dynamodb_table</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"terraform-locks"</span><span class="c1">              # Tabla para bloquear cambios</span>
 <a id="__codelineno-35-8" name="__codelineno-35-8" href="#__codelineno-35-8"></a><span class="w">  </span><span class="p">}</span>
 <a id="__codelineno-35-9" name="__codelineno-35-9" href="#__codelineno-35-9"></a><span class="p">}</span>
 </code></pre></div>
@@ -4658,9 +4658,9 @@
 <p><strong>Terraform Cloud como backend:</strong></p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-36-1" name="__codelineno-36-1" href="#__codelineno-36-1"></a><span class="nb">terraform</span><span class="w"> </span><span class="p">{</span>
 <a id="__codelineno-36-2" name="__codelineno-36-2" href="#__codelineno-36-2"></a><span class="w">  </span><span class="nb">cloud</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-36-3" name="__codelineno-36-3" href="#__codelineno-36-3"></a><span class="w">    </span><span class="na">organization</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;mi-empresa&quot;</span>
+<a id="__codelineno-36-3" name="__codelineno-36-3" href="#__codelineno-36-3"></a><span class="w">    </span><span class="na">organization</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"mi-empresa"</span>
 <a id="__codelineno-36-4" name="__codelineno-36-4" href="#__codelineno-36-4"></a><span class="w">    </span><span class="nb">workspaces</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-36-5" name="__codelineno-36-5" href="#__codelineno-36-5"></a><span class="w">      </span><span class="na">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;mi-proyecto-produccion&quot;</span>
+<a id="__codelineno-36-5" name="__codelineno-36-5" href="#__codelineno-36-5"></a><span class="w">      </span><span class="na">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"mi-proyecto-produccion"</span>
 <a id="__codelineno-36-6" name="__codelineno-36-6" href="#__codelineno-36-6"></a><span class="w">    </span><span class="p">}</span>
 <a id="__codelineno-36-7" name="__codelineno-36-7" href="#__codelineno-36-7"></a><span class="w">  </span><span class="p">}</span>
 <a id="__codelineno-36-8" name="__codelineno-36-8" href="#__codelineno-36-8"></a><span class="p">}</span>
@@ -4703,16 +4703,16 @@
 <h3 id="paso-1-write-escribir">Paso 1: Write (Escribir)</h3>
 <p>Empiezas creando o modificando tus archivos de configuración <code>.tf</code>. Aquí defines qué infraestructura necesitas:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-39-1" name="__codelineno-39-1" href="#__codelineno-39-1"></a><span class="c1"># main.tf</span>
-<a id="__codelineno-39-2" name="__codelineno-39-2" href="#__codelineno-39-2"></a><span class="kr">provider</span><span class="w"> </span><span class="nv">&quot;aws&quot;</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-39-3" name="__codelineno-39-3" href="#__codelineno-39-3"></a><span class="w">  </span><span class="na">region</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;us-east-1&quot;</span>
+<a id="__codelineno-39-2" name="__codelineno-39-2" href="#__codelineno-39-2"></a><span class="kr">provider</span><span class="w"> </span><span class="nv">"aws"</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-39-3" name="__codelineno-39-3" href="#__codelineno-39-3"></a><span class="w">  </span><span class="na">region</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"us-east-1"</span>
 <a id="__codelineno-39-4" name="__codelineno-39-4" href="#__codelineno-39-4"></a><span class="p">}</span>
 <a id="__codelineno-39-5" name="__codelineno-39-5" href="#__codelineno-39-5"></a>
-<a id="__codelineno-39-6" name="__codelineno-39-6" href="#__codelineno-39-6"></a><span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;aws_instance&quot;</span><span class="w"> </span><span class="nv">&quot;servidor&quot;</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-39-7" name="__codelineno-39-7" href="#__codelineno-39-7"></a><span class="w">  </span><span class="na">ami</span><span class="w">           </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;ami-0c55b159cbfafe1f0&quot;</span>
-<a id="__codelineno-39-8" name="__codelineno-39-8" href="#__codelineno-39-8"></a><span class="w">  </span><span class="na">instance_type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;t3.micro&quot;</span>
+<a id="__codelineno-39-6" name="__codelineno-39-6" href="#__codelineno-39-6"></a><span class="kr">resource</span><span class="w"> </span><span class="nc">"aws_instance"</span><span class="w"> </span><span class="nv">"servidor"</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-39-7" name="__codelineno-39-7" href="#__codelineno-39-7"></a><span class="w">  </span><span class="na">ami</span><span class="w">           </span><span class="o">=</span><span class="w"> </span><span class="s2">"ami-0c55b159cbfafe1f0"</span>
+<a id="__codelineno-39-8" name="__codelineno-39-8" href="#__codelineno-39-8"></a><span class="w">  </span><span class="na">instance_type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"t3.micro"</span>
 <a id="__codelineno-39-9" name="__codelineno-39-9" href="#__codelineno-39-9"></a>
 <a id="__codelineno-39-10" name="__codelineno-39-10" href="#__codelineno-39-10"></a><span class="w">  </span><span class="nb">tags</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-39-11" name="__codelineno-39-11" href="#__codelineno-39-11"></a><span class="w">    </span><span class="na">Name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;MiServidor&quot;</span>
+<a id="__codelineno-39-11" name="__codelineno-39-11" href="#__codelineno-39-11"></a><span class="w">    </span><span class="na">Name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"MiServidor"</span>
 <a id="__codelineno-39-12" name="__codelineno-39-12" href="#__codelineno-39-12"></a><span class="w">  </span><span class="p">}</span>
 <a id="__codelineno-39-13" name="__codelineno-39-13" href="#__codelineno-39-13"></a><span class="p">}</span>
 </code></pre></div>
@@ -4747,17 +4747,17 @@
 <div class="highlight"><pre><span></span><code><a id="__codelineno-42-1" name="__codelineno-42-1" href="#__codelineno-42-1"></a>Terraform will perform the following actions:
 <a id="__codelineno-42-2" name="__codelineno-42-2" href="#__codelineno-42-2"></a>
 <a id="__codelineno-42-3" name="__codelineno-42-3" href="#__codelineno-42-3"></a>  # aws_instance.servidor will be created
-<a id="__codelineno-42-4" name="__codelineno-42-4" href="#__codelineno-42-4"></a>  + resource &quot;aws_instance&quot; &quot;servidor&quot; {
-<a id="__codelineno-42-5" name="__codelineno-42-5" href="#__codelineno-42-5"></a>      + ami                          = &quot;ami-0c55b159cbfafe1f0&quot;
+<a id="__codelineno-42-4" name="__codelineno-42-4" href="#__codelineno-42-4"></a>  + resource "aws_instance" "servidor" {
+<a id="__codelineno-42-5" name="__codelineno-42-5" href="#__codelineno-42-5"></a>      + ami                          = "ami-0c55b159cbfafe1f0"
 <a id="__codelineno-42-6" name="__codelineno-42-6" href="#__codelineno-42-6"></a>      + arn                          = (known after apply)
 <a id="__codelineno-42-7" name="__codelineno-42-7" href="#__codelineno-42-7"></a>      + associate_public_ip_address  = (known after apply)
 <a id="__codelineno-42-8" name="__codelineno-42-8" href="#__codelineno-42-8"></a>      + availability_zone            = (known after apply)
 <a id="__codelineno-42-9" name="__codelineno-42-9" href="#__codelineno-42-9"></a>      + id                           = (known after apply)
-<a id="__codelineno-42-10" name="__codelineno-42-10" href="#__codelineno-42-10"></a>      + instance_type                = &quot;t3.micro&quot;
+<a id="__codelineno-42-10" name="__codelineno-42-10" href="#__codelineno-42-10"></a>      + instance_type                = "t3.micro"
 <a id="__codelineno-42-11" name="__codelineno-42-11" href="#__codelineno-42-11"></a>      + ip_address                   = (known after apply)
 <a id="__codelineno-42-12" name="__codelineno-42-12" href="#__codelineno-42-12"></a>      + ...
 <a id="__codelineno-42-13" name="__codelineno-42-13" href="#__codelineno-42-13"></a>      + tags                         = {
-<a id="__codelineno-42-14" name="__codelineno-42-14" href="#__codelineno-42-14"></a>          + &quot;Name&quot; = &quot;MiServidor&quot;
+<a id="__codelineno-42-14" name="__codelineno-42-14" href="#__codelineno-42-14"></a>          + "Name" = "MiServidor"
 <a id="__codelineno-42-15" name="__codelineno-42-15" href="#__codelineno-42-15"></a>        }
 <a id="__codelineno-42-16" name="__codelineno-42-16" href="#__codelineno-42-16"></a>    }
 <a id="__codelineno-42-17" name="__codelineno-42-17" href="#__codelineno-42-17"></a>
@@ -4766,7 +4766,7 @@
 <p>Revisa siempre el plan antes de aplicar. El plan te dice exactamente qué cambiará sin hacer realmente ningún cambio.</p>
 <h3 id="paso-4-apply-aplicar">Paso 4: Apply (Aplicar)</h3>
 <p>Cuando estás satisfecho con el plan, ejecutas <code>terraform apply</code> para aplicar los cambios:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-43-1" name="__codelineno-43-1" href="#__codelineno-43-1"></a><span class="c1"># Versión interactiva (pregunta &quot;yes&quot; al final)</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-43-1" name="__codelineno-43-1" href="#__codelineno-43-1"></a><span class="c1"># Versión interactiva (pregunta "yes" al final)</span>
 <a id="__codelineno-43-2" name="__codelineno-43-2" href="#__codelineno-43-2"></a>terraform<span class="w"> </span>apply
 <a id="__codelineno-43-3" name="__codelineno-43-3" href="#__codelineno-43-3"></a>
 <a id="__codelineno-43-4" name="__codelineno-43-4" href="#__codelineno-43-4"></a><span class="c1"># Versión automática (para scripts o CI/CD)</span>
@@ -4863,9 +4863,9 @@
 <a id="__codelineno-50-2" name="__codelineno-50-2" href="#__codelineno-50-2"></a>aws<span class="w"> </span>configure
 <a id="__codelineno-50-3" name="__codelineno-50-3" href="#__codelineno-50-3"></a>
 <a id="__codelineno-50-4" name="__codelineno-50-4" href="#__codelineno-50-4"></a><span class="c1"># Opción 2: Variables de entorno</span>
-<a id="__codelineno-50-5" name="__codelineno-50-5" href="#__codelineno-50-5"></a><span class="nb">export</span><span class="w"> </span><span class="nv">AWS_ACCESS_KEY_ID</span><span class="o">=</span><span class="s2">&quot;AKIAIOSFODNN7EXAMPLE&quot;</span>
-<a id="__codelineno-50-6" name="__codelineno-50-6" href="#__codelineno-50-6"></a><span class="nb">export</span><span class="w"> </span><span class="nv">AWS_SECRET_ACCESS_KEY</span><span class="o">=</span><span class="s2">&quot;wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY&quot;</span>
-<a id="__codelineno-50-7" name="__codelineno-50-7" href="#__codelineno-50-7"></a><span class="nb">export</span><span class="w"> </span><span class="nv">AWS_DEFAULT_REGION</span><span class="o">=</span><span class="s2">&quot;us-east-1&quot;</span>
+<a id="__codelineno-50-5" name="__codelineno-50-5" href="#__codelineno-50-5"></a><span class="nb">export</span><span class="w"> </span><span class="nv">AWS_ACCESS_KEY_ID</span><span class="o">=</span><span class="s2">"AKIAIOSFODNN7EXAMPLE"</span>
+<a id="__codelineno-50-6" name="__codelineno-50-6" href="#__codelineno-50-6"></a><span class="nb">export</span><span class="w"> </span><span class="nv">AWS_SECRET_ACCESS_KEY</span><span class="o">=</span><span class="s2">"wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY"</span>
+<a id="__codelineno-50-7" name="__codelineno-50-7" href="#__codelineno-50-7"></a><span class="nb">export</span><span class="w"> </span><span class="nv">AWS_DEFAULT_REGION</span><span class="o">=</span><span class="s2">"us-east-1"</span>
 </code></pre></div>
 <h3 id="tu-primer-terraform">Tu primer Terraform</h3>
 <p>Crea un directorio y un archivo:</p>
@@ -4873,17 +4873,17 @@
 <a id="__codelineno-51-2" name="__codelineno-51-2" href="#__codelineno-51-2"></a><span class="nb">cd</span><span class="w"> </span>mi-primer-terraform
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-52-1" name="__codelineno-52-1" href="#__codelineno-52-1"></a><span class="c1"># main.tf</span>
-<a id="__codelineno-52-2" name="__codelineno-52-2" href="#__codelineno-52-2"></a><span class="kr">provider</span><span class="w"> </span><span class="nv">&quot;aws&quot;</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-52-3" name="__codelineno-52-3" href="#__codelineno-52-3"></a><span class="w">  </span><span class="na">region</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;us-east-1&quot;</span>
+<a id="__codelineno-52-2" name="__codelineno-52-2" href="#__codelineno-52-2"></a><span class="kr">provider</span><span class="w"> </span><span class="nv">"aws"</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-52-3" name="__codelineno-52-3" href="#__codelineno-52-3"></a><span class="w">  </span><span class="na">region</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"us-east-1"</span>
 <a id="__codelineno-52-4" name="__codelineno-52-4" href="#__codelineno-52-4"></a><span class="p">}</span>
 <a id="__codelineno-52-5" name="__codelineno-52-5" href="#__codelineno-52-5"></a>
-<a id="__codelineno-52-6" name="__codelineno-52-6" href="#__codelineno-52-6"></a><span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;aws_instance&quot;</span><span class="w"> </span><span class="nv">&quot;mi_servidor&quot;</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-52-7" name="__codelineno-52-7" href="#__codelineno-52-7"></a><span class="w">  </span><span class="na">ami</span><span class="w">           </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;ami-0c55b159cbfafe1f0&quot;</span><span class="c1">  # Ubuntu 22.04 LTS en us-east-1</span>
-<a id="__codelineno-52-8" name="__codelineno-52-8" href="#__codelineno-52-8"></a><span class="w">  </span><span class="na">instance_type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;t3.micro&quot;</span>
+<a id="__codelineno-52-6" name="__codelineno-52-6" href="#__codelineno-52-6"></a><span class="kr">resource</span><span class="w"> </span><span class="nc">"aws_instance"</span><span class="w"> </span><span class="nv">"mi_servidor"</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-52-7" name="__codelineno-52-7" href="#__codelineno-52-7"></a><span class="w">  </span><span class="na">ami</span><span class="w">           </span><span class="o">=</span><span class="w"> </span><span class="s2">"ami-0c55b159cbfafe1f0"</span><span class="c1">  # Ubuntu 22.04 LTS en us-east-1</span>
+<a id="__codelineno-52-8" name="__codelineno-52-8" href="#__codelineno-52-8"></a><span class="w">  </span><span class="na">instance_type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"t3.micro"</span>
 <a id="__codelineno-52-9" name="__codelineno-52-9" href="#__codelineno-52-9"></a>
 <a id="__codelineno-52-10" name="__codelineno-52-10" href="#__codelineno-52-10"></a><span class="w">  </span><span class="nb">tags</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-52-11" name="__codelineno-52-11" href="#__codelineno-52-11"></a><span class="w">    </span><span class="na">Name</span><span class="w">        </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;MiPrimerServidor&quot;</span>
-<a id="__codelineno-52-12" name="__codelineno-52-12" href="#__codelineno-52-12"></a><span class="w">    </span><span class="na">Environment</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;desarrollo&quot;</span>
+<a id="__codelineno-52-11" name="__codelineno-52-11" href="#__codelineno-52-11"></a><span class="w">    </span><span class="na">Name</span><span class="w">        </span><span class="o">=</span><span class="w"> </span><span class="s2">"MiPrimerServidor"</span>
+<a id="__codelineno-52-12" name="__codelineno-52-12" href="#__codelineno-52-12"></a><span class="w">    </span><span class="na">Environment</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"desarrollo"</span>
 <a id="__codelineno-52-13" name="__codelineno-52-13" href="#__codelineno-52-13"></a><span class="w">  </span><span class="p">}</span>
 <a id="__codelineno-52-14" name="__codelineno-52-14" href="#__codelineno-52-14"></a><span class="p">}</span>
 </code></pre></div>
@@ -4918,57 +4918,57 @@
 <a id="__codelineno-55-17" name="__codelineno-55-17" href="#__codelineno-55-17"></a>        └── outputs.tf
 </code></pre></div>
 <h3 id="ejemplo-de-variablestf">Ejemplo de variables.tf</h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-56-1" name="__codelineno-56-1" href="#__codelineno-56-1"></a><span class="kr">variable</span><span class="w"> </span><span class="nv">&quot;region&quot;</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-56-2" name="__codelineno-56-2" href="#__codelineno-56-2"></a><span class="w">  </span><span class="na">description</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Región de AWS&quot;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-56-1" name="__codelineno-56-1" href="#__codelineno-56-1"></a><span class="kr">variable</span><span class="w"> </span><span class="nv">"region"</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-56-2" name="__codelineno-56-2" href="#__codelineno-56-2"></a><span class="w">  </span><span class="na">description</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Región de AWS"</span>
 <a id="__codelineno-56-3" name="__codelineno-56-3" href="#__codelineno-56-3"></a><span class="w">  </span><span class="na">type</span><span class="w">        </span><span class="o">=</span><span class="w"> </span><span class="kt">string</span>
-<a id="__codelineno-56-4" name="__codelineno-56-4" href="#__codelineno-56-4"></a><span class="w">  </span><span class="na">default</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;us-east-1&quot;</span>
+<a id="__codelineno-56-4" name="__codelineno-56-4" href="#__codelineno-56-4"></a><span class="w">  </span><span class="na">default</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="s2">"us-east-1"</span>
 <a id="__codelineno-56-5" name="__codelineno-56-5" href="#__codelineno-56-5"></a><span class="p">}</span>
 <a id="__codelineno-56-6" name="__codelineno-56-6" href="#__codelineno-56-6"></a>
-<a id="__codelineno-56-7" name="__codelineno-56-7" href="#__codelineno-56-7"></a><span class="kr">variable</span><span class="w"> </span><span class="nv">&quot;nombre_entorno&quot;</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-56-8" name="__codelineno-56-8" href="#__codelineno-56-8"></a><span class="w">  </span><span class="na">description</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Nombre del entorno&quot;</span>
+<a id="__codelineno-56-7" name="__codelineno-56-7" href="#__codelineno-56-7"></a><span class="kr">variable</span><span class="w"> </span><span class="nv">"nombre_entorno"</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-56-8" name="__codelineno-56-8" href="#__codelineno-56-8"></a><span class="w">  </span><span class="na">description</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Nombre del entorno"</span>
 <a id="__codelineno-56-9" name="__codelineno-56-9" href="#__codelineno-56-9"></a><span class="w">  </span><span class="na">type</span><span class="w">        </span><span class="o">=</span><span class="w"> </span><span class="kt">string</span>
 <a id="__codelineno-56-10" name="__codelineno-56-10" href="#__codelineno-56-10"></a><span class="w">  </span><span class="nb">validation</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-56-11" name="__codelineno-56-11" href="#__codelineno-56-11"></a><span class="w">    </span><span class="na">condition</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="nf">contains</span><span class="p">([</span><span class="s2">&quot;desarrollo&quot;, &quot;staging&quot;, &quot;produccion&quot;</span><span class="p">],</span><span class="w"> </span><span class="nv">var.nombre_entorno</span><span class="p">)</span>
-<a id="__codelineno-56-12" name="__codelineno-56-12" href="#__codelineno-56-12"></a><span class="w">    </span><span class="na">error_message</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;El entorno debe ser desarrollo, staging o produccion.&quot;</span>
+<a id="__codelineno-56-11" name="__codelineno-56-11" href="#__codelineno-56-11"></a><span class="w">    </span><span class="na">condition</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="nf">contains</span><span class="p">([</span><span class="s2">"desarrollo", "staging", "produccion"</span><span class="p">],</span><span class="w"> </span><span class="nv">var.nombre_entorno</span><span class="p">)</span>
+<a id="__codelineno-56-12" name="__codelineno-56-12" href="#__codelineno-56-12"></a><span class="w">    </span><span class="na">error_message</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"El entorno debe ser desarrollo, staging o produccion."</span>
 <a id="__codelineno-56-13" name="__codelineno-56-13" href="#__codelineno-56-13"></a><span class="w">  </span><span class="p">}</span>
 <a id="__codelineno-56-14" name="__codelineno-56-14" href="#__codelineno-56-14"></a><span class="p">}</span>
 <a id="__codelineno-56-15" name="__codelineno-56-15" href="#__codelineno-56-15"></a>
-<a id="__codelineno-56-16" name="__codelineno-56-16" href="#__codelineno-56-16"></a><span class="kr">variable</span><span class="w"> </span><span class="nv">&quot;configuracion_servidor&quot;</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-56-17" name="__codelineno-56-17" href="#__codelineno-56-17"></a><span class="w">  </span><span class="na">description</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Configuración de los servidores&quot;</span>
+<a id="__codelineno-56-16" name="__codelineno-56-16" href="#__codelineno-56-16"></a><span class="kr">variable</span><span class="w"> </span><span class="nv">"configuracion_servidor"</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-56-17" name="__codelineno-56-17" href="#__codelineno-56-17"></a><span class="w">  </span><span class="na">description</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Configuración de los servidores"</span>
 <a id="__codelineno-56-18" name="__codelineno-56-18" href="#__codelineno-56-18"></a><span class="w">  </span><span class="na">type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kt">object</span><span class="p">({</span>
 <a id="__codelineno-56-19" name="__codelineno-56-19" href="#__codelineno-56-19"></a><span class="w">    </span><span class="na">tipo_instancia</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kt">string</span>
 <a id="__codelineno-56-20" name="__codelineno-56-20" href="#__codelineno-56-20"></a><span class="w">    </span><span class="na">ram_gb</span><span class="w">         </span><span class="o">=</span><span class="w"> </span><span class="kt">number</span>
 <a id="__codelineno-56-21" name="__codelineno-56-21" href="#__codelineno-56-21"></a><span class="w">  </span><span class="p">})</span>
 <a id="__codelineno-56-22" name="__codelineno-56-22" href="#__codelineno-56-22"></a><span class="w">  </span><span class="nb">default</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-56-23" name="__codelineno-56-23" href="#__codelineno-56-23"></a><span class="w">    </span><span class="na">tipo_instancia</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;t3.micro&quot;</span>
+<a id="__codelineno-56-23" name="__codelineno-56-23" href="#__codelineno-56-23"></a><span class="w">    </span><span class="na">tipo_instancia</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"t3.micro"</span>
 <a id="__codelineno-56-24" name="__codelineno-56-24" href="#__codelineno-56-24"></a><span class="w">    </span><span class="na">ram_gb</span><span class="w">         </span><span class="o">=</span><span class="w"> </span><span class="m">1</span>
 <a id="__codelineno-56-25" name="__codelineno-56-25" href="#__codelineno-56-25"></a><span class="w">  </span><span class="p">}</span>
 <a id="__codelineno-56-26" name="__codelineno-56-26" href="#__codelineno-56-26"></a><span class="p">}</span>
 </code></pre></div>
 <h3 id="ejemplo-de-outputstf">Ejemplo de outputs.tf</h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-57-1" name="__codelineno-57-1" href="#__codelineno-57-1"></a><span class="kr">output</span><span class="w"> </span><span class="nv">&quot;id_servidor&quot;</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-57-2" name="__codelineno-57-2" href="#__codelineno-57-2"></a><span class="w">  </span><span class="na">description</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;ID de la instancia EC2&quot;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-57-1" name="__codelineno-57-1" href="#__codelineno-57-1"></a><span class="kr">output</span><span class="w"> </span><span class="nv">"id_servidor"</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-57-2" name="__codelineno-57-2" href="#__codelineno-57-2"></a><span class="w">  </span><span class="na">description</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"ID de la instancia EC2"</span>
 <a id="__codelineno-57-3" name="__codelineno-57-3" href="#__codelineno-57-3"></a><span class="w">  </span><span class="na">value</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="nv">aws_instance.mi_servidor.id</span>
 <a id="__codelineno-57-4" name="__codelineno-57-4" href="#__codelineno-57-4"></a><span class="p">}</span>
 <a id="__codelineno-57-5" name="__codelineno-57-5" href="#__codelineno-57-5"></a>
-<a id="__codelineno-57-6" name="__codelineno-57-6" href="#__codelineno-57-6"></a><span class="kr">output</span><span class="w"> </span><span class="nv">&quot;ip_publica&quot;</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-57-7" name="__codelineno-57-7" href="#__codelineno-57-7"></a><span class="w">  </span><span class="na">description</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Dirección IP pública&quot;</span>
+<a id="__codelineno-57-6" name="__codelineno-57-6" href="#__codelineno-57-6"></a><span class="kr">output</span><span class="w"> </span><span class="nv">"ip_publica"</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-57-7" name="__codelineno-57-7" href="#__codelineno-57-7"></a><span class="w">  </span><span class="na">description</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Dirección IP pública"</span>
 <a id="__codelineno-57-8" name="__codelineno-57-8" href="#__codelineno-57-8"></a><span class="w">  </span><span class="na">value</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="nv">aws_instance.mi_servidor.public_ip</span>
 <a id="__codelineno-57-9" name="__codelineno-57-9" href="#__codelineno-57-9"></a><span class="p">}</span>
 <a id="__codelineno-57-10" name="__codelineno-57-10" href="#__codelineno-57-10"></a>
-<a id="__codelineno-57-11" name="__codelineno-57-11" href="#__codelineno-57-11"></a><span class="kr">output</span><span class="w"> </span><span class="nv">&quot;dns_publico&quot;</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-57-12" name="__codelineno-57-12" href="#__codelineno-57-12"></a><span class="w">  </span><span class="na">description</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Nombre DNS público&quot;</span>
+<a id="__codelineno-57-11" name="__codelineno-57-11" href="#__codelineno-57-11"></a><span class="kr">output</span><span class="w"> </span><span class="nv">"dns_publico"</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-57-12" name="__codelineno-57-12" href="#__codelineno-57-12"></a><span class="w">  </span><span class="na">description</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Nombre DNS público"</span>
 <a id="__codelineno-57-13" name="__codelineno-57-13" href="#__codelineno-57-13"></a><span class="w">  </span><span class="na">value</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="nv">aws_instance.mi_servidor.public_dns</span>
 <a id="__codelineno-57-14" name="__codelineno-57-14" href="#__codelineno-57-14"></a><span class="p">}</span>
 </code></pre></div>
 <h3 id="ejemplo-de-versionstf">Ejemplo de versions.tf</h3>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-58-1" name="__codelineno-58-1" href="#__codelineno-58-1"></a><span class="nb">terraform</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-58-2" name="__codelineno-58-2" href="#__codelineno-58-2"></a><span class="w">  </span><span class="na">required_version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&gt;= 1.5.0&quot;</span>
+<a id="__codelineno-58-2" name="__codelineno-58-2" href="#__codelineno-58-2"></a><span class="w">  </span><span class="na">required_version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"&gt;= 1.5.0"</span>
 <a id="__codelineno-58-3" name="__codelineno-58-3" href="#__codelineno-58-3"></a>
 <a id="__codelineno-58-4" name="__codelineno-58-4" href="#__codelineno-58-4"></a><span class="w">  </span><span class="nb">required_providers</span><span class="w"> </span><span class="p">{</span>
 <a id="__codelineno-58-5" name="__codelineno-58-5" href="#__codelineno-58-5"></a><span class="w">    </span><span class="nb">aws</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-58-6" name="__codelineno-58-6" href="#__codelineno-58-6"></a><span class="w">      </span><span class="na">source</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;hashicorp/aws&quot;</span>
-<a id="__codelineno-58-7" name="__codelineno-58-7" href="#__codelineno-58-7"></a><span class="w">      </span><span class="na">version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;~&gt; 5.0&quot;</span>
+<a id="__codelineno-58-6" name="__codelineno-58-6" href="#__codelineno-58-6"></a><span class="w">      </span><span class="na">source</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="s2">"hashicorp/aws"</span>
+<a id="__codelineno-58-7" name="__codelineno-58-7" href="#__codelineno-58-7"></a><span class="w">      </span><span class="na">version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"~&gt; 5.0"</span>
 <a id="__codelineno-58-8" name="__codelineno-58-8" href="#__codelineno-58-8"></a><span class="w">    </span><span class="p">}</span>
 <a id="__codelineno-58-9" name="__codelineno-58-9" href="#__codelineno-58-9"></a><span class="w">  </span><span class="p">}</span>
 <a id="__codelineno-58-10" name="__codelineno-58-10" href="#__codelineno-58-10"></a><span class="p">}</span>
@@ -5002,33 +5002,33 @@
 <h3 id="cuando-usar-modulos">Cuándo usar módulos</h3>
 <p>Imagina que necesitas crear 5 servidores web similares pero con pequeñas diferencias. Sin módulos, tendrías:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-60-1" name="__codelineno-60-1" href="#__codelineno-60-1"></a><span class="c1"># Opción sin módulos: repetir código</span>
-<a id="__codelineno-60-2" name="__codelineno-60-2" href="#__codelineno-60-2"></a><span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;aws_instance&quot;</span><span class="w"> </span><span class="nv">&quot;web1&quot;</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-60-3" name="__codelineno-60-3" href="#__codelineno-60-3"></a><span class="w">  </span><span class="na">ami</span><span class="w">           </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;ami-0c55b159cbfafe1f0&quot;</span>
-<a id="__codelineno-60-4" name="__codelineno-60-4" href="#__codelineno-60-4"></a><span class="w">  </span><span class="na">instance_type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;t3.micro&quot;</span>
+<a id="__codelineno-60-2" name="__codelineno-60-2" href="#__codelineno-60-2"></a><span class="kr">resource</span><span class="w"> </span><span class="nc">"aws_instance"</span><span class="w"> </span><span class="nv">"web1"</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-60-3" name="__codelineno-60-3" href="#__codelineno-60-3"></a><span class="w">  </span><span class="na">ami</span><span class="w">           </span><span class="o">=</span><span class="w"> </span><span class="s2">"ami-0c55b159cbfafe1f0"</span>
+<a id="__codelineno-60-4" name="__codelineno-60-4" href="#__codelineno-60-4"></a><span class="w">  </span><span class="na">instance_type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"t3.micro"</span>
 <a id="__codelineno-60-5" name="__codelineno-60-5" href="#__codelineno-60-5"></a><span class="c1">  # ... toda la config ...</span>
 <a id="__codelineno-60-6" name="__codelineno-60-6" href="#__codelineno-60-6"></a><span class="p">}</span>
 <a id="__codelineno-60-7" name="__codelineno-60-7" href="#__codelineno-60-7"></a>
-<a id="__codelineno-60-8" name="__codelineno-60-8" href="#__codelineno-60-8"></a><span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;aws_instance&quot;</span><span class="w"> </span><span class="nv">&quot;web2&quot;</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-60-9" name="__codelineno-60-9" href="#__codelineno-60-9"></a><span class="w">  </span><span class="na">ami</span><span class="w">           </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;ami-0c55b159cbfafe1f0&quot;</span>
-<a id="__codelineno-60-10" name="__codelineno-60-10" href="#__codelineno-60-10"></a><span class="w">  </span><span class="na">instance_type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;t3.micro&quot;</span>
+<a id="__codelineno-60-8" name="__codelineno-60-8" href="#__codelineno-60-8"></a><span class="kr">resource</span><span class="w"> </span><span class="nc">"aws_instance"</span><span class="w"> </span><span class="nv">"web2"</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-60-9" name="__codelineno-60-9" href="#__codelineno-60-9"></a><span class="w">  </span><span class="na">ami</span><span class="w">           </span><span class="o">=</span><span class="w"> </span><span class="s2">"ami-0c55b159cbfafe1f0"</span>
+<a id="__codelineno-60-10" name="__codelineno-60-10" href="#__codelineno-60-10"></a><span class="w">  </span><span class="na">instance_type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"t3.micro"</span>
 <a id="__codelineno-60-11" name="__codelineno-60-11" href="#__codelineno-60-11"></a><span class="c1">  # ... casi la misma config ...</span>
 <a id="__codelineno-60-12" name="__codelineno-60-12" href="#__codelineno-60-12"></a><span class="p">}</span>
 </code></pre></div>
 <p>Esto es difícil de mantener. Si quieres cambiar algo común a todos, tienes que cambiarlo 5 veces.</p>
 <p>Con un módulo:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-61-1" name="__codelineno-61-1" href="#__codelineno-61-1"></a><span class="c1"># main.tf</span>
-<a id="__codelineno-61-2" name="__codelineno-61-2" href="#__codelineno-61-2"></a><span class="kr">module</span><span class="w"> </span><span class="nv">&quot;servidor_web&quot;</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-61-3" name="__codelineno-61-3" href="#__codelineno-61-3"></a><span class="w">  </span><span class="na">source</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;./modules/servidor&quot;</span>
+<a id="__codelineno-61-2" name="__codelineno-61-2" href="#__codelineno-61-2"></a><span class="kr">module</span><span class="w"> </span><span class="nv">"servidor_web"</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-61-3" name="__codelineno-61-3" href="#__codelineno-61-3"></a><span class="w">  </span><span class="na">source</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"./modules/servidor"</span>
 <a id="__codelineno-61-4" name="__codelineno-61-4" href="#__codelineno-61-4"></a>
-<a id="__codelineno-61-5" name="__codelineno-61-5" href="#__codelineno-61-5"></a><span class="w">  </span><span class="na">nombre</span><span class="w">        </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;web1&quot;</span>
-<a id="__codelineno-61-6" name="__codelineno-61-6" href="#__codelineno-61-6"></a><span class="w">  </span><span class="na">entorno</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;produccion&quot;</span>
+<a id="__codelineno-61-5" name="__codelineno-61-5" href="#__codelineno-61-5"></a><span class="w">  </span><span class="na">nombre</span><span class="w">        </span><span class="o">=</span><span class="w"> </span><span class="s2">"web1"</span>
+<a id="__codelineno-61-6" name="__codelineno-61-6" href="#__codelineno-61-6"></a><span class="w">  </span><span class="na">entorno</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="s2">"produccion"</span>
 <a id="__codelineno-61-7" name="__codelineno-61-7" href="#__codelineno-61-7"></a><span class="p">}</span>
 <a id="__codelineno-61-8" name="__codelineno-61-8" href="#__codelineno-61-8"></a>
-<a id="__codelineno-61-9" name="__codelineno-61-9" href="#__codelineno-61-9"></a><span class="kr">module</span><span class="w"> </span><span class="nv">&quot;servidor_web&quot;</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-61-10" name="__codelineno-61-10" href="#__codelineno-61-10"></a><span class="w">  </span><span class="na">source</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;./modules/servidor&quot;</span>
+<a id="__codelineno-61-9" name="__codelineno-61-9" href="#__codelineno-61-9"></a><span class="kr">module</span><span class="w"> </span><span class="nv">"servidor_web"</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-61-10" name="__codelineno-61-10" href="#__codelineno-61-10"></a><span class="w">  </span><span class="na">source</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"./modules/servidor"</span>
 <a id="__codelineno-61-11" name="__codelineno-61-11" href="#__codelineno-61-11"></a>
-<a id="__codelineno-61-12" name="__codelineno-61-12" href="#__codelineno-61-12"></a><span class="w">  </span><span class="na">nombre</span><span class="w">        </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;web2&quot;</span>
-<a id="__codelineno-61-13" name="__codelineno-61-13" href="#__codelineno-61-13"></a><span class="w">  </span><span class="na">entorno</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;produccion&quot;</span>
+<a id="__codelineno-61-12" name="__codelineno-61-12" href="#__codelineno-61-12"></a><span class="w">  </span><span class="na">nombre</span><span class="w">        </span><span class="o">=</span><span class="w"> </span><span class="s2">"web2"</span>
+<a id="__codelineno-61-13" name="__codelineno-61-13" href="#__codelineno-61-13"></a><span class="w">  </span><span class="na">entorno</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="s2">"produccion"</span>
 <a id="__codelineno-61-14" name="__codelineno-61-14" href="#__codelineno-61-14"></a><span class="p">}</span>
 </code></pre></div>
 <h3 id="estructura-de-un-modulo">Estructura de un módulo</h3>
@@ -5040,8 +5040,8 @@
 <a id="__codelineno-62-6" name="__codelineno-62-6" href="#__codelineno-62-6"></a>    └── README.md        # Documentación
 </code></pre></div>
 <p><strong>modules/servidor/main.tf:</strong></p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-63-1" name="__codelineno-63-1" href="#__codelineno-63-1"></a><span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;aws_instance&quot;</span><span class="w"> </span><span class="nv">&quot;servidor&quot;</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-63-2" name="__codelineno-63-2" href="#__codelineno-63-2"></a><span class="w">  </span><span class="na">ami</span><span class="w">           </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;ami-0c55b159cbfafe1f0&quot;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-63-1" name="__codelineno-63-1" href="#__codelineno-63-1"></a><span class="kr">resource</span><span class="w"> </span><span class="nc">"aws_instance"</span><span class="w"> </span><span class="nv">"servidor"</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-63-2" name="__codelineno-63-2" href="#__codelineno-63-2"></a><span class="w">  </span><span class="na">ami</span><span class="w">           </span><span class="o">=</span><span class="w"> </span><span class="s2">"ami-0c55b159cbfafe1f0"</span>
 <a id="__codelineno-63-3" name="__codelineno-63-3" href="#__codelineno-63-3"></a><span class="w">  </span><span class="na">instance_type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">var.tipo_instancia</span>
 <a id="__codelineno-63-4" name="__codelineno-63-4" href="#__codelineno-63-4"></a>
 <a id="__codelineno-63-5" name="__codelineno-63-5" href="#__codelineno-63-5"></a><span class="w">  </span><span class="nb">tags</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
@@ -5050,65 +5050,65 @@
 <a id="__codelineno-63-8" name="__codelineno-63-8" href="#__codelineno-63-8"></a><span class="w">  </span><span class="p">}</span>
 <a id="__codelineno-63-9" name="__codelineno-63-9" href="#__codelineno-63-9"></a><span class="p">}</span>
 <a id="__codelineno-63-10" name="__codelineno-63-10" href="#__codelineno-63-10"></a>
-<a id="__codelineno-63-11" name="__codelineno-63-11" href="#__codelineno-63-11"></a><span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;aws_security_group&quot;</span><span class="w"> </span><span class="nv">&quot;servidor&quot;</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-63-12" name="__codelineno-63-12" href="#__codelineno-63-12"></a><span class="w">  </span><span class="na">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;${var.nombre}-sg&quot;</span>
+<a id="__codelineno-63-11" name="__codelineno-63-11" href="#__codelineno-63-11"></a><span class="kr">resource</span><span class="w"> </span><span class="nc">"aws_security_group"</span><span class="w"> </span><span class="nv">"servidor"</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-63-12" name="__codelineno-63-12" href="#__codelineno-63-12"></a><span class="w">  </span><span class="na">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"${var.nombre}-sg"</span>
 <a id="__codelineno-63-13" name="__codelineno-63-13" href="#__codelineno-63-13"></a>
 <a id="__codelineno-63-14" name="__codelineno-63-14" href="#__codelineno-63-14"></a><span class="w">  </span><span class="nb">ingress</span><span class="w"> </span><span class="p">{</span>
 <a id="__codelineno-63-15" name="__codelineno-63-15" href="#__codelineno-63-15"></a><span class="w">    </span><span class="na">from_port</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="m">22</span>
 <a id="__codelineno-63-16" name="__codelineno-63-16" href="#__codelineno-63-16"></a><span class="w">    </span><span class="na">to_port</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="m">22</span>
-<a id="__codelineno-63-17" name="__codelineno-63-17" href="#__codelineno-63-17"></a><span class="w">    </span><span class="na">protocol</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;tcp&quot;</span>
-<a id="__codelineno-63-18" name="__codelineno-63-18" href="#__codelineno-63-18"></a><span class="w">    </span><span class="na">cidr_blocks</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;0.0.0.0/0&quot;</span><span class="p">]</span>
+<a id="__codelineno-63-17" name="__codelineno-63-17" href="#__codelineno-63-17"></a><span class="w">    </span><span class="na">protocol</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="s2">"tcp"</span>
+<a id="__codelineno-63-18" name="__codelineno-63-18" href="#__codelineno-63-18"></a><span class="w">    </span><span class="na">cidr_blocks</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">"0.0.0.0/0"</span><span class="p">]</span>
 <a id="__codelineno-63-19" name="__codelineno-63-19" href="#__codelineno-63-19"></a><span class="w">  </span><span class="p">}</span>
 <a id="__codelineno-63-20" name="__codelineno-63-20" href="#__codelineno-63-20"></a>
 <a id="__codelineno-63-21" name="__codelineno-63-21" href="#__codelineno-63-21"></a><span class="w">  </span><span class="nb">ingress</span><span class="w"> </span><span class="p">{</span>
 <a id="__codelineno-63-22" name="__codelineno-63-22" href="#__codelineno-63-22"></a><span class="w">    </span><span class="na">from_port</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="m">80</span>
 <a id="__codelineno-63-23" name="__codelineno-63-23" href="#__codelineno-63-23"></a><span class="w">    </span><span class="na">to_port</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="m">80</span>
-<a id="__codelineno-63-24" name="__codelineno-63-24" href="#__codelineno-63-24"></a><span class="w">    </span><span class="na">protocol</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;tcp&quot;</span>
-<a id="__codelineno-63-25" name="__codelineno-63-25" href="#__codelineno-63-25"></a><span class="w">    </span><span class="na">cidr_blocks</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;0.0.0.0/0&quot;</span><span class="p">]</span>
+<a id="__codelineno-63-24" name="__codelineno-63-24" href="#__codelineno-63-24"></a><span class="w">    </span><span class="na">protocol</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="s2">"tcp"</span>
+<a id="__codelineno-63-25" name="__codelineno-63-25" href="#__codelineno-63-25"></a><span class="w">    </span><span class="na">cidr_blocks</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">"0.0.0.0/0"</span><span class="p">]</span>
 <a id="__codelineno-63-26" name="__codelineno-63-26" href="#__codelineno-63-26"></a><span class="w">  </span><span class="p">}</span>
 <a id="__codelineno-63-27" name="__codelineno-63-27" href="#__codelineno-63-27"></a><span class="p">}</span>
 </code></pre></div>
 <p><strong>modules/servidor/variables.tf:</strong></p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-64-1" name="__codelineno-64-1" href="#__codelineno-64-1"></a><span class="kr">variable</span><span class="w"> </span><span class="nv">&quot;nombre&quot;</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-64-2" name="__codelineno-64-2" href="#__codelineno-64-2"></a><span class="w">  </span><span class="na">description</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Nombre del servidor&quot;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-64-1" name="__codelineno-64-1" href="#__codelineno-64-1"></a><span class="kr">variable</span><span class="w"> </span><span class="nv">"nombre"</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-64-2" name="__codelineno-64-2" href="#__codelineno-64-2"></a><span class="w">  </span><span class="na">description</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Nombre del servidor"</span>
 <a id="__codelineno-64-3" name="__codelineno-64-3" href="#__codelineno-64-3"></a><span class="w">  </span><span class="na">type</span><span class="w">        </span><span class="o">=</span><span class="w"> </span><span class="kt">string</span>
 <a id="__codelineno-64-4" name="__codelineno-64-4" href="#__codelineno-64-4"></a><span class="p">}</span>
 <a id="__codelineno-64-5" name="__codelineno-64-5" href="#__codelineno-64-5"></a>
-<a id="__codelineno-64-6" name="__codelineno-64-6" href="#__codelineno-64-6"></a><span class="kr">variable</span><span class="w"> </span><span class="nv">&quot;entorno&quot;</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-64-7" name="__codelineno-64-7" href="#__codelineno-64-7"></a><span class="w">  </span><span class="na">description</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Entorno (desarrollo, staging, produccion)&quot;</span>
+<a id="__codelineno-64-6" name="__codelineno-64-6" href="#__codelineno-64-6"></a><span class="kr">variable</span><span class="w"> </span><span class="nv">"entorno"</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-64-7" name="__codelineno-64-7" href="#__codelineno-64-7"></a><span class="w">  </span><span class="na">description</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Entorno (desarrollo, staging, produccion)"</span>
 <a id="__codelineno-64-8" name="__codelineno-64-8" href="#__codelineno-64-8"></a><span class="w">  </span><span class="na">type</span><span class="w">        </span><span class="o">=</span><span class="w"> </span><span class="kt">string</span>
 <a id="__codelineno-64-9" name="__codelineno-64-9" href="#__codelineno-64-9"></a><span class="p">}</span>
 <a id="__codelineno-64-10" name="__codelineno-64-10" href="#__codelineno-64-10"></a>
-<a id="__codelineno-64-11" name="__codelineno-64-11" href="#__codelineno-64-11"></a><span class="kr">variable</span><span class="w"> </span><span class="nv">&quot;tipo_instancia&quot;</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-64-12" name="__codelineno-64-12" href="#__codelineno-64-12"></a><span class="w">  </span><span class="na">description</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Tipo de instancia EC2&quot;</span>
+<a id="__codelineno-64-11" name="__codelineno-64-11" href="#__codelineno-64-11"></a><span class="kr">variable</span><span class="w"> </span><span class="nv">"tipo_instancia"</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-64-12" name="__codelineno-64-12" href="#__codelineno-64-12"></a><span class="w">  </span><span class="na">description</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Tipo de instancia EC2"</span>
 <a id="__codelineno-64-13" name="__codelineno-64-13" href="#__codelineno-64-13"></a><span class="w">  </span><span class="na">type</span><span class="w">        </span><span class="o">=</span><span class="w"> </span><span class="kt">string</span>
-<a id="__codelineno-64-14" name="__codelineno-64-14" href="#__codelineno-64-14"></a><span class="w">  </span><span class="na">default</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;t3.micro&quot;</span>
+<a id="__codelineno-64-14" name="__codelineno-64-14" href="#__codelineno-64-14"></a><span class="w">  </span><span class="na">default</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="s2">"t3.micro"</span>
 <a id="__codelineno-64-15" name="__codelineno-64-15" href="#__codelineno-64-15"></a><span class="p">}</span>
 </code></pre></div>
 <p><strong>modules/servidor/outputs.tf:</strong></p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-65-1" name="__codelineno-65-1" href="#__codelineno-65-1"></a><span class="kr">output</span><span class="w"> </span><span class="nv">&quot;id&quot;</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-65-2" name="__codelineno-65-2" href="#__codelineno-65-2"></a><span class="w">  </span><span class="na">description</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;ID de la instancia&quot;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-65-1" name="__codelineno-65-1" href="#__codelineno-65-1"></a><span class="kr">output</span><span class="w"> </span><span class="nv">"id"</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-65-2" name="__codelineno-65-2" href="#__codelineno-65-2"></a><span class="w">  </span><span class="na">description</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"ID de la instancia"</span>
 <a id="__codelineno-65-3" name="__codelineno-65-3" href="#__codelineno-65-3"></a><span class="w">  </span><span class="na">value</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="nv">aws_instance.servidor.id</span>
 <a id="__codelineno-65-4" name="__codelineno-65-4" href="#__codelineno-65-4"></a><span class="p">}</span>
 <a id="__codelineno-65-5" name="__codelineno-65-5" href="#__codelineno-65-5"></a>
-<a id="__codelineno-65-6" name="__codelineno-65-6" href="#__codelineno-65-6"></a><span class="kr">output</span><span class="w"> </span><span class="nv">&quot;ip_publica&quot;</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-65-7" name="__codelineno-65-7" href="#__codelineno-65-7"></a><span class="w">  </span><span class="na">description</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;IP pública&quot;</span>
+<a id="__codelineno-65-6" name="__codelineno-65-6" href="#__codelineno-65-6"></a><span class="kr">output</span><span class="w"> </span><span class="nv">"ip_publica"</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-65-7" name="__codelineno-65-7" href="#__codelineno-65-7"></a><span class="w">  </span><span class="na">description</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"IP pública"</span>
 <a id="__codelineno-65-8" name="__codelineno-65-8" href="#__codelineno-65-8"></a><span class="w">  </span><span class="na">value</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="nv">aws_instance.servidor.public_ip</span>
 <a id="__codelineno-65-9" name="__codelineno-65-9" href="#__codelineno-65-9"></a><span class="p">}</span>
 </code></pre></div>
 <h3 id="modulos-del-terraform-registry">Módulos del Terraform Registry</h3>
 <p>No necesitas crear todos los módulos desde cero. El Terraform Registry tiene miles de módulos públicos maintained por HashiCorp, proveedores y la comunidad:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-66-1" name="__codelineno-66-1" href="#__codelineno-66-1"></a><span class="c1"># Usar módulo de VPC oficial de AWS</span>
-<a id="__codelineno-66-2" name="__codelineno-66-2" href="#__codelineno-66-2"></a><span class="kr">module</span><span class="w"> </span><span class="nv">&quot;vpc&quot;</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-66-3" name="__codelineno-66-3" href="#__codelineno-66-3"></a><span class="w">  </span><span class="na">source</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;terraform-aws-modules/vpc/aws&quot;</span>
-<a id="__codelineno-66-4" name="__codelineno-66-4" href="#__codelineno-66-4"></a><span class="w">  </span><span class="na">version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;5.0.0&quot;</span>
+<a id="__codelineno-66-2" name="__codelineno-66-2" href="#__codelineno-66-2"></a><span class="kr">module</span><span class="w"> </span><span class="nv">"vpc"</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-66-3" name="__codelineno-66-3" href="#__codelineno-66-3"></a><span class="w">  </span><span class="na">source</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="s2">"terraform-aws-modules/vpc/aws"</span>
+<a id="__codelineno-66-4" name="__codelineno-66-4" href="#__codelineno-66-4"></a><span class="w">  </span><span class="na">version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"5.0.0"</span>
 <a id="__codelineno-66-5" name="__codelineno-66-5" href="#__codelineno-66-5"></a>
-<a id="__codelineno-66-6" name="__codelineno-66-6" href="#__codelineno-66-6"></a><span class="w">  </span><span class="na">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;mi-vpc&quot;</span>
-<a id="__codelineno-66-7" name="__codelineno-66-7" href="#__codelineno-66-7"></a><span class="w">  </span><span class="na">cidr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;10.0.0.0/16&quot;</span>
+<a id="__codelineno-66-6" name="__codelineno-66-6" href="#__codelineno-66-6"></a><span class="w">  </span><span class="na">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"mi-vpc"</span>
+<a id="__codelineno-66-7" name="__codelineno-66-7" href="#__codelineno-66-7"></a><span class="w">  </span><span class="na">cidr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"10.0.0.0/16"</span>
 <a id="__codelineno-66-8" name="__codelineno-66-8" href="#__codelineno-66-8"></a>
-<a id="__codelineno-66-9" name="__codelineno-66-9" href="#__codelineno-66-9"></a><span class="w">  </span><span class="na">azs</span><span class="w">             </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;us-east-1a&quot;, &quot;us-east-1b&quot;, &quot;us-east-1c&quot;</span><span class="p">]</span>
-<a id="__codelineno-66-10" name="__codelineno-66-10" href="#__codelineno-66-10"></a><span class="w">  </span><span class="na">private_subnets</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;10.0.1.0/24&quot;, &quot;10.0.2.0/24&quot;, &quot;10.0.3.0/24&quot;</span><span class="p">]</span>
-<a id="__codelineno-66-11" name="__codelineno-66-11" href="#__codelineno-66-11"></a><span class="w">  </span><span class="na">public_subnets</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;10.0.101.0/24&quot;, &quot;10.0.102.0/24&quot;, &quot;10.0.103.0/24&quot;</span><span class="p">]</span>
+<a id="__codelineno-66-9" name="__codelineno-66-9" href="#__codelineno-66-9"></a><span class="w">  </span><span class="na">azs</span><span class="w">             </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">"us-east-1a", "us-east-1b", "us-east-1c"</span><span class="p">]</span>
+<a id="__codelineno-66-10" name="__codelineno-66-10" href="#__codelineno-66-10"></a><span class="w">  </span><span class="na">private_subnets</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">"10.0.1.0/24", "10.0.2.0/24", "10.0.3.0/24"</span><span class="p">]</span>
+<a id="__codelineno-66-11" name="__codelineno-66-11" href="#__codelineno-66-11"></a><span class="w">  </span><span class="na">public_subnets</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">"10.0.101.0/24", "10.0.102.0/24", "10.0.103.0/24"</span><span class="p">]</span>
 <a id="__codelineno-66-12" name="__codelineno-66-12" href="#__codelineno-66-12"></a>
 <a id="__codelineno-66-13" name="__codelineno-66-13" href="#__codelineno-66-13"></a><span class="w">  </span><span class="na">enable_nat_gateway</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">true</span>
 <a id="__codelineno-66-14" name="__codelineno-66-14" href="#__codelineno-66-14"></a><span class="w">  </span><span class="na">enable_vpn_gateway</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">true</span>
@@ -5167,9 +5167,9 @@
 <a id="__codelineno-69-2" name="__codelineno-69-2" href="#__codelineno-69-2"></a><span class="w">  </span><span class="na">entorno</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">terraform.workspace</span>
 <a id="__codelineno-69-3" name="__codelineno-69-3" href="#__codelineno-69-3"></a><span class="p">}</span>
 <a id="__codelineno-69-4" name="__codelineno-69-4" href="#__codelineno-69-4"></a>
-<a id="__codelineno-69-5" name="__codelineno-69-5" href="#__codelineno-69-5"></a><span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;aws_instance&quot;</span><span class="w"> </span><span class="nv">&quot;servidor&quot;</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-69-6" name="__codelineno-69-6" href="#__codelineno-69-6"></a><span class="w">  </span><span class="na">ami</span><span class="w">           </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;ami-0c55b159cbfafe1f0&quot;</span>
-<a id="__codelineno-69-7" name="__codelineno-69-7" href="#__codelineno-69-7"></a><span class="w">  </span><span class="na">instance_type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">terraform.workspace</span><span class="w"> </span><span class="p">==</span><span class="w"> </span><span class="s2">&quot;produccion&quot; ? &quot;t3.medium&quot; : &quot;t3.micro&quot;</span>
+<a id="__codelineno-69-5" name="__codelineno-69-5" href="#__codelineno-69-5"></a><span class="kr">resource</span><span class="w"> </span><span class="nc">"aws_instance"</span><span class="w"> </span><span class="nv">"servidor"</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-69-6" name="__codelineno-69-6" href="#__codelineno-69-6"></a><span class="w">  </span><span class="na">ami</span><span class="w">           </span><span class="o">=</span><span class="w"> </span><span class="s2">"ami-0c55b159cbfafe1f0"</span>
+<a id="__codelineno-69-7" name="__codelineno-69-7" href="#__codelineno-69-7"></a><span class="w">  </span><span class="na">instance_type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">terraform.workspace</span><span class="w"> </span><span class="p">==</span><span class="w"> </span><span class="s2">"produccion" ? "t3.medium" : "t3.micro"</span>
 <a id="__codelineno-69-8" name="__codelineno-69-8" href="#__codelineno-69-8"></a>
 <a id="__codelineno-69-9" name="__codelineno-69-9" href="#__codelineno-69-9"></a><span class="w">  </span><span class="nb">tags</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
 <a id="__codelineno-69-10" name="__codelineno-69-10" href="#__codelineno-69-10"></a><span class="w">    </span><span class="na">Environment</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">terraform.workspace</span>
@@ -5184,10 +5184,10 @@
 <a id="__codelineno-70-4" name="__codelineno-70-4" href="#__codelineno-70-4"></a>└── produccion.tfvars
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-71-1" name="__codelineno-71-1" href="#__codelineno-71-1"></a><span class="c1"># Aplicar con variables de producción</span>
-<a id="__codelineno-71-2" name="__codelineno-71-2" href="#__codelineno-71-2"></a>terraform<span class="w"> </span>apply<span class="w"> </span>-var-file<span class="o">=</span><span class="s2">&quot;env/produccion.tfvars&quot;</span>
+<a id="__codelineno-71-2" name="__codelineno-71-2" href="#__codelineno-71-2"></a>terraform<span class="w"> </span>apply<span class="w"> </span>-var-file<span class="o">=</span><span class="s2">"env/produccion.tfvars"</span>
 <a id="__codelineno-71-3" name="__codelineno-71-3" href="#__codelineno-71-3"></a>
 <a id="__codelineno-71-4" name="__codelineno-71-4" href="#__codelineno-71-4"></a><span class="c1"># Plan con variables de staging</span>
-<a id="__codelineno-71-5" name="__codelineno-71-5" href="#__codelineno-71-5"></a>terraform<span class="w"> </span>plan<span class="w"> </span>-var-file<span class="o">=</span><span class="s2">&quot;env/staging.tfvars&quot;</span>
+<a id="__codelineno-71-5" name="__codelineno-71-5" href="#__codelineno-71-5"></a>terraform<span class="w"> </span>plan<span class="w"> </span>-var-file<span class="o">=</span><span class="s2">"env/staging.tfvars"</span>
 </code></pre></div>
 <p>Ambas aproximaciones son válidas. Los workspaces son convenientes cuando quieres cambiar rápidamente entre entornos. Los archivos de variables son mejores cuando los entornos tienen diferencias significativas que quieres controlar explícitamente.</p>
 <h3 id="consideraciones-sobre-workspaces-remotos">Consideraciones sobre workspaces remotos</h3>
@@ -5205,17 +5205,17 @@
 <h3 id="seguridad-y-gestion-de-secrets">Seguridad y gestión de secrets</h3>
 <p><strong>Nunca hardcodes secrets en archivos .tf:</strong></p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-73-1" name="__codelineno-73-1" href="#__codelineno-73-1"></a><span class="c1"># MAL - password en texto plano</span>
-<a id="__codelineno-73-2" name="__codelineno-73-2" href="#__codelineno-73-2"></a><span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;aws_db_instance&quot;</span><span class="w"> </span><span class="nv">&quot;bd&quot;</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-73-3" name="__codelineno-73-3" href="#__codelineno-73-3"></a><span class="w">  </span><span class="na">password</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;mi-password-secreto&quot;</span><span class="c1">  # ¡NO HACER ESTO!</span>
+<a id="__codelineno-73-2" name="__codelineno-73-2" href="#__codelineno-73-2"></a><span class="kr">resource</span><span class="w"> </span><span class="nc">"aws_db_instance"</span><span class="w"> </span><span class="nv">"bd"</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-73-3" name="__codelineno-73-3" href="#__codelineno-73-3"></a><span class="w">  </span><span class="na">password</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"mi-password-secreto"</span><span class="c1">  # ¡NO HACER ESTO!</span>
 <a id="__codelineno-73-4" name="__codelineno-73-4" href="#__codelineno-73-4"></a><span class="p">}</span>
 <a id="__codelineno-73-5" name="__codelineno-73-5" href="#__codelineno-73-5"></a>
 <a id="__codelineno-73-6" name="__codelineno-73-6" href="#__codelineno-73-6"></a><span class="c1"># BIEN - usar variable con sensitive=true</span>
-<a id="__codelineno-73-7" name="__codelineno-73-7" href="#__codelineno-73-7"></a><span class="kr">variable</span><span class="w"> </span><span class="nv">&quot;db_password&quot;</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-73-7" name="__codelineno-73-7" href="#__codelineno-73-7"></a><span class="kr">variable</span><span class="w"> </span><span class="nv">"db_password"</span><span class="w"> </span><span class="p">{</span>
 <a id="__codelineno-73-8" name="__codelineno-73-8" href="#__codelineno-73-8"></a><span class="w">  </span><span class="na">type</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="kt">string</span>
 <a id="__codelineno-73-9" name="__codelineno-73-9" href="#__codelineno-73-9"></a><span class="w">  </span><span class="na">sensitive</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">true</span>
 <a id="__codelineno-73-10" name="__codelineno-73-10" href="#__codelineno-73-10"></a><span class="p">}</span>
 <a id="__codelineno-73-11" name="__codelineno-73-11" href="#__codelineno-73-11"></a>
-<a id="__codelineno-73-12" name="__codelineno-73-12" href="#__codelineno-73-12"></a><span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;aws_db_instance&quot;</span><span class="w"> </span><span class="nv">&quot;bd&quot;</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-73-12" name="__codelineno-73-12" href="#__codelineno-73-12"></a><span class="kr">resource</span><span class="w"> </span><span class="nc">"aws_db_instance"</span><span class="w"> </span><span class="nv">"bd"</span><span class="w"> </span><span class="p">{</span>
 <a id="__codelineno-73-13" name="__codelineno-73-13" href="#__codelineno-73-13"></a><span class="w">  </span><span class="na">password</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">var.db_password</span>
 <a id="__codelineno-73-14" name="__codelineno-73-14" href="#__codelineno-73-14"></a><span class="p">}</span>
 </code></pre></div>
@@ -5227,14 +5227,14 @@
 <li>Terraform Cloud / HCP Vault</li>
 </ul>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-74-1" name="__codelineno-74-1" href="#__codelineno-74-1"></a><span class="c1"># Pass secret via environment variable</span>
-<a id="__codelineno-74-2" name="__codelineno-74-2" href="#__codelineno-74-2"></a><span class="nb">export</span><span class="w"> </span><span class="nv">TF_VAR_db_password</span><span class="o">=</span><span class="s2">&quot;mi-password-secreto&quot;</span>
+<a id="__codelineno-74-2" name="__codelineno-74-2" href="#__codelineno-74-2"></a><span class="nb">export</span><span class="w"> </span><span class="nv">TF_VAR_db_password</span><span class="o">=</span><span class="s2">"mi-password-secreto"</span>
 <a id="__codelineno-74-3" name="__codelineno-74-3" href="#__codelineno-74-3"></a>terraform<span class="w"> </span>apply
 </code></pre></div>
 <h3 id="control-de-versiones-del-codigo">Control de versiones del código</h3>
 <p><strong>Usar control de versiones para toda la configuración:</strong></p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-75-1" name="__codelineno-75-1" href="#__codelineno-75-1"></a>git<span class="w"> </span>init
 <a id="__codelineno-75-2" name="__codelineno-75-2" href="#__codelineno-75-2"></a>git<span class="w"> </span>add<span class="w"> </span>.
-<a id="__codelineno-75-3" name="__codelineno-75-3" href="#__codelineno-75-3"></a>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;feat: infraestructura inicial&quot;</span>
+<a id="__codelineno-75-3" name="__codelineno-75-3" href="#__codelineno-75-3"></a>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">"feat: infraestructura inicial"</span>
 <a id="__codelineno-75-4" name="__codelineno-75-4" href="#__codelineno-75-4"></a>git<span class="w"> </span>push
 </code></pre></div>
 <p><strong>Reviews obligatorios:</strong></p>
@@ -5242,33 +5242,33 @@
 <h3 id="nomenclatura-consistente">Nomenclatura consistente</h3>
 <p><strong>Recursos:</strong></p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-76-1" name="__codelineno-76-1" href="#__codelineno-76-1"></a><span class="c1"># Usar prefijos claros</span>
-<a id="__codelineno-76-2" name="__codelineno-76-2" href="#__codelineno-76-2"></a><span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;aws_security_group&quot;</span><span class="w"> </span><span class="nv">&quot;app&quot;</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-76-3" name="__codelineno-76-3" href="#__codelineno-76-3"></a><span class="w">  </span><span class="na">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;${var.project}-${var.environment}-app&quot;</span>
+<a id="__codelineno-76-2" name="__codelineno-76-2" href="#__codelineno-76-2"></a><span class="kr">resource</span><span class="w"> </span><span class="nc">"aws_security_group"</span><span class="w"> </span><span class="nv">"app"</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-76-3" name="__codelineno-76-3" href="#__codelineno-76-3"></a><span class="w">  </span><span class="na">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"${var.project}-${var.environment}-app"</span>
 <a id="__codelineno-76-4" name="__codelineno-76-4" href="#__codelineno-76-4"></a><span class="p">}</span>
 <a id="__codelineno-76-5" name="__codelineno-76-5" href="#__codelineno-76-5"></a>
-<a id="__codelineno-76-6" name="__codelineno-76-6" href="#__codelineno-76-6"></a><span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;aws_instance&quot;</span><span class="w"> </span><span class="nv">&quot;web_server&quot;</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-76-6" name="__codelineno-76-6" href="#__codelineno-76-6"></a><span class="kr">resource</span><span class="w"> </span><span class="nc">"aws_instance"</span><span class="w"> </span><span class="nv">"web_server"</span><span class="w"> </span><span class="p">{</span>
 <a id="__codelineno-76-7" name="__codelineno-76-7" href="#__codelineno-76-7"></a><span class="w">  </span><span class="nb">tags</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-76-8" name="__codelineno-76-8" href="#__codelineno-76-8"></a><span class="w">    </span><span class="na">Name</span><span class="w">        </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;${var.project}-web-${var.environment}&quot;</span>
+<a id="__codelineno-76-8" name="__codelineno-76-8" href="#__codelineno-76-8"></a><span class="w">    </span><span class="na">Name</span><span class="w">        </span><span class="o">=</span><span class="w"> </span><span class="s2">"${var.project}-web-${var.environment}"</span>
 <a id="__codelineno-76-9" name="__codelineno-76-9" href="#__codelineno-76-9"></a><span class="w">    </span><span class="na">Project</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="nv">var.project</span>
 <a id="__codelineno-76-10" name="__codelineno-76-10" href="#__codelineno-76-10"></a><span class="w">    </span><span class="na">Environment</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">var.environment</span>
 <a id="__codelineno-76-11" name="__codelineno-76-11" href="#__codelineno-76-11"></a><span class="w">  </span><span class="p">}</span>
 <a id="__codelineno-76-12" name="__codelineno-76-12" href="#__codelineno-76-12"></a><span class="p">}</span>
 </code></pre></div>
 <p><strong>Variables:</strong></p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-77-1" name="__codelineno-77-1" href="#__codelineno-77-1"></a><span class="kr">variable</span><span class="w"> </span><span class="nv">&quot;project_name&quot;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">}</span>
-<a id="__codelineno-77-2" name="__codelineno-77-2" href="#__codelineno-77-2"></a><span class="kr">variable</span><span class="w"> </span><span class="nv">&quot;environment&quot;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">}</span>
-<a id="__codelineno-77-3" name="__codelineno-77-3" href="#__codelineno-77-3"></a><span class="kr">variable</span><span class="w"> </span><span class="nv">&quot;instance_type&quot;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">}</span>
-<a id="__codelineno-77-4" name="__codelineno-77-4" href="#__codelineno-77-4"></a><span class="kr">variable</span><span class="w"> </span><span class="nv">&quot;db_password&quot;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="na">sensitive</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">true</span><span class="w"> </span><span class="p">}</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-77-1" name="__codelineno-77-1" href="#__codelineno-77-1"></a><span class="kr">variable</span><span class="w"> </span><span class="nv">"project_name"</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">}</span>
+<a id="__codelineno-77-2" name="__codelineno-77-2" href="#__codelineno-77-2"></a><span class="kr">variable</span><span class="w"> </span><span class="nv">"environment"</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">}</span>
+<a id="__codelineno-77-3" name="__codelineno-77-3" href="#__codelineno-77-3"></a><span class="kr">variable</span><span class="w"> </span><span class="nv">"instance_type"</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">}</span>
+<a id="__codelineno-77-4" name="__codelineno-77-4" href="#__codelineno-77-4"></a><span class="kr">variable</span><span class="w"> </span><span class="nv">"db_password"</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="na">sensitive</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">true</span><span class="w"> </span><span class="p">}</span>
 </code></pre></div>
 <h3 id="state-management">State management</h3>
 <p><strong>Siempre usar remote state en equipo:</strong></p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-78-1" name="__codelineno-78-1" href="#__codelineno-78-1"></a><span class="nb">terraform</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-78-2" name="__codelineno-78-2" href="#__codelineno-78-2"></a><span class="w">  </span><span class="kr">backend</span><span class="w"> </span><span class="nv">&quot;s3&quot;</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-78-3" name="__codelineno-78-3" href="#__codelineno-78-3"></a><span class="w">    </span><span class="na">bucket</span><span class="w">         </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;empresa-terraform-state&quot;</span>
-<a id="__codelineno-78-4" name="__codelineno-78-4" href="#__codelineno-78-4"></a><span class="w">    </span><span class="na">key</span><span class="w">            </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;proyecto/${terraform.workspace}/terraform.tfstate&quot;</span>
-<a id="__codelineno-78-5" name="__codelineno-78-5" href="#__codelineno-78-5"></a><span class="w">    </span><span class="na">region</span><span class="w">         </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;us-east-1&quot;</span>
+<a id="__codelineno-78-2" name="__codelineno-78-2" href="#__codelineno-78-2"></a><span class="w">  </span><span class="kr">backend</span><span class="w"> </span><span class="nv">"s3"</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-78-3" name="__codelineno-78-3" href="#__codelineno-78-3"></a><span class="w">    </span><span class="na">bucket</span><span class="w">         </span><span class="o">=</span><span class="w"> </span><span class="s2">"empresa-terraform-state"</span>
+<a id="__codelineno-78-4" name="__codelineno-78-4" href="#__codelineno-78-4"></a><span class="w">    </span><span class="na">key</span><span class="w">            </span><span class="o">=</span><span class="w"> </span><span class="s2">"proyecto/${terraform.workspace}/terraform.tfstate"</span>
+<a id="__codelineno-78-5" name="__codelineno-78-5" href="#__codelineno-78-5"></a><span class="w">    </span><span class="na">region</span><span class="w">         </span><span class="o">=</span><span class="w"> </span><span class="s2">"us-east-1"</span>
 <a id="__codelineno-78-6" name="__codelineno-78-6" href="#__codelineno-78-6"></a><span class="w">    </span><span class="na">encrypt</span><span class="w">        </span><span class="o">=</span><span class="w"> </span><span class="no">true</span>
-<a id="__codelineno-78-7" name="__codelineno-78-7" href="#__codelineno-78-7"></a><span class="w">    </span><span class="na">dynamodb_table</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;terraform-locks&quot;</span>
+<a id="__codelineno-78-7" name="__codelineno-78-7" href="#__codelineno-78-7"></a><span class="w">    </span><span class="na">dynamodb_table</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"terraform-locks"</span>
 <a id="__codelineno-78-8" name="__codelineno-78-8" href="#__codelineno-78-8"></a><span class="w">  </span><span class="p">}</span>
 <a id="__codelineno-78-9" name="__codelineno-78-9" href="#__codelineno-78-9"></a><span class="p">}</span>
 </code></pre></div>
@@ -5276,10 +5276,10 @@
 <p>Con S3 como backend, habilita versionado para tener historial de estados:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-79-1" name="__codelineno-79-1" href="#__codelineno-79-1"></a><span class="c1"># El bucket S3 debe tener versioning habilitado</span>
 <a id="__codelineno-79-2" name="__codelineno-79-2" href="#__codelineno-79-2"></a><span class="c1"># Se puede hacer con otro apply de Terraform o manualmente</span>
-<a id="__codelineno-79-3" name="__codelineno-79-3" href="#__codelineno-79-3"></a><span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;aws_s3_bucket_versioning&quot;</span><span class="w"> </span><span class="nv">&quot;state&quot;</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-79-4" name="__codelineno-79-4" href="#__codelineno-79-4"></a><span class="w">  </span><span class="na">bucket</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;empresa-terraform-state&quot;</span>
+<a id="__codelineno-79-3" name="__codelineno-79-3" href="#__codelineno-79-3"></a><span class="kr">resource</span><span class="w"> </span><span class="nc">"aws_s3_bucket_versioning"</span><span class="w"> </span><span class="nv">"state"</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-79-4" name="__codelineno-79-4" href="#__codelineno-79-4"></a><span class="w">  </span><span class="na">bucket</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"empresa-terraform-state"</span>
 <a id="__codelineno-79-5" name="__codelineno-79-5" href="#__codelineno-79-5"></a><span class="w">  </span><span class="nb">versioning_configuration</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-79-6" name="__codelineno-79-6" href="#__codelineno-79-6"></a><span class="w">    </span><span class="na">status</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Enabled&quot;</span>
+<a id="__codelineno-79-6" name="__codelineno-79-6" href="#__codelineno-79-6"></a><span class="w">    </span><span class="na">status</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Enabled"</span>
 <a id="__codelineno-79-7" name="__codelineno-79-7" href="#__codelineno-79-7"></a><span class="w">  </span><span class="p">}</span>
 <a id="__codelineno-79-8" name="__codelineno-79-8" href="#__codelineno-79-8"></a><span class="p">}</span>
 </code></pre></div>
@@ -5293,11 +5293,11 @@
 <a id="__codelineno-80-5" name="__codelineno-80-5" href="#__codelineno-80-5"></a><span class="gu">## Uso</span>
 <a id="__codelineno-80-6" name="__codelineno-80-6" href="#__codelineno-80-6"></a>
 <a id="__codelineno-80-7" name="__codelineno-80-7" href="#__codelineno-80-7"></a>```hcl
-<a id="__codelineno-80-8" name="__codelineno-80-8" href="#__codelineno-80-8"></a>module &quot;web&quot; {
-<a id="__codelineno-80-9" name="__codelineno-80-9" href="#__codelineno-80-9"></a>  source = &quot;./modules/servidor-web&quot;
+<a id="__codelineno-80-8" name="__codelineno-80-8" href="#__codelineno-80-8"></a>module "web" {
+<a id="__codelineno-80-9" name="__codelineno-80-9" href="#__codelineno-80-9"></a>  source = "./modules/servidor-web"
 <a id="__codelineno-80-10" name="__codelineno-80-10" href="#__codelineno-80-10"></a>
-<a id="__codelineno-80-11" name="__codelineno-80-11" href="#__codelineno-80-11"></a>  nombre   = &quot;mi-web&quot;
-<a id="__codelineno-80-12" name="__codelineno-80-12" href="#__codelineno-80-12"></a>  entorno  = &quot;produccion&quot;
+<a id="__codelineno-80-11" name="__codelineno-80-11" href="#__codelineno-80-11"></a>  nombre   = "mi-web"
+<a id="__codelineno-80-12" name="__codelineno-80-12" href="#__codelineno-80-12"></a>  entorno  = "produccion"
 <a id="__codelineno-80-13" name="__codelineno-80-13" href="#__codelineno-80-13"></a>}
 </code></pre></div>
 <h2 id="inputs">Inputs</h2>
@@ -5368,7 +5368,7 @@
 <p><strong>Causa</strong>: Dos recursos dependen mutuamente el uno del otro.</p>
 <p><strong>Solución</strong>: Revisa las dependencias y usa <code>depends_on</code> para romper ciclos o restructure tu código.</p>
 <h3 id="error-provider-not-installed">Error: "Provider not installed"</h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-83-1" name="__codelineno-83-1" href="#__codelineno-83-1"></a>Error: Required plugin &quot;provider.aws&quot; not installed
+<div class="highlight"><pre><span></span><code><a id="__codelineno-83-1" name="__codelineno-83-1" href="#__codelineno-83-1"></a>Error: Required plugin "provider.aws" not installed
 </code></pre></div>
 <p><strong>Causa</strong>: No ejecutaste <code>terraform init</code> o el provider no está disponible.</p>
 <p><strong>Solución</strong>: Ejecuta <code>terraform init</code> para descargar los providers.</p>
@@ -5590,7 +5590,7 @@
       <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.top", "toc.integrate", "search.highlight", "content.code.annotate", "content.code.copy"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}, "version": null}</script>
     
     
-      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
       
     
   </body>
