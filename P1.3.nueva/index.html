@@ -8,13 +8,13 @@
       
       
       
-        <link rel="canonical" href="https://raul-profesor.github.io/Despliegue/P1.2.nueva/">
+        <link rel="canonical" href="https://raul-profesor.github.io/Despliegue/P1.3.nueva/">
       
       
-        <link rel="prev" href="../P1.1.nueva/">
+        <link rel="prev" href="../P1.2.nueva/">
       
       
-        <link rel="next" href="../P1.3.nueva/">
+        <link rel="next" href="../ServAplic/">
       
       
         
@@ -25,7 +25,7 @@
     
     
       
-        <title>Guía: proxy inverso con nginx - Despliegue de aplicaciones web</title>
+        <title>Guía: balanceo de carga con nginx - Despliegue de aplicaciones web</title>
       
     
     
@@ -88,7 +88,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#guia-proxy-inverso-con-nginx" class="md-skip">
+        <a href="#guia-balanceo-de-carga-con-nginx" class="md-skip">
           Saltar a contenido
         </a>
       
@@ -124,7 +124,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Guía: proxy inverso con nginx
+              Guía: balanceo de carga con nginx
             
           </span>
         </div>
@@ -619,6 +619,34 @@
                 
   
   
+  
+  
+    <li class="md-nav__item">
+      <a href="../P1.2.nueva/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Guía: proxy inverso con nginx
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
     
   
   
@@ -638,7 +666,7 @@
   <span class="md-ellipsis">
     
   
-    Guía: proxy inverso con nginx
+    Guía: balanceo de carga con nginx
   
 
     
@@ -656,7 +684,7 @@
   <span class="md-ellipsis">
     
   
-    Guía: proxy inverso con nginx
+    Guía: balanceo de carga con nginx
   
 
     
@@ -694,10 +722,10 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#11-que-es-un-proxy-inverso-y-por-que-molestarse" class="md-nav__link">
+  <a href="#11-que-es-el-balanceo-de-carga-y-para-que-sirve" class="md-nav__link">
     <span class="md-ellipsis">
       
-        1.1. ¿Qué es un proxy inverso y por qué molestarse?
+        1.1. ¿Qué es el balanceo de carga y para qué sirve?
       
     </span>
   </a>
@@ -705,10 +733,32 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#12-conceptos-nuevos-que-vamos-a-usar" class="md-nav__link">
+  <a href="#12-como-reparte-nginx-el-metodo-round-robin" class="md-nav__link">
     <span class="md-ellipsis">
       
-        1.2. Conceptos nuevos que vamos a usar
+        1.2. ¿Cómo reparte nginx? El método round-robin
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13-como-comprobamos-que-de-verdad-reparte" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3. ¿Cómo comprobamos que de verdad reparte?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#14-conceptos-nuevos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.4. Conceptos nuevos
       
     </span>
   </a>
@@ -744,10 +794,10 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#31-key-pair-par-de-claves" class="md-nav__link">
+  <a href="#31-key-pair" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3.1. Key pair (par de claves)
+        3.1. Key pair
       
     </span>
   </a>
@@ -755,10 +805,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#32-security-group-del-proxy" class="md-nav__link">
+  <a href="#32-security-group-del-balanceador" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3.2. Security group del proxy
+        3.2. Security group del balanceador
       
     </span>
   </a>
@@ -766,10 +816,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#33-security-group-del-backend-la-parte-interesante" class="md-nav__link">
+  <a href="#33-security-group-de-los-backends" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3.3. Security group del backend (la parte interesante)
+        3.3. Security group de los backends
       
     </span>
   </a>
@@ -782,22 +832,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#4-lanzar-las-dos-instancias" class="md-nav__link">
+  <a href="#4-lanzar-las-tres-instancias" class="md-nav__link">
     <span class="md-ellipsis">
       
-        4. Lanzar las dos instancias
+        4. Lanzar las tres instancias
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="4. Lanzar las dos instancias">
+    <nav class="md-nav" aria-label="4. Lanzar las tres instancias">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#41-instancia-backend-rundash-web" class="md-nav__link">
+  <a href="#41-backend-1-rundash-web-1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        4.1. Instancia backend (rundash-web)
+        4.1. Backend 1 (rundash-web-1)
       
     </span>
   </a>
@@ -805,10 +855,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#42-instancia-proxy-rundash-proxy" class="md-nav__link">
+  <a href="#42-backend-2-rundash-web-2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        4.2. Instancia proxy (rundash-proxy)
+        4.2. Backend 2 (rundash-web-2)
       
     </span>
   </a>
@@ -816,10 +866,21 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#43-anotar-las-direcciones" class="md-nav__link">
+  <a href="#43-balanceador-rundash-lb" class="md-nav__link">
     <span class="md-ellipsis">
       
-        4.3. Anotar las direcciones
+        4.3. Balanceador (rundash-lb)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#44-anotar-las-direcciones" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.4. Anotar las direcciones
       
     </span>
   </a>
@@ -832,15 +893,15 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#5-configurar-el-backend-igual-que-la-practica-11" class="md-nav__link">
+  <a href="#5-configurar-los-dos-backends" class="md-nav__link">
     <span class="md-ellipsis">
       
-        5. Configurar el backend (igual que la práctica 1.1)
+        5. Configurar los dos backends
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="5. Configurar el backend (igual que la práctica 1.1)">
+    <nav class="md-nav" aria-label="5. Configurar los dos backends">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -882,15 +943,15 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#6-configurar-el-proxy-inverso" class="md-nav__link">
+  <a href="#6-configurar-el-balanceador" class="md-nav__link">
     <span class="md-ellipsis">
       
-        6. Configurar el proxy inverso
+        6. Configurar el balanceador
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="6. Configurar el proxy inverso">
+    <nav class="md-nav" aria-label="6. Configurar el balanceador">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -905,10 +966,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#62-configurar-el-proxy-inverso" class="md-nav__link">
+  <a href="#62-configurar-el-balanceador" class="md-nav__link">
     <span class="md-ellipsis">
       
-        6.2. Configurar el proxy inverso
+        6.2. Configurar el balanceador
       
     </span>
   </a>
@@ -933,10 +994,10 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#71-resolver-los-dominios-hacia-el-proxy" class="md-nav__link">
+  <a href="#71-resolver-los-dominios-hacia-el-balanceador" class="md-nav__link">
     <span class="md-ellipsis">
       
-        7.1. Resolver los dominios hacia el proxy
+        7.1. Resolver los dominios hacia el balanceador
       
     </span>
   </a>
@@ -955,10 +1016,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#73-demostrar-que-el-backend-esta-oculto" class="md-nav__link">
+  <a href="#73-comprobar-el-reparto-la-prueba-estrella" class="md-nav__link">
     <span class="md-ellipsis">
       
-        7.3. Demostrar que el backend está oculto
+        7.3. Comprobar el reparto (la prueba estrella)
       
     </span>
   </a>
@@ -966,10 +1027,21 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#74-ver-el-trafico-desde-dentro" class="md-nav__link">
+  <a href="#74-comprobar-la-tolerancia-a-fallos-opcional-pero-recomendado" class="md-nav__link">
     <span class="md-ellipsis">
       
-        7.4. Ver el tráfico desde dentro
+        7.4. Comprobar la tolerancia a fallos (opcional pero recomendado)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#75-demostrar-que-los-backends-estan-ocultos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.5. Demostrar que los backends están ocultos
       
     </span>
   </a>
@@ -1007,34 +1079,6 @@
   
 </nav>
       
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../P1.3.nueva/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Guía: balanceo de carga con nginx
-  
-
-    
-  </span>
-  
-  
-
-      </a>
     </li>
   
 
@@ -3012,73 +3056,45 @@
 
 
 
-<h1 id="guia-proxy-inverso-con-nginx">Guía: proxy inverso con nginx</h1>
-<p>En esta práctica vamos a montar <strong>a mano</strong> el siguiente escenario:
-una instancia EC2 que hace de <strong>proxy inverso</strong> con nginx y que reenvía las
-peticiones a una segunda instancia EC2 donde viven las aplicaciones web (las mismas
-dos de la práctica 1.1: <code>planes.daw</code> y <code>puertos.daw</code>).</p>
+<h1 id="guia-balanceo-de-carga-con-nginx">Guía: balanceo de carga con nginx</h1>
+<p>En esta práctica vamos a montar <strong>a mano</strong> una instancia EC2 que hace de
+<strong>balanceador de carga</strong> con nginx y reparte las peticiones entre <strong>dos</strong> instancias
+EC2, cada una con las dos aplicaciones web (las mismas de la práctica 1.1:
+<code>planes.daw</code> y <code>puertos.daw</code>). Es la evolución natural de la práctica 1.2: allí había
+un proxy y un solo backend; aquí el proxy reparte entre varios.</p>
 <p><strong>Cómo leer esta guía:</strong> después de cada comando o bloque de configuración hay un
 apartado <em>«¿Qué significa?»</em> que explica línea a línea qué hace y por qué está ahí.
-No copies nada sin haberlo leído antes: en el examen y en la vida real nadie
-configura nada que no entiende.</p>
+No copies nada sin haberlo leído antes.</p>
 <h2 id="1-el-escenario-que-vamos-a-montar">1. El escenario que vamos a montar</h2>
 <pre class="mermaid"><code>flowchart TB
-    Internet([Internet])
-
-    subgraph Proxy["EC2 «proxy» (Ubuntu 24.04, t2.small)"]
-        ProxyNginx["nginx como PROXY INVERSO&lt;br/&gt;(única cara visible del sistema)"]
-    end
-
-    subgraph Web["EC2 «web» (Ubuntu 24.04, t2.small)"]
-        WebNginx["nginx con 2 virtual hosts (multitenant)"]
-        Planes["planes.daw → /var/www/planes (RunDash)"]
-        Puertos["puertos.daw → /var/www/puertos (Puertos)"]
-        WebNginx --&gt; Planes
-        WebNginx --&gt; Puertos
-    end
-
-    Internet -- "HTTP (puerto 80)" --&gt; ProxyNginx
-    ProxyNginx -- "HTTP (puerto 80)&lt;br/&gt;por la IP PRIVADA" --&gt; WebNginx
-
-    classDef proxy fill:#fef3c7,stroke:#f59e0b,color:#92400e
-    classDef web fill:#dbeafe,stroke:#2563eb,color:#1e3a8a
-    classDef inet fill:#e5e7eb,stroke:#374151,color:#111827
-    class Internet inet
-    class ProxyNginx proxy
-    class WebNginx,Planes,Puertos web</code></pre>
+    internet["Internet&lt;br/&gt;HTTP · puerto 80"] --&gt; lb["EC2 rundash-lb&lt;br/&gt;nginx · balanceador&lt;br/&gt;IP pública"]
+    lb --&gt;|HTTP · IP privada| web1["EC2 rundash-web-1&lt;br/&gt;nginx multitenant&lt;br/&gt;planes.daw · puertos.daw"]
+    lb --&gt;|HTTP · IP privada| web2["EC2 rundash-web-2&lt;br/&gt;nginx multitenant&lt;br/&gt;planes.daw · puertos.daw"]</code></pre>
 <p>El resultado final será:</p>
 <ul>
-<li><strong>Dos instancias EC2</strong> con Ubuntu Server 24.04 LTS.</li>
-<li><code>rundash-proxy</code>: la puerta de entrada. Es la única que tiene el puerto 80
-    abierto a Internet.</li>
-<li><code>rundash-web</code>: la que realmente tiene las aplicaciones. Solo habla con el proxy.</li>
-<li><strong>Dos security groups</strong> distintos:</li>
-<li>Uno para el proxy (SSH 22 y HTTP 80 desde cualquier sitio).</li>
-<li>Otro para el backend (SSH 22 desde cualquier sitio y HTTP 80 <strong>solo desde el
-    security group del proxy</strong>).</li>
-<li><strong>Un único par de claves</strong> (.pem) compartido por ambas instancias.</li>
-<li>En el backend, el <strong>escenario multitenant de la práctica 1.1</strong>: las dos
-  aplicaciones clonadas en <code>/var/www/planes</code> y <code>/var/www/puertos</code>, servidas como
-  <code>planes.daw</code> y <code>puertos.daw</code>.</li>
-<li>nginx en el proxy reenviando todo lo que recibe al backend.</li>
+<li><strong>Tres instancias EC2</strong> con Ubuntu Server 24.04 LTS:</li>
+<li><code>rundash-lb</code>: el balanceador, única máquina con el puerto 80 abierto a Internet.</li>
+<li><code>rundash-web-1</code> y <code>rundash-web-2</code>: dos backends idénticos con las dos aplicaciones.</li>
+<li><strong>Dos security groups</strong>:</li>
+<li>Uno para el balanceador (SSH 22 y HTTP 80 desde cualquier sitio).</li>
+<li>Uno para los backends (SSH 22 desde cualquier sitio y HTTP 80 <strong>solo desde el
+    security group del balanceador</strong>).</li>
+<li><strong>Un único par de claves</strong> (.pem) compartido por las tres instancias.</li>
+<li>El <strong>escenario multitenant de la práctica 1.1</strong> (las dos aplicaciones en
+  <code>/var/www/planes</code> y <code>/var/www/puertos</code>, servidas como <code>planes.daw</code> y <code>puertos.daw</code>)
+  <strong>en cada backend</strong>.</li>
+<li>nginx en el balanceador repartiendo peticiones entre los dos backends.</li>
 </ul>
 <blockquote>
-<p><strong>Importante:</strong> el proxy no hace el multitenancy; solo reenvía peticiones. El
-reparto entre <code>planes.daw</code> y <code>puertos.daw</code> lo hace el <strong>backend</strong>, que sigue siendo
-el escenario multitenant de la práctica 1.1. Como el proxy conserva la cabecera
-<code>Host</code> (<code>proxy_set_header Host $host;</code>), al backend le llega el nombre original y
-puede elegir el virtual host correcto.</p>
+<p>El balanceador reparte por máquina (backend 1 o backend 2) y conserva la cabecera
+<code>Host</code>; el backend, con el nombre que recibe, elige el sitio (<code>planes.daw</code> o
+<code>puertos.daw</code>) mediante <code>server_name</code>. Así conviven dos repartos: por máquina en el
+balanceador y por nombre en cada backend.</p>
 </blockquote>
-<h3 id="11-que-es-un-proxy-inverso-y-por-que-molestarse">1.1. ¿Qué es un proxy inverso y por qué molestarse?</h3>
-<p>Un <strong>proxy inverso</strong> (<em>reverse proxy</em>) es un servidor que se coloca delante de uno
-o más servidores reales (los <em>backends</em>) y recibe las peticiones de los clientes en
-su nombre. El cliente cree que habla con el servidor final, pero en realidad habla
-con el proxy, que es quien decide a qué backend pasarle la petición.</p>
-<p>Es lo contrario de un proxy «normal» (proxy directo): el proxy directo trabaja para
-el <em>cliente</em> (le ayuda a salir a Internet); el proxy inverso trabaja para el
-<em>servidor</em> (le ayuda a recibir peticiones).</p>
-<p>¿Por qué no exponer directamente el backend, como en la práctica 1.1? Porque un
-proxy inverso aporta varias cosas que usaremos en las prácticas siguientes:</p>
+<h3 id="11-que-es-el-balanceo-de-carga-y-para-que-sirve">1.1. ¿Qué es el balanceo de carga y para qué sirve?</h3>
+<p>Un <strong>balanceador de carga</strong> (<em>load balancer</em>) es un proxy inverso que, en vez de
+reenviar todo a un único backend, <strong>reparte</strong> las peticiones entre varios. Las
+ventajas principales:</p>
 <table>
 <thead>
 <tr>
@@ -3088,31 +3104,79 @@ proxy inverso aporta varias cosas que usaremos en las prácticas siguientes:</p>
 </thead>
 <tbody>
 <tr>
-<td><strong>Ocultar el backend</strong></td>
-<td>El servidor con la aplicación no necesita IP pública ni puertos abiertos a Internet. Solo el proxy está expuesto. Menos superficie de ataque.</td>
+<td><strong>Alta disponibilidad</strong></td>
+<td>Si un backend se cae, el balanceador deja de enviarle tráfico y sigue sirviendo con los demás. El usuario no nota la caída.</td>
 </tr>
 <tr>
-<td><strong>Un único punto de entrada</strong></td>
-<td>Puedes cambiar, añadir o quitar backends sin que los clientes se enteren: la dirección pública siempre es la del proxy.</td>
+<td><strong>Mayor capacidad</strong></td>
+<td>La carga se reparte: con N backends puedes atender (aproximadamente) N veces más peticiones que con uno solo.</td>
 </tr>
 <tr>
-<td><strong>Balanceo de carga</strong></td>
-<td>Si hay varios backends, el proxy puede repartir las peticiones entre ellos.</td>
+<td><strong>Escalabilidad</strong></td>
+<td>Para absorber más tráfico basta con añadir backends al balanceador, sin cambiar nada de cara al cliente.</td>
 </tr>
 <tr>
-<td><strong>Terminación TLS</strong></td>
-<td>El proxy puede encargarse del HTTPS (cifrado) y hablar en HTTP simple con los backends.</td>
-</tr>
-<tr>
-<td><strong>Caché, compresión, límites de velocidad…</strong></td>
-<td>El proxy puede añadir muchas funciones sin tocar el backend.</td>
+<td><strong>Mantenimiento sin cortes</strong></td>
+<td>Puedes sacar un backend, actualizarlo y volverlo a meter, mientras los demás siguen sirviendo.</td>
 </tr>
 </tbody>
 </table>
-<p>En esta práctica nos quedamos con lo esencial: <strong>un proxy, un backend, reenvío
-simple</strong>. Aun así ya veremos las dos primeras ventajas (ocultar el backend y punto
-único de entrada).</p>
-<h3 id="12-conceptos-nuevos-que-vamos-a-usar">1.2. Conceptos nuevos que vamos a usar</h3>
+<p>En la práctica 1.2 ya teníamos un proxy inverso con un backend. La novedad aquí es
+el <strong>reparto</strong>: el balanceador decide, petición a petición, a qué backend se la pasa.</p>
+<h3 id="12-como-reparte-nginx-el-metodo-round-robin">1.2. ¿Cómo reparte nginx? El método <em>round-robin</em></h3>
+<p>nginx usa por defecto el algoritmo <strong>round-robin</strong> (por turnos): atiende la primera
+petición con el backend 1, la segunda con el backend 2, la tercera otra vez con el 1,
+y así sucesivamente. Es simple, justo y suficiente para esta práctica.</p>
+<p>Existen otros algoritmos que nginx soporta y que conviene conocer de nombre:</p>
+<table>
+<thead>
+<tr>
+<th>Algoritmo</th>
+<th>Directiva</th>
+<th>Comportamiento</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Round-robin</td>
+<td><em>(por defecto)</em></td>
+<td>Por turnos, uno tras otro.</td>
+</tr>
+<tr>
+<td>Menos conexiones</td>
+<td><code>least_conn;</code></td>
+<td>Envía la petición al backend con menos conexiones activas. Útil si las peticiones duran tiempos muy distintos.</td>
+</tr>
+<tr>
+<td>IP hash</td>
+<td><code>ip_hash;</code></td>
+<td>Elige el backend en función de la IP del cliente, de modo que un mismo cliente va siempre al mismo backend (útil para sesiones).</td>
+</tr>
+</tbody>
+</table>
+<p>Nosotros usaremos round-robin (no hay que escribir nada especial: es el
+comportamiento por defecto de un <code>upstream</code>).</p>
+<h3 id="13-como-comprobamos-que-de-verdad-reparte">1.3. ¿Cómo comprobamos que de verdad reparte?</h3>
+<p>Si ambos backends sirven exactamente el mismo contenido, las respuestas serán
+idénticas y no veremos el reparto «a ojo». Por eso vamos a hacer que cada backend
+<strong>se identifique</strong> en una cabecera HTTP de respuesta.</p>
+<p>En el nginx de cada backend añadiremos:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">add_header</span><span class="w"> </span><span class="s">X-Served-By</span><span class="w"> </span><span class="nv">$hostname</span><span class="w"> </span><span class="s">always</span><span class="p">;</span>
+</code></pre></div>
+<p>Esto añade a cada respuesta una cabecera <code>X-Served-By</code> con el nombre de la máquina
+(<code>rundash-web-1</code> o <code>rundash-web-2</code>). Como el balanceador transmite las cabeceras del
+backend al cliente, desde fuera podremos ver quién ha respondido cada petición.
+Pedimos uno de los dos sitios (que resolverá hacia el balanceador; ver apartado 7):</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>curl<span class="w"> </span>-sI<span class="w"> </span>http://planes.daw<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>X-Served-By
+</code></pre></div>
+<p>Si repetimos el comando varias veces, el valor debe <strong>alternar</strong> entre
+<code>rundash-web-1</code> y <code>rundash-web-2</code>. Esa es la prueba de que el balanceo funciona.</p>
+<blockquote>
+<p><code>$hostname</code> es una variable interna de nginx con el nombre de la máquina donde
+corre. <code>add_header</code> añade una cabecera a la respuesta; la palabra <code>always</code> hace
+que la añada también en respuestas de error (404, 500…), no solo en las de éxito.</p>
+</blockquote>
+<h3 id="14-conceptos-nuevos">1.4. Conceptos nuevos</h3>
 <table>
 <thead>
 <tr>
@@ -3122,72 +3186,53 @@ simple</strong>. Aun así ya veremos las dos primeras ventajas (ocultar el backe
 </thead>
 <tbody>
 <tr>
-<td><strong>Proxy inverso</strong></td>
-<td>Servidor intermediario que recibe peticiones y las reenvía a uno o más backends.</td>
+<td><strong>Balanceador de carga</strong></td>
+<td>Proxy inverso que reparte peticiones entre varios backends.</td>
 </tr>
 <tr>
-<td><strong>Backend</strong></td>
-<td>El servidor que realmente tiene la aplicación y genera las respuestas.</td>
+<td><strong><code>upstream</code></strong></td>
+<td>Bloque de nginx que define un «grupo» de backends entre los que repartir. Tiene un nombre y una lista de <code>server</code>.</td>
 </tr>
 <tr>
-<td><strong>IP pública</strong></td>
-<td>Dirección con la que una instancia es visible desde Internet. Es efímera (cambia al parar/arrancar).</td>
+<td><strong>Round-robin</strong></td>
+<td>Algoritmo de reparto por turnos (el por defecto de nginx).</td>
 </tr>
 <tr>
-<td><strong>IP privada</strong></td>
-<td>Dirección visible <strong>solo dentro de la VPC</strong> (la red virtual de AWS). No se puede llegar a ella desde Internet.</td>
-</tr>
-<tr>
-<td><strong>VPC</strong> (Virtual Private Cloud)</td>
-<td>La red virtual aislada donde viven tus instancias. Las instancias de la misma VPC se ven entre sí por su IP privada.</td>
-</tr>
-<tr>
-<td><strong><code>proxy_pass</code></strong></td>
-<td>Directiva de nginx que le dice «reenvía esta petición a esta otra dirección». Es el corazón del proxy inverso.</td>
+<td><strong><code>add_header</code></strong></td>
+<td>Directiva que añade una cabecera HTTP a las respuestas de nginx.</td>
 </tr>
 </tbody>
 </table>
 <blockquote>
-<p>Región de trabajo: <strong>us-east-1 (N. Virginia)</strong>. Como siempre, asegúrate de tenerla
-elegida en la esquina superior derecha de la consola antes de empezar.</p>
+<p>Región de trabajo: <strong>us-east-1 (N. Virginia)</strong>, como siempre.</p>
 </blockquote>
 <h2 id="2-requisitos-previos">2. Requisitos previos</h2>
 <ul>
 <li>Cuenta de AWS con permisos para crear instancias EC2, security groups y key pairs.
   Vale la capa gratuita (free tier).</li>
-<li>Un cliente SSH instalado (Linux/macOS lo trae de serie; en Windows usa PowerShell
-  o WSL, no PuTTY, para poder seguir los comandos tal cual).</li>
-<li>Navegador web y <code>curl</code> para comprobar el resultado.</li>
-<li>Haber hecho (o entender) la práctica 1.1: el backend se configura exactamente igual.</li>
+<li>Cliente SSH y <code>curl</code> instalados.</li>
+<li>Haber hecho (o entender) las prácticas 1.1 y 1.2: los backends se configuran como
+  en 1.1 y el balanceador es un proxy inverso como el de 1.2, pero con <code>upstream</code>.</li>
 </ul>
 <h2 id="3-crear-el-key-pair-y-los-dos-security-groups">3. Crear el key pair y los dos security groups</h2>
-<p>A diferencia de la práctica 1.1, aquí conviene crear el key pair y los security
-groups <strong>antes</strong> de lanzar las instancias, porque los vamos a compartir/reutilizar y
-porque uno de los security groups referencia al otro.</p>
-<h3 id="31-key-pair-par-de-claves">3.1. Key pair (par de claves)</h3>
+<p>Igual que en la práctica 1.2, creamos primero el key pair y los security groups,
+porque uno de ellos referencia al otro.</p>
+<h3 id="31-key-pair">3.1. Key pair</h3>
 <ol>
-<li>Consola EC2 → <strong>Network &amp; Security → Key Pairs → Create key pair</strong>.</li>
-<li>Name: <code>rundash-proxy-key</code></li>
-<li>Key pair type: <strong>RSA</strong></li>
-<li>Private key file format: <strong>.pem</strong></li>
-<li>Pulsa <strong>Create key pair</strong>. Se descarga <code>rundash-proxy-key.pem</code>.
-   <strong>Guárdalo bien: es la única vez que se puede descargar.</strong></li>
+<li><strong>Network &amp; Security → Key Pairs → Create key pair</strong>:</li>
+<li>Name: <code>rundash-lb-key</code>, tipo <strong>RSA</strong>, formato <strong>.pem</strong>.</li>
+<li>Descarga <code>rundash-lb-key.pem</code> y protégelo:</li>
 </ol>
-<p>Usamos <strong>un solo key pair para las dos instancias</strong>. Podríamos crear uno por
-instancia, pero para un escenario de prácticas es más sencillo gestionar uno solo;
-Terraform hace exactamente esto (un único <code>tls_private_key</code> para todo el escenario).</p>
-<p>Recuerda restringir los permisos del fichero en tu máquina:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>chmod<span class="w"> </span><span class="m">600</span><span class="w"> </span>rundash-proxy-key.pem
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>chmod<span class="w"> </span><span class="m">600</span><span class="w"> </span>rundash-lb-key.pem
 </code></pre></div>
-<p>(Se explicó en la práctica 1.1: SSH rechaza claves legibles por otros usuarios.)</p>
-<h3 id="32-security-group-del-proxy">3.2. Security group del proxy</h3>
+<p>Un solo key pair para las tres instancias.</p>
+<h3 id="32-security-group-del-balanceador">3.2. Security group del balanceador</h3>
 <ol>
-<li><strong>Network &amp; Security → Security Groups → Create security group</strong>:</li>
-<li>Name: <code>rundash-proxy-sg</code></li>
-<li>Description: <code>SSH y HTTP para el proxy inverso</code></li>
-<li>VPC: deja la <strong>VPC por defecto</strong>.</li>
+<li><strong>Create security group</strong>:</li>
+<li>Name: <code>rundash-lb-sg</code></li>
+<li>Description: <code>SSH y HTTP para el balanceador de carga</code></li>
 <li>
-<p>Reglas de entrada (<strong>Add rule</strong>):</p>
+<p>VPC por defecto. Reglas de entrada:</p>
 <table>
 <thead>
 <tr>
@@ -3213,21 +3258,14 @@ Terraform hace exactamente esto (un único <code>tls_private_key</code> para tod
 </tbody>
 </table>
 </li>
-<li>
-<p>Deja la regla de salida por defecto (permite todo).</p>
-</li>
-<li>Pulsa <strong>Create security group</strong>.</li>
 </ol>
-<p>Este grupo es idéntico al de la práctica 1.1: el proxy es la cara pública, así que
-necesita SSH (para administrarlo) y HTTP (para recibir el tráfico web).</p>
-<h3 id="33-security-group-del-backend-la-parte-interesante">3.3. Security group del backend (la parte interesante)</h3>
+<h3 id="33-security-group-de-los-backends">3.3. Security group de los backends</h3>
 <ol>
-<li><strong>Create security group</strong> otra vez:</li>
-<li>Name: <code>rundash-proxy-backend-sg</code></li>
-<li>Description: <code>SSH desde cualquier sitio y HTTP solo desde el proxy</code></li>
-<li>VPC: la misma VPC por defecto.</li>
+<li><strong>Create security group</strong>:</li>
+<li>Name: <code>rundash-lb-backend-sg</code></li>
+<li>Description: <code>SSH desde cualquier sitio y HTTP solo desde el balanceador</code></li>
 <li>
-<p>Reglas de entrada:</p>
+<p>VPC por defecto. Reglas de entrada:</p>
 <table>
 <thead>
 <tr>
@@ -3247,348 +3285,397 @@ necesita SSH (para administrarlo) y HTTP (para recibir el tráfico web).</p>
 <tr>
 <td>HTTP</td>
 <td>80</td>
-<td><code>rundash-proxy-sg</code> (el grupo)</td>
-<td>HTTP solo desde el proxy</td>
+<td><code>rundash-lb-sg</code> (el grupo)</td>
+<td>HTTP solo desde el balanceador</td>
 </tr>
 </tbody>
 </table>
 </li>
 </ol>
-<p>Para la segunda regla, en <strong>Source</strong> empieza a escribir <code>rundash-proxy-sg</code> y
-   selecciónalo cuando aparezca: verás que el origen se escribe como
-   <code>sg-xxxxxxxx</code> (el identificador del security group), no como una IP.</p>
-<ul>
-<li>Deja la regla de salida por defecto.</li>
-<li>Pulsa <strong>Create security group</strong>.</li>
-</ul>
-<p><strong>¿Qué significa que el origen sea otro security group?</strong></p>
-<p>Hasta ahora habíamos puesto como origen un rango de IPs (<code>0.0.0.0/0</code>). Pero AWS
-también permite poner <strong>otro security group</strong> como origen. La regla entonces
-significa: «acepta tráfico en el puerto 80 que provenga de cualquier instancia que
-tenga asignado el security group <code>rundash-proxy-sg</code>».</p>
-<p>Esto es exactamente lo que queremos:</p>
-<ul>
-<li>El proxy (que tiene <code>rundash-proxy-sg</code>) puede hablar con el backend por el
-  puerto 80. ✅</li>
-<li>Cualquier otra cosa de Internet que intente llegar al backend por el puerto 80
-  queda bloqueada, porque no viene de una instancia con ese grupo. ✅</li>
-</ul>
-<p>Así el backend <strong>no necesita</strong> (y de hecho no tiene) el puerto 80 abierto al mundo.
-Es la materialización de la ventaja «ocultar el backend». .</p>
-<blockquote>
-<p>Nota sobre el SSH del backend: lo dejamos abierto a <code>0.0.0.0/0</code> para poder
-administrarlo directamente desde tu máquina.
-En un entorno real más duro se restringiría el SSH al backend para que solo se
-pudiera entrar a través del proxy (patrón <em>bastión</em>), pero eso complica la
-práctica y no aporta nada nuevo aquí.</p>
-</blockquote>
-<h2 id="4-lanzar-las-dos-instancias">4. Lanzar las dos instancias</h2>
-<p>Lanza primero el backend y luego el proxy (el orden no importa técnicamente, pero
-así tienes la IP privada del backend a mano antes de configurar el proxy).</p>
-<h3 id="41-instancia-backend-rundash-web">4.1. Instancia backend (<code>rundash-web</code>)</h3>
+<p>En la regla HTTP, en <strong>Source</strong> escribe <code>rundash-lb-sg</code> y selecciónalo: el origen
+   quedará como <code>sg-xxxxxxxx</code>.</p>
+<p><strong>¿Por qué?</strong> Exactamente la misma razón que en 1.2: los backends no deben recibir
+tráfico web directamente de Internet, solo del balanceador. Así, aunque tengan IP
+pública para poder administrarlos por SSH, su puerto 80 queda protegido.</p>
+<h2 id="4-lanzar-las-tres-instancias">4. Lanzar las tres instancias</h2>
+<p>Lanza primero los dos backends (para tener sus IPs privadas) y luego el balanceador.</p>
+<h3 id="41-backend-1-rundash-web-1">4.1. Backend 1 (<code>rundash-web-1</code>)</h3>
 <ol>
 <li><strong>Launch instance</strong>:</li>
-<li><strong>Name</strong>: <code>rundash-web</code></li>
-<li><strong>AMI</strong>: Ubuntu Server 24.04 LTS (x86_64), propietario <code>099720109477</code>.</li>
-<li><strong>Instance type</strong>: <code>t2.small</code>.</li>
-<li><strong>Key pair</strong>: <code>rundash-proxy-key</code> (el que creaste en 3.1).</li>
-<li><strong>Network settings → Edit</strong>: en <strong>Firewall (security groups)</strong> elige
-     <strong>Select existing security group</strong> y marca <code>rundash-proxy-backend-sg</code>.</li>
-<li><strong>Configure storage</strong>: 8 GiB gp3.</li>
-<li>
-<p><strong>Advanced details → User data</strong>: pega esto:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1">#cloud-config</span>
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="nt">hostname</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">rundash-web</span>
-<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="nt">package_update</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
-<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="nt">packages</span><span class="p">:</span>
-<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">python3</span>
-<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">python3-apt</span>
-</code></pre></div>
-<p>Es el mismo user data de la práctica 1.1, cambiando el hostname a
- <code>rundash-web</code>. (Qué hace cada línea está explicado allí; en resumen: fija el
- nombre de la máquina, refresca <code>apt</code> e instala lo que Ansible necesita.)
-2. <strong>Launch instance</strong>.</p>
-</li>
-</ol>
-<h3 id="42-instancia-proxy-rundash-proxy">4.2. Instancia proxy (<code>rundash-proxy</code>)</h3>
-<ol>
-<li><strong>Launch instance</strong> otra vez:</li>
-<li><strong>Name</strong>: <code>rundash-proxy</code></li>
+<li><strong>Name</strong>: <code>rundash-web-1</code></li>
 <li><strong>AMI</strong>: Ubuntu Server 24.04 LTS (x86_64).</li>
 <li><strong>Instance type</strong>: <code>t2.small</code>.</li>
-<li><strong>Key pair</strong>: <code>rundash-proxy-key</code>.</li>
-<li><strong>Network settings → Edit</strong>: selecciona <code>rundash-proxy-sg</code>.</li>
+<li><strong>Key pair</strong>: <code>rundash-lb-key</code>.</li>
+<li><strong>Network settings → Edit</strong>: security group <code>rundash-lb-backend-sg</code>.</li>
 <li><strong>Configure storage</strong>: 8 GiB gp3.</li>
 <li>
 <p><strong>Advanced details → User data</strong>:</p>
-<p><div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1">#cloud-config</span>
-<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="nt">hostname</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">rundash-proxy</span>
-<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="nt">package_update</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
-<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="nt">packages</span><span class="p">:</span>
-<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">python3</span>
-<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">python3-apt</span>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c1">#cloud-config</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="nt">hostname</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">rundash-web-1</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="nt">package_update</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="nt">packages</span><span class="p">:</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">python3</span>
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">python3-apt</span>
 </code></pre></div>
-4. <strong>Launch instance</strong>.</p>
+2. <strong>Launch instance</strong>.</p>
 </li>
 </ol>
-<h3 id="43-anotar-las-direcciones">4.3. Anotar las direcciones</h3>
-<p>Cuando ambas estén <code>running</code> y con los <em>Status checks</em> en verde, ve a <strong>Instances</strong>
-y anota:</p>
-<ul>
-<li>La <strong>Public IPv4 address</strong> del proxy → la llamaremos <code>&lt;IP_PROXY&gt;</code>. Es la única
-  dirección pública que usará el cliente.</li>
-<li>La <strong>Private IPv4 address</strong> del backend → la llamaremos <code>&lt;IP_PRIV_WEB&gt;</code>. La
-  verás en la columna <em>Private IPv4 address</em> (quizá tengas que añadirla a las
-  columnas visibles con el icono de engranaje). Suele ser algo como <code>172.31.x.x</code>.</li>
-</ul>
-<p><strong>¿Por qué el proxy usará la IP privada del backend y no la pública?</strong> Porque la IP
-privada es estable dentro de la VPC y el tráfico entre instancias de la misma VPC no
-sale a Internet (es más rápido, gratis y no depende de que el backend tenga IP
-pública). Además, como hemos cerrado el puerto 80 del backend al mundo, <em>solo</em>
-llegando por la red interna se puede hablar con él.</p>
-<h2 id="5-configurar-el-backend-igual-que-la-practica-11">5. Configurar el backend (igual que la práctica 1.1)</h2>
-<p>El backend se configura <strong>exactamente igual</strong> que la instancia de la práctica 1.1:
-instalar nginx y git, clonar las <strong>dos</strong> aplicaciones y servir los dos sitios como
-virtual hosts (<code>planes.daw</code> y <code>puertos.daw</code>). Lo repetimos aquí para que la práctica
-sea autocontenida.</p>
-<p>Conecta por SSH al backend usando su <strong>IP pública</strong> (sí, el backend tiene IP
-pública; lo que está cerrado es su puerto 80, no el 22):</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>ssh<span class="w"> </span>-i<span class="w"> </span>rundash-proxy-key.pem<span class="w"> </span>ubuntu@&lt;IP_PUB_WEB&gt;
+<h3 id="42-backend-2-rundash-web-2">4.2. Backend 2 (<code>rundash-web-2</code>)</h3>
+<ol>
+<li>Repite el lanzamiento anterior, pero con:</li>
+<li><strong>Name</strong>: <code>rundash-web-2</code></li>
+<li>
+<p><strong>User data</strong>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="c1">#cloud-config</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="nt">hostname</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">rundash-web-2</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="nt">package_update</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="nt">packages</span><span class="p">:</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">python3</span>
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">python3-apt</span>
 </code></pre></div>
-<p>Todos los comandos siguientes se ejecutan <strong>dentro de esa sesión SSH</strong>, con <code>sudo</code>
-cuando haga falta (se explicó en la práctica 1.1).</p>
-<h3 id="51-comprobar-cloud-init-e-instalar-paquetes">5.1. Comprobar cloud-init e instalar paquetes</h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>cloud-init<span class="w"> </span>status<span class="w"> </span>--wait
-</code></pre></div>
-<p>Espera a que la configuración inicial termine (debe acabar diciendo <code>done</code>). Así
-evitamos pelearnos con <code>apt</code> mientras cloud-init sigue instalando cosas.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>sudo<span class="w"> </span>apt<span class="w"> </span>update
-<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>nginx<span class="w"> </span>git
-</code></pre></div>
-<ul>
-<li><code>nginx</code>: el servidor web que servirá los dos sitios en el backend.</li>
-<li><code>git</code>: para clonar los repositorios.</li>
-</ul>
+</li>
+</ol>
 <blockquote>
-<p>Si <code>apt</code> se queja de un lock (<code>Could not get lock /var/lib/dpkg/lock-frontend</code>),
-cloud-init aún está trabajando: espera un minuto y reintenta.</p>
+<p>Los dos backends son idénticos salvo el nombre. En un despliegue real esto se
+haría con una plantilla o un bucle; a mano, simplemente se lanzan dos veces.</p>
 </blockquote>
+<h3 id="43-balanceador-rundash-lb">4.3. Balanceador (<code>rundash-lb</code>)</h3>
+<ol>
+<li><strong>Launch instance</strong>:</li>
+<li><strong>Name</strong>: <code>rundash-lb</code></li>
+<li><strong>AMI</strong>: Ubuntu Server 24.04 LTS (x86_64).</li>
+<li><strong>Instance type</strong>: <code>t2.small</code>.</li>
+<li><strong>Key pair</strong>: <code>rundash-lb-key</code>.</li>
+<li><strong>Network settings → Edit</strong>: security group <code>rundash-lb-sg</code>.</li>
+<li><strong>Configure storage</strong>: 8 GiB gp3.</li>
+<li>
+<p><strong>Advanced details → User data</strong>:</p>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="c1">#cloud-config</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="nt">hostname</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">rundash-lb</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="nt">package_update</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="nt">packages</span><span class="p">:</span>
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">python3</span>
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">python3-apt</span>
+</code></pre></div>
+5. <strong>Launch instance</strong>.</p>
+</li>
+</ol>
+<h3 id="44-anotar-las-direcciones">4.4. Anotar las direcciones</h3>
+<p>Cuando las tres estén <code>running</code> y con los <em>Status checks</em> en verde, anota:</p>
+<ul>
+<li><strong>Public IPv4 address</strong> del balanceador → <code>&lt;IP_LB&gt;</code>.</li>
+<li><strong>Private IPv4 address</strong> de <code>rundash-web-1</code> → <code>&lt;IP_PRIV_WEB1&gt;</code>.</li>
+<li><strong>Private IPv4 address</strong> de <code>rundash-web-2</code> → <code>&lt;IP_PRIV_WEB2&gt;</code>.</li>
+</ul>
+<p>Las IPs privadas suelen ser <code>172.31.x.x</code>. El balanceador usará estas dos últimas en
+su bloque <code>upstream</code>.</p>
+<h2 id="5-configurar-los-dos-backends">5. Configurar los dos backends</h2>
+<p>Cada backend se configura igual que en la práctica 1.1, <strong>más</strong> la cabecera
+<code>X-Served-By</code> para poder observar el balanceo. Hazlo en los dos.</p>
+<p>Conecta al backend 1 por su IP pública:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>ssh<span class="w"> </span>-i<span class="w"> </span>rundash-lb-key.pem<span class="w"> </span>ubuntu@&lt;IP_PUB_WEB1&gt;
+</code></pre></div>
+<h3 id="51-comprobar-cloud-init-e-instalar-paquetes">5.1. Comprobar cloud-init e instalar paquetes</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>cloud-init<span class="w"> </span>status<span class="w"> </span>--wait
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>sudo<span class="w"> </span>apt<span class="w"> </span>update
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>nginx<span class="w"> </span>git
+</code></pre></div>
 <h3 id="52-clonar-las-dos-aplicaciones">5.2. Clonar las dos aplicaciones</h3>
-<p>Cada inquilino tiene su propio directorio dentro de <code>/var/www</code>:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>sudo<span class="w"> </span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/raul-profesor/rundash.git<span class="w"> </span>/var/www/planes
-<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>sudo<span class="w"> </span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/raul-profesor/puertos-tour.git<span class="w"> </span>/var/www/puertos
+<p>Cada backend reproduce el escenario multitenant de la práctica 1.1: dos aplicaciones,
+cada una en su propio directorio de <code>/var/www</code>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>sudo<span class="w"> </span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/raul-profesor/rundash.git<span class="w"> </span>/var/www/planes
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>sudo<span class="w"> </span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/raul-profesor/puertos-tour.git<span class="w"> </span>/var/www/puertos
 </code></pre></div>
 <p><code>/var/www/planes</code> contendrá RunDash (responderá a <code>planes.daw</code>) y <code>/var/www/puertos</code>
-Puertos Míticos (responderá a <code>puertos.daw</code>). (El detalle de estos clones está en la
-guía de la práctica 1.1.)</p>
+Puertos Míticos (<code>puertos.daw</code>).</p>
 <h3 id="53-configurar-y-activar-los-dos-sitios">5.3. Configurar y activar los dos sitios</h3>
-<p>Crea un virtual host por tenant. Primero <code>planes.daw</code>:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>sudo<span class="w"> </span>nano<span class="w"> </span>/etc/nginx/sites-available/planes.daw
-</code></pre></div>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="k">server</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="w">    </span><span class="kn">listen</span><span class="w"> </span><span class="mi">80</span><span class="p">;</span>
-<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="w">    </span><span class="kn">listen</span><span class="w"> </span><span class="s">[::]:80</span><span class="p">;</span>
-<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="w">    </span><span class="kn">server_name</span><span class="w"> </span><span class="s">planes.daw</span><span class="p">;</span>
-<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>
-<a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a><span class="w">    </span><span class="kn">root</span><span class="w"> </span><span class="s">/var/www/planes</span><span class="p">;</span>
-<a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a><span class="w">    </span><span class="kn">index</span><span class="w"> </span><span class="s">index.html</span><span class="p">;</span>
-<a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a>
-<a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a><span class="w">    </span><span class="kn">location</span><span class="w"> </span><span class="s">/</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a><span class="w">        </span><span class="kn">try_files</span><span class="w"> </span><span class="nv">$uri</span><span class="w"> </span><span class="nv">$uri/index.html</span><span class="w"> </span><span class="nv">$uri/</span><span class="w"> </span><span class="p">=</span><span class="mi">404</span><span class="p">;</span>
-<a id="__codelineno-8-11" name="__codelineno-8-11" href="#__codelineno-8-11"></a><span class="w">    </span><span class="p">}</span>
-<a id="__codelineno-8-12" name="__codelineno-8-12" href="#__codelineno-8-12"></a><span class="p">}</span>
-</code></pre></div>
-<p>Y luego <code>puertos.daw</code>:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>sudo<span class="w"> </span>nano<span class="w"> </span>/etc/nginx/sites-available/puertos.daw
+<p>Crea un virtual host por tenant. Son los mismos de la práctica 1.1, <strong>más</strong> la línea
+<code>add_header X-Served-By $hostname always;</code> (explicada en 1.3 de esta guía) para poder
+observar el balanceo. Primero <code>planes.daw</code>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>sudo<span class="w"> </span>nano<span class="w"> </span>/etc/nginx/sites-available/planes.daw
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="k">server</span><span class="w"> </span><span class="p">{</span>
 <a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="w">    </span><span class="kn">listen</span><span class="w"> </span><span class="mi">80</span><span class="p">;</span>
 <a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="w">    </span><span class="kn">listen</span><span class="w"> </span><span class="s">[::]:80</span><span class="p">;</span>
-<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="w">    </span><span class="kn">server_name</span><span class="w"> </span><span class="s">puertos.daw</span><span class="p">;</span>
+<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="w">    </span><span class="kn">server_name</span><span class="w"> </span><span class="s">planes.daw</span><span class="p">;</span>
 <a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a>
-<a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a><span class="w">    </span><span class="kn">root</span><span class="w"> </span><span class="s">/var/www/puertos</span><span class="p">;</span>
+<a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a><span class="w">    </span><span class="kn">root</span><span class="w"> </span><span class="s">/var/www/planes</span><span class="p">;</span>
 <a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a><span class="w">    </span><span class="kn">index</span><span class="w"> </span><span class="s">index.html</span><span class="p">;</span>
 <a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a>
-<a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a><span class="w">    </span><span class="kn">location</span><span class="w"> </span><span class="s">/</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-10-10" name="__codelineno-10-10" href="#__codelineno-10-10"></a><span class="w">        </span><span class="kn">try_files</span><span class="w"> </span><span class="nv">$uri</span><span class="w"> </span><span class="nv">$uri/index.html</span><span class="w"> </span><span class="nv">$uri/</span><span class="w"> </span><span class="p">=</span><span class="mi">404</span><span class="p">;</span>
-<a id="__codelineno-10-11" name="__codelineno-10-11" href="#__codelineno-10-11"></a><span class="w">    </span><span class="p">}</span>
-<a id="__codelineno-10-12" name="__codelineno-10-12" href="#__codelineno-10-12"></a><span class="p">}</span>
+<a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a><span class="w">    </span><span class="kn">add_header</span><span class="w"> </span><span class="s">X-Served-By</span><span class="w"> </span><span class="nv">$hostname</span><span class="w"> </span><span class="s">always</span><span class="p">;</span>
+<a id="__codelineno-10-10" name="__codelineno-10-10" href="#__codelineno-10-10"></a>
+<a id="__codelineno-10-11" name="__codelineno-10-11" href="#__codelineno-10-11"></a><span class="w">    </span><span class="kn">location</span><span class="w"> </span><span class="s">/</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-10-12" name="__codelineno-10-12" href="#__codelineno-10-12"></a><span class="w">        </span><span class="kn">try_files</span><span class="w"> </span><span class="nv">$uri</span><span class="w"> </span><span class="nv">$uri/index.html</span><span class="w"> </span><span class="nv">$uri/</span><span class="w"> </span><span class="p">=</span><span class="mi">404</span><span class="p">;</span>
+<a id="__codelineno-10-13" name="__codelineno-10-13" href="#__codelineno-10-13"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-10-14" name="__codelineno-10-14" href="#__codelineno-10-14"></a><span class="p">}</span>
 </code></pre></div>
-<p>El significado de cada línea está en la guía de la práctica 1.1. Lo importante aquí es
-que el <code>server_name</code> de cada bloque es el nombre de su sitio (<code>planes.daw</code> /
-<code>puertos.daw</code>), para que el backend elija el virtual host correcto a partir de la
-cabecera <code>Host</code> que le reenvía el proxy.</p>
+<p>Y luego <code>puertos.daw</code>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>sudo<span class="w"> </span>nano<span class="w"> </span>/etc/nginx/sites-available/puertos.daw
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="k">server</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="w">    </span><span class="kn">listen</span><span class="w"> </span><span class="mi">80</span><span class="p">;</span>
+<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="w">    </span><span class="kn">listen</span><span class="w"> </span><span class="s">[::]:80</span><span class="p">;</span>
+<a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a><span class="w">    </span><span class="kn">server_name</span><span class="w"> </span><span class="s">puertos.daw</span><span class="p">;</span>
+<a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a>
+<a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a><span class="w">    </span><span class="kn">root</span><span class="w"> </span><span class="s">/var/www/puertos</span><span class="p">;</span>
+<a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a><span class="w">    </span><span class="kn">index</span><span class="w"> </span><span class="s">index.html</span><span class="p">;</span>
+<a id="__codelineno-12-8" name="__codelineno-12-8" href="#__codelineno-12-8"></a>
+<a id="__codelineno-12-9" name="__codelineno-12-9" href="#__codelineno-12-9"></a><span class="w">    </span><span class="kn">add_header</span><span class="w"> </span><span class="s">X-Served-By</span><span class="w"> </span><span class="nv">$hostname</span><span class="w"> </span><span class="s">always</span><span class="p">;</span>
+<a id="__codelineno-12-10" name="__codelineno-12-10" href="#__codelineno-12-10"></a>
+<a id="__codelineno-12-11" name="__codelineno-12-11" href="#__codelineno-12-11"></a><span class="w">    </span><span class="kn">location</span><span class="w"> </span><span class="s">/</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-12-12" name="__codelineno-12-12" href="#__codelineno-12-12"></a><span class="w">        </span><span class="kn">try_files</span><span class="w"> </span><span class="nv">$uri</span><span class="w"> </span><span class="nv">$uri/index.html</span><span class="w"> </span><span class="nv">$uri/</span><span class="w"> </span><span class="p">=</span><span class="mi">404</span><span class="p">;</span>
+<a id="__codelineno-12-13" name="__codelineno-12-13" href="#__codelineno-12-13"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-12-14" name="__codelineno-12-14" href="#__codelineno-12-14"></a><span class="p">}</span>
+</code></pre></div>
+<p>Guarda ambos (<code>Ctrl+O</code>, <code>Enter</code>, <code>Ctrl+X</code>). El <code>server_name</code> de cada bloque es el
+nombre de su sitio: el backend elige el virtual host correcto a partir de la cabecera
+<code>Host</code> que le reenvía el balanceador.</p>
 <p>Activa ambos sitios, desactiva el de ejemplo y valida:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>sudo<span class="w"> </span>ln<span class="w"> </span>-s<span class="w"> </span>/etc/nginx/sites-available/planes.daw<span class="w"> </span>/etc/nginx/sites-enabled/planes.daw
-<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>sudo<span class="w"> </span>ln<span class="w"> </span>-s<span class="w"> </span>/etc/nginx/sites-available/puertos.daw<span class="w"> </span>/etc/nginx/sites-enabled/puertos.daw
-<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>sudo<span class="w"> </span>rm<span class="w"> </span>/etc/nginx/sites-enabled/default
-<a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a>sudo<span class="w"> </span>nginx<span class="w"> </span>-t
-<a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>reload<span class="w"> </span>nginx
-<a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>nginx
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>sudo<span class="w"> </span>ln<span class="w"> </span>-s<span class="w"> </span>/etc/nginx/sites-available/planes.daw<span class="w"> </span>/etc/nginx/sites-enabled/planes.daw
+<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>sudo<span class="w"> </span>ln<span class="w"> </span>-s<span class="w"> </span>/etc/nginx/sites-available/puertos.daw<span class="w"> </span>/etc/nginx/sites-enabled/puertos.daw
+<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>sudo<span class="w"> </span>rm<span class="w"> </span>/etc/nginx/sites-enabled/default
+<a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a>sudo<span class="w"> </span>nginx<span class="w"> </span>-t
+<a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>reload<span class="w"> </span>nginx
+<a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>nginx
 </code></pre></div>
-<p>Comprueba que el backend sirve <strong>los dos</strong> sitios <strong>localmente</strong>, forzando la cabecera
-<code>Host</code> (los nombres aún no resuelven hacia el backend):</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>curl<span class="w"> </span>-s<span class="w"> </span>-H<span class="w"> </span><span class="s2">"Host: planes.daw"</span><span class="w">  </span>http://localhost/<span class="w"> </span><span class="p">|</span><span class="w"> </span>head<span class="w"> </span>-5
-<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>curl<span class="w"> </span>-s<span class="w"> </span>-H<span class="w"> </span><span class="s2">"Host: puertos.daw"</span><span class="w"> </span>http://localhost/<span class="w"> </span><span class="p">|</span><span class="w"> </span>head<span class="w"> </span>-5
+<p>Comprueba localmente, forzando la cabecera <code>Host</code>, que el backend sirve el sitio y que
+la cabecera identificadora sale:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>curl<span class="w"> </span>-sI<span class="w"> </span>-H<span class="w"> </span><span class="s2">"Host: planes.daw"</span><span class="w"> </span>http://localhost/<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-i<span class="w"> </span>x-served-by
 </code></pre></div>
-<p>Debes ver el HTML de RunDash con el primer comando y el de Puertos Míticos con el
-segundo. Este paso es clave: <strong>verifica el backend antes de culpar al proxy</strong>.</p>
-<h2 id="6-configurar-el-proxy-inverso">6. Configurar el proxy inverso</h2>
-<p>Sal de la sesión del backend (<code>exit</code>) y conecta al proxy por su IP pública:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>ssh<span class="w"> </span>-i<span class="w"> </span>rundash-proxy-key.pem<span class="w"> </span>ubuntu@&lt;IP_PROXY&gt;
+<p>Debe imprimir <code>X-Served-By: rundash-web-1</code>. Si sale, el backend 1 está listo.</p>
+<p>Sal (<code>exit</code>) y <strong>repite todo el apartado 5 en el backend 2</strong> (<code>rundash-web-2</code>),
+conectando a <code>&lt;IP_PUB_WEB2&gt;</code>. Al final, <code>curl -sI -H "Host: planes.daw"
+http://localhost/ | grep -i x-served-by</code> allí debe dar <code>X-Served-By: rundash-web-2</code>.</p>
+<h2 id="6-configurar-el-balanceador">6. Configurar el balanceador</h2>
+<p>Conecta al balanceador por su IP pública:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>ssh<span class="w"> </span>-i<span class="w"> </span>rundash-lb-key.pem<span class="w"> </span>ubuntu@&lt;IP_LB&gt;
 </code></pre></div>
 <h3 id="61-instalar-nginx">6.1. Instalar nginx</h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>cloud-init<span class="w"> </span>status<span class="w"> </span>--wait
-<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>sudo<span class="w"> </span>apt<span class="w"> </span>update
-<a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>nginx
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>cloud-init<span class="w"> </span>status<span class="w"> </span>--wait
+<a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>sudo<span class="w"> </span>apt<span class="w"> </span>update
+<a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>nginx
 </code></pre></div>
-<p>En el proxy <strong>solo instalamos nginx</strong>: no necesitamos git (no vamos a clonar nada)
-porque el proxy no sirve contenido propio, solo reenvía peticiones.</p>
-<h3 id="62-configurar-el-proxy-inverso">6.2. Configurar el proxy inverso</h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>sudo<span class="w"> </span>nano<span class="w"> </span>/etc/nginx/sites-available/rundash-proxy
+<p>En el balanceador solo instalamos nginx: no clonamos la aplicación, porque no sirve
+contenido propio, solo reparte peticiones.</p>
+<h3 id="62-configurar-el-balanceador">6.2. Configurar el balanceador</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>sudo<span class="w"> </span>nano<span class="w"> </span>/etc/nginx/sites-available/rundash-lb
 </code></pre></div>
-<p>Pega este contenido, sustituyendo <code>&lt;IP_PRIV_WEB&gt;</code> por la IP privada del backend que
-anotaste en 4.3:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="k">server</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a><span class="w">    </span><span class="kn">listen</span><span class="w"> </span><span class="mi">80</span><span class="p">;</span>
-<a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a><span class="w">    </span><span class="kn">listen</span><span class="w"> </span><span class="s">[::]:80</span><span class="p">;</span>
-<a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a><span class="w">    </span><span class="kn">server_name</span><span class="w"> </span><span class="s">_</span><span class="p">;</span>
-<a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a>
-<a id="__codelineno-16-6" name="__codelineno-16-6" href="#__codelineno-16-6"></a><span class="w">    </span><span class="kn">location</span><span class="w"> </span><span class="s">/</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-16-7" name="__codelineno-16-7" href="#__codelineno-16-7"></a><span class="w">        </span><span class="kn">proxy_pass</span><span class="w"> </span><span class="s">http://&lt;IP_PRIV_WEB&gt;</span><span class="p">;</span>
-<a id="__codelineno-16-8" name="__codelineno-16-8" href="#__codelineno-16-8"></a><span class="w">        </span><span class="kn">proxy_set_header</span><span class="w"> </span><span class="s">Host</span><span class="w"> </span><span class="nv">$host</span><span class="p">;</span>
-<a id="__codelineno-16-9" name="__codelineno-16-9" href="#__codelineno-16-9"></a><span class="w">        </span><span class="kn">proxy_set_header</span><span class="w"> </span><span class="s">X-Real-IP</span><span class="w"> </span><span class="nv">$remote_addr</span><span class="p">;</span>
-<a id="__codelineno-16-10" name="__codelineno-16-10" href="#__codelineno-16-10"></a><span class="w">        </span><span class="kn">proxy_set_header</span><span class="w"> </span><span class="s">X-Forwarded-For</span><span class="w"> </span><span class="nv">$proxy_add_x_forwarded_for</span><span class="p">;</span>
-<a id="__codelineno-16-11" name="__codelineno-16-11" href="#__codelineno-16-11"></a><span class="w">        </span><span class="kn">proxy_set_header</span><span class="w"> </span><span class="s">X-Forwarded-Proto</span><span class="w"> </span><span class="nv">$scheme</span><span class="p">;</span>
-<a id="__codelineno-16-12" name="__codelineno-16-12" href="#__codelineno-16-12"></a><span class="w">    </span><span class="p">}</span>
-<a id="__codelineno-16-13" name="__codelineno-16-13" href="#__codelineno-16-13"></a><span class="p">}</span>
+<p>Pega este contenido, sustituyendo <code>&lt;IP_PRIV_WEB1&gt;</code> y <code>&lt;IP_PRIV_WEB2&gt;</code> por las IPs
+privadas que anotaste en 4.4:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="k">upstream</span><span class="w"> </span><span class="s">rundash_backend</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a><span class="w">    </span><span class="kn">server</span><span class="w"> </span><span class="s">&lt;IP_PRIV_WEB1&gt;:80</span><span class="w"> </span><span class="s">max_fails=2</span><span class="w"> </span><span class="s">fail_timeout=30s</span><span class="p">;</span>
+<a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a><span class="w">    </span><span class="kn">server</span><span class="w"> </span><span class="s">&lt;IP_PRIV_WEB2&gt;:80</span><span class="w"> </span><span class="s">max_fails=2</span><span class="w"> </span><span class="s">fail_timeout=30s</span><span class="p">;</span>
+<a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a><span class="p">}</span>
+<a id="__codelineno-18-5" name="__codelineno-18-5" href="#__codelineno-18-5"></a>
+<a id="__codelineno-18-6" name="__codelineno-18-6" href="#__codelineno-18-6"></a><span class="k">server</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-18-7" name="__codelineno-18-7" href="#__codelineno-18-7"></a><span class="w">    </span><span class="kn">listen</span><span class="w"> </span><span class="mi">80</span><span class="p">;</span>
+<a id="__codelineno-18-8" name="__codelineno-18-8" href="#__codelineno-18-8"></a><span class="w">    </span><span class="kn">listen</span><span class="w"> </span><span class="s">[::]:80</span><span class="p">;</span>
+<a id="__codelineno-18-9" name="__codelineno-18-9" href="#__codelineno-18-9"></a><span class="w">    </span><span class="kn">server_name</span><span class="w"> </span><span class="s">_</span><span class="p">;</span>
+<a id="__codelineno-18-10" name="__codelineno-18-10" href="#__codelineno-18-10"></a>
+<a id="__codelineno-18-11" name="__codelineno-18-11" href="#__codelineno-18-11"></a><span class="w">    </span><span class="kn">location</span><span class="w"> </span><span class="s">/</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-18-12" name="__codelineno-18-12" href="#__codelineno-18-12"></a><span class="w">        </span><span class="kn">proxy_pass</span><span class="w"> </span><span class="s">http://rundash_backend</span><span class="p">;</span>
+<a id="__codelineno-18-13" name="__codelineno-18-13" href="#__codelineno-18-13"></a><span class="w">        </span><span class="kn">proxy_connect_timeout</span><span class="w"> </span><span class="s">3s</span><span class="p">;</span>
+<a id="__codelineno-18-14" name="__codelineno-18-14" href="#__codelineno-18-14"></a><span class="w">        </span><span class="kn">proxy_send_timeout</span><span class="w"> </span><span class="s">10s</span><span class="p">;</span>
+<a id="__codelineno-18-15" name="__codelineno-18-15" href="#__codelineno-18-15"></a><span class="w">        </span><span class="kn">proxy_read_timeout</span><span class="w"> </span><span class="s">10s</span><span class="p">;</span>
+<a id="__codelineno-18-16" name="__codelineno-18-16" href="#__codelineno-18-16"></a><span class="w">        </span><span class="kn">proxy_next_upstream</span><span class="w"> </span><span class="s">error</span><span class="w"> </span><span class="s">timeout</span><span class="w"> </span><span class="s">http_502</span><span class="w"> </span><span class="s">http_503</span><span class="w"> </span><span class="s">http_504</span><span class="p">;</span>
+<a id="__codelineno-18-17" name="__codelineno-18-17" href="#__codelineno-18-17"></a><span class="w">        </span><span class="kn">proxy_set_header</span><span class="w"> </span><span class="s">Host</span><span class="w"> </span><span class="nv">$host</span><span class="p">;</span>
+<a id="__codelineno-18-18" name="__codelineno-18-18" href="#__codelineno-18-18"></a><span class="w">        </span><span class="kn">proxy_set_header</span><span class="w"> </span><span class="s">X-Real-IP</span><span class="w"> </span><span class="nv">$remote_addr</span><span class="p">;</span>
+<a id="__codelineno-18-19" name="__codelineno-18-19" href="#__codelineno-18-19"></a><span class="w">        </span><span class="kn">proxy_set_header</span><span class="w"> </span><span class="s">X-Forwarded-For</span><span class="w"> </span><span class="nv">$proxy_add_x_forwarded_for</span><span class="p">;</span>
+<a id="__codelineno-18-20" name="__codelineno-18-20" href="#__codelineno-18-20"></a><span class="w">        </span><span class="kn">proxy_set_header</span><span class="w"> </span><span class="s">X-Forwarded-Proto</span><span class="w"> </span><span class="nv">$scheme</span><span class="p">;</span>
+<a id="__codelineno-18-21" name="__codelineno-18-21" href="#__codelineno-18-21"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-18-22" name="__codelineno-18-22" href="#__codelineno-18-22"></a><span class="p">}</span>
 </code></pre></div>
-<p><strong>¿Qué significa cada línea?</strong></p>
+<p><strong>¿Qué significa cada parte?</strong></p>
 <table>
 <thead>
 <tr>
-<th>Línea</th>
+<th>Parte</th>
 <th>Significado</th>
 </tr>
 </thead>
 <tbody>
 <tr>
+<td><code>upstream rundash_backend { ... }</code></td>
+<td>Define un <strong>grupo de backends</strong> llamado <code>rundash_backend</code>. Es la novedad respecto a la práctica 1.2: en vez de apuntar a una sola IP, <code>proxy_pass</code> apuntará a este nombre y nginx repartirá entre sus miembros.</td>
+</tr>
+<tr>
+<td><code>server &lt;IP_PRIV_WEB1&gt;:80 max_fails=2 fail_timeout=30s;</code></td>
+<td>Un miembro del grupo: la IP privada del backend 1 y su puerto. <code>max_fails=2</code> y <code>fail_timeout=30s</code> son la detección de caídas: si el backend acumula 2 fallos en 30 s, nginx lo declara caído y deja de enviarle peticiones durante 30 s (pasados los cuales vuelve a probarlo).</td>
+</tr>
+<tr>
+<td><code>server &lt;IP_PRIV_WEB2&gt;:80 ...;</code></td>
+<td>El segundo miembro, con los mismos parámetros.</td>
+</tr>
+<tr>
 <td><code>server { ... }</code></td>
-<td>Un <em>virtual host</em> de nginx, como en la práctica 1.1.</td>
+<td>El <em>virtual host</em> del balanceador, como en 1.2.</td>
 </tr>
 <tr>
 <td><code>listen 80;</code> / <code>listen [::]:80;</code></td>
-<td>El proxy atiende peticiones HTTP (IPv4 e IPv6) en el puerto 80. Es el puerto que el security group del proxy tiene abierto al mundo.</td>
+<td>Atiende HTTP en el puerto 80.</td>
 </tr>
 <tr>
 <td><code>server_name _;</code></td>
-<td>Igual que antes: sin dominio, este <code>server</code> es el cajón de sastre del puerto 80.</td>
+<td>Cajón de sastre del puerto 80 (no hay dominio).</td>
 </tr>
 <tr>
 <td><code>location / { ... }</code></td>
 <td>Regla para todas las rutas.</td>
 </tr>
 <tr>
-<td><code>proxy_pass http://&lt;IP_PRIV_WEB&gt;;</code></td>
-<td><strong>El corazón del proxy inverso.</strong> Le dice a nginx: «todo lo que llegue a esta <code>location</code>, en vez de servirlo tú de un directorio local, <strong>reenvíalo</strong> a <code>http://&lt;IP_PRIV_WEB&gt;</code> (el backend)». nginx abre una conexión HTTP al backend, le pasa la petición del cliente, recibe su respuesta y se la devuelve al cliente. Observa que <strong>no</strong> hay barra final ni ruta: reenvía todo tal cual.</td>
+<td><code>proxy_pass http://rundash_backend;</code></td>
+<td><strong>La clave.</strong> En vez de <code>http://&lt;IP&gt;</code> (una máquina concreta), apuntamos al <strong>nombre del upstream</strong>. nginx elegirá, por round-robin, uno de los dos backends para cada petición.</td>
 </tr>
 <tr>
-<td><code>proxy_set_header Host $host;</code></td>
-<td>Al reenviar, nginx reescribe las cabeceras HTTP. Esta línea conserva la cabecera <code>Host</code> original del cliente (<code>$host</code>), para que el backend sepa a qué sitio llamaban.</td>
+<td><code>proxy_connect_timeout 3s;</code></td>
+<td>Cuánto espera nginx para <strong>establecer</strong> la conexión con un backend. Por defecto son 60 s: si un nodo está caído (p. ej. la instancia parada), cada petición que caiga en él se quedaría colgada un minuto. Con 3 s se detecta rápido y se reintenta en el otro.</td>
 </tr>
 <tr>
-<td><code>proxy_set_header X-Real-IP $remote_addr;</code></td>
-<td>Añade una cabecera con la IP real del cliente (<code>$remote_addr</code>). Sin ella, el backend solo vería la IP del proxy y no sabría quién es el cliente de verdad.</td>
+<td><code>proxy_send_timeout 10s;</code> / <code>proxy_read_timeout 10s;</code></td>
+<td>Cuánto espera entre operaciones de envío/lectura con el backend. Si un nodo se queda «colgado» a mitad de respuesta, no esperamos indefinidamente.</td>
 </tr>
 <tr>
-<td><code>proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;</code></td>
-<td>Similar a la anterior pero con la lista completa de saltos. <code>$proxy_add_x_forwarded_for</code> toma la cabecera existente (si la hay) y le añade la IP del cliente. Es la convención estándar para proxies.</td>
+<td><code>proxy_next_upstream error timeout http_502 http_503 http_504;</code></td>
+<td>En qué casos nginx <strong>reintenta</strong> la petición en el siguiente backend: errores de conexión, timeouts y respuestas 502/503/504. Es lo que hace que una caída se resuelva sola sin que el cliente la note.</td>
 </tr>
 <tr>
-<td><code>proxy_set_header X-Forwarded-Proto $scheme;</code></td>
-<td>Informa al backend de si el cliente llegó por <code>http</code> o <code>https</code> (<code>$scheme</code>). Útil cuando el backend necesita saber el protocolo original.</td>
+<td><code>proxy_set_header ...</code></td>
+<td>Las mismas cuatro cabeceras que en 1.2: conservan el <code>Host</code> original e informan al backend de la IP y protocolo reales del cliente.</td>
 </tr>
 </tbody>
 </table>
 <blockquote>
-<p><strong>¿Por qué <code>proxy_pass</code> sin barra final?</strong> Con <code>proxy_pass http://IP;</code> (sin <code>/</code>
-detrás), nginx pasa la URI del cliente <strong>sin modificar</strong>. Si escribiéramos
-<code>proxy_pass http://IP/;</code> (con <code>/</code>), nginx sustituiría la parte de la URL que
-coincide con la <code>location</code>. Para «reenviar todo tal cual», la forma sin barra es
-la correcta y la más sencilla.</p>
+<p>Observa que el <code>upstream</code> se define <strong>fuera</strong> del bloque <code>server</code> (al mismo nivel).
+Es una definición global de grupo que luego cualquier <code>server</code> puede usar por su
+nombre.</p>
+<p><strong>Sobre la detección de caídas:</strong> nginx open source solo hace <em>health checks
+pasivos</em>: no sondea los backends, se entera de que uno está caído cuando una
+petición real falla. Por eso son importantes <code>proxy_connect_timeout</code> (detectar
+rápido) y <code>max_fails</code>/<code>fail_timeout</code> (excluirlo de la rotación un tiempo). Los
+<em>health checks activos</em> (sondear cada X segundos aunque no haya tráfico) solo
+existen en nginx Plus o con módulos de terceros.</p>
 </blockquote>
 <p>Guarda (<code>Ctrl+O</code>, <code>Enter</code>, <code>Ctrl+X</code>).</p>
 <p>Activa el sitio, desactiva el de ejemplo y valida:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>sudo<span class="w"> </span>ln<span class="w"> </span>-s<span class="w"> </span>/etc/nginx/sites-available/rundash-proxy<span class="w"> </span>/etc/nginx/sites-enabled/rundash-proxy
-<a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a>sudo<span class="w"> </span>rm<span class="w"> </span>/etc/nginx/sites-enabled/default
-<a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a>sudo<span class="w"> </span>nginx<span class="w"> </span>-t
-<a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>reload<span class="w"> </span>nginx
-<a id="__codelineno-17-5" name="__codelineno-17-5" href="#__codelineno-17-5"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>nginx
+<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>sudo<span class="w"> </span>ln<span class="w"> </span>-s<span class="w"> </span>/etc/nginx/sites-available/rundash-lb<span class="w"> </span>/etc/nginx/sites-enabled/rundash-lb
+<a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a>sudo<span class="w"> </span>rm<span class="w"> </span>/etc/nginx/sites-enabled/default
+<a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a>sudo<span class="w"> </span>nginx<span class="w"> </span>-t
+<a id="__codelineno-19-4" name="__codelineno-19-4" href="#__codelineno-19-4"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>reload<span class="w"> </span>nginx
+<a id="__codelineno-19-5" name="__codelineno-19-5" href="#__codelineno-19-5"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>nginx
 </code></pre></div>
-<p><code>sudo nginx -t</code> debe decir <code>syntax is ok</code>. Si falla, casi seguro que es un error de
-escritura en la IP privada o una llave sin cerrar: te dirá el fichero y la línea.</p>
+<p><code>nginx -t</code> debe decir <code>syntax is ok</code>. Si falla, revisa que las dos IPs privadas estén
+bien escritas y que el nombre del <code>upstream</code> coincida exactamente con el de
+<code>proxy_pass</code> (aquí, <code>rundash_backend</code>).</p>
 <h2 id="7-verificacion-final">7. Verificación final</h2>
-<h3 id="71-resolver-los-dominios-hacia-el-proxy">7.1. Resolver los dominios hacia el proxy</h3>
-<p>Como en la práctica 1.1, tu máquina local necesita resolver <code>planes.daw</code> y
-<code>puertos.daw</code>. La diferencia es que ahora <strong>apuntan al proxy</strong> (su IP pública), no al
-backend: el cliente habla con el proxy y este reenvía al backend. Añade en el
-<code>/etc/hosts</code> de tu máquina:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>&lt;IP_PROXY&gt;  planes.daw puertos.daw
+<h3 id="71-resolver-los-dominios-hacia-el-balanceador">7.1. Resolver los dominios hacia el balanceador</h3>
+<p>Como en las prácticas anteriores, las peticiones a <code>planes.daw</code> y <code>puertos.daw</code>
+tienen que llegar al balanceador (su IP pública), no directamente a un backend.</p>
+<p>Si tienes permisos para editar <code>/etc/hosts</code>, añade esta línea en tu máquina:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>&lt;IP_LB&gt;  planes.daw puertos.daw
 </code></pre></div>
 <p>(Recuerda: <code>/etc/hosts</code> se edita con permisos de administrador; en Linux/macOS <code>sudo
 nano /etc/hosts</code>, en Windows el Bloc de notas como administrador en
 <code>C:\Windows\System32\drivers\etc\hosts</code>.)</p>
+<p>Si no tienes esos permisos, puedes hacer las comprobaciones con Docker. La opción
+<code>--add-host</code> crea las entradas solo dentro del contenedor y no modifica la
+configuración de tu máquina. Necesitas tener Docker instalado y permiso para usarlo;
+sustituye <code>&lt;IP_LB&gt;</code> por la IP pública del balanceador. Esta opción sirve para las
+pruebas con <code>curl</code>; para abrir las webs en el navegador tendrás que configurar la
+resolución de nombres en tu máquina.</p>
 <h3 id="72-con-curl-y-en-el-navegador">7.2. Con curl y en el navegador</h3>
-<p>Desde tu máquina local:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>curl<span class="w"> </span>-I<span class="w"> </span>http://planes.daw
-<a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a>curl<span class="w"> </span>-I<span class="w"> </span>http://puertos.daw
+<p>Si configuraste <code>/etc/hosts</code>, prueba desde tu máquina:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>curl<span class="w"> </span>-I<span class="w"> </span>http://planes.daw
+<a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a>curl<span class="w"> </span>-I<span class="w"> </span>http://puertos.daw
 </code></pre></div>
-<p>Ambos deben dar <code>HTTP/1.1 200 OK</code> y <code>Server: nginx</code>. <strong>Estás hablando con el proxy</strong>,
-que ha ido a buscar la respuesta al backend y te la ha traído. El backend, por su
-parte, ha elegido el sitio por <code>server_name</code> según la cabecera <code>Host</code> que le pasó el
-proxy: RunDash en <code>planes.daw</code> y Puertos Míticos en <code>puertos.daw</code>.</p>
-<p>Abre en el navegador <code>http://planes.daw</code> y <code>http://puertos.daw</code>: verás dos webs
-distintas aunque todo el contenido lo genera el backend y tú solo ves la dirección del
-proxy.</p>
-<h3 id="73-demostrar-que-el-backend-esta-oculto">7.3. Demostrar que el backend está oculto</h3>
-<p>Esta es la comprobación estrella de la práctica. Intenta acceder <strong>directamente</strong> al
-backend por su IP pública, por el puerto 80:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>curl<span class="w"> </span>-I<span class="w"> </span>--max-time<span class="w"> </span><span class="m">10</span><span class="w"> </span>http://&lt;IP_PUB_WEB&gt;
+<p>Ambos deben dar <code>HTTP/1.1 200 OK</code> y <code>Server: nginx</code>. Abre <code>http://planes.daw</code> y
+<code>http://puertos.daw</code> en el navegador: verás dos webs distintas, servidas por los
+backends a través del balanceador.</p>
+<p>Sin permisos para editar <code>/etc/hosts</code>, ejecuta las peticiones dentro de un
+contenedor:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>docker<span class="w"> </span>run<span class="w"> </span>--rm<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a><span class="w">  </span>--add-host<span class="w"> </span><span class="s2">"planes.daw:&lt;IP_LB&gt;"</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-22-3" name="__codelineno-22-3" href="#__codelineno-22-3"></a><span class="w">  </span>--add-host<span class="w"> </span><span class="s2">"puertos.daw:&lt;IP_LB&gt;"</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-22-4" name="__codelineno-22-4" href="#__codelineno-22-4"></a><span class="w">  </span>curlimages/curl:8.12.1<span class="w"> </span>-I<span class="w"> </span>http://planes.daw
+<a id="__codelineno-22-5" name="__codelineno-22-5" href="#__codelineno-22-5"></a>
+<a id="__codelineno-22-6" name="__codelineno-22-6" href="#__codelineno-22-6"></a>docker<span class="w"> </span>run<span class="w"> </span>--rm<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-22-7" name="__codelineno-22-7" href="#__codelineno-22-7"></a><span class="w">  </span>--add-host<span class="w"> </span><span class="s2">"planes.daw:&lt;IP_LB&gt;"</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-22-8" name="__codelineno-22-8" href="#__codelineno-22-8"></a><span class="w">  </span>--add-host<span class="w"> </span><span class="s2">"puertos.daw:&lt;IP_LB&gt;"</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-22-9" name="__codelineno-22-9" href="#__codelineno-22-9"></a><span class="w">  </span>curlimages/curl:8.12.1<span class="w"> </span>-I<span class="w"> </span>http://puertos.daw
 </code></pre></div>
-<p>El comando debe <strong>agotar el tiempo de espera</strong> (timeout) o fallar. ¿Por qué? Porque
-el security group del backend no tiene ninguna regla que permita el puerto 80 desde
-Internet: solo lo permite desde el security group del proxy. Tu máquina no es el
-proxy, así que el paquete se descarta.</p>
+<h3 id="73-comprobar-el-reparto-la-prueba-estrella">7.3. Comprobar el reparto (la prueba estrella)</h3>
+<p>Con <code>/etc/hosts</code> configurado, repite varias veces este comando:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a>curl<span class="w"> </span>-sI<span class="w"> </span>http://planes.daw<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-i<span class="w"> </span>x-served-by
+</code></pre></div>
+<p>El valor debe <strong>alternar</strong> entre:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a>X-Served-By: rundash-web-1
+<a id="__codelineno-24-2" name="__codelineno-24-2" href="#__codelineno-24-2"></a>X-Served-By: rundash-web-2
+<a id="__codelineno-24-3" name="__codelineno-24-3" href="#__codelineno-24-3"></a>X-Served-By: rundash-web-1
+<a id="__codelineno-24-4" name="__codelineno-24-4" href="#__codelineno-24-4"></a>...
+</code></pre></div>
+<p>Eso demuestra que el balanceador está repartiendo por round-robin. Puedes automatizar
+la comprobación con un bucle:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a><span class="k">for</span><span class="w"> </span>i<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="k">$(</span>seq<span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">6</span><span class="k">)</span><span class="p">;</span><span class="w"> </span><span class="k">do</span><span class="w"> </span>curl<span class="w"> </span>-sI<span class="w"> </span>http://planes.daw<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-i<span class="w"> </span>x-served-by<span class="p">;</span><span class="w"> </span><span class="k">done</span>
+</code></pre></div>
+<p>Si no puedes editar <code>/etc/hosts</code>, ejecuta el mismo bucle en un contenedor. Docker
+asignará la IP del balanceador a los dos nombres solo dentro de ese contenedor:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a>docker<span class="w"> </span>run<span class="w"> </span>--rm<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-26-2" name="__codelineno-26-2" href="#__codelineno-26-2"></a><span class="w">  </span>--add-host<span class="w"> </span><span class="s2">"planes.daw:&lt;IP_LB&gt;"</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-26-3" name="__codelineno-26-3" href="#__codelineno-26-3"></a><span class="w">  </span>--add-host<span class="w"> </span><span class="s2">"puertos.daw:&lt;IP_LB&gt;"</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-26-4" name="__codelineno-26-4" href="#__codelineno-26-4"></a><span class="w">  </span>--entrypoint<span class="w"> </span>/bin/sh<span class="w"> </span>curlimages/curl:8.12.1<span class="w"> </span>-c<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-26-5" name="__codelineno-26-5" href="#__codelineno-26-5"></a><span class="w">  </span><span class="s1">'for i in 1 2 3 4 5 6; do curl -sSI http://planes.daw | grep -i x-served-by; done'</span>
+</code></pre></div>
+<h3 id="74-comprobar-la-tolerancia-a-fallos-opcional-pero-recomendado">7.4. Comprobar la tolerancia a fallos (opcional pero recomendado)</h3>
+<p>Apaga el nginx de un backend y observa que el sitio sigue funcionando:</p>
+<ol>
+<li>Entra al backend 1 y detén nginx:</li>
+</ol>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a>ssh<span class="w"> </span>-i<span class="w"> </span>rundash-lb-key.pem<span class="w"> </span>ubuntu@&lt;IP_PUB_WEB1&gt;
+<a id="__codelineno-27-2" name="__codelineno-27-2" href="#__codelineno-27-2"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>stop<span class="w"> </span>nginx
+<a id="__codelineno-27-3" name="__codelineno-27-3" href="#__codelineno-27-3"></a><span class="nb">exit</span>
+</code></pre></div>
+<ol>
+<li>Desde tu máquina, vuelve a hacer peticiones al balanceador. Si configuraste
+   <code>/etc/hosts</code>, ejecuta:</li>
+</ol>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a><span class="k">for</span><span class="w"> </span>i<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="k">$(</span>seq<span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">6</span><span class="k">)</span><span class="p">;</span><span class="w"> </span><span class="k">do</span><span class="w"> </span>curl<span class="w"> </span>-sI<span class="w"> </span>http://planes.daw<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-i<span class="w"> </span>x-served-by<span class="p">;</span><span class="w"> </span><span class="k">done</span>
+</code></pre></div>
+<p>Si estás usando Docker, repite el comando del contenedor del apartado 7.3.</p>
+<p>Ahora todas las respuestas vendrán de <code>rundash-web-2</code>. nginx ha detectado que el
+   backend 1 no responde y deja de enviarle tráfico.</p>
 <blockquote>
-<p>Ojo: el backend <strong>sí</strong> responde por SSH (puerto 22), porque esa regla sí está
-abierta a <code>0.0.0.0/0</code>. Lo que está cerrado es solo el tráfico web.</p>
+<p>Detalle: al parar nginx, el puerto 80 responde <em>connection refused</em> al instante;
+con <code>proxy_next_upstream</code> nginx reintenta en el nodo sano y el cliente no nota
+nada. Tras <code>max_fails=2</code> fallos, lo excluye de la rotación durante
+<code>fail_timeout=30s</code>; por eso durante medio minuto todo lo sirve <code>rundash-web-2</code>.</p>
+<p>Si en vez de parar nginx <strong>paras la instancia EC2</strong> entera, los paquetes se
+descartan y la detección tarda <code>proxy_connect_timeout</code> (3 s con nuestra config;
+habrían sido 60 s con el valor por defecto). Por eso sin esos ajustes se ve el
+síntoma de «tengo que clicar dos veces».</p>
 </blockquote>
-<h3 id="74-ver-el-trafico-desde-dentro">7.4. Ver el tráfico desde dentro</h3>
-<p>Si quieres ver el reenvío «por dentro», conecta al proxy y mira sus logs mientras
-recargas la página en el navegador:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>sudo<span class="w"> </span>tail<span class="w"> </span>-f<span class="w"> </span>/var/log/nginx/access.log
+<ol>
+<li>Restaura el backend 1 (<code>sudo systemctl start nginx</code>) y vuelve a lanzar el bucle:
+   el reparto entre los dos debería reanudarse.</li>
+</ol>
+<h3 id="75-demostrar-que-los-backends-estan-ocultos">7.5. Demostrar que los backends están ocultos</h3>
+<p>Como en 1.2, intenta acceder directamente a un backend por su IP pública y puerto 80:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a>curl<span class="w"> </span>-I<span class="w"> </span>--max-time<span class="w"> </span><span class="m">10</span><span class="w"> </span>http://&lt;IP_PUB_WEB1&gt;
 </code></pre></div>
-<p>Verás una línea por petición. En el log del <strong>proxy</strong> aparece la IP del cliente. Si
-haces lo mismo en el backend (<code>sudo tail -f /var/log/nginx/access.log</code> dentro del
-backend), verás que ahí todas las peticiones vienen de la <strong>IP privada del proxy</strong>:
-es el proxy quien le habla, no el cliente directamente.</p>
+<p>Debe agotar el tiempo de espera: el security group de los backends solo permite el
+puerto 80 desde el balanceador, no desde Internet.</p>
 <h2 id="8-limpieza-importante-evita-costes">8. Limpieza (importante: evita costes)</h2>
 <p>Cuando termines, deshaz el escenario:</p>
 <ol>
-<li><strong>Instances</strong>: selecciona <code>rundash-proxy</code> y <code>rundash-web</code> → <strong>Instance state →
-   Terminate instance</strong>. Confirma.</li>
-<li><strong>Security Groups</strong>: borra <code>rundash-proxy-sg</code> y <code>rundash-proxy-backend-sg</code>.
-   <em>Nota</em>: AWS no te dejará borrar un security group mientras otro lo referencie.
-   Como <code>rundash-proxy-backend-sg</code> referencia a <code>rundash-proxy-sg</code> en su regla de HTTP,
-   puede que tengas que borrar primero el backend (o la regla) si te da error
-   <code>DependencyViolation</code>. Al terminar las instancias normalmente se puede borrar
-   cualquiera de los dos.</li>
-<li><strong>Key Pairs</strong>: opcionalmente borra <code>rundash-proxy-key</code>.</li>
-<li>Borra <code>rundash-proxy-key.pem</code> de tu máquina si ya no lo vas a usar.</li>
+<li><strong>Instances</strong>: selecciona <code>rundash-lb</code>, <code>rundash-web-1</code> y <code>rundash-web-2</code> →
+   <strong>Instance state → Terminate instance</strong>. Confirma.</li>
+<li><strong>Security Groups</strong>: borra <code>rundash-lb-sg</code> y <code>rundash-lb-backend-sg</code>.
+   (Si AWS se queja con <code>DependencyViolation</code>, termina primero las instancias o borra
+   la regla que referencia al otro grupo.)</li>
+<li><strong>Key Pairs</strong>: opcionalmente borra <code>rundash-lb-key</code>.</li>
+<li>Borra <code>rundash-lb-key.pem</code> de tu máquina si ya no lo vas a usar.</li>
 </ol>
 <blockquote>
-<p>Dos instancias <code>t2.small</code> encendidas generan el doble de cargo por hora que una.
-No las dejes corriendo entre clases.</p>
+<p>Tres instancias <code>t2.small</code> encendidas cuestan tres veces una. No las dejes
+corriendo entre clases.</p>
 </blockquote>
 <h2 id="9-solucion-de-problemas">9. Solución de problemas</h2>
 <table>
@@ -3601,39 +3688,39 @@ No las dejes corriendo entre clases.</p>
 </thead>
 <tbody>
 <tr>
-<td><code>curl http://&lt;IP_PROXY&gt;</code> devuelve <code>502 Bad Gateway</code></td>
-<td>El proxy no alcanza al backend: IP privada mal escrita, backend apagado, o la regla HTTP del backend no permite al proxy</td>
-<td>Revisa la IP privada en <code>proxy_pass</code>, que el backend esté <code>running</code> y que <code>rundash-proxy-backend-sg</code> tenga la regla HTTP con origen <code>rundash-proxy-sg</code></td>
+<td><code>curl http://&lt;IP_LB&gt;</code> devuelve <code>502 Bad Gateway</code></td>
+<td>El balanceador no alcanza a ningún backend: IPs privadas mal escritas, backends apagados, o la regla HTTP de los backends no permite al balanceador</td>
+<td>Revisa las IPs en el <code>upstream</code>, que los backends estén <code>running</code> y que <code>rundash-lb-backend-sg</code> tenga la regla HTTP con origen <code>rundash-lb-sg</code></td>
 </tr>
 <tr>
-<td><code>curl http://&lt;IP_PROXY&gt;</code> devuelve <code>504 Gateway Timeout</code></td>
-<td>El backend no responde en el puerto 80 (nginx caído en el backend)</td>
-<td>Entra al backend y <code>sudo systemctl status nginx</code>; prueba <code>curl http://localhost/</code> allí</td>
+<td>El reparto no alterna: siempre responde el mismo backend</td>
+<td>Uno de los backends no responde (nginx caído) o solo hay un <code>server</code> en el <code>upstream</code></td>
+<td>Comprueba <code>sudo systemctl status nginx</code> en ambos backends y que el <code>upstream</code> tenga las dos líneas <code>server</code></td>
 </tr>
 <tr>
-<td>El navegador muestra «Welcome to nginx» en el proxy</td>
-<td>El sitio <code>default</code> sigue activo en el proxy</td>
+<td>No aparece la cabecera <code>X-Served-By</code></td>
+<td>El backend no tiene el <code>add_header</code>, o falta <code>always</code> y la respuesta es de error</td>
+<td>Revisa el fichero del sitio en el backend y recarga nginx</td>
+</tr>
+<tr>
+<td><code>nginx -t</code> falla en el balanceador</td>
+<td>Nombre del <code>upstream</code> distinto al de <code>proxy_pass</code>, IP mal escrita, llave sin cerrar</td>
+<td>Lee el fichero y línea que indica el error; asegúrate de que <code>upstream rundash_backend</code> y <code>proxy_pass http://rundash_backend</code> usan el mismo nombre</td>
+</tr>
+<tr>
+<td>El navegador muestra «Welcome to nginx» en el balanceador</td>
+<td>El sitio <code>default</code> sigue activo</td>
 <td><code>sudo rm /etc/nginx/sites-enabled/default &amp;&amp; sudo systemctl reload nginx</code></td>
 </tr>
 <tr>
-<td><code>curl http://&lt;IP_PUB_WEB&gt;</code> <strong>sí</strong> responde (y no debería)</td>
-<td>La regla HTTP del backend está abierta a <code>0.0.0.0/0</code> en vez de al security group del proxy</td>
-<td>Corrige el origen de la regla HTTP de <code>rundash-proxy-backend-sg</code> para que sea el security group del proxy</td>
+<td><code>curl http://&lt;IP_PUB_WEB1&gt;</code> <strong>sí</strong> responde (y no debería)</td>
+<td>La regla HTTP de los backends está abierta a <code>0.0.0.0/0</code></td>
+<td>Corrige el origen de la regla HTTP de <code>rundash-lb-backend-sg</code> para que sea <code>rundash-lb-sg</code></td>
 </tr>
 <tr>
-<td><code>nginx -t</code> falla en el proxy</td>
-<td>Error de sintaxis: IP privada mal puesta, llave sin cerrar, punto y coma olvidado</td>
-<td>Lee el fichero y la línea que indica el error y corrígelo</td>
-</tr>
-<tr>
-<td>El proxy responde pero el contenido no es RunDash</td>
-<td>El backend sirve el sitio equivocado o el <code>root</code> del backend apunta mal</td>
-<td>Verifica en el backend <code>curl http://localhost/</code> y el <code>root</code> de su nginx</td>
-</tr>
-<tr>
-<td><code>ssh</code> al backend falla con timeout</td>
-<td>El security group del backend no tiene el puerto 22 abierto, o estás usando la IP equivocada</td>
-<td>Revisa la regla SSH de <code>rundash-proxy-backend-sg</code> y la IP pública actual del backend</td>
+<td>Una petición tarda mucho y luego responde</td>
+<td>El balanceador ha intentado primero un backend caído y ha reintentado en el otro</td>
+<td>Es el comportamiento esperado ante un backend detenido; revisa 7.4</td>
 </tr>
 </tbody>
 </table>
