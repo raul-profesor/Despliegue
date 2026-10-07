@@ -21,7 +21,7 @@
       
       
       <link rel="icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
     
     
       
@@ -29,7 +29,7 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
       
         
         <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
@@ -626,6 +626,34 @@
     
   
     Guía: proxy inverso con nginx
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../P1.3.nueva/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Guía: balanceo de carga con nginx
   
 
     
@@ -3371,7 +3399,7 @@ al lanzar el contenedor. Para ello debemos definir en la imagen estas
 variables con el comando <code>ENV</code>, pudiendo dar valores por defecto.</p>
 <p>Por ejemplo, podemos definir el siguiente <code>Dockerfile</code>:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>FROM alpine
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>ENV saludo=&quot;Hola, mundo!&quot;
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>ENV saludo="Hola, mundo!"
 <a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>CMD echo $saludo
 </code></pre></div>
 <p>Creamos la imagen:</p>
@@ -3383,7 +3411,7 @@ variables con el comando <code>ENV</code>, pudiendo dar valores por defecto.</p>
 </code></pre></div>
 <p>Y podemos configurar el saludo de varias formas. Por ejemplo,
 indicando el valor del parámetro al hacer <code>run</code>:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>$ docker run -e &quot;saludo=¿Qué tal estás?&quot; saludo
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>$ docker run -e "saludo=¿Qué tal estás?" saludo
 <a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>¿Qué tal estás?
 </code></pre></div>
 <p>O guardando el valor del parámetro en un fichero de propiedades que
@@ -3695,7 +3723,7 @@ una empresa puntera de desarrollo de software. Son las siguientes:</p>
       <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.top", "toc.integrate", "search.highlight", "content.code.annotate", "content.code.copy"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}, "version": null}</script>
     
     
-      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
       
     
   </body>

@@ -21,7 +21,7 @@
       
       
       <link rel="icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
     
     
       
@@ -29,7 +29,7 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
       
         
         <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
@@ -626,6 +626,34 @@
     
   
     Guía: proxy inverso con nginx
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../P1.3.nueva/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Guía: balanceo de carga con nginx
   
 
     
@@ -2884,7 +2912,7 @@ Con la opción <code>-d</code> (de daemon), estamos indicando que el contenedor 
 </code></pre></div>
 <p>Y deberíamos ver algo como:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>CONTAINER ID   IMAGE          COMMAND                  CREATED         STATUS         PORTS                               NAMES
-<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>c6641e4d5bbf   nginx:latest   &quot;/docker-entrypoint.…&quot;   5 seconds ago   Up 3 seconds   0.0.0.0:80-&gt;80/tcp, :::80-&gt;80/tcp   nginx-container
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>c6641e4d5bbf   nginx:latest   "/docker-entrypoint.…"   5 seconds ago   Up 3 seconds   0.0.0.0:80-&gt;80/tcp, :::80-&gt;80/tcp   nginx-container
 </code></pre></div>
 <p>Además, si abrimos el navegador de nuestra máquina anfitrión y accedemos a <code>http://IP_Maq_Virtual</code> deberíamos ver la página de bienvenida de Nginx:</p>
 <p><img alt="" src="../img/nginx-test.png" /></p>
@@ -2901,7 +2929,7 @@ Y dentro de <code>index.php</code> añadimos el siguiente código:</p>
 <a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>
 <a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a><span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
 <a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a>  <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>¡Hola mundo!<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
-<a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a>  <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span><span class="cp">&lt;?php echo &#39;Estamos corriendo PHP, version: &#39; . phpversion(); ?&gt;</span><span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+<a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a>  <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span><span class="cp">&lt;?php echo 'Estamos corriendo PHP, version: ' . phpversion(); ?&gt;</span><span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
 <a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a><span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
 </code></pre></div>
 <p>Guardad el archivo y cread, si no lo habíais hecho antes, un directorio llamado <em>nginx</em> dentro del directorio del proyecto:</p>
@@ -2988,8 +3016,8 @@ Ahora con este fichero <code>docker-compose.yml</code> se creará un nuevo conte
 </code></pre></div>
 <p>Debiendo ver algo como:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>CONTAINER ID   IMAGE                  COMMAND                  CREATED          STATUS          PORTS                               NAMES
-<a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a>82c8baf15221   docker-project_nginx   &quot;/docker-entrypoint.…&quot;   23 seconds ago   Up 22 seconds   0.0.0.0:80-&gt;80/tcp, :::80-&gt;80/tcp   nginx-container
-<a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a>10778c6686d8   php:7.0-fpm            &quot;docker-php-entrypoi…&quot;   25 seconds ago   Up 23 seconds   9000/tcp                            php-container
+<a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a>82c8baf15221   docker-project_nginx   "/docker-entrypoint.…"   23 seconds ago   Up 22 seconds   0.0.0.0:80-&gt;80/tcp, :::80-&gt;80/tcp   nginx-container
+<a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a>10778c6686d8   php:7.0-fpm            "docker-php-entrypoi…"   25 seconds ago   Up 23 seconds   9000/tcp                            php-container
 </code></pre></div>
 <p>Y si ahora volvemos a acceder a <code>http://IP_Maq_Virtual</code>, veremos la página <code>Hola mundo</code>:</p>
 <p><img alt="" src="" /></p>
@@ -3022,7 +3050,7 @@ Y añadiremos un nuevo servicio a los que ya teníamos, quedando así:</p>
 <a id="__codelineno-19-21" name="__codelineno-19-21" href="#__codelineno-19-21"></a><span class="w">  </span>container_name:<span class="w"> </span>app-data-container
 <a id="__codelineno-19-22" name="__codelineno-19-22" href="#__codelineno-19-22"></a><span class="w">  </span>volumes:
 <a id="__codelineno-19-23" name="__codelineno-19-23" href="#__codelineno-19-23"></a><span class="w">    </span>-<span class="w"> </span>./www/html/:/var/www/html/
-<a id="__codelineno-19-24" name="__codelineno-19-24" href="#__codelineno-19-24"></a><span class="w">  </span>command:<span class="w"> </span><span class="s2">&quot;true&quot;</span>
+<a id="__codelineno-19-24" name="__codelineno-19-24" href="#__codelineno-19-24"></a><span class="w">  </span>command:<span class="w"> </span><span class="s2">"true"</span>
 </code></pre></div>
 <p>Así que para recrear y lanzar todos los contenedores ejecutamos de nuevo (recordad, dentro del directorio donde se encuentra el archivo):</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>docker-compose<span class="w"> </span>up<span class="w"> </span>-d
@@ -3032,9 +3060,9 @@ Y añadiremos un nuevo servicio a los que ya teníamos, quedando así:</p>
 </code></pre></div>
 <p>Debiendo ver algo como:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>CONTAINER ID   IMAGE                  COMMAND                  CREATED          STATUS                      PORTS                               NAMES
-<a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a>849315c7ffc0   docker-project_nginx   &quot;/docker-entrypoint.…&quot;   27 seconds ago   Up 25 seconds               0.0.0.0:80-&gt;80/tcp, :::80-&gt;80/tcp   nginx-container
-<a id="__codelineno-22-3" name="__codelineno-22-3" href="#__codelineno-22-3"></a>59a0d7040fd8   php:7.0-fpm            &quot;docker-php-entrypoi…&quot;   28 seconds ago   Up 27 seconds               9000/tcp                            php-container
-<a id="__codelineno-22-4" name="__codelineno-22-4" href="#__codelineno-22-4"></a>fbca95944234   php:7.0-fpm            &quot;docker-php-entrypoi…&quot;   29 seconds ago   Exited (0) 28 seconds ago                                       app-data-container
+<a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a>849315c7ffc0   docker-project_nginx   "/docker-entrypoint.…"   27 seconds ago   Up 25 seconds               0.0.0.0:80-&gt;80/tcp, :::80-&gt;80/tcp   nginx-container
+<a id="__codelineno-22-3" name="__codelineno-22-3" href="#__codelineno-22-3"></a>59a0d7040fd8   php:7.0-fpm            "docker-php-entrypoi…"   28 seconds ago   Up 27 seconds               9000/tcp                            php-container
+<a id="__codelineno-22-4" name="__codelineno-22-4" href="#__codelineno-22-4"></a>fbca95944234   php:7.0-fpm            "docker-php-entrypoi…"   29 seconds ago   Exited (0) 28 seconds ago                                       app-data-container
 </code></pre></div>
 <h3 id="5-creacion-de-un-contenedor-mysql">5. Creación de un contenedor MySQL</h3>
 <p>En esta sección crearemos un contenedor de una base de datos MySQL y lo enlazaremos con el resto de contenedores.</p>
@@ -3073,7 +3101,7 @@ Y añadiremos un nuevo servicio a los que ya teníamos, quedando así:</p>
 <a id="__codelineno-25-23" name="__codelineno-25-23" href="#__codelineno-25-23"></a><span class="w">    </span>container_name:<span class="w"> </span>app-data-container
 <a id="__codelineno-25-24" name="__codelineno-25-24" href="#__codelineno-25-24"></a><span class="w">    </span>volumes:
 <a id="__codelineno-25-25" name="__codelineno-25-25" href="#__codelineno-25-25"></a><span class="w">      </span>-<span class="w"> </span>./www/html/:/var/www/html/
-<a id="__codelineno-25-26" name="__codelineno-25-26" href="#__codelineno-25-26"></a><span class="w">    </span>command:<span class="w"> </span><span class="s2">&quot;true&quot;</span>
+<a id="__codelineno-25-26" name="__codelineno-25-26" href="#__codelineno-25-26"></a><span class="w">    </span>command:<span class="w"> </span><span class="s2">"true"</span>
 <a id="__codelineno-25-27" name="__codelineno-25-27" href="#__codelineno-25-27"></a>
 <a id="__codelineno-25-28" name="__codelineno-25-28" href="#__codelineno-25-28"></a><span class="w">  </span>mysql:
 <a id="__codelineno-25-29" name="__codelineno-25-29" href="#__codelineno-25-29"></a><span class="w">    </span>image:<span class="w"> </span>mysql:5.7
@@ -3091,7 +3119,7 @@ Y añadiremos un nuevo servicio a los que ya teníamos, quedando así:</p>
 <a id="__codelineno-25-41" name="__codelineno-25-41" href="#__codelineno-25-41"></a><span class="w">    </span>container_name:<span class="w"> </span>mysql-data-container
 <a id="__codelineno-25-42" name="__codelineno-25-42" href="#__codelineno-25-42"></a><span class="w">    </span>volumes:
 <a id="__codelineno-25-43" name="__codelineno-25-43" href="#__codelineno-25-43"></a><span class="w">      </span>-<span class="w"> </span>/var/lib/mysql
-<a id="__codelineno-25-44" name="__codelineno-25-44" href="#__codelineno-25-44"></a><span class="w">    </span>command:<span class="w"> </span><span class="s2">&quot;true&quot;</span>
+<a id="__codelineno-25-44" name="__codelineno-25-44" href="#__codelineno-25-44"></a><span class="w">    </span>command:<span class="w"> </span><span class="s2">"true"</span>
 </code></pre></div>
 <p>Después de guardar este archivo, editamos el archivo <code>index.php</code> y hacemos algunos cambios para comprobar la conexión a la base de datos.</p>
 <p>El archivo <code>index.php</code> debe quedar así:</p>
@@ -3102,26 +3130,26 @@ Y añadiremos un nuevo servicio a los que ya teníamos, quedando así:</p>
 <a id="__codelineno-26-5" name="__codelineno-26-5" href="#__codelineno-26-5"></a>
 <a id="__codelineno-26-6" name="__codelineno-26-6" href="#__codelineno-26-6"></a>     <span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
 <a id="__codelineno-26-7" name="__codelineno-26-7" href="#__codelineno-26-7"></a>      <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>¡Hola mundo!<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
-<a id="__codelineno-26-8" name="__codelineno-26-8" href="#__codelineno-26-8"></a>      <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span><span class="cp">&lt;?php echo &#39;Estamos corriendo PHP, version: &#39; . phpversion(); ?&gt;</span><span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+<a id="__codelineno-26-8" name="__codelineno-26-8" href="#__codelineno-26-8"></a>      <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span><span class="cp">&lt;?php echo 'Estamos corriendo PHP, version: ' . phpversion(); ?&gt;</span><span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
 <a id="__codelineno-26-9" name="__codelineno-26-9" href="#__codelineno-26-9"></a>      <span class="cp">&lt;?</span>
-<a id="__codelineno-26-10" name="__codelineno-26-10" href="#__codelineno-26-10"></a><span class="cp">       $database =&quot;mydb&quot;;</span>
-<a id="__codelineno-26-11" name="__codelineno-26-11" href="#__codelineno-26-11"></a><span class="cp">       $user = &quot;myuser&quot;;</span>
-<a id="__codelineno-26-12" name="__codelineno-26-12" href="#__codelineno-26-12"></a><span class="cp">       $password = &quot;password&quot;;</span>
-<a id="__codelineno-26-13" name="__codelineno-26-13" href="#__codelineno-26-13"></a><span class="cp">       $host = &quot;mysql&quot;;</span>
+<a id="__codelineno-26-10" name="__codelineno-26-10" href="#__codelineno-26-10"></a><span class="cp">       $database ="mydb";</span>
+<a id="__codelineno-26-11" name="__codelineno-26-11" href="#__codelineno-26-11"></a><span class="cp">       $user = "myuser";</span>
+<a id="__codelineno-26-12" name="__codelineno-26-12" href="#__codelineno-26-12"></a><span class="cp">       $password = "password";</span>
+<a id="__codelineno-26-13" name="__codelineno-26-13" href="#__codelineno-26-13"></a><span class="cp">       $host = "mysql";</span>
 <a id="__codelineno-26-14" name="__codelineno-26-14" href="#__codelineno-26-14"></a>
-<a id="__codelineno-26-15" name="__codelineno-26-15" href="#__codelineno-26-15"></a><span class="cp">       $connection = new PDO(&quot;mysql:host={$host};dbname={$database};charset=utf8&quot;, $user, $password);</span>
-<a id="__codelineno-26-16" name="__codelineno-26-16" href="#__codelineno-26-16"></a><span class="cp">       $query = $connection-&gt;query(&quot;SELECT TABLE_NAME FROM information_schema.TABLES WHERE TABLE_TYPE=&#39;BASE TABLE&#39;&quot;);</span>
+<a id="__codelineno-26-15" name="__codelineno-26-15" href="#__codelineno-26-15"></a><span class="cp">       $connection = new PDO("mysql:host={$host};dbname={$database};charset=utf8", $user, $password);</span>
+<a id="__codelineno-26-16" name="__codelineno-26-16" href="#__codelineno-26-16"></a><span class="cp">       $query = $connection-&gt;query("SELECT TABLE_NAME FROM information_schema.TABLES WHERE TABLE_TYPE='BASE TABLE'");</span>
 <a id="__codelineno-26-17" name="__codelineno-26-17" href="#__codelineno-26-17"></a><span class="cp">       $tables = $query-&gt;fetchAll(PDO::FETCH_COLUMN);</span>
 <a id="__codelineno-26-18" name="__codelineno-26-18" href="#__codelineno-26-18"></a>
 <a id="__codelineno-26-19" name="__codelineno-26-19" href="#__codelineno-26-19"></a><span class="cp">        if (empty($tables)) {</span>
-<a id="__codelineno-26-20" name="__codelineno-26-20" href="#__codelineno-26-20"></a><span class="cp">          echo &quot;&lt;p&gt;No hay tablas en la base de datos \&quot;{$database}\&quot;.&lt;/p&gt;&quot;;</span>
+<a id="__codelineno-26-20" name="__codelineno-26-20" href="#__codelineno-26-20"></a><span class="cp">          echo "&lt;p&gt;No hay tablas en la base de datos \"{$database}\".&lt;/p&gt;";</span>
 <a id="__codelineno-26-21" name="__codelineno-26-21" href="#__codelineno-26-21"></a><span class="cp">        } else {</span>
-<a id="__codelineno-26-22" name="__codelineno-26-22" href="#__codelineno-26-22"></a><span class="cp">          echo &quot;&lt;p&gt;La base de datos \&quot;{$database}\&quot; tiene las siguientes tablas:&lt;/p&gt;&quot;;</span>
-<a id="__codelineno-26-23" name="__codelineno-26-23" href="#__codelineno-26-23"></a><span class="cp">          echo &quot;&lt;ul&gt;&quot;;</span>
+<a id="__codelineno-26-22" name="__codelineno-26-22" href="#__codelineno-26-22"></a><span class="cp">          echo "&lt;p&gt;La base de datos \"{$database}\" tiene las siguientes tablas:&lt;/p&gt;";</span>
+<a id="__codelineno-26-23" name="__codelineno-26-23" href="#__codelineno-26-23"></a><span class="cp">          echo "&lt;ul&gt;";</span>
 <a id="__codelineno-26-24" name="__codelineno-26-24" href="#__codelineno-26-24"></a><span class="cp">            foreach ($tables as $table) {</span>
-<a id="__codelineno-26-25" name="__codelineno-26-25" href="#__codelineno-26-25"></a><span class="cp">              echo &quot;&lt;li&gt;{$table}&lt;/li&gt;&quot;;</span>
+<a id="__codelineno-26-25" name="__codelineno-26-25" href="#__codelineno-26-25"></a><span class="cp">              echo "&lt;li&gt;{$table}&lt;/li&gt;";</span>
 <a id="__codelineno-26-26" name="__codelineno-26-26" href="#__codelineno-26-26"></a><span class="cp">            }</span>
-<a id="__codelineno-26-27" name="__codelineno-26-27" href="#__codelineno-26-27"></a><span class="cp">          echo &quot;&lt;/ul&gt;&quot;;</span>
+<a id="__codelineno-26-27" name="__codelineno-26-27" href="#__codelineno-26-27"></a><span class="cp">          echo "&lt;/ul&gt;";</span>
 <a id="__codelineno-26-28" name="__codelineno-26-28" href="#__codelineno-26-28"></a><span class="cp">        }</span>
 <a id="__codelineno-26-29" name="__codelineno-26-29" href="#__codelineno-26-29"></a><span class="cp">        ?&gt;</span>
 <a id="__codelineno-26-30" name="__codelineno-26-30" href="#__codelineno-26-30"></a>    <span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
@@ -3135,11 +3163,11 @@ Y añadiremos un nuevo servicio a los que ya teníamos, quedando así:</p>
 </code></pre></div>
 Y veremos:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a>CONTAINER ID   IMAGE                  COMMAND                  CREATED          STATUS                      PORTS                               NAMES
-<a id="__codelineno-29-2" name="__codelineno-29-2" href="#__codelineno-29-2"></a>d3e82747fe0d   mysql:5.7              &quot;docker-entrypoint.s…&quot;   39 seconds ago   Up 38 seconds               3306/tcp, 33060/tcp                 mysql-container
-<a id="__codelineno-29-3" name="__codelineno-29-3" href="#__codelineno-29-3"></a>606320e5a7f8   mysql:5.7              &quot;docker-entrypoint.s…&quot;   41 seconds ago   Exited (0) 39 seconds ago                                       mysql-data-container
-<a id="__codelineno-29-4" name="__codelineno-29-4" href="#__codelineno-29-4"></a>ca4f63797d11   docker-project_php     &quot;docker-php-entrypoi…&quot;   2 hours ago      Up 2 hours                  9000/tcp                            php-container
-<a id="__codelineno-29-5" name="__codelineno-29-5" href="#__codelineno-29-5"></a>849315c7ffc0   docker-project_nginx   &quot;/docker-entrypoint.…&quot;   2 hours ago      Up 2 hours                  0.0.0.0:80-&gt;80/tcp, :::80-&gt;80/tcp   nginx-container
-<a id="__codelineno-29-6" name="__codelineno-29-6" href="#__codelineno-29-6"></a>fbca95944234   php:7.0-fpm            &quot;docker-php-entrypoi…&quot;   2 hours ago      Exited (0) 39 seconds ago                                       app-data-
+<a id="__codelineno-29-2" name="__codelineno-29-2" href="#__codelineno-29-2"></a>d3e82747fe0d   mysql:5.7              "docker-entrypoint.s…"   39 seconds ago   Up 38 seconds               3306/tcp, 33060/tcp                 mysql-container
+<a id="__codelineno-29-3" name="__codelineno-29-3" href="#__codelineno-29-3"></a>606320e5a7f8   mysql:5.7              "docker-entrypoint.s…"   41 seconds ago   Exited (0) 39 seconds ago                                       mysql-data-container
+<a id="__codelineno-29-4" name="__codelineno-29-4" href="#__codelineno-29-4"></a>ca4f63797d11   docker-project_php     "docker-php-entrypoi…"   2 hours ago      Up 2 hours                  9000/tcp                            php-container
+<a id="__codelineno-29-5" name="__codelineno-29-5" href="#__codelineno-29-5"></a>849315c7ffc0   docker-project_nginx   "/docker-entrypoint.…"   2 hours ago      Up 2 hours                  0.0.0.0:80-&gt;80/tcp, :::80-&gt;80/tcp   nginx-container
+<a id="__codelineno-29-6" name="__codelineno-29-6" href="#__codelineno-29-6"></a>fbca95944234   php:7.0-fpm            "docker-php-entrypoi…"   2 hours ago      Exited (0) 39 seconds ago                                       app-data-
 </code></pre></div>
 <h3 id="6-verificacion-de-conexion-a-la-base-de-datos">6. Verificación de conexión a la base de datos</h3>
 <p>Si ahora accedemos a <code>http://IP_Maq_Virtual</code>, deberíamos obtener la siguiente pantalla:</p>
@@ -3150,8 +3178,8 @@ Y veremos:</p>
 <p><div class="highlight"><pre><span></span><code><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a>nano<span class="w"> </span>/home/usuario/www/html/index.php
 </code></pre></div>
 Y cambiar las líneas:</p>
-<p><div class="highlight"><pre><span></span><code><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a><span class="x">$user = &quot;root&quot;;</span>
-<a id="__codelineno-31-2" name="__codelineno-31-2" href="#__codelineno-31-2"></a><span class="x">$password = &quot;secret&quot;;</span>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a><span class="x">$user = "root";</span>
+<a id="__codelineno-31-2" name="__codelineno-31-2" href="#__codelineno-31-2"></a><span class="x">$password = "secret";</span>
 </code></pre></div>
 Guardad el archivo y refrescad la página. Deberías obtener ahora una pantalla con todas las tablas de la base de datos, tal que así:</p>
 <p><img alt="" src="../img/db-test2.png" /></p>
@@ -3229,7 +3257,7 @@ Guardad el archivo y refrescad la página. Deberías obtener ahora una pantalla 
       <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.top", "toc.integrate", "search.highlight", "content.code.annotate", "content.code.copy"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}, "version": null}</script>
     
     
-      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
       
     
   </body>

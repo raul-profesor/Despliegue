@@ -21,7 +21,7 @@
       
       
       <link rel="icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
     
     
       
@@ -29,7 +29,7 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
       
         
         <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
@@ -626,6 +626,34 @@
     
   
     Guía: proxy inverso con nginx
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../P1.3.nueva/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Guía: balanceo de carga con nginx
   
 
     
@@ -2788,7 +2816,7 @@ disponibles.</p>
 <p>La orden anterior no devuelve ningún resultado y tampoco nos cambia de rama, para eso
 debemos usar <em>checkout</em>:</p>
 <div class="highlight"><pre><span></span><code>$ git checkout hola
-Switched to branch &#39;hola&#39;
+Switched to branch 'hola'
 </code></pre></div>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
@@ -2796,7 +2824,7 @@ Switched to branch &#39;hola&#39;
 <code>-b</code> de <code>git checkout</code> podemos cambiarnos a una rama que, si no existe, se crea
 instantáneamente.</p>
 <div class="highlight"><pre><span></span><code>$ git checkout -b hola
-Switched to a new branch &#39;hola&#39;
+Switched to a new branch 'hola'
 </code></pre></div>
 </div>
 <h3 id="modificaciones-en-la-rama-secundaria">Modificaciones en la rama secundaria</h3>
@@ -2814,7 +2842,7 @@ Switched to a new branch &#39;hola&#39;
 <a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>
 <a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a>   <span class="k">function</span> <span class="fm">__toString</span><span class="p">()</span>
 <a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a>   <span class="p">{</span>
-<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a>      <span class="k">return</span> <span class="nb">sprintf</span> <span class="p">(</span><span class="s2">&quot;Hola, %s.</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">nombre</span><span class="p">);</span>
+<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a>      <span class="k">return</span> <span class="nb">sprintf</span> <span class="p">(</span><span class="s2">"Hola, %s.</span><span class="se">\n</span><span class="s2">"</span><span class="p">,</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">nombre</span><span class="p">);</span>
 <a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a>   <span class="p">}</span>
 <a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a><span class="p">}</span>
 </code></pre></div>
@@ -2822,32 +2850,32 @@ Switched to a new branch &#39;hola&#39;
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="cp">&lt;?php</span>
 <a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="c1">// Autor: Sergio Gómez &lt;sergio@uco.es&gt;</span>
 <a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="c1">// El nombre por defecto es Mundo</span>
-<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="k">require</span><span class="p">(</span><span class="s1">&#39;HolaMundo.php&#39;</span><span class="p">);</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="k">require</span><span class="p">(</span><span class="s1">'HolaMundo.php'</span><span class="p">);</span>
 <a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>
-<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="nv">$nombre</span> <span class="o">=</span> <span class="nb">isset</span><span class="p">(</span><span class="nv">$argv</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="o">?</span> <span class="nv">$argv</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">:</span> <span class="s2">&quot;Mundo&quot;</span><span class="p">;</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="nv">$nombre</span> <span class="o">=</span> <span class="nb">isset</span><span class="p">(</span><span class="nv">$argv</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="o">?</span> <span class="nv">$argv</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">:</span> <span class="s2">"Mundo"</span><span class="p">;</span>
 <a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="k">print</span> <span class="k">new</span> <span class="nx">HolaMundo</span><span class="p">(</span><span class="nv">$nombre</span><span class="p">);</span>
 </code></pre></div>
 <p>Podríamos confirmar los cambios todos de golpe, pero lo haremos de uno en uno, con su comentario.</p>
 <div class="highlight"><pre><span></span><code>$ git add lib/HolaMundo.php
-$ git commit -m &quot;Añadida la clase HolaMundo&quot;
+$ git commit -m "Añadida la clase HolaMundo"
 [hola 6932156] Añadida la clase HolaMundo
  1 file changed, 16 insertions(+)
  create mode 100644 lib/HolaMundo.php
 $ git add lib/hola.php
-$ git commit -m &quot;hola usa la clase HolaMundo&quot;
+$ git commit -m "hola usa la clase HolaMundo"
 [hola 9862f33] hola usa la clase HolaMundo
  1 file changed, 3 insertions(+), 1 deletion(-)
 </code></pre></div>
 <p>Y ahora con la orden <code>git checkout</code> podemos movernos entre ramas:</p>
 <div class="highlight"><pre><span></span><code>$ git checkout master
-Switched to branch &#39;master&#39;
+Switched to branch 'master'
 $ git checkout hola
-Switched to branch &#39;hola&#39;
+Switched to branch 'hola'
 </code></pre></div>
 <h3 id="modificaciones-en-la-rama-master">Modificaciones en la rama master</h3>
 <p>Podemos volver y añadir un nuevo archivo a la rama principal:</p>
 <div class="highlight"><pre><span></span><code>$ git checkout master
-Switched to branch &#39;master&#39;
+Switched to branch 'master'
 </code></pre></div>
 <p>Creamos un archivo llamado <code>README.md</code> en la raíz de nuestro proyecto con el siguiente contenido:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="gh"># Curso de GIT</span>
@@ -2856,7 +2884,7 @@ Switched to branch &#39;master&#39;
 </code></pre></div>
 <p>Y lo añadimos a nuestro repositorio en la rama en la que estamos:</p>
 <div class="highlight"><pre><span></span><code>$ git add README.md
-$ git commit -m &quot;Añadido README.md&quot;
+$ git commit -m "Añadido README.md"
 [master c3e65d0] Añadido README.md
  1 file changed, 3 insertions(+)
  create mode 100644 README.md
@@ -2877,14 +2905,14 @@ $ git hist --all
 <h3 id="mezclar-ramas">Mezclar ramas</h3>
 <p>Podemos incorporar los cambios de una rama a otra con la orden <code>git merge</code></p>
 <div class="highlight"><pre><span></span><code>$ git checkout hola
-Switched to branch &#39;hola&#39;
+Switched to branch 'hola'
 $ git merge master
-Merge made by the &#39;recursive&#39; strategy.
+Merge made by the 'recursive' strategy.
  README.md | 3 +++
  1 file changed, 3 insertions(+)
  create mode 100644 README.md
 $ git hist --all
-*   9c6ac06 2013-06-16 | Merge commit &#39;c3e65d0&#39; into hola (HEAD, hola) [Sergio Gómez]
+*   9c6ac06 2013-06-16 | Merge commit 'c3e65d0' into hola (HEAD, hola) [Sergio Gómez]
 |\
 * | 9862f33 2013-06-16 | hola usa la clase HolaMundo [Sergio Gómez]
 * | 6932156 2013-06-16 | Añadida la clase HolaMundo [Sergio Gómez]
@@ -2902,22 +2930,22 @@ $ git hist --all
 <h3 id="resolver-conflictos">Resolver conflictos</h3>
 <p>Un conflicto es cuando se produce una fusión que Git no es capaz de resolver. Vamos a modificar la rama master para crear uno con la rama hola.</p>
 <div class="highlight"><pre><span></span><code>$ git checkout master
-Switched to branch &#39;master&#39;
+Switched to branch 'master'
 </code></pre></div>
 <p>Modificamos nuestro archivo <em>hola.php</em> de nuevo:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="cp">&lt;?php</span>
 <a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="c1">// Autor: Sergio Gómez &lt;sergio@uco.es&gt;</span>
-<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="k">print</span> <span class="s2">&quot;Introduce tu nombre:&quot;</span><span class="p">;</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="k">print</span> <span class="s2">"Introduce tu nombre:"</span><span class="p">;</span>
 <a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="nv">$nombre</span> <span class="o">=</span> <span class="nb">trim</span><span class="p">(</span><span class="nb">fgets</span><span class="p">(</span><span class="nx">STDIN</span><span class="p">));</span>
-<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="o">@</span><span class="k">print</span> <span class="s2">&quot;Hola, </span><span class="si">{</span><span class="nv">$nombre</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="o">@</span><span class="k">print</span> <span class="s2">"Hola, </span><span class="si">{</span><span class="nv">$nombre</span><span class="si">}</span><span class="se">\n</span><span class="s2">"</span><span class="p">;</span>
 </code></pre></div>
 <p>Y guardamos los cambios:</p>
 <div class="highlight"><pre><span></span><code>$ git add lib/hola.php
-$ git commit -m &quot;Programa interactivo&quot;
+$ git commit -m "Programa interactivo"
 [master 9c85275] Programa interactivo
  1 file changed, 2 insertions(+), 2 deletions(-)
 $ git hist --all
-*   9c6ac06 2013-06-16 | Merge commit &#39;c3e65d0&#39; into hola (hola) [Sergio Gómez]
+*   9c6ac06 2013-06-16 | Merge commit 'c3e65d0' into hola (hola) [Sergio Gómez]
 |\
 * | 9862f33 2013-06-16 | hola usa la clase HolaMundo [Sergio Gómez]
 * | 6932156 2013-06-16 | Añadida la clase HolaMundo [Sergio Gómez]
@@ -2934,7 +2962,7 @@ $ git hist --all
 </code></pre></div>
 <p>Volvemos a la rama hola y fusionamos:</p>
 <div class="highlight"><pre><span></span><code>$ git checkout hola
-Switched to branch &#39;hola&#39;
+Switched to branch 'hola'
 $ git merge master
 Auto-merging lib/hola.php
 CONFLICT (content): Merge conflict in lib/hola.php
@@ -2945,40 +2973,40 @@ Automatic merge failed; fix conflicts and then commit the result.
 <a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="c1">// Autor: Sergio Gómez &lt;sergio@uco.es&gt;</span>
 <a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="o">&lt;&lt;&lt;&lt;&lt;&lt;&lt;</span> <span class="nx">HEAD</span>
 <a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="c1">// El nombre por defecto es Mundo</span>
-<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="k">require</span><span class="p">(</span><span class="s1">&#39;HolaMundo.php&#39;</span><span class="p">);</span>
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="k">require</span><span class="p">(</span><span class="s1">'HolaMundo.php'</span><span class="p">);</span>
 <a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>
-<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="nv">$nombre</span> <span class="o">=</span> <span class="nb">isset</span><span class="p">(</span><span class="nv">$argv</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="o">?</span> <span class="nv">$argv</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">:</span> <span class="s2">&quot;Mundo&quot;</span><span class="p">;</span>
+<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="nv">$nombre</span> <span class="o">=</span> <span class="nb">isset</span><span class="p">(</span><span class="nv">$argv</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="o">?</span> <span class="nv">$argv</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">:</span> <span class="s2">"Mundo"</span><span class="p">;</span>
 <a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="k">print</span> <span class="k">new</span> <span class="nx">HolaMundo</span><span class="p">(</span><span class="nv">$nombre</span><span class="p">);</span>
 <a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a><span class="o">=======</span>
-<a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a><span class="k">print</span> <span class="s2">&quot;Introduce tu nombre:&quot;</span><span class="p">;</span>
+<a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a><span class="k">print</span> <span class="s2">"Introduce tu nombre:"</span><span class="p">;</span>
 <a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a><span class="nv">$nombre</span> <span class="o">=</span> <span class="nb">trim</span><span class="p">(</span><span class="nb">fgets</span><span class="p">(</span><span class="nx">STDIN</span><span class="p">));</span>
-<a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a><span class="o">@</span><span class="k">print</span> <span class="s2">&quot;Hola, </span><span class="si">{</span><span class="nv">$nombre</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
+<a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a><span class="o">@</span><span class="k">print</span> <span class="s2">"Hola, </span><span class="si">{</span><span class="nv">$nombre</span><span class="si">}</span><span class="se">\n</span><span class="s2">"</span><span class="p">;</span>
 <a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a><span class="o">&gt;&gt;&gt;&gt;&gt;&gt;&gt;</span> <span class="nx">master</span>
 </code></pre></div>
 <p>La primera parte marca el código que estaba en la rama donde trabajábamos (HEAD) y la parte final el código de donde fusionábamos. Resolvemos el conflicto, dejando el archivo como sigue:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="cp">&lt;?php</span>
 <a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="c1">// Autor: Sergio Gómez &lt;sergio@uco.es&gt;</span>
-<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="k">require</span><span class="p">(</span><span class="s1">&#39;HolaMundo.php&#39;</span><span class="p">);</span>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="k">require</span><span class="p">(</span><span class="s1">'HolaMundo.php'</span><span class="p">);</span>
 <a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>
-<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="k">print</span> <span class="s2">&quot;Introduce tu nombre:&quot;</span><span class="p">;</span>
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="k">print</span> <span class="s2">"Introduce tu nombre:"</span><span class="p">;</span>
 <a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="nv">$nombre</span> <span class="o">=</span> <span class="nb">trim</span><span class="p">(</span><span class="nb">fgets</span><span class="p">(</span><span class="nx">STDIN</span><span class="p">));</span>
 <a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="k">print</span> <span class="k">new</span> <span class="nx">HolaMundo</span><span class="p">(</span><span class="nv">$nombre</span><span class="p">);</span>
 </code></pre></div>
 <p>Y resolvemos el conflicto confirmando los cambios:</p>
 <div class="highlight"><pre><span></span><code>$ git add lib/hola.php
-$ git commit -m &quot;Solucionado el conflicto al fusionar con la rama master&quot;
+$ git commit -m "Solucionado el conflicto al fusionar con la rama master"
 [hola a36af04] Solucionado el conflicto al fusionar con la rama master
 </code></pre></div>
 <h3 id="rebasing-vs-merging">Rebasing vs Merging</h3>
 <p>Rebasing es otra técnica para fusionar distinta a merge y usa la orden <code>git rebase</code>. Vamos a dejar nuestro proyecto como estaba antes del fusionado. Para ello necesitamos anotar el hash anterior al de la acción de <em>merge</em>. El que tiene la anotación <em>"hola usa la clase HolaMundo"</em>.</p>
 <p>Para ello podemos usar la orden <code>git reset</code> que nos permite mover HEAD donde queramos.</p>
 <div class="highlight"><pre><span></span><code>$ git checkout hola
-Switched to branch &#39;hola&#39;
+Switched to branch 'hola'
 $ git hist
 *   a36af04 2013-06-16 | Solucionado el conflicto al fusionar con la rama master (HEAD, hola) [Sergio Gómez]
 |\
 | * 9c85275 2013-06-16 | Programa interactivo (master) [Sergio Gómez]
-* |   9c6ac06 2013-06-16 | Merge commit &#39;c3e65d0&#39; into hola [Sergio Gómez]
+* |   9c6ac06 2013-06-16 | Merge commit 'c3e65d0' into hola [Sergio Gómez]
 |\ \
 | |/
 | * c3e65d0 2013-06-16 | Añadido README.md [Sergio Gómez]
@@ -3022,16 +3050,16 @@ error: Failed to merge in the changes.
 Patch failed at 0002 hola usa la clase HolaMundo
 The copy of the patch that failed is found in: .git/rebase-apply/patch
 
-When you have resolved this problem, run &quot;git rebase --continue&quot;.
-If you prefer to skip this patch, run &quot;git rebase --skip&quot; instead.
-To check out the original branch and stop rebasing, run &quot;git rebase --abort&quot;.
+When you have resolved this problem, run "git rebase --continue".
+If you prefer to skip this patch, run "git rebase --skip" instead.
+To check out the original branch and stop rebasing, run "git rebase --abort".
 </code></pre></div>
 <p>El conflicto, por supuesto, se sigue dando. Resolvemos guardando el archivo <code>hola.php</code> como en los casos anteriores:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="cp">&lt;?php</span>
 <a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="c1">// Autor: Sergio Gómez &lt;sergio@uco.es&gt;</span>
-<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="k">require</span><span class="p">(</span><span class="s1">&#39;HolaMundo.php&#39;</span><span class="p">);</span>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="k">require</span><span class="p">(</span><span class="s1">'HolaMundo.php'</span><span class="p">);</span>
 <a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>
-<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="k">print</span> <span class="s2">&quot;Introduce tu nombre:&quot;</span><span class="p">;</span>
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="k">print</span> <span class="s2">"Introduce tu nombre:"</span><span class="p">;</span>
 <a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="nv">$nombre</span> <span class="o">=</span> <span class="nb">trim</span><span class="p">(</span><span class="nb">fgets</span><span class="p">(</span><span class="nx">STDIN</span><span class="p">));</span>
 <a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="k">print</span> <span class="k">new</span> <span class="nx">HolaMundo</span><span class="p">(</span><span class="nv">$nombre</span><span class="p">);</span>
 </code></pre></div>
@@ -3039,11 +3067,11 @@ To check out the original branch and stop rebasing, run &quot;git rebase --abort
 <div class="highlight"><pre><span></span><code>$ git add lib/hola.php
 $ git status
 rebase in progress; onto 269eaca
-You are currently rebasing branch &#39;hola&#39; on &#39;269eaca&#39;.
-  (all conflicts fixed: run &quot;git rebase --continue&quot;)
+You are currently rebasing branch 'hola' on '269eaca'.
+  (all conflicts fixed: run "git rebase --continue")
 
 Changes to be committed:
-  (use &quot;git reset HEAD &lt;file&gt;...&quot; to unstage)
+  (use "git reset HEAD &lt;file&gt;..." to unstage)
 
     modified:   lib/hola.php
 $ git rebase --continue
@@ -3066,7 +3094,7 @@ Applying: hola usa la clase HolaMundo
 <h2 id="mezclando-con-la-rama-master">Mezclando con la rama master</h2>
 <p>Ya hemos terminado de implementar los cambios en nuestra rama secundaria y es hora de llevar los cambios a la rama principal. Usamos <code>git merge</code> para hacer una fusión normal:</p>
 <div class="highlight"><pre><span></span><code>$ git checkout master
-Switched to branch &#39;master&#39;
+Switched to branch 'master'
 $ git merge hola
 Updating c3e65d0..491f1d2
 Fast-forward
@@ -3102,8 +3130,8 @@ $ git hist --all
 * e19f2c1 2013-06-16 | Creación del proyecto [Sergio Gómez]
 </code></pre></div>
 <p>Vemos que estamos como en el final de la sección anterior, así que ahora mezclamos:</p>
-<div class="highlight"><pre><span></span><code>$ git merge -m &quot;Aplicando los cambios de la rama hola&quot; --no-ff hola
-Merge made by the &#39;recursive&#39; strategy.
+<div class="highlight"><pre><span></span><code>$ git merge -m "Aplicando los cambios de la rama hola" --no-ff hola
+Merge made by the 'recursive' strategy.
  lib/HolaMundo.php | 16 ++++++++++++++++
  lib/hola.php      |  4 +++-
  2 files changed, 19 insertions(+), 1 deletion(-)
@@ -3185,7 +3213,7 @@ $ git hist --all
       <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.top", "toc.integrate", "search.highlight", "content.code.annotate", "content.code.copy"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}, "version": null}</script>
     
     
-      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
       
     
   </body>

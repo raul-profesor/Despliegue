@@ -21,7 +21,7 @@
       
       
       <link rel="icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
     
     
       
@@ -29,7 +29,7 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
       
         
         <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
@@ -626,6 +626,34 @@
     
   
     Guía: proxy inverso con nginx
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../P1.3.nueva/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Guía: balanceo de carga con nginx
   
 
     
@@ -2779,24 +2807,24 @@
 <p>Volvemos a la rama máster y vamos a modificar el comentario que pusimos:</p>
 <div class="highlight"><pre><span></span><code>$ git checkout master
 Previous HEAD position was 3283e0d... Se añade un parámetro por defecto
-Switched to branch &#39;master&#39;
+Switched to branch 'master'
 </code></pre></div>
 <p>Modificamos <em>hola.php</em> de la siguiente manera:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="cp">&lt;?php</span>
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="c1">// Este comentario está mal y hay que borrarlo</span>
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="nv">$nombre</span> <span class="o">=</span> <span class="nb">isset</span><span class="p">(</span><span class="nv">$argv</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="o">?</span> <span class="nv">$argv</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">:</span> <span class="s2">&quot;Mundo&quot;</span><span class="p">;</span>
-<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="o">@</span><span class="k">print</span> <span class="s2">&quot;Hola, </span><span class="si">{</span><span class="nv">$nombre</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="nv">$nombre</span> <span class="o">=</span> <span class="nb">isset</span><span class="p">(</span><span class="nv">$argv</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="o">?</span> <span class="nv">$argv</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">:</span> <span class="s2">"Mundo"</span><span class="p">;</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="o">@</span><span class="k">print</span> <span class="s2">"Hola, </span><span class="si">{</span><span class="nv">$nombre</span><span class="si">}</span><span class="se">\n</span><span class="s2">"</span><span class="p">;</span>
 </code></pre></div>
 <p>Y comprobamos:</p>
 <div class="highlight"><pre><span></span><code>$ git status
 # On branch master
 # Changes not staged for commit:
-#   (use &quot;git add &lt;file&gt;...&quot; to update what will be committed)
-#   (use &quot;git checkout -- &lt;file&gt;...&quot; to discard changes in working directory)
+#   (use "git add &lt;file&gt;..." to update what will be committed)
+#   (use "git checkout -- &lt;file&gt;..." to discard changes in working directory)
 #
 #   modified:   hola.php
 #
-no changes added to commit (use &quot;git add&quot; and/or &quot;git commit -a&quot;)
+no changes added to commit (use "git add" and/or "git commit -a")
 </code></pre></div>
 <p>El mismo Git nos indica que debemos hacer para añadir los cambios o para deshacerlos:</p>
 <div class="highlight"><pre><span></span><code>$ git checkout hola.php
@@ -2806,23 +2834,23 @@ nothing to commit, working directory clean
 $ cat hola.php
 &lt;?php
 // El nombre por defecto es Mundo
-$nombre = isset($argv[1]) ? $argv[1] : &quot;Mundo&quot;;
-@print &quot;Hola, {$nombre}\n&quot;;
+$nombre = isset($argv[1]) ? $argv[1] : "Mundo";
+@print "Hola, {$nombre}\n";
 </code></pre></div>
 <h3 id="deshaciendo-cambios-antes-del-commit">Deshaciendo cambios antes del commit</h3>
 <p>Vamos a hacer lo mismo que la vez anterior, pero esta vez sí añadiremos el cambio al <em>staging</em> (sin hacer <em>commit</em>).
 Así que volvemos a modificar <em>hola.php</em> igual que la anterior ocasión:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="cp">&lt;?php</span>
 <a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="c1">// Este comentario está mal y hay que borrarlo</span>
-<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="nv">$nombre</span> <span class="o">=</span> <span class="nb">isset</span><span class="p">(</span><span class="nv">$argv</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="o">?</span> <span class="nv">$argv</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">:</span> <span class="s2">&quot;Mundo&quot;</span><span class="p">;</span>
-<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="o">@</span><span class="k">print</span> <span class="s2">&quot;Hola, </span><span class="si">{</span><span class="nv">$nombre</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="nv">$nombre</span> <span class="o">=</span> <span class="nb">isset</span><span class="p">(</span><span class="nv">$argv</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="o">?</span> <span class="nv">$argv</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">:</span> <span class="s2">"Mundo"</span><span class="p">;</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="o">@</span><span class="k">print</span> <span class="s2">"Hola, </span><span class="si">{</span><span class="nv">$nombre</span><span class="si">}</span><span class="se">\n</span><span class="s2">"</span><span class="p">;</span>
 </code></pre></div>
 <p>Y lo añadimos al <em>staging</em></p>
 <div class="highlight"><pre><span></span><code>$ git add hola.php
 $ git status
 # On branch master
 # Changes to be committed:
-#   (use &quot;git reset HEAD &lt;file&gt;...&quot; to unstage)
+#   (use "git reset HEAD &lt;file&gt;..." to unstage)
 #
 #   modified:   hola.php
 #
@@ -2834,12 +2862,12 @@ M   hola.php
 $ git status
 # On branch master
 # Changes not staged for commit:
-#   (use &quot;git add &lt;file&gt;...&quot; to update what will be committed)
-#   (use &quot;git checkout -- &lt;file&gt;...&quot; to discard changes in working directory)
+#   (use "git add &lt;file&gt;..." to update what will be committed)
+#   (use "git checkout -- &lt;file&gt;..." to discard changes in working directory)
 #
 #   modified:   hola.php
 #
-no changes added to commit (use &quot;git add&quot; and/or &quot;git commit -a&quot;)
+no changes added to commit (use "git add" and/or "git commit -a")
 $ git checkout hola.php
 </code></pre></div>
 <p>Y ya tenemos nuestro repositorio limpio otra vez. Como vemos hay que hacerlo en dos pasos:
@@ -2849,21 +2877,21 @@ uno para borrar los datos del <em>staging</em> y otro para restaurar la copia de
 Modificamos otra vez el archivo como antes:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="cp">&lt;?php</span>
 <a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="c1">// Este comentario está mal y hay que borrarlo</span>
-<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="nv">$nombre</span> <span class="o">=</span> <span class="nb">isset</span><span class="p">(</span><span class="nv">$argv</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="o">?</span> <span class="nv">$argv</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">:</span> <span class="s2">&quot;Mundo&quot;</span><span class="p">;</span>
-<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="o">@</span><span class="k">print</span> <span class="s2">&quot;Hola, </span><span class="si">{</span><span class="nv">$nombre</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="nv">$nombre</span> <span class="o">=</span> <span class="nb">isset</span><span class="p">(</span><span class="nv">$argv</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="o">?</span> <span class="nv">$argv</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">:</span> <span class="s2">"Mundo"</span><span class="p">;</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="o">@</span><span class="k">print</span> <span class="s2">"Hola, </span><span class="si">{</span><span class="nv">$nombre</span><span class="si">}</span><span class="se">\n</span><span class="s2">"</span><span class="p">;</span>
 </code></pre></div>
 <p>Pero ahora sí hacemos commit:</p>
 <div class="highlight"><pre><span></span><code>$ git add hola.php
-$ git commit -m &quot;Ups... este commit está mal.&quot;
+$ git commit -m "Ups... este commit está mal."
 master 5a5d067] Ups... este commit está mal
  1 file changed, 1 insertion(+), 1 deletion(-)
 </code></pre></div>
 <p>Bien, una vez confirmado el cambio, vamos a deshacer el cambio con la orden <code>git revert</code>:</p>
 <div class="highlight"><pre><span></span><code>$ git revert HEAD --no-edit
-[master 817407b] Revert &quot;Ups... este commit está mal&quot;
+[master 817407b] Revert "Ups... este commit está mal"
 1 file changed, 1 insertion(+), 1 deletion(-)
 $ git hist
-* 817407b 2013-06-16 | Revert &quot;Ups... este commit está mal&quot; (HEAD, master) [Sergio Gómez]
+* 817407b 2013-06-16 | Revert "Ups... este commit está mal" (HEAD, master) [Sergio Gómez]
 * 5a5d067 2013-06-16 | Ups... este commit está mal [Sergio Gómez]
 * fd4da94 2013-06-16 | Se añade un comentario al cambio del valor por defecto (tag: v1) [Sergio Gómez]
 * 3283e0d 2013-06-16 | Se añade un parámetro por defecto (tag: v1-beta) [Sergio Gómez]
@@ -2893,11 +2921,11 @@ nuestro archivo <em>hola.php</em> de la siguiente manera:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="cp">&lt;?php</span>
 <a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="c1">// Autor: Sergio Gómez</span>
 <a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="c1">// El nombre por defecto es Mundo</span>
-<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="nv">$nombre</span> <span class="o">=</span> <span class="nb">isset</span><span class="p">(</span><span class="nv">$argv</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="o">?</span> <span class="nv">$argv</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">:</span> <span class="s2">&quot;Mundo&quot;</span><span class="p">;</span>
-<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="o">@</span><span class="k">print</span> <span class="s2">&quot;Hola, </span><span class="si">{</span><span class="nv">$nombre</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="nv">$nombre</span> <span class="o">=</span> <span class="nb">isset</span><span class="p">(</span><span class="nv">$argv</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="o">?</span> <span class="nv">$argv</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">:</span> <span class="s2">"Mundo"</span><span class="p">;</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="o">@</span><span class="k">print</span> <span class="s2">"Hola, </span><span class="si">{</span><span class="nv">$nombre</span><span class="si">}</span><span class="se">\n</span><span class="s2">"</span><span class="p">;</span>
 </code></pre></div>
 <p>Y lo confirmamos:</p>
-<div class="highlight"><pre><span></span><code>$ git commit -a -m &quot;Añadido el autor del programa&quot;
+<div class="highlight"><pre><span></span><code>$ git commit -a -m "Añadido el autor del programa"
 [master cf405c1] Añadido el autor del programa
  1 file changed, 1 insertion(+)
 </code></pre></div>
@@ -2910,12 +2938,12 @@ nuestro archivo <em>hola.php</em> de la siguiente manera:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="cp">&lt;?php</span>
 <a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="c1">// Autor: Sergio Gómez &lt;sergio@uco.es&gt;</span>
 <a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="c1">// El nombre por defecto es Mundo</span>
-<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="nv">$nombre</span> <span class="o">=</span> <span class="nb">isset</span><span class="p">(</span><span class="nv">$argv</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="o">?</span> <span class="nv">$argv</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">:</span> <span class="s2">&quot;Mundo&quot;</span><span class="p">;</span>
-<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="o">@</span><span class="k">print</span> <span class="s2">&quot;Hola, </span><span class="si">{</span><span class="nv">$nombre</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="nv">$nombre</span> <span class="o">=</span> <span class="nb">isset</span><span class="p">(</span><span class="nv">$argv</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="o">?</span> <span class="nv">$argv</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">:</span> <span class="s2">"Mundo"</span><span class="p">;</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="o">@</span><span class="k">print</span> <span class="s2">"Hola, </span><span class="si">{</span><span class="nv">$nombre</span><span class="si">}</span><span class="se">\n</span><span class="s2">"</span><span class="p">;</span>
 </code></pre></div>
 <p>Y en esta ocasión usamos <code>commit --amend</code> que nos permite modificar el último estado confirmado, sustituyéndolo por el estado actual:</p>
 <div class="highlight"><pre><span></span><code>$ git add hola.php
-$ git commit --amend -m &quot;Añadido el autor del programa y su email&quot;
+$ git commit --amend -m "Añadido el autor del programa y su email"
 [master 96a39df] Añadido el autor del programa y su email
  1 file changed, 1 insertion(+)
 $ git hist
@@ -2939,7 +2967,7 @@ $ git mv hola.php lib
 $ git status
 # On branch master
 # Changes to be committed:
-#   (use &quot;git reset HEAD &lt;file&gt;...&quot; to unstage)
+#   (use "git reset HEAD &lt;file&gt;..." to unstage)
 #
 #   renamed:    hola.php -&gt; lib/hola.php
 #
@@ -2952,7 +2980,7 @@ $ git add lib/hola.php
 $ git rm hola.php
 </code></pre></div>
 <p>Y, ahora sí, ya podemos guardar los cambios:</p>
-<div class="highlight"><pre><span></span><code>$ git commit -m &quot;Movido hola.php a lib.&quot;
+<div class="highlight"><pre><span></span><code>$ git commit -m "Movido hola.php a lib."
 [master 8c2a509] Movido hola.php a lib.
  1 file changed, 0 insertions(+), 0 deletions(-)
  rename hola.php =&gt; lib/hola.php (100%)
@@ -3017,7 +3045,7 @@ $ git rm hola.php
       <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.top", "toc.integrate", "search.highlight", "content.code.annotate", "content.code.copy"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}, "version": null}</script>
     
     
-      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
       
     
   </body>

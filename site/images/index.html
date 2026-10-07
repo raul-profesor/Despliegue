@@ -21,7 +21,7 @@
       
       
       <link rel="icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
     
     
       
@@ -29,7 +29,7 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
       
         
         <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
@@ -626,6 +626,34 @@
     
   
     Guía: proxy inverso con nginx
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../P1.3.nueva/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Guía: balanceo de carga con nginx
   
 
     
@@ -2740,7 +2768,7 @@
 </div>
 <p>Y comprobaremos como se inicia el contenedor:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="hll"><span class="gp">$ </span>docker<span class="w"> </span>run<span class="w"> </span>-p<span class="w"> </span><span class="m">8080</span>:80<span class="w"> </span>wordpress
-</span><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="go">Unable to find image &#39;wordpress:latest&#39; locally</span>
+</span><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="go">Unable to find image 'wordpress:latest' locally</span>
 <a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="go">latest: Pulling from library/wordpress</span>
 <a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="go">802b00ed6f79: Pull complete </span>
 <a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="go">59f5a5a895f8: Pull complete </span>
@@ -2766,10 +2794,10 @@
 <a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a><span class="go">Status: Downloaded newer image for wordpress:latest</span>
 <a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a><span class="go">WordPress not found in /var/www/html - copying now...</span>
 <a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a><span class="go">Complete! WordPress has been successfully copied to /var/www/html</span>
-<a id="__codelineno-0-28" name="__codelineno-0-28" href="#__codelineno-0-28"></a><span class="go">AH00558: apache2: Could not reliably determine the server&#39;s fully qualified domain name,     using 10.17.0.1. Set the &#39;ServerName&#39; directive globally to suppress this message</span>
-<a id="__codelineno-0-29" name="__codelineno-0-29" href="#__codelineno-0-29"></a><span class="go">AH00558: apache2: Could not reliably determine the server&#39;s fully qualified domain name,     using 10.17.0.1. Set the &#39;ServerName&#39; directive globally to suppress this message</span>
+<a id="__codelineno-0-28" name="__codelineno-0-28" href="#__codelineno-0-28"></a><span class="go">AH00558: apache2: Could not reliably determine the server's fully qualified domain name,     using 10.17.0.1. Set the 'ServerName' directive globally to suppress this message</span>
+<a id="__codelineno-0-29" name="__codelineno-0-29" href="#__codelineno-0-29"></a><span class="go">AH00558: apache2: Could not reliably determine the server's fully qualified domain name,     using 10.17.0.1. Set the 'ServerName' directive globally to suppress this message</span>
 <a id="__codelineno-0-30" name="__codelineno-0-30" href="#__codelineno-0-30"></a><span class="go">[DDD mmm dd hh:mm:ss.iiiiii yyyy] [mpm_prefork:notice] [pid 1] AH00163: Apache/2.4.25     (Debian) PHP/7.2.10 configured -- resuming normal operations</span>
-<a id="__codelineno-0-31" name="__codelineno-0-31" href="#__codelineno-0-31"></a><span class="go">[DDD mmm dd hh:mm:ss.iiiiii yyyy] [core:notice] [pid 1] AH00094: Command line: &#39;apache2     -D FOREGROUND&#39;</span>
+<a id="__codelineno-0-31" name="__codelineno-0-31" href="#__codelineno-0-31"></a><span class="go">[DDD mmm dd hh:mm:ss.iiiiii yyyy] [core:notice] [pid 1] AH00094: Command line: 'apache2     -D FOREGROUND'</span>
 </code></pre></div>
 <p>Vemos en la línea nueva un nuevo parámetro: <code>-p 8080:80</code>. Por defecto, un contenedor está totalmente aislado. Pero si estamos montando un blog con <em>WordPress</em> vamos a necesitar acceder a él desde el navegador.</p>
 <p>Con el parámetro <code>-p</code>, versión corta de <code>--publish</code>, podemos indicar que estamos enlazando un puerto de la máquina anfitrión con el contenedor. En este caso estamos enlazando el puerto 8080 de la máquina anfitrión con el 80 del contenedor.</p>
@@ -2778,7 +2806,7 @@
 <p>No vamos a explicar todas las opciones posibles, el tutorial sería demasiado largo. Puedes consultar la página del manual con <code>man docker-run</code> o llamando a la ayuda desde el cliente con <code>docker run --help</code>.</p>
 <p>En este caso, el formato de <code>publish</code> es:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>    -p, --publish ip:[hostPort]:containerPort | [hostPort:]containerPort
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>        Publish a container&#39;s port, or range of ports, to the host.
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>        Publish a container's port, or range of ports, to the host.
 <a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>
 <a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>    Both hostPort and containerPort can be specified as a range.  When specifying ranges for both, the number of ports in ranges should be equal.
 <a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>
@@ -2858,7 +2886,7 @@
 <p class="admonition-title">Warning</p>
 <p>Si una imagen está en uso por algún contenedor, no nos dejará eliminarla.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="gp">$ </span>docker<span class="w"> </span>rmi<span class="w"> </span>hello-world:latest
-<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="go">Error response from daemon: conflict: unable to remove repository reference &quot;hello-world:latest&quot; (must force) - container 5ae8bbb8768d is using its referenced image 4ab4c602aa5e</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="go">Error response from daemon: conflict: unable to remove repository reference "hello-world:latest" (must force) - container 5ae8bbb8768d is using its referenced image 4ab4c602aa5e</span>
 </code></pre></div>
 </div>
 
@@ -2921,7 +2949,7 @@
       <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.top", "toc.integrate", "search.highlight", "content.code.annotate", "content.code.copy"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}, "version": null}</script>
     
     
-      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
       
     
   </body>

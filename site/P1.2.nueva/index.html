@@ -14,14 +14,14 @@
         <link rel="prev" href="../P1.1.nueva/">
       
       
-        <link rel="next" href="../ServAplic/">
+        <link rel="next" href="../P1.3.nueva/">
       
       
         
       
       
       <link rel="icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
     
     
       
@@ -29,7 +29,7 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
       
         
         <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
@@ -1007,6 +1007,34 @@
   
 </nav>
       
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../P1.3.nueva/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Guía: balanceo de carga con nginx
+  
+
+    
+  </span>
+  
+  
+
+      </a>
     </li>
   
 
@@ -3400,8 +3428,8 @@ cabecera <code>Host</code> que le reenvía el proxy.</p>
 </code></pre></div>
 <p>Comprueba que el backend sirve <strong>los dos</strong> sitios <strong>localmente</strong>, forzando la cabecera
 <code>Host</code> (los nombres aún no resuelven hacia el backend):</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>curl<span class="w"> </span>-s<span class="w"> </span>-H<span class="w"> </span><span class="s2">&quot;Host: planes.daw&quot;</span><span class="w">  </span>http://localhost/<span class="w"> </span><span class="p">|</span><span class="w"> </span>head<span class="w"> </span>-5
-<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>curl<span class="w"> </span>-s<span class="w"> </span>-H<span class="w"> </span><span class="s2">&quot;Host: puertos.daw&quot;</span><span class="w"> </span>http://localhost/<span class="w"> </span><span class="p">|</span><span class="w"> </span>head<span class="w"> </span>-5
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>curl<span class="w"> </span>-s<span class="w"> </span>-H<span class="w"> </span><span class="s2">"Host: planes.daw"</span><span class="w">  </span>http://localhost/<span class="w"> </span><span class="p">|</span><span class="w"> </span>head<span class="w"> </span>-5
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>curl<span class="w"> </span>-s<span class="w"> </span>-H<span class="w"> </span><span class="s2">"Host: puertos.daw"</span><span class="w"> </span>http://localhost/<span class="w"> </span><span class="p">|</span><span class="w"> </span>head<span class="w"> </span>-5
 </code></pre></div>
 <p>Debes ver el HTML de RunDash con el primer comando y el de Puertos Míticos con el
 segundo. Este paso es clave: <strong>verifica el backend antes de culpar al proxy</strong>.</p>
@@ -3669,7 +3697,7 @@ No las dejes corriendo entre clases.</p>
       <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.top", "toc.integrate", "search.highlight", "content.code.annotate", "content.code.copy"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}, "version": null}</script>
     
     
-      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
       
     
   </body>

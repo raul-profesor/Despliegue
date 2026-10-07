@@ -21,7 +21,7 @@
       
       
       <link rel="icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
     
     
       
@@ -29,7 +29,7 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
       
         
         <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
@@ -1132,6 +1132,34 @@
     
   
     Guía: proxy inverso con nginx
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../P1.3.nueva/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Guía: balanceo de carga con nginx
   
 
     
@@ -3751,7 +3779,7 @@ IP?».</p>
 <p><strong>Cómo leer una línea de <code>access.log</code></strong></p>
 <p>Por defecto, Ubuntu configura Nginx con el formato <strong>combined</strong>, y cada línea tiene
 este aspecto:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a>203.0.113.42 - - [18/Sep/2026:12:34:56 +0000] &quot;GET / HTTP/1.1&quot; 200 1234 &quot;-&quot; &quot;Mozilla/5.0 ...&quot;
+<div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a>203.0.113.42 - - [18/Sep/2026:12:34:56 +0000] "GET / HTTP/1.1" 200 1234 "-" "Mozilla/5.0 ..."
 </code></pre></div>
 <table>
 <thead>
@@ -3796,7 +3824,7 @@ este aspecto:</p>
 </tbody>
 </table>
 <p><strong>Cómo leer una línea de <code>error.log</code></strong></p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a>2026/09/18 12:35:01 [error] 1234#0: *5 open() &quot;/var/www/planes/missing.html&quot; failed (2: No such file or directory), client: 203.0.113.42, server: planes.daw, request: &quot;GET /missing.html HTTP/1.1&quot;, host: &quot;planes.daw&quot;
+<div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a>2026/09/18 12:35:01 [error] 1234#0: *5 open() "/var/www/planes/missing.html" failed (2: No such file or directory), client: 203.0.113.42, server: planes.daw, request: "GET /missing.html HTTP/1.1", host: "planes.daw"
 </code></pre></div>
 <table>
 <thead>
@@ -3847,7 +3875,7 @@ este aspecto:</p>
 <blockquote>
 <p>Truco: si un sitio da 404, el error aparece en <code>error.log</code>, pero también puedes
 encontrarlo en <code>access.log</code> buscando el código 404:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a>sudo<span class="w"> </span>grep<span class="w"> </span><span class="s2">&quot; 404 &quot;</span><span class="w"> </span>/var/log/Nginx/access.log
+<div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a>sudo<span class="w"> </span>grep<span class="w"> </span><span class="s2">" 404 "</span><span class="w"> </span>/var/log/Nginx/access.log
 </code></pre></div>
 <p>Ahí verás qué ruta exacta pidió el cliente y desde qué IP, sin tener que rebuscar
 entre los demás niveles del log de errores.</p>
@@ -3905,8 +3933,8 @@ página de detalle (eso demuestra que el <code>try_files</code> funciona). Abre
 <h3 id="73-demostrar-que-nginx-elige-por-la-cabecera-host">7.3. Demostrar que Nginx elige por la cabecera <code>Host</code></h3>
 <p>Puedes ver el mecanismo sin depender del navegador. Pide a la IP directa, pero
 forzando la cabecera <code>Host</code>:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a>curl<span class="w"> </span>-sI<span class="w"> </span>-H<span class="w"> </span><span class="s2">&quot;Host: puertos.daw&quot;</span><span class="w"> </span>http://&lt;IP&gt;/<span class="w"> </span><span class="p">|</span><span class="w"> </span>head<span class="w"> </span>-1
-<a id="__codelineno-33-2" name="__codelineno-33-2" href="#__codelineno-33-2"></a>curl<span class="w"> </span>-sI<span class="w"> </span>-H<span class="w"> </span><span class="s2">&quot;Host: planes.daw&quot;</span><span class="w">  </span>http://&lt;IP&gt;/<span class="w"> </span><span class="p">|</span><span class="w"> </span>head<span class="w"> </span>-1
+<div class="highlight"><pre><span></span><code><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a>curl<span class="w"> </span>-sI<span class="w"> </span>-H<span class="w"> </span><span class="s2">"Host: puertos.daw"</span><span class="w"> </span>http://&lt;IP&gt;/<span class="w"> </span><span class="p">|</span><span class="w"> </span>head<span class="w"> </span>-1
+<a id="__codelineno-33-2" name="__codelineno-33-2" href="#__codelineno-33-2"></a>curl<span class="w"> </span>-sI<span class="w"> </span>-H<span class="w"> </span><span class="s2">"Host: planes.daw"</span><span class="w">  </span>http://&lt;IP&gt;/<span class="w"> </span><span class="p">|</span><span class="w"> </span>head<span class="w"> </span>-1
 </code></pre></div>
 <p><code>-H "Host: …"</code> añade esa cabecera a la petición. Aunque ambas van a la misma IP, Nginx
 devuelve el sitio cuyo <code>server_name</code> coincide. Es la prueba definitiva de que el
@@ -3934,9 +3962,9 @@ SSH), lanza peticiones:</p>
 </code></pre></div>
 <p>Vuelve a la terminal SSH: deberías ver cómo han ido apareciendo, en tiempo real, tres
 líneas nuevas con este aspecto (los números varían):</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-37-1" name="__codelineno-37-1" href="#__codelineno-37-1"></a>203.0.113.42 - - [18/Sep/2026:12:40:01 +0000] &quot;GET / HTTP/1.1&quot; 200 4521 &quot;-&quot; &quot;curl/8.5.0&quot;
-<a id="__codelineno-37-2" name="__codelineno-37-2" href="#__codelineno-37-2"></a>203.0.113.42 - - [18/Sep/2026:12:40:03 +0000] &quot;GET / HTTP/1.1&quot; 200 7820 &quot;-&quot; &quot;curl/8.5.0&quot;
-<a id="__codelineno-37-3" name="__codelineno-37-3" href="#__codelineno-37-3"></a>203.0.113.42 - - [18/Sep/2026:12:40:08 +0000] &quot;GET /planes/5k/ HTTP/1.1&quot; 200 1102 &quot;-&quot; &quot;curl/8.5.0&quot;
+<div class="highlight"><pre><span></span><code><a id="__codelineno-37-1" name="__codelineno-37-1" href="#__codelineno-37-1"></a>203.0.113.42 - - [18/Sep/2026:12:40:01 +0000] "GET / HTTP/1.1" 200 4521 "-" "curl/8.5.0"
+<a id="__codelineno-37-2" name="__codelineno-37-2" href="#__codelineno-37-2"></a>203.0.113.42 - - [18/Sep/2026:12:40:03 +0000] "GET / HTTP/1.1" 200 7820 "-" "curl/8.5.0"
+<a id="__codelineno-37-3" name="__codelineno-37-3" href="#__codelineno-37-3"></a>203.0.113.42 - - [18/Sep/2026:12:40:08 +0000] "GET /planes/5k/ HTTP/1.1" 200 1102 "-" "curl/8.5.0"
 </code></pre></div>
 <p>Lo importante:</p>
 <ul>
@@ -4104,7 +4132,7 @@ entre clases.</p>
       <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.top", "toc.integrate", "search.highlight", "content.code.annotate", "content.code.copy"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}, "version": null}</script>
     
     
-      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
       
     
   </body>
