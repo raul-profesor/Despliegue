@@ -1,0 +1,58 @@
+flatten_single_child_sections: true
+nav:
+  - Tema 1:
+      - Teoría:
+          - Tema1/intro-aws.md
+          - Tema1/intro-terraform.md
+  - Tema 2:
+      - Teoría:
+          - Tema2/ArqWeb.md
+      - Prácticas:
+          - "Tema2/P2.*.md"
+  - Tema 3:
+      - Teoría:
+          - Tema3/ServAplic.md
+      - Prácticas:
+          - "Tema3/P3.*.md"
+  - Tema 4:
+      - Teoría:
+          - Tema4/dns.md
+      - Prácticas:
+          - "Tema4/P4.*.md"
+  - Tema 5:
+      - Teoría:
+          - Tema5/index_git.md
+          - Tema5/cvs.md
+          - Tema5/introduccion.md
+          - Tema5/git.md
+          - Tema5/usobasico.md
+          - Tema5/usoavanzado.md
+          - Tema5/ramas.md
+          - Tema5/github.md
+          - Tema5/github-zenodo.md
+          - Tema5/github-flow.md
+          - Tema5/github-avanzado.md
+          - Tema5/commands.md
+          - Tema5/gitflow.md
+          - Tema5/referencias.md
+      - Prácticas:
+          - "Tema5/P5.*.md"
+  - Tema 6:
+      - Teoría:
+          - Tema6/index_docker.md
+          - Tema6/introduction.md
+          - Tema6/installation.md
+          - Tema6/images.md
+          - Tema6/containers.md
+          - Tema6/data.md
+          - Tema6/wordpress.md
+          - Tema6/docker-compose.md
+          - Tema6/dockerfile.md
+          - Tema6/tips.md
+      - Prácticas:
+          - "Tema6/P6.*.md"
+  - Tema 7:
+      - Teoría:
+          - Tema7/cicd.md
+      - Prácticas:
+          - "Tema7/P7.*.md"

@@ -55,7 +55,7 @@
     <rdf:RDF>
       <cc:Work
          rdf:about="">
-        <dc:format>img/svg+xml</dc:format>
+        <dc:format>../img/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
         <dc:title></dc:title>

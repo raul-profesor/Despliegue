@@ -1,0 +1,88 @@
+[project]
+site_name = "Despliegue de aplicaciones web"
+site_url = "https://raul-profesor.github.io/Despliegue"
+extra_css = ["stylesheets/extra.css"]
+
+[project.theme]
+variant = "material"
+language = "es"
+features = [
+  "navigation.top",
+  "toc.integrate",
+  "search.highlight",
+  "content.code.annotate",
+  "content.code.copy",
+]
+font.code = "Roboto"
+
+# Palette toggle for light mode
+[[project.theme.palette]]
+media = "(prefers-color-scheme: light)"
+scheme = "default"
+primary = "green"
+accent = "blue"
+toggle.icon = "material/toggle-switch-off-outline"
+toggle.name = "Cambiar a modo oscuro"
+
+# Palette toggle for dark mode
+[[project.theme.palette]]
+media = "(prefers-color-scheme: dark)"
+scheme = "slate"
+primary = "black"
+accent = "deep orange"
+toggle.icon = "material/toggle-switch-off-outline"
+toggle.name = "Cambiar a modo claro"
+
+[project.theme.icon.admonition]
+note = "lucide/notebook"
+abstract = "lucide/book-open"
+info = "lucide/info"
+tip = "lucide/lightbulb"
+success = "lucide/circle-check"
+question = "lucide/circle-help"
+warning = "lucide/triangle-alert"
+failure = "lucide/circle-x"
+danger = "lucide/shield-alert"
+bug = "lucide/bug"
+example = "lucide/flask-conical"
+quote = "lucide/quote"
+
+[project.markdown_extensions]
+meta = {}
+tables = {}
+pymdownx.details = {}
+admonition = {}
+pymdownx.inlinehilite = {}
+pymdownx.snippets = {}
+pymdownx.superfences.custom_fences = [
+  { name = "mermaid", class = "mermaid", format = "pymdownx.superfences.fence_code_format" },
+]
+pymdownx.tabbed.alternate_style = true
+attr_list = {}
+md_in_html = {}
+footnotes = {}
+abbr = {}
+[project.markdown_extensions.pymdownx.blocks.caption] 
+types = [
+    "caption",
+    "table",
+    "figure",
+    { name = "figura", prefix = "Figura {}. " }
+]
+auto=true
+
+
+[project.markdown_extensions.pymdownx.highlight]
+anchor_linenums = true
+line_spans = "__span"
+pygments_lang_class = true
+[project.markdown_extensions.pymdownx.caret]
+[project.markdown_extensions.pymdownx.keys]
+[project.markdown_extensions.pymdownx.mark]
+[project.markdown_extensions.pymdownx.tilde]
+
+[project.extra.analytics]
+provider = "google"
+property = "G-3NX5MD5C8H"
+
+[project.plugins.awesome-nav]
