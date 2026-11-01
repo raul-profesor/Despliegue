@@ -81,7 +81,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV='/home/raul/Documentos/Markdown/Despliegue/.venv'
+VIRTUAL_ENV='/home/raul/Documentos/Clases/Markdown/Despliegue/.venv'
 if ([ "$OSTYPE" = "cygwin" ] || [ "$OSTYPE" = "msys" ]) && $(command -v cygpath &> /dev/null) ; then
     VIRTUAL_ENV=$(cygpath -u "$VIRTUAL_ENV")
 fi

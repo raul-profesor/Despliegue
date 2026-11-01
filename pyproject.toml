@@ -7,7 +7,9 @@ authors = [
     { name = "raul-profesor", email = "r.riesco@edu.gva.es" }
 ]
 requires-python = ">=3.14"
-dependencies = []
+dependencies = [
+    "zensical>=0.0.72",
+]
 
 [project.scripts]
 despliegue = "despliegue:main"
