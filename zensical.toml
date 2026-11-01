@@ -4,16 +4,19 @@ site_url = "https://raul-profesor.github.io/Despliegue"
 extra_css = ["stylesheets/extra.css"]
 
 [project.theme]
-variant = "material"
+variant = "alloy"
 language = "es"
 features = [
   "navigation.top",
-  "toc.integrate",
+  #"toc.integrate",
   "search.highlight",
   "content.code.annotate",
   "content.code.copy",
 ]
 font.code = "Roboto"
+
+[project.extra.alloy]
+accent_preset = "violet"
 
 # Palette toggle for light mode
 [[project.theme.palette]]

@@ -26,6 +26,7 @@ version = "0.1.0"
 source = { editable = "." }
 dependencies = [
     { name = "zensical" },
+    { name = "zensical-alloy" },
 ]
 
 [package.dev-dependencies]
@@ -34,7 +35,10 @@ dev = [
 ]
 
 [package.metadata]
-requires-dist = [{ name = "zensical", specifier = ">=0.0.72" }]
+requires-dist = [
+    { name = "zensical", specifier = ">=0.0.72" },
+    { name = "zensical-alloy", specifier = ">=0.2.3" },
+]
 
 [package.metadata.requires-dev]
 dev = [{ name = "zensical", specifier = ">=0.0.72" }]
@@ -265,4 +269,16 @@ wheels = [
     { url = "https://files.pythonhosted.org/packages/95/b3/979d2344d0efcb3d43bdcf613fa9846daae174993ba79ba5bab6e02aad45/zensical-0.0.72-cp311-abi3-musllinux_1_2_x86_64.whl", hash = "sha256:042795a983823efd2478630164afa708b04b6aff7708a04177657e57292bc1b8", size = 19047304, upload-time = "2026-10-23T14:52:19.283Z" },
     { url = "https://files.pythonhosted.org/packages/9f/aa/0bac4dc630d77048e2adb9ba7694243f0dba247c3f7400898f96c69b74c3/zensical-0.0.72-cp311-abi3-win_amd64.whl", hash = "sha256:40cd37e4525a24d0231635dafb95fc6e431fa021f26b0a1be2b049ea33698b80", size = 18996397, upload-time = "2026-10-23T14:52:21.987Z" },
     { url = "https://files.pythonhosted.org/packages/30/a9/97efa66e614383849d0d926bdf34599a7698284e08318839035e55a56fed/zensical-0.0.72-cp311-abi3-win_arm64.whl", hash = "sha256:23514bbf0b3f297d3473b25bee513a133722d020b363d668ef15a4f713d76cde", size = 18400138, upload-time = "2026-10-23T14:52:24.968Z" },
+]
+
+[[package]]
+name = "zensical-alloy"
+version = "0.2.3"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "zensical" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/55/9d/18f8a1eace5a7f7ee8e48c7fea5e1073ce2386bf94580e4d64ccaa194de4/zensical_alloy-0.2.3.tar.gz", hash = "sha256:3c7af51df9dd0651ad67c7b4f344f4ce47a7ec41bf84915638c1897756dab747", size = 1414347, upload-time = "2026-06-21T16:26:42.015Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/1d/3f/10d1384b1419f943f39124e11586e009e0376b62145095a93577addbf8c8/zensical_alloy-0.2.3-py3-none-any.whl", hash = "sha256:ed012f5f112c03a8b1213bb0bd0c16e221736db2c0f4ea2ebfaf9ccc9b162431", size = 78828, upload-time = "2026-06-21T16:26:40.61Z" },
 ]
