@@ -13,7 +13,7 @@ A menudo puede ser una pila compleja de diferentes elementos computacionales que
 
 Situado entre el servidor web y el nivel de backend del servidor de bases de datos, el servidor de aplicaciones es esencialmente un intermediario para el servidor de bases de datos y los usuarios de las aplicaciones empresariales o de consumo que soporta mediante el uso de varios protocolos e interfaces de programación de aplicaciones (API).
 
-![](../../img/application-server1.webp){: style="width:600px"}
+![](../img/application-server1.webp){: style="width:600px"}
 
 Es habitual que se utilice junto con un servidor web o que contenga un servidor web, por lo que ambos pueden converger y denominarse servidor de aplicaciones web. También es lo suficientemente versátil como para ser utilizado con otros servidores de aplicaciones simultáneamente.
 
@@ -59,7 +59,7 @@ Los servidores de aplicaciones también proporcionan redundancia de programas y 
 
 Las organizaciones pueden proteger aún más sus datos con un servidor proxy inverso colocado delante de sus bases de datos. Los servidores proxy y las VPN pueden hacer maravillas para anonimizar y encriptar la comunicación para proteger a los usuarios y los datos de la empresa.
 
-![a](../../img/serv_apl.png)
+![a](../img/serv_apl.png)
 
 ### ¿Cómo funcionan los servidores de aplicaciones? 
 
@@ -85,7 +85,7 @@ Aunque los detalles de implementación varían según la tecnología (Java, Pyth
 
 Al recibir una solicitud de un servidor web, el servidor de aplicaciones procesa la solicitud y responde al servidor web. Dado que los servidores de aplicaciones trabajan principalmente con peticiones de lógica de negocio, el servidor web traduce la respuesta y pasa una respuesta HTTP accesible para el usuario.
 
-![](../../img/capas.webp)
+![](../img/capas.webp)
 
 |   |Servidor de aplicaciones   | Servidor web   |
 |---|---|---|
@@ -117,7 +117,7 @@ Aunque los modelos de despliegue pueden variar, el más común es el clásico mo
 
 Una vez completado este proceso de despliegue, los nuevos cambios serán visibles en el entorno activo.
 
-![](../../img/deploy.png)
+![](../img/deploy.png)
 
 En la imagen anterior se muestra una forma muy simplificada y clásica de manejar los despliegues cuando se trabaja con sitios web en un CMS. No necesariamente se necesitan todos los entornos anteriores, pero el proceso sigue siendo el mismo.
 
@@ -367,7 +367,7 @@ Por otra parte, antes de Maven, cada vez que salía una nueva versión de un ana
 
 Y… ¿cómo se ejecutaban las pruebas? ¿Cómo se generaban informes? Sin Maven, en cada proyecto esto se hacía de distinta manera.
 
-![](../../img/maven-logo.png){: style="height:250px;width:600px"}
+![](../img/maven-logo.png){: style="height:250px;width:600px"}
 
 **Lo cierto es que Maven es mucho más que una herramienta que hace builds del código.**
 
@@ -421,7 +421,7 @@ Node JS es un entorno de ejecución de JavaScript rápido que utilizamos para co
 
 Node.js no es un lenguaje de programación. Más bien, es un entorno de ejecución que se utiliza para ejecutar JavaScript fuera del navegador.
 
-![](../../img/nodejs-new-pantone-black.svg){: style="height:250px;width:250px"}
+![](../img/nodejs-new-pantone-black.svg){: style="height:250px;width:250px"}
 
 Node.js tampoco es un framework (una plataforma para desarrollar aplicaciones de software). El tiempo de ejecución de Node.js se construye sobre un lenguaje de programación -en este caso, JavaScript- y ayuda a la ejecución de los propios frameworks.
 
@@ -431,13 +431,13 @@ En resumen, Node.js no es un lenguaje de programación ni un marco de trabajo; e
 
 Express JS es un framework de Node.js diseñado para construir aplicaciones web de API's y aplicaciones móviles multiplataforma de forma rápida y hacer  que Node.js sea fácil.
 
-![](../../img/express-logo.png){: style="height:250px;width:450px"}
+![](../img/express-logo.png){: style="height:250px;width:450px"}
 
 ### ¿Qué es npm?
 
 NPM responde a las siglas de Node Package Manager o manejador de paquetes de node, es la herramienta por defecto de JavaScript para la tarea de compartir e instalar paquetes.
 
-![](../../img/npm-logo.png){: style="height:150px;width:250px"}
+![](../img/npm-logo.png){: style="height:150px;width:250px"}
 
 Tal como reza su documentación, npm se compone de al menos dos partes principales.
 
@@ -585,7 +585,7 @@ Por lo general, la distribución continua se refiere a que los cambios que imple
 
 La implementación continua (la otra definición de "CD") hace referencia al lanzamiento automático de los cambios que implementa el desarrollador desde el repositorio hasta la producción, para ponerlos a disposición de los clientes. Así ya no se sobrecarga a los equipos de operaciones con procesos manuales que retrasan la distribución de las aplicaciones. Con este tipo de implementación, se aprovechan los beneficios de la distribución continua y se automatiza la siguiente etapa del proceso.
 
-![](../../img/ci-cd-flow-desktop.png)
+![](../img/ci-cd-flow-desktop.png)
 
 La CI/CD puede incluir solamente la integración y la distribución continuas, o las tres prácticas vinculadas, con la implementación continua. Para complicar un poco más las cosas, a veces se utiliza el término "distribución continua" para abarcar también los procesos de la implementación continua.
 
@@ -597,7 +597,7 @@ El significado de los términos varía en cada caso y depende de la cantidad de 
 
 El objetivo del diseño de las aplicaciones modernas es que los desarrolladores puedan trabajar de forma simultánea en distintas funciones de la misma aplicación. Sin embargo, si una empresa fusiona todo el código fuente diversificado en un solo día (conocido como el "día de la fusión"), las tareas pueden tornarse tediosas, manuales y muy lentas. Esto se debe a que si un desarrollador que trabaja de forma aislada implementa un cambio en una aplicación, existe la posibilidad de que entre en conflicto con las modificaciones que otros desarrolladores implementaron al mismo tiempo. El problema puede agravarse aún más si cada desarrollador personaliza su propio entorno de desarrollo integrado (IDE) local, en lugar de que todo el equipo adopte un IDE basado en la nube.
 
-![](../../img/ci.png){: style="width:400px"}
+![](../img/ci.png){: style="width:400px"}
 
 La integración continua (CI) permite que los desarrolladores incorporen los cambios del código a un repositorio compartido con mayor frecuencia, o incluso a diario. Una vez que se incorporan las modificaciones del desarrollador, se validan con la compilación automática de la aplicación y la ejecución de distintas pruebas automatizadas (generalmente, de unidad e integración), para garantizar que los cambios no hayan introducido una falla. Esto significa que se debe probar todo, desde las clases y el funcionamiento hasta los distintos módulos que conforman toda la aplicación. Si una prueba automática detecta un conflicto entre el código nuevo y el actual, la CI facilita la resolución de esos errores con rapidez.
 
@@ -605,7 +605,7 @@ La integración continua (CI) permite que los desarrolladores incorporen los cam
 
 Después de la automatización de las compilaciones y las pruebas de unidad e integración de la CI, la distribución continua automatiza el traslado del código validado hacia un repositorio. Por eso, para que la distribución continua sea eficaz, es importante que la CI ya esté incorporada al proceso de desarrollo. El objetivo de la distribución continua es tener una base de código que pueda implementarse en el entorno de producción en cualquier momento.
 
-![](../../img/cd.png){: style="width:400px"}
+![](../img/cd.png){: style="width:400px"}
 
 Cada etapa (desde la incorporación de los cambios al código hasta la distribución de las compilaciones listas para la producción) implica la automatización de las pruebas y del lanzamiento del código. Al final de este proceso, el equipo de operaciones puede implementar una aplicación para la producción de forma rápida y sencilla.
 Descubra las otras implementaciones que puede automatizar
@@ -615,7 +615,7 @@ Descubra las otras implementaciones que puede automatizar
 
 La última etapa del canal consolidado de CI/CD es la implementación continua, que automatiza el lanzamiento de una aplicación a la producción, ya que es una extensión de la distribución continua, la cual automatiza el traslado de una compilación lista para la producción a un repositorio del código. Debido a que no hay ninguna entrada manual en la etapa anterior a la producción, la implementación continua depende en gran medida del correcto diseño de la automatización de las pruebas.
 
-![](../../img/cd2.png){: style="width:500px"}
+![](../img/cd2.png){: style="width:500px"}
 
 En la práctica, los cambios que implementan los desarrolladores en la aplicación en la nube podrían ponerse en marcha unos cuantos minutos después de su creación (siempre que hayan pasado las pruebas automatizadas). Esto facilita mucho más la recepción e incorporación permanente de los comentarios de los usuarios. En conjunto, todas estas prácticas de CI/CD permiten que se implementen las aplicaciones con menos riesgos, ya que es más fácil incorporar los cambios en las aplicaciones de a poco, en lugar de hacerlo todo de una sola vez. Sin embargo, también deben realizarse muchas inversiones iniciales, ya que se deben diseñar las pruebas automatizadas para que se adapten a las distintas etapas de prueba y lanzamiento en el canal de la CI/CD.
 
