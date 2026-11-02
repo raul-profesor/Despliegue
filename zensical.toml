@@ -14,6 +14,7 @@ features = [
   "content.code.copy",
 ]
 font.code = "Roboto"
+custom_dir = "overrides"
 
 [project.extra.alloy]
 accent_preset = "violet"
