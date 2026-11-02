@@ -59,7 +59,7 @@ Los servidores de aplicaciones también proporcionan redundancia de programas y 
 
 Las organizaciones pueden proteger aún más sus datos con un servidor proxy inverso colocado delante de sus bases de datos. Los servidores proxy y las VPN pueden hacer maravillas para anonimizar y encriptar la comunicación para proteger a los usuarios y los datos de la empresa.
 
-![a](../img/serv_apl.png)
+![](../img/serv_apl.png)
 
 ### ¿Cómo funcionan los servidores de aplicaciones? 
 
