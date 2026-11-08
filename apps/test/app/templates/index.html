@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Records mundiales de medio fondo y fondo</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/estilo.css') }}">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" defer></script>
+  <script src="{{ url_for('static', filename='js/mapa.js') }}" defer></script>
+</head>
+<body>
+  <header>
+    <h1>Records mundiales de medio fondo y fondo</h1>
+    <p class="subtitulo">
+      Donde y cuando se consequieron las mejores marcas del mundo
+    </p>
+  </header>
+
+  <main>
+    <script type="application/json" id="datos-recintos">{{ recintos_json | safe }}</script>
+
+    <section class="filtros">
+      <form method="get" action="{{ url_for('index') }}">
+        <label>
+          Categoria
+          <select name="categoria">
+            <option value="">Todas</option>
+            {% for c in categorias %}
+            <option value="{{ c }}" {% if filtros.categoria == c %}selected{% endif %}>{{ c }}</option>
+            {% endfor %}
+          </select>
+        </label>
+
+        <label>
+          Sexo
+          <select name="sexo">
+            <option value="">Todos</option>
+            {% for s in sexos %}
+            <option value="{{ s }}" {% if filtros.sexo == s %}selected{% endif %}>{{ s }}</option>
+            {% endfor %}
+          </select>
+        </label>
+
+        <label>
+          Modalidad
+          <select name="modalidad">
+            <option value="">Todas</option>
+            <option value="pista" {% if filtros.modalidad == 'pista' %}selected{% endif %}>Pista</option>
+            <option value="calle" {% if filtros.modalidad == 'calle' %}selected{% endif %}>Calle</option>
+          </select>
+        </label>
+
+        <label>
+          Buscar
+          <input type="search" name="q" value="{{ filtros.q }}"
+                 placeholder="atleta, prueba, ciudad...">
+        </label>
+
+        <button type="submit">Filtrar</button>
+        <a class="limpiar" href="{{ url_for('index') }}">Limpiar</a>
+      </form>
+    </section>
+
+    <section class="mapa-contenedor">
+      <div id="mapa" role="application" aria-label="Mapa de recintos"></div>
+      <p class="nota-mapa">
+        Cada marcador indica un recinto donde se ha marcado un record mundial.
+        La altura del marcador es proporcional a la altitud del recinto.
+      </p>
+    </section>
+
+    <section class="resultados">
+      <h2>
+        {{ records|length }} de {{ total }} records
+        {% if filtros.categoria %}<span class="etiqueta">{{ filtros.categoria }}</span>{% endif %}
+        {% if filtros.sexo %}<span class="etiqueta">{{ filtros.sexo }}</span>{% endif %}
+      </h2>
+
+      {% if records %}
+      <table>
+        <thead>
+          <tr>
+            <th>Prueba</th>
+            <th>Sexo</th>
+            <th>Marca</th>
+            <th>Atleta</th>
+            <th>Fecha</th>
+            <th>Recinto</th>
+            <th>Altitud</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for r in records %}
+          <tr>
+            <td>
+              <strong>{{ r.prueba }}</strong>
+              <span class="sub">{{ r.modalidad }}</span>
+            </td>
+            <td>{{ r.sexo }}</td>
+            <td class="marca">{{ r.marca }}</td>
+            <td>
+              {{ r.atleta }}
+              <span class="sub">{{ r.pais_nombre }} ({{ r.pais_atleta }})</span>
+            </td>
+            <td>{{ r.fecha }}</td>
+            <td>
+              {{ r.recinto_nombre }}
+              <span class="sub">{{ r.ciudad }}</span>
+            </td>
+            <td class="altitud" data-lat="{{ r.lat }}" data-lon="{{ r.lon }}"
+                data-estimada="{{ r.altitud_estimada }}">
+              {% if r.altitud_estimada is not none %}{{ r.altitud_estimada }} m{% else %}-{% endif %}
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      {% else %}
+      <p class="vacio">No hay records que coincidan con el filtro aplicado.</p>
+      {% endif %}
+    </section>
+  </main>
+
+  <footer>
+    <p>
+      Datos de records: <a href="https://worldathletics.org/records" target="_blank" rel="noopener">World Athletics</a>.
+      Altitud del terreno: <a href="https://open-meteo.com/en/docs/elevation-api" target="_blank" rel="noopener">Open-Meteo</a>
+      (Copernicus GLO-90). Mapa base: <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a>.
+    </p>
+    <p class="sub">Consulta generada el {{ hoy }}.</p>
+  </footer>
+</body>
+</html>
