@@ -1,0 +1,279 @@
+/* Records mundiales de medio fondo y fondo - hoja de estilos */
+
+:root {
+  --fondo: #f7f8fa;
+  --panel: #ffffff;
+  --texto: #1c2333;
+  --texto-suave: #5b6478;
+  --borde: #dfe3ea;
+  --acento: #2f6f4f;
+  --acento-claro: #e7f2ec;
+  --pista: #2f6f4f;
+  --calle: #9a5b13;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+  background: var(--fondo);
+  color: var(--texto);
+  line-height: 1.55;
+}
+
+header {
+  background: var(--acento);
+  color: #fff;
+  padding: 1.6rem 1.5rem;
+  text-align: center;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 1.65rem;
+  letter-spacing: -0.01em;
+}
+
+.subtitulo {
+  margin: 0.35rem 0 0;
+  opacity: 0.9;
+  font-size: 0.95rem;
+}
+
+main {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 1.5rem;
+}
+
+/* ---------- Filtros ---------- */
+
+.filtros {
+  background: var(--panel);
+  border: 1px solid var(--borde);
+  border-radius: 10px;
+  padding: 1rem 1.15rem;
+  margin-bottom: 1.25rem;
+}
+
+.filtros form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.85rem 1.1rem;
+  align-items: flex-end;
+}
+
+.filtros label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--texto-suave);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.filtros select,
+.filtros input {
+  padding: 0.5rem 0.6rem;
+  border: 1px solid var(--borde);
+  border-radius: 6px;
+  font-size: 0.95rem;
+  font-weight: 400;
+  text-transform: none;
+  letter-spacing: normal;
+  color: var(--texto);
+  background: #fff;
+  min-width: 9.5rem;
+}
+
+.filtros input {
+  min-width: 14rem;
+}
+
+.filtros button {
+  padding: 0.55rem 1.2rem;
+  background: var(--acento);
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.filtros button:hover {
+  filter: brightness(1.08);
+}
+
+.limpiar {
+  padding: 0.55rem 0.4rem;
+  color: var(--texto-suave);
+  font-size: 0.9rem;
+  text-decoration: underline;
+}
+
+/* ---------- Mapa ---------- */
+
+.mapa-contenedor {
+  background: var(--panel);
+  border: 1px solid var(--borde);
+  border-radius: 10px;
+  padding: 1rem;
+  margin-bottom: 1.25rem;
+}
+
+#mapa {
+  height: 460px;
+  width: 100%;
+  border-radius: 8px;
+  background: #e8eaee;
+}
+
+.nota-mapa {
+  margin: 0.7rem 0 0;
+  font-size: 0.85rem;
+  color: var(--texto-suave);
+}
+
+/* ---------- Resultados ---------- */
+
+.resultados h2 {
+  font-size: 1.15rem;
+  margin: 0 0 0.85rem;
+  color: var(--texto);
+}
+
+.etiqueta {
+  display: inline-block;
+  background: var(--acento-claro);
+  color: var(--acento);
+  border-radius: 999px;
+  padding: 0.1rem 0.65rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  vertical-align: middle;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--panel);
+  border: 1px solid var(--borde);
+  border-radius: 10px;
+  overflow: hidden;
+  font-size: 0.93rem;
+}
+
+thead th {
+  background: #eef1f5;
+  text-align: left;
+  padding: 0.7rem 0.85rem;
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--texto-suave);
+  border-bottom: 1px solid var(--borde);
+}
+
+tbody td {
+  padding: 0.7rem 0.85rem;
+  border-bottom: 1px solid var(--borde);
+  vertical-align: top;
+}
+
+tbody tr:last-child td {
+  border-bottom: none;
+}
+
+tbody tr:hover {
+  background: #fafbfc;
+}
+
+.sub {
+  display: block;
+  font-size: 0.82rem;
+  color: var(--texto-suave);
+  font-weight: 400;
+}
+
+.marca {
+  font-variant-numeric: tabular-nums;
+  font-weight: 700;
+  font-size: 1.05rem;
+  color: var(--acento);
+  white-space: nowrap;
+}
+
+.altitud {
+  font-variant-numeric: tabular-nums;
+  color: var(--texto-suave);
+  white-space: nowrap;
+}
+
+.vacio {
+  padding: 2rem;
+  text-align: center;
+  color: var(--texto-suave);
+  background: var(--panel);
+  border: 1px dashed var(--borde);
+  border-radius: 10px;
+}
+
+/* ---------- Pie ---------- */
+
+footer {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 1rem 1.5rem 2.5rem;
+  font-size: 0.85rem;
+  color: var(--texto-suave);
+}
+
+footer a {
+  color: var(--acento);
+}
+
+/* ---------- Marcadores del mapa ---------- */
+
+.marcador {
+  background: var(--acento);
+  border: 2px solid #fff;
+  border-radius: 50%;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.35);
+}
+
+.marcador.calle {
+  background: var(--calle);
+}
+
+.leaflet-popup-content {
+  font-family: inherit;
+  font-size: 0.88rem;
+  line-height: 1.45;
+}
+
+.leaflet-popup-content b {
+  display: block;
+  margin-bottom: 0.25rem;
+}
+
+.leaflet-popup-content .detalle {
+  color: #5b6478;
+  font-size: 0.83rem;
+}
+
+@media (max-width: 720px) {
+  .filtros select,
+  .filtros input {
+    min-width: 100%;
+  }
+
+  #mapa {
+    height: 320px;
+  }
+}
