@@ -1,5 +1,33 @@
+# --- Sitio generado ---
 /site/
-./token_github
-/docs/soluciones_ej_github.png
-./ra-ce.ods
-./Calendario semipresencial 2223v2.pdf
+
+# --- Entornos virtuales de Python ---
+.venv/
+venv/
+env/
+ENV/
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# --- Secretos ---
+.env
+.env.*
+!.env.example
+token_github
+
+# --- Cachés de herramientas de build ---
+docs/.pheasant_cache/
+.cache/
+
+# --- Sistema operativo y editores ---
+.DS_Store
+Thumbs.db
+*.swp
+*~
+.idea/
+.vscode/
