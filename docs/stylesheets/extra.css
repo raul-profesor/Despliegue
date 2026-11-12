@@ -32,3 +32,311 @@ img {
     hyphens: auto;
   }
 }
+
+/* ==========================================================================
+   MEJORAS ESTÉTICAS — compatibles con modo claro y oscuro
+   Archivo: docs/stylesheets/extra.css
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. TIPOGRAFÍA (aplica a ambos modos, no rompe nada)
+   -------------------------------------------------------------------------- */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@600;700&display=swap');
+
+:root > * {
+  /* Fuente del cuerpo */
+  --md-text-font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  /* Fuente de títulos (variable propia, no estándar de Material) */
+  --md-heading-font-family: 'Playfair Display', Georgia, serif;
+  /* Acento (violeta) — vale para ambos modos */
+  --md-accent-fg-color: #7c3aed;
+  --md-accent-fg-color--transparent: rgba(124, 58, 237, 0.12);
+  /* Radio propio reutilizable */
+  --z-radius: 0.6rem;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--md-heading-font-family);
+  letter-spacing: -0.02em;
+}
+
+/* --------------------------------------------------------------------------
+   2. FONDO SOLO EN MODO CLARO
+   (clave: nunca tocamos --md-default-bg-color en modo oscuro)
+   -------------------------------------------------------------------------- */
+[data-md-color-scheme="default"] {
+  --md-default-bg-color: #faf9f6;
+  --md-default-bg-color--light: #f4f2ee;
+}
+
+/* --------------------------------------------------------------------------
+   3. GLASSMORPHISM EN CABECERA — con contraparte oscura
+   -------------------------------------------------------------------------- */
+.md-header {
+  backdrop-filter: blur(12px) saturate(180%);
+  -webkit-backdrop-filter: blur(12px) saturate(180%);
+  border-bottom: 1px solid transparent;
+  transition: background-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+/* Modo claro */
+[data-md-color-scheme="default"] .md-header {
+  background-color: rgba(255, 255, 255, 0.72);
+  border-bottom-color: rgba(0, 0, 0, 0.05);
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.03);
+}
+
+/* Modo oscuro */
+[data-md-color-scheme="slate"] .md-header {
+  background-color: rgba(20, 20, 25, 0.72);
+  border-bottom-color: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 2px 24px rgba(0, 0, 0, 0.35);
+}
+
+/* Pestañas superiores (si las usas) */
+[data-md-color-scheme="default"] .md-tabs {
+  background-color: rgba(255, 255, 255, 0.72);
+  backdrop-filter: blur(12px) saturate(180%);
+  -webkit-backdrop-filter: blur(12px) saturate(180%);
+}
+
+[data-md-color-scheme="slate"] .md-tabs {
+  background-color: rgba(20, 20, 25, 0.72);
+  backdrop-filter: blur(12px) saturate(180%);
+  -webkit-backdrop-filter: blur(12px) saturate(180%);
+}
+
+/* Caja de búsqueda dentro de la cabecera translúcida */
+[data-md-color-scheme="default"] .md-search__input {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+[data-md-color-scheme="slate"] .md-search__input {
+  background-color: rgba(255, 255, 255, 0.08);
+}
+
+/* --------------------------------------------------------------------------
+   4. TARJETAS / BLOQUES CON PROFUNDIDAD — por esquema
+   -------------------------------------------------------------------------- */
+.md-typeset pre,
+.md-typeset .admonition,
+.md-typeset details,
+.md-typeset table:not([class]) {
+  border-radius: var(--z-radius);
+}
+
+/* Claro */
+[data-md-color-scheme="default"] .md-typeset pre,
+[data-md-color-scheme="default"] .md-typeset .admonition,
+[data-md-color-scheme="default"] .md-typeset details,
+[data-md-color-scheme="default"] .md-typeset table:not([class]) {
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06), 0 1px 3px rgba(0, 0, 0, 0.04);
+  border: 1px solid rgba(0, 0, 0, 0.04);
+}
+
+/* Oscuro */
+[data-md-color-scheme="slate"] .md-typeset pre,
+[data-md-color-scheme="slate"] .md-typeset .admonition,
+[data-md-color-scheme="slate"] .md-typeset details,
+[data-md-color-scheme="slate"] .md-typeset table:not([class]) {
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+/* --------------------------------------------------------------------------
+   5. MICRO-INTERACCIONES
+   -------------------------------------------------------------------------- */
+a, button, .md-button, .md-nav__link, .md-header__button {
+  transition: color 0.25s ease, background-color 0.25s ease,
+              transform 0.2s ease, box-shadow 0.25s ease;
+}
+
+.md-typeset a:hover {
+  color: var(--md-accent-fg-color);
+}
+
+.md-button:hover {
+  transform: translateY(-1px);
+}
+
+/* --------------------------------------------------------------------------
+   6. SCROLLBAR (usa variables del tema → respeta ambos modos)
+   -------------------------------------------------------------------------- */
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb {
+  background-color: var(--md-default-fg-color--lighter);
+  border-radius: 10px;
+  border: 2px solid transparent;
+  background-clip: content-box;
+}
+::-webkit-scrollbar-thumb:hover {
+  background-color: var(--md-accent-fg-color);
+}
+
+/* --------------------------------------------------------------------------
+   7. DETALLES
+   -------------------------------------------------------------------------- */
+.md-typeset p {
+  line-height: 1.75;
+  margin-bottom: 1.5em;
+}
+
+.md-typeset img {
+  border-radius: var(--z-radius);
+}
+
+[data-md-color-scheme="default"] .md-typeset img {
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+[data-md-color-scheme="slate"] .md-typeset img {
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+}
+
+.md-typeset code {
+  border-radius: 0.3rem;
+  padding: 0.15em 0.4em;
+}
+
+/* ==========================================================================
+   MEJORAS ESTÉTICAS — AMPLIACIÓN (versión final corregida)
+   Pegar al final de extra.css, sustituyendo al bloque de ampliación anterior.
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   8. TARJETAS GRID CON ELEVACIÓN EN HOVER
+   (sin borde de acento: solo sombra y desplazamiento)
+   -------------------------------------------------------------------------- */
+.md-typeset .grid.cards > ul > li {
+  transition: transform 0.25s ease,
+              box-shadow 0.25s ease;
+}
+
+[data-md-color-scheme="default"] .md-typeset .grid.cards > ul > li:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.12);
+}
+
+[data-md-color-scheme="slate"] .md-typeset .grid.cards > ul > li:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.55);
+}
+
+/* --------------------------------------------------------------------------
+   9. BOTÓN PRIMARIO CON ELEVACIÓN Y GLOW CONTENIDO
+   -------------------------------------------------------------------------- */
+.md-button--primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(124, 58, 237, 0.35);
+}
+
+[data-md-color-scheme="slate"] .md-button--primary:hover {
+  box-shadow: 0 6px 20px rgba(124, 58, 237, 0.5);
+}
+
+/* --------------------------------------------------------------------------
+   10. ANIMACIÓN DE ENTRADA SUAVE DEL CONTENIDO
+   -------------------------------------------------------------------------- */
+@keyframes z-fade-up {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.md-content {
+  animation: z-fade-up 0.35s ease-out both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .md-content { animation: none; }
+}
+
+/* --------------------------------------------------------------------------
+   11. H1 CON COLOR SÓLIDO
+   Resetea explícitamente cualquier resto de degradado / text-fill
+   transparente que pudiera quedar de versiones anteriores.
+   -------------------------------------------------------------------------- */
+.md-typeset h1,
+.md-typeset h1 .headerlink {
+  background: none;
+  -webkit-background-clip: border-box;
+  background-clip: border-box;
+  -webkit-text-fill-color: currentColor;
+  color: var(--md-default-fg-color);
+}
+
+/* --------------------------------------------------------------------------
+   13. ADMONICIONES CON TINTE DE FONDO MUY TENUE
+   -------------------------------------------------------------------------- */
+[data-md-color-scheme="default"] .md-typeset .admonition.note,
+[data-md-color-scheme="default"] .md-typeset details.note {
+  background-color: rgba(124, 58, 237, 0.04);
+}
+
+[data-md-color-scheme="slate"] .md-typeset .admonition.note,
+[data-md-color-scheme="slate"] .md-typeset details.note {
+  background-color: rgba(124, 58, 237, 0.08);
+}
+
+[data-md-color-scheme="default"] .md-typeset .admonition.tip,
+[data-md-color-scheme="default"] .md-typeset details.tip {
+  background-color: rgba(0, 150, 136, 0.05);
+}
+
+[data-md-color-scheme="slate"] .md-typeset .admonition.tip,
+[data-md-color-scheme="slate"] .md-typeset details.tip {
+  background-color: rgba(0, 150, 136, 0.10);
+}
+
+/* --------------------------------------------------------------------------
+   14. FILAS DE TABLA CON HOVER SUTIL
+   -------------------------------------------------------------------------- */
+.md-typeset table:not([class]) tbody tr {
+  transition: background-color 0.2s ease;
+}
+
+.md-typeset table:not([class]) tbody tr:hover {
+  background-color: var(--md-default-fg-color--lightest);
+}
+
+/* --------------------------------------------------------------------------
+   15. MICRO-DESPLAZAMIENTO DE ICONOS EN EL MENÚ LATERAL
+   -------------------------------------------------------------------------- */
+.md-nav__link .md-nav__icon {
+  transition: transform 0.2s ease;
+}
+
+.md-nav__link:hover .md-nav__icon {
+  transform: translateX(2px);
+}
+
+/* ==========================================================================
+   CORRECCIÓN — Legibilidad de la cabecera en modo claro
+   Fuerza color de texto oscuro en .md-header y sus elementos internos
+   cuando el esquema activo es "default" (claro).
+   ========================================================================== */
+
+/* Texto general de la cabecera y pestañas */
+[data-md-color-scheme="default"] .md-header,
+[data-md-color-scheme="default"] .md-header .md-header__title,
+[data-md-color-scheme="default"] .md-header .md-header__topic,
+[data-md-color-scheme="default"] .md-header .md-ellipsis,
+[data-md-color-scheme="default"] .md-tabs {
+  color: var(--md-default-fg-color);
+}
+
+/* Iconos y botones dentro de la cabecera (menú, búsqueda, toggle, etc.) */
+[data-md-color-scheme="default"] .md-header__button,
+[data-md-color-scheme="default"] .md-header__button .md-icon,
+[data-md-color-scheme="default"] .md-header__option .md-icon {
+  color: var(--md-default-fg-color);
+}
+
+/* Si usas logo de imagen y también se pierde sobre el fondo blanco,
+   puedes añadir un filtro para oscurecerlo solo en modo claro.
+   (Descomenta si lo necesitas; no afecta al texto del título). */
+/*
+[data-md-color-scheme="default"] .md-header__button.md-logo img {
+  filter: brightness(0.2) invert(0);
+}
+*/
