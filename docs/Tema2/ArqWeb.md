@@ -10,7 +10,7 @@ Con la evolución y el acceso libre a Internet, uno de los principales aliciente
 
 Las páginas web, en su mayoría en formato HTML, requieren ser alojadas en máquinas que dispongan de espacio en disco para almacenar archivos HTML, imágenes, bloques de código o archivos de vídeo en directorios específicos y, al mismo tiempo, deben ser capaces de entender todo tipo de extensiones de los archivos que son enviados en ambos sentidos de la comunicación.
 
-![](../../img/servidor1.jpg){: style="height:450px;width:550px"}
+![](../img/servidor1.jpg){: style="height:450px;width:550px"}
 
 No podemos dejar de lado la importancia de las medidas de seguridad ante los peligros existentes en Internet. Las páginas deberán estar diseñadas considerando la incorporación de protocolos de comunicación seguros como HTTPS (Hyper Text Transfer Protocol secure) que utilizan claves y estrategias de cifrado propias de TLS (Transport Layer Security).
 
@@ -24,7 +24,7 @@ El funcionamiento de los servidores web es especial ya que, como si se tratara d
 
 Los servidores web sirven para almacenar contenidos de Internet y facilitar su disponibilidad de forma constante y segura. Cuando visitas una página web desde tu navegador, es en realidad un servidor web el que envía los componentes individuales de dicha página directamente a tu ordenador. Para que una página web sea accesible en cualquier momento, el servidor web debe estar permanentemente online.
 
-![](../../img/servodpr2.jpeg){: style="height:300px;width:550px"}
+![](../img/servodpr2.jpeg){: style="height:300px;width:550px"}
 
 Toda página accesible en Internet necesita un servidor especial para sus contenidos web. Las grandes empresas y organizaciones cuentan con un servidor web propio para disponer sus contenidos en Intranet e Internet. Sin embargo, la mayoría de administradores recurren a los centros de datos de proveedores de alojamiento web para sus proyectos.
 
@@ -36,11 +36,11 @@ Para abrir una página web, el usuario solo tiene que escribir el URL correspond
 
 El navegador interpreta la respuesta, lo que suele generar automáticamente más solicitudes al servidor a propósito de imágenes integradas o archivos CSS.
 
-![](../../img/tecnologias.png)
+![](../img/tecnologias.png)
 
 El protocolo utilizado para la transmisión es HTTP (o su variante cifrada HTTPS), que se basa en los protocolos de red IP y TCP. Un servidor web puede entregar los contenidos simultáneamente a varios navegadores web. La cantidad de solicitudes y la velocidad con la que pueden ser procesadas depende del hardware, la carga del host y la complejidad del contenido: los contenidos web dinámicos necesitan más recursos que los estáticos.
 
-![](../../img/tcpip.webp)
+![](../img/tcpip.webp)
 
 La selección del equipo adecuado para el servidor y la decisión de si este debe ser dedicado, virtual o en la nube, se debe hacer pensando siempre en evitar sobrecargas.
 
@@ -66,7 +66,7 @@ El protocolo de transferencia de hipertexto (HTTP, Hypertext Transfer Protocol) 
 
 La web fue creada en 1989 en el Consejo Europeo para la Investigación Nuclear (CERN), con sede en Ginebra. Este organismo disponía de una amplia plantilla de científicos de diferentes países que trabajan en sus aceleradores de partículas. Fue a raíz de la necesidad de disponer de múltiples grupos de científicos repartidos por el mundo y colaborando entre ellos que nació la web.
 
-![](../../img/primer-ordenador.png)
+![](../img/primer-ordenador.png)
 
 En los inicios del protocolo HTTP, a mediados del año 1990, encontramos la versión 0.9. Esta versión tenía como única finalidad transferir datos por Internet en forma de páginas web escritas en HTML. A partir de la versión 1.0 del protocolo surgió la posibilidad de transferir mensajes con encabezados que describían el contenido de los mensajes.
 
@@ -98,7 +98,7 @@ Google desarrolló el protocolo SPDY (Speedy), que permitió que en 2015 se publ
 
 **Según datos de 2025, HTTP/2 es utilizado por aproximadamente el 45-50% de las páginas web.**
 
-![](../../img/http2.png)
+![](../img/http2.png)
 
 #### HTTP/3 - El protocolo actual
 
@@ -149,7 +149,7 @@ Los estudios de Google muestran que QUIC reduce la latencia de carga de páginas
 
 El protocolo HTTP tiene un funcionamiento basado en el envío de mensajes entre cliente y servidor.
 
-![](../../img/funcionamiento-http.png)
+![](../img/funcionamiento-http.png)
 
 **Proceso de comunicación HTTP:**
 
@@ -182,7 +182,7 @@ HTTP define un conjunto de métodos de petición para indicar la acción que se 
 | **TRACE** | Permite descubrir todos los dispositivos de red por los que pasa la petición. |
 | **CONNECT** | Se utiliza para establecer túneles SSL/TLS a través de un proxy HTTP. |
 
-![](../../img/metodos.png){: style="height:420px;width:600px"}
+![](../img/metodos.png){: style="height:420px;width:600px"}
 
 > **Nota:** PUT está orientado a la actualización de contenidos, mientras que POST está orientado a la creación de nuevos contenidos.
 
@@ -190,7 +190,7 @@ HTTP define un conjunto de métodos de petición para indicar la acción que se 
 
 Una solicitud HTTP es un conjunto de líneas que el navegador envía al servidor:
 
-![](../../img/request.png)
+![](../img/request.png)
 
 **Componentes de una petición:**
 
@@ -200,7 +200,7 @@ Una solicitud HTTP es un conjunto de líneas que el navegador envía al servidor
 
 Una respuesta HTTP es un conjunto de líneas que el servidor envía al navegador:
 
-![](../../img/response.png)
+![](../img/response.png)
 
 **Componentes de una respuesta:**
 
@@ -240,7 +240,7 @@ Los tipos MIME son especificaciones para dar formato a mensajes no-ASCII para qu
 | video | mp4, webm, ogg | Archivos de vídeo |
 | application | json, xml, pdf, zip | Datos y archivos especiales |
 
-![](../../img/Mime-types.png)
+![](../img/Mime-types.png)
 
 ## HTTPS
 
@@ -248,7 +248,7 @@ El Protocolo seguro de transferencia de hipertexto (HTTPS) es un protocolo de ap
 
 **La web es insegura por naturaleza.** Cuando se diseñaron los protocolos TCP/IP no se tuvieron en cuenta los problemas de la Internet moderna. HTTP no añadió nada al respecto hasta la introducción de HTTPS en 1994 por Netscape. El protocolo HTTPS utiliza TLS (Transport Layer Security) para el cifrado, actualmente en su versión 1.3.
 
-![](../../img/https1.png)
+![](../img/https1.png)
 
 > **Indicadores de seguridad:** Los navegadores indican conexiones seguras mediante un icono de candado junto a la dirección. HTTPS se considera ahora la norma, no la excepción, y los navegadores marcan HTTP como "no seguro".
 
@@ -262,7 +262,7 @@ El protocolo HTTPS establece una conexión segura mediante un **handshake TLS**:
 4. Se establece una clave de sesión cifrada
 5. La comunicación prosigue de forma cifrada
 
-![](../../img/https2.png)
+![](../img/https2.png)
 
 ### TLS 1.3 vs versiones anteriores
 
@@ -365,9 +365,9 @@ Los dos servidores más utilizados son **Apache** y **Nginx**, con más de un 85
 
 7. **Compatibilidad**: Soporta la mayoría de CMS y frameworks del mercado (WordPress, Drupal, Laravel, etc.).
 
-![](../../img/nginx1.png)
+![](../img/nginx1.png)
 
-![](../../img/nginx2.png){: style="height:450px;width:700px"}
+![](../img/nginx2.png){: style="height:450px;width:700px"}
 
 ### Servicios de despliegue de páginas estáticas modernas
 
