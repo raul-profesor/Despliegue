@@ -2,8 +2,7 @@ flatten_single_child_sections: true
 nav:
   - Tema 1:
       - Teoría:
-          - Tema1/intro-aws.md
-          - Tema1/intro-terraform.md
+          - "Tema1/intro*.md"
   - Tema 2:
       - Teoría:
           - Tema2/ArqWeb.md
